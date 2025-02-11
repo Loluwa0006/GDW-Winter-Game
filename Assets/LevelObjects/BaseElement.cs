@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Rendering.FilterWindow;
 
+[System.Serializable]
 public class BaseElement : MonoBehaviour
 {
 
@@ -13,20 +14,21 @@ public class BaseElement : MonoBehaviour
         AIR,
         WATER,
         EARTH,
-        FIRE
+        FIRE,
+        GRAVITY
     }
 
-    ElementType elementType;
+   [SerializeField] ElementType elementType;
 
    public List<ElementType> reactableElements = new List<ElementType>();
 
-    Collider2D collider;
+    Collider2D element_collider;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void Start()
     {
-        collider = GetComponent<Collider2D>();
+        element_collider = GetComponent<Collider2D>();
     }
     public ElementType GetElementType()
     {

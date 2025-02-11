@@ -2,61 +2,114 @@ using System.Timers;
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
 public class Timer : MonoBehaviour
 {
+    [SerializeField] string timerID = string.Empty;
 
-    float waitTime;
-    float remainingTime;
-    bool repeat;
+    [SerializeField] float defaultWaitTime = 1.0f;
+    [SerializeField] bool repeat = false;
 
     UnityEvent timerOver;
 
-    bool timerStarted = false;
+    float waitTime = 0.0f;
 
-   const int MAXINTERATIONSWITHOUTSTARTING = 1000;
-    int interationCount = 0;
-    public void StartTimer(float waitTime, bool repeat = false)
+    bool timerActive = false;
+    bool destroyOnFinish = false;
+
+     float remainingTime = 0.0f;
+
+
+
+
+    private void Start()
     {
-        this.waitTime = waitTime;
-        remainingTime = waitTime;
-        this.repeat = repeat;
-
-        timerStarted = true;
+        timerOver = new UnityEvent();
+    }
+    public string GetID()
+    {
+        return timerID;
     }
 
-    void FixedUpdate()
+    public void SetID(string newID)
     {
-        if (!timerStarted)
+        if (timerID == string.Empty)
         {
-            interationCount++;
-            if (interationCount == MAXINTERATIONSWITHOUTSTARTING)
-            {
-                Destroy(gameObject);
-            }
+            timerID = newID;
         }
-        else
+        Debug.Log("Timer already named");
+    }
+    public void StartTimer(float waitTime, bool repeat = false, bool destroyOnFinish = false)
+    {
+        this.waitTime = Mathf.Max(waitTime, 0);
+        
+       
+        this.repeat = repeat;
+        
+        remainingTime = this.waitTime;
+
+        this.destroyOnFinish = destroyOnFinish;
+
+        timerActive = true;
+        Debug.Log("Internal wait time is " + this.waitTime.ToString() + ", parameter is " + waitTime.ToString());
+
+    }
+
+    public void StartTimer(bool repeat = false, bool destroyOnFinish = false)
+    {
+        waitTime = defaultWaitTime;
+        
+        
+       this.repeat = repeat;
+        
+        remainingTime = this.waitTime;
+
+        this.destroyOnFinish = destroyOnFinish;
+
+        timerActive = true;
+        Debug.Log("Internal wait time is " + waitTime.ToString() + ", default wait time is " + defaultWaitTime.ToString());
+
+    }
+
+    void Update()
+    {
+
+
+        if (timerActive)
         {
-            waitTime -= Time.deltaTime;
-            if (waitTime <= 0)
+            remainingTime -= Time.deltaTime;
+            remainingTime = Mathf.Max(remainingTime, 0);
+            if (remainingTime <= 0)
             {
                 onTimerOver();
             }
         }
     }
-     public float timeRemaining()
+    public float timeRemaining()
     {
+        //Debug.Log(remainingTime.ToString());
         return remainingTime;
+    }
+
+    public bool isStopped()
+    {
+        return remainingTime <= 0 && timerActive == true;
     }
     void onTimerOver()
     {
         timerOver.Invoke();
-        if (repeat)
+        if (destroyOnFinish)
+        {
+            Destroy(gameObject);
+        }
+       else if (repeat)
         {
             remainingTime = waitTime;
         }
         else
         {
-            Destroy(gameObject);
+            timerActive = false;
         }
+       
     }
 }

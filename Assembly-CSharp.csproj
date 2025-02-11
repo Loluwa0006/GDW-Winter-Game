@@ -63,17 +63,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Run.cs" />
+    <Compile Include="Assets\Entities\Player\Scripts\States\MoveState.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Idle.cs" />
     <Compile Include="Assets\Entities\Components\HealthComponent.cs" />
+    <Compile Include="Assets\GroundGrapple.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\BaseState.cs" />
+    <Compile Include="Assets\Entities\Player\Scripts\States\Player_Jump.cs" />
+    <Compile Include="Assets\ShadowStrideControls.cs" />
+    <Compile Include="Assets\Entities\Player\Scripts\States\Player_Climb.cs" />
     <Compile Include="Assets\LevelObjects\BaseElement.cs" />
-    <Compile Include="Assets\Player_Jump.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Crouch.cs" />
     <Compile Include="Assets\Utilities\Timer.cs" />
+    <Compile Include="Assets\Entities\Player\Scripts\States\BaseGrapple.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Fall.cs" />
+    <Compile Include="Assets\Entities\Player\Scripts\States\GrappleManager.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_CrouchRun.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\AirState.cs" />
+    <Compile Include="Assets\Killbox.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

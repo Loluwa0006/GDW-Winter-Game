@@ -1,8 +1,8 @@
 {
-    "name": "InputSystem_Actions",
+    "name": "ShadowStrideControls",
     "maps": [
         {
-            "name": "Player",
+            "name": "ShadowStridePlayer",
             "id": "df70fa95-8a34-4494-b137-73ab6b9c7d37",
             "actions": [
                 {
@@ -54,7 +54,7 @@
                     "name": "Previous",
                     "type": "Button",
                     "id": "2776c80d-3c14-4091-8c56-d04ced07a2b0",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -78,16 +78,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Left Grapple",
-                    "type": "Button",
+                    "name": "Grapple",
+                    "type": "PassThrough",
                     "id": "21575093-14e3-43da-802e-4c55030ba551",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Right Grapple",
+                    "name": "Tether",
                     "type": "Button",
                     "id": "b02fdfde-3835-44eb-bebd-f349a81dca25",
                     "expectedControlType": "",
@@ -372,17 +372,6 @@
                 },
                 {
                     "name": "",
-                    "id": "1a766e0e-ffea-40f7-88ae-666b0b2d7965",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1534dc16-a6aa-499d-9c3a-22b47347b52a",
                     "path": "<Keyboard>/1",
                     "interactions": "",
@@ -472,11 +461,11 @@
                 {
                     "name": "",
                     "id": "0fe5c8cd-e8fe-41d5-9d26-e8b93c200e1d",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Left Grapple",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Grapple",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -486,8 +475,8 @@
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Left Grapple",
+                    "groups": ";Gamepad",
+                    "action": "Grapple",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -498,7 +487,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Right Grapple",
+                    "action": "Tether",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -509,7 +498,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Right Grapple",
+                    "action": "Tether",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

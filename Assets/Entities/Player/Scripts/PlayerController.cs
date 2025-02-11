@@ -12,18 +12,55 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float ground_checker_length;
     [SerializeField] LayerMask groundMask;
 
+    [SerializeField] Text mouseTracker;
+    [SerializeField] Text velocityTracker;
+
+    Rigidbody2D _rb;
+   public  ShadowStrideControls _ssControls;
+
+    public Transform _respawnPoint;
+    public enum grappleElements
+    {
+        AIR,
+        EARTH,
+        FIRE,
+        GRAVITY
+    }
+    public grappleElements grappleElement = grappleElements.AIR;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+
+    void Awake()
     {
         healthComponent = GetComponent<HealthComponent>();
         animator = GetComponent<Animator>();
         hurtbox = GetComponent<BoxCollider2D>();
+        _rb = GetComponent<Rigidbody2D>();
+        _ssControls = new ShadowStrideControls();
+    }
+
+    private void OnEnable()
+    {
+        if (_ssControls == null)
+        {
+            _ssControls = new ShadowStrideControls();
+        }
+        _ssControls.Enable();
+        Debug.Log("enabled controls");
+    }
+    private void OnDisable()
+    {
+        _ssControls.Disable();
     }
 
     // Update is called once per frame
     void Update()
     {
-     //   Debug.Log("Current state is now " + animator.GetCurrentAnimatorStateInfo(0).ToString());
+        mouseTracker.text = "Mouse Position: " + Camera.main.ScreenToWorldPoint(Input.mousePosition).ToString();
+        velocityTracker.text = "Velocity: " + _rb.linearVelocity.ToString(); 
+        //   Debug.Log("Current state is now " + animator.GetCurrentAnimatorStateInfo(0).ToString());
     }
 
     public void UpdateStateTracker(string newState)
@@ -31,21 +68,40 @@ public class PlayerController : MonoBehaviour
         state_traacker.text = "State: " + newState;
     }
 
-    public bool hasParameter(string parameterName)
+    public int HasParameter(string parameterName)
     {
         for (int i = 0; i < animator.parameterCount; i++)
         {
             if (animator.parameters[i].name == parameterName)
             {
-                return true;
+                return i;
             }
         }
-        return false;
+        return -1;
     }
 
-    public bool isGrounded()
+    public BoxCollider2D GetHurtbox()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, hurtbox.size, 0, new Vector2(0, -1), ground_checker_length, groundMask);
-        return hit;
+        return hurtbox;
     }
+
+    public Timer GetTimer(string timerName)
+    {
+        foreach (Component component in GetComponentsInChildren<Timer>() )
+        {
+            Timer timer = (Timer) component;
+            if (timer.GetID() == timerName)
+            {
+                return timer;
+            }
+        }
+        Debug.Log("Couldn't find timer of name " + timerName);
+        return null;
+    }
+
+    public void Respawn()
+    {
+        transform.position = _respawnPoint.position;
+    }
+    
 }

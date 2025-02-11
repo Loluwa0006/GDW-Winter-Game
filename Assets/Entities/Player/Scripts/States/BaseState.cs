@@ -1,26 +1,52 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Base_State : StateMachineBehaviour
 {
+    const float GROUND_CHECKER_LENGTH = 0.5f;
+
     protected PlayerInput playerInput;
     protected PlayerController playerController;
 
     [SerializeField] protected bool useFixedUpdate = false;
+
+   protected LayerMask groundMask ;
+
+
+
+   protected bool stateInitalized = false;
+
+    protected ShadowStrideControls _ssControls;
+
+   
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (!stateInitalized)
+        {
+            groundMask = LayerMask.GetMask("Ground", "Wall");
+            playerInput = animator.GetComponentInParent<PlayerInput>();
+            playerController = animator.GetComponent<PlayerController>();
+            if (useFixedUpdate)
+            {
+                animator.updateMode = AnimatorUpdateMode.Fixed;
+            }
+            else
+            {
+                animator.updateMode = AnimatorUpdateMode.Normal;
+            }
+            stateInitalized = true;
+            _ssControls = playerController._ssControls;
+
+
+        }
         animator.Play(layerIndex);
-        playerInput = animator.GetComponentInParent<PlayerInput>();
-        playerController = animator.GetComponent<PlayerController>();
-        if (useFixedUpdate)
-        {
-            animator.updateMode = AnimatorUpdateMode.Fixed;
-        }
-        else
-        {
-            animator.updateMode = AnimatorUpdateMode.Normal;
-        }
+
+
+
 
     }
 
@@ -33,15 +59,29 @@ public class Base_State : StateMachineBehaviour
         bool crouch_held = playerInput.actions["Crouch"].IsPressed();
         animator.SetBool("CrouchHeld", crouch_held);
 
-        animator.SetBool("IsGrounded", playerController.isGrounded());
+        animator.SetBool("IsGrounded", isGrounded());
+
+
+    }
+
+
+    public bool touchingGround()
+    {
+        BoxCollider2D playerControllerHitbox = playerController.GetHurtbox();
+        Vector2 groundColliderSize = Vector2.Scale(playerControllerHitbox.size, new Vector2(0.8f, 0.8f));
+            RaycastHit2D hit = Physics2D.BoxCast(playerController.transform.position, groundColliderSize, 0, new Vector2(0, -1), GROUND_CHECKER_LENGTH, groundMask);
+            return hit;
+        }
+    
+    public virtual bool isGrounded()
+    {
+  
+
+        return touchingGround();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
-
+   
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{

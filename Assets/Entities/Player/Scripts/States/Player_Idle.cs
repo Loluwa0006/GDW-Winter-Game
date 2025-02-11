@@ -2,10 +2,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR.Haptics;
 
-public class Player_Idle : Base_State
+public class Player_Idle : MoveState
 {
-    PlayerInput playerInput;
-    PlayerController playerController;
+ 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
