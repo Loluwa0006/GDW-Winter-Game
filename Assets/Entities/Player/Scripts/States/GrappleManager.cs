@@ -57,14 +57,18 @@ public class GrappleManager : Base_State
         }
         animator.SetBool("InGrappleRange", hit);
 
-        Debug.Log("Mouse pressed = " + Input.GetMouseButton(0));
+        //Debug.Log("Mouse pressed = " + Input.GetMouseButton(0));
 
         
         animator.SetBool("GrapplePressed", Input.GetMouseButton(0));
+        animator.SetBool("TetherPressed", Input.GetMouseButton(1));
     }
 
     void InitInputActions(Animator animator)
     {
+        _ssControls.ShadowStridePlayer.DestroyTether.started += ctx => animator.SetBool("DestroyTethers", true);
+        _ssControls.ShadowStridePlayer.DestroyTether.canceled += ctx => animator.SetBool("DestroyTethers", false);
+
         //_ssControls.ShadowStridePlayer.Grapple.started += ctx => _grapplePressed = true;
         //_ssControls.ShadowStridePlayer.Grapple.canceled += ctx => _grapplePressed = false;
 

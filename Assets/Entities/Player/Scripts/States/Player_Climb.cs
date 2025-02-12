@@ -25,8 +25,7 @@ public class Player_Climb : Base_State
 
     float WALL_CHECKER_LENGTH = 0.9f;
 
-    int maxIterationsWithoutTouchingWall = 25;
-    int iterationTracker = 0;
+ 
 
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

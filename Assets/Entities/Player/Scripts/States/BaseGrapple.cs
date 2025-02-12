@@ -1,26 +1,24 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent
-    (typeof(LineRenderer))]
-[RequireComponent (typeof(DistanceJoint2D))]
+
 public class BaseGrapple : Base_State
     
 {
-    DistanceJoint2D _distanceJoint;
-    LineRenderer _grappleLine;
+   protected DistanceJoint2D _distanceJoint;
+   protected LineRenderer _grappleLine;
 
-    Vector3 _grapplePoint;
+    protected Vector3 _grapplePoint;
 
  //   [SerializeField] float jointdistance = 4.5f;
-    [SerializeField] float jointDamping = 7.0f;
+    [SerializeField] protected float jointDamping = 7.0f;
 
     //  [SerializeField] float jointMassScale = 4.5f;
 
     // [SerializeField] float jointMaxDistance = 0.8f;
     //  [SerializeField] float jointMinDistance = 0.25f;
 
-    Rigidbody2D _rb;
+   protected Rigidbody2D _rb;
 
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
