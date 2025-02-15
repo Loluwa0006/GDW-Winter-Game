@@ -61,7 +61,7 @@ public class Base_State : StateMachineBehaviour
 
         animator.SetBool("IsGrounded", isGrounded());
 
-
+        setFacing();
     }
 
 
@@ -78,6 +78,13 @@ public class Base_State : StateMachineBehaviour
   
 
         return touchingGround();
+    }
+
+    protected void setFacing()
+    {
+        int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
+        if (move_dir == 0) { move_dir = Mathf.RoundToInt(playerController.transform.localScale.x); }
+        playerController.transform.localScale = new Vector2(move_dir, 1);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

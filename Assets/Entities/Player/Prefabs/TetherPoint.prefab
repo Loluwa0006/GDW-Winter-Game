@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3454669539962596529}
   - component: {fileID: 7302765031596036939}
   - component: {fileID: 6748576307739557638}
+  - component: {fileID: 8826897123185642277}
   m_Layer: 9
   m_Name: TetherPoint
   m_TagString: TetherPoint
@@ -103,20 +104,20 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.01
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 1216
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 768
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &3454669539962596529
 BoxCollider2D:
@@ -131,7 +132,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 1216
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 768
@@ -177,9 +178,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 5248528639580477253}
-  tetherSpeed: 35
-  pullStrength: 20
+  _joint: {fileID: 8826897123185642277}
+  tetherSpeed: 50
+  pullStrength: 45
+  connectedTether: {fileID: 0}
   lineRenderer: {fileID: 6748576307739557638}
+  connectedObject: {fileID: 0}
 --- !u!120 &6748576307739557638
 LineRenderer:
   serializedVersion: 2
@@ -287,3 +291,22 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!255 &8826897123185642277
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7359078002401859123}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_DampingRatio: 0
+  m_Frequency: 0

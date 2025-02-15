@@ -6,6 +6,7 @@ using UnityEngine;
 public class TetherPoint : MonoBehaviour
 {
     public Rigidbody2D _rb;
+    public FixedJoint2D _joint;
 
     [SerializeField] float tetherSpeed = 50.0f;
     [SerializeField] float pullStrength = 20.0f;
@@ -18,7 +19,9 @@ public class TetherPoint : MonoBehaviour
 
     [SerializeField] LineRenderer lineRenderer;
 
-    Rigidbody2D connectedObject;
+   [SerializeField] Rigidbody2D connectedObject;
+
+
 
 
 
@@ -37,13 +40,17 @@ public class TetherPoint : MonoBehaviour
     {
         Debug.Log("LINKING");
         connectedTether = tether;
+        if (tether.connectedTether == null)
+        {
+            tether.connectedTether = this;
+        }
         Debug.Log("LINK SUCCESSFUL");
+
     }
 
     public void breakLink()
     {
         connectedTether = null;
-        connectedObject = null;
         lineRenderer.SetPosition(1, transform.position);
     }
 
@@ -56,6 +63,9 @@ public class TetherPoint : MonoBehaviour
         if (collider_rb != null)
         {
             connectedObject = collider_rb;
+            _joint.connectedBody = connectedObject;
+            _joint.enabled = true;
+            Debug.Log("Connecting to object " + collision.collider.name);
         }
         _rb.linearVelocity = Vector2.zero;
         _rb.gravityScale = 0.0f;
@@ -67,13 +77,16 @@ public class TetherPoint : MonoBehaviour
         {
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, connectedTether.transform.position);
+            if (connectedObject != null && connectedTether.tetherLocked)
+            {
+                Vector2 directionToTether = (connectedTether.transform.position - connectedObject.transform.position).normalized;
+                connectedObject.AddForce(directionToTether * pullStrength);
+
+            }
 
             //Debug.Log("Connected tether is " + connectedTether.gameObject.name);
         }
-        if (connectedObject != null)
-        {
-            connectedObject.AddForce(Vector2.one * pullStrength);
-        }
+        
        
     }
 

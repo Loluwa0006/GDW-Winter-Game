@@ -11,6 +11,7 @@ public class MoveState : Base_State
     [SerializeField] float acceleration = 0.5f;
     [SerializeField] float max_speed = 2.5f;
      Timer jumpBuffer;
+    Timer attackBuffer;
     Timer coyoteTimer;
 
     bool groundedLastFrame = false;
@@ -31,11 +32,15 @@ public class MoveState : Base_State
         {
             coyoteTimer = playerController.GetTimer("Coyote");
         }
+        if (attackBuffer == null)
+        {
+            attackBuffer = playerController.GetTimer("AttackBuffer");
+        }
 
     }
 
 
-  
+
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
@@ -46,10 +51,18 @@ public class MoveState : Base_State
         _rb.linearVelocity = newSpeed;
 
         animator.SetInteger("HorizAxis", move_dir);
-        
 
-        bool crouch_held = playerInput.actions["Crouch"].IsPressed();
-        animator.SetBool("CrouchHeld", crouch_held);
+
+        bool crouchHeld = playerInput.actions["Crouch"].IsPressed(); 
+        bool attackPressed = playerInput.actions["Attack"].IsPressed();
+
+        if (attackPressed)
+        {
+            attackBuffer.StartTimer();
+        }
+
+        animator.SetFloat("AttackBuffer", attackBuffer.timeRemaining());
+        animator.SetBool("CrouchHeld", crouchHeld);
 
         animator.SetBool("IsGrounded", isGrounded());
 
@@ -63,9 +76,15 @@ public class MoveState : Base_State
             coyoteTimer.StartTimer();
         }
 
+        if (move_dir == 0) { move_dir = Mathf.RoundToInt(playerController.transform.localScale.x); }
+        Debug.Log("Setting scale to " + move_dir.ToString());
+        playerController.gameObject.transform.localScale = new Vector2(move_dir, 1);
 
+        Debug.Log(playerController.gameObject.name);
+
+        setFacing();
     }
-  
+
 
     public override bool isGrounded()
     {

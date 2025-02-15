@@ -37,13 +37,14 @@ public class Player_Jump : AirState
         animator.SetBool("MovingUpwards", (_rb.linearVelocity.y > 0));
         animator.SetBool("TouchingWall", touchingWall());
 
+        setFacing();
 
     }
-        // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-      //  override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-      //  {
-       // animator.SetFloat("JumpBuffer", -1.0f);
-         //}
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    //  override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //  {
+    // animator.SetFloat("JumpBuffer", -1.0f);
+    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

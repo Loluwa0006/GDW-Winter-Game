@@ -85,6 +85,7 @@ public class AirState : Base_State
         }
         animator.SetFloat("JumpBuffer", jumpBuffer.timeRemaining());
 
+        setFacing();
     }
 
 

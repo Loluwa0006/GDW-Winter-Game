@@ -20,6 +20,9 @@ public class BaseGrapple : Base_State
 
    protected Rigidbody2D _rb;
 
+    const float GRAPPLE_GRAVITY = 0.8f;
+
+     
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -49,9 +52,11 @@ public class BaseGrapple : Base_State
         _distanceJoint = animator.gameObject.AddComponent<DistanceJoint2D>();
 
         _grapplePoint = new Vector3(animator.GetFloat("GrapplePointX"), animator.GetFloat("GrapplePointY"), 1);
+       // Physics2D.overl
         _distanceJoint.autoConfigureConnectedAnchor = false;
         _distanceJoint.connectedAnchor = _grapplePoint;
        _distanceJoint.enableCollision = true;
+        _rb.gravityScale = GRAPPLE_GRAVITY;
 
       //  _distanceJoint. = jointDamping;
       //  
@@ -66,6 +71,7 @@ public class BaseGrapple : Base_State
             _grappleLine.SetPosition(0, playerController.transform.position);
             _grappleLine.SetPosition(1, _grapplePoint);
         }
+
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -80,6 +86,8 @@ public class BaseGrapple : Base_State
     {
         Destroy(_grappleLine);
         Destroy(_distanceJoint);
+
+        _rb.gravityScale = 1.0f;
     }
 
 }

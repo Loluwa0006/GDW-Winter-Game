@@ -5,6 +5,7 @@ public class HealthComponent : MonoBehaviour
 {
     [SerializeField] int max_health = 100;
     int health = 0;
+    //Dont touch in editor, just expose it
     public UnityEvent onEntityDamaged;
     public UnityEvent onEntityHealed;
     
