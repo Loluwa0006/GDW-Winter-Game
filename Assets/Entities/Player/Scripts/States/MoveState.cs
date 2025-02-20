@@ -92,7 +92,7 @@ public class MoveState : Base_State
         {
             coyoteTimer.StartTimer(COYOTE_DURATION, false);
         }
-        if (touchingGround() && !coyoteTimer.isStopped())
+        if (touchingGround() || !coyoteTimer.isStopped())
         {
             return true;
         }

@@ -179,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 5248528639580477253}
   _joint: {fileID: 8826897123185642277}
-  tetherSpeed: 50
+  tetherSpeed: 70
   pullStrength: 45
   connectedTether: {fileID: 0}
   lineRenderer: {fileID: 6748576307739557638}

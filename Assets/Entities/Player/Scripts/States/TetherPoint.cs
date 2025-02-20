@@ -77,12 +77,7 @@ public class TetherPoint : MonoBehaviour
         {
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, connectedTether.transform.position);
-            if (connectedObject != null && connectedTether.tetherLocked)
-            {
-                Vector2 directionToTether = (connectedTether.transform.position - connectedObject.transform.position).normalized;
-                connectedObject.AddForce(directionToTether * pullStrength);
-
-            }
+            pullObjects();
 
             //Debug.Log("Connected tether is " + connectedTether.gameObject.name);
         }
@@ -90,6 +85,19 @@ public class TetherPoint : MonoBehaviour
        
     }
 
+    void pullObjects()
+    {
+        if (connectedObject != null && connectedTether.tetherLocked)
+        {
+            if (connectedTether.connectedObject == connectedObject)
+            {
+                return;
+            }
+            Vector2 directionToTether = (connectedTether.transform.position - connectedObject.transform.position).normalized;
+            connectedObject.AddForce(directionToTether * pullStrength);
+
+        }
+    }
   
     public bool tetherLinked() { return tetherLocked; }
 

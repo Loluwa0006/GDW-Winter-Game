@@ -5,7 +5,6 @@ using UnityEngine.UI;
 [System.Serializable]
 public class PlayerController : MonoBehaviour
 {
-    HealthComponent healthComponent;
     Animator animator;
     BoxCollider2D hurtbox;
     [SerializeField] Text state_traacker;
@@ -16,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Text velocityTracker;
 
     Rigidbody2D _rb;
-   public  ShadowStrideControls _ssControls;
+   [SerializeField] public  ShadowStrideControls _ssControls;
 
     public Transform _respawnPoint;
     public enum grappleElements
@@ -34,7 +33,6 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        healthComponent = GetComponent<HealthComponent>();
         animator = GetComponent<Animator>();
         hurtbox = GetComponent<BoxCollider2D>();
         _rb = GetComponent<Rigidbody2D>();
@@ -48,6 +46,7 @@ public class PlayerController : MonoBehaviour
             _ssControls = new ShadowStrideControls();
         }
         _ssControls.Enable();
+
         Debug.Log("enabled controls");
     }
     private void OnDisable()
@@ -102,6 +101,34 @@ public class PlayerController : MonoBehaviour
     public void Respawn()
     {
         transform.position = _respawnPoint.position;
+
+        //below is deepseek code
+        // Loop through all parameters
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            switch (param.type)
+            {
+                case AnimatorControllerParameterType.Float:
+                    animator.SetFloat(param.name, 0f); // Reset float to 0
+                    break;
+
+                case AnimatorControllerParameterType.Int:
+                    animator.SetInteger(param.name, 0); // Reset int to 0
+                    break;
+
+                case AnimatorControllerParameterType.Bool:
+                    animator.SetBool(param.name, false); // Reset bool to false
+                    break;
+
+                case AnimatorControllerParameterType.Trigger:
+                    animator.ResetTrigger(param.name); // Reset trigger
+                    break;
+            }
+
+        }
+        //deepseek code over
+
+        animator.SetBool("IsGrounded", false);
+
     }
-    
 }

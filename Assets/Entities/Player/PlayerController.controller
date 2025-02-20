@@ -289,6 +289,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: CrouchHeld
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsGrounded
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7223641039209295600}
   m_Solo: 0
@@ -299,6 +302,28 @@ AnimatorStateTransition:
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &-7440079212883241119
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -6285311444908962083}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.01
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -347,7 +372,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.2
+  m_ExitTime: 0.15
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -398,6 +423,7 @@ AnimatorState:
   - {fileID: -598905885238030454}
   - {fileID: 422329137954494808}
   - {fileID: -6056648900845380007}
+  - {fileID: -555167424418728959}
   m_StateMachineBehaviours:
   - {fileID: 8633517245729399055}
   m_Position: {x: 50, y: 50, z: 0}
@@ -614,7 +640,7 @@ AnimatorStateMachine:
     m_Position: {x: 570, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2242862297385718549}
-    m_Position: {x: 560, y: 440, z: 0}
+    m_Position: {x: 360, y: 300, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -692,9 +718,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: IsGrounded
-    m_EventTreshold: 0
   - m_ConditionMode: 7
     m_ConditionEvent: HorizAxis
     m_EventTreshold: 0
@@ -704,7 +727,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.2
   m_HasExitTime: 1
@@ -928,7 +951,8 @@ AnimatorState:
   m_Name: RemoveTethers
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: -7440079212883241119}
   m_StateMachineBehaviours:
   - {fileID: 5639035354525963329}
   m_Position: {x: 50, y: 50, z: 0}
@@ -1189,6 +1213,31 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &-555167424418728959
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: DestroyTethers
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -2242862297385718549}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &-219085309689572712
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1313,12 +1362,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: TetherPressed
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   - m_Name: InGrappleRange
     m_Type: 4
     m_DefaultFloat: 0
@@ -1345,6 +1388,12 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: DestroyTethers
     m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: TetherPressed
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -1690,9 +1739,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: CrouchHeld
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: IsGrounded
-    m_EventTreshold: 0
   - m_ConditionMode: 7
     m_ConditionEvent: HorizAxis
     m_EventTreshold: 0
@@ -2010,6 +2056,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: HorizAxis
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsGrounded
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -54968867688803202}
   m_Solo: 0
@@ -2062,7 +2111,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GroundTether
+  m_Name: Tether
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -2202,7 +2251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useFixedUpdate: 1
   jointDamping: 7
-  pullStrengthAcceleration: 0.03
+  pullStrengthAcceleration: 0.1
   minDistance: 7
   grappleBoost: 0
 --- !u!1102 &6923466398299755040
@@ -2304,6 +2353,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: CrouchHeld
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsGrounded
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -54968867688803202}
   m_Solo: 0
@@ -2357,7 +2409,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -54968867688803202}
-    m_Position: {x: -60, y: -140, z: 0}
+    m_Position: {x: -110, y: -260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8704941170551800598}
     m_Position: {x: 250, y: 240, z: 0}

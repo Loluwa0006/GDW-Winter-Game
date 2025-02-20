@@ -7,17 +7,18 @@ public class GrappleManager : Base_State
 
   [SerializeField]  float _maxDistance = 35.0f;
 
-
+    Animator animator;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
         if (!stateInitalized)
         {
-            _ssControls = new ShadowStrideControls();
+            this.animator = animator;
             groundMask = LayerMask.GetMask("Ground");
             playerInput = animator.GetComponentInParent<PlayerInput>();
             playerController = animator.GetComponent<PlayerController>();
+            _ssControls = playerController._ssControls;
             if (useFixedUpdate)
             {
                 animator.updateMode = AnimatorUpdateMode.Fixed;
@@ -56,24 +57,32 @@ public class GrappleManager : Base_State
             Debug.DrawLine(playerController.transform.position, hit.point, Color.red);
         }
         animator.SetBool("InGrappleRange", hit);
+        animator.SetBool("IsGrounded", isGrounded());
 
+        animator.SetBool("GrapplePressed", Input.GetMouseButton(0));
         //Debug.Log("Mouse pressed = " + Input.GetMouseButton(0));
 
-        
-        animator.SetBool("GrapplePressed", Input.GetMouseButton(0));
-        animator.SetBool("TetherPressed", Input.GetMouseButton(1));
     }
+
+    private void onGrapplePressed()
+    {
+        Debug.Log("grappling button pressed");
+    }
+
 
     void InitInputActions(Animator animator)
     {
         _ssControls.ShadowStridePlayer.DestroyTether.started += ctx => animator.SetBool("DestroyTethers", true);
         _ssControls.ShadowStridePlayer.DestroyTether.canceled += ctx => animator.SetBool("DestroyTethers", false);
 
-        //_ssControls.ShadowStridePlayer.Grapple.started += ctx => _grapplePressed = true;
-        //_ssControls.ShadowStridePlayer.Grapple.canceled += ctx => _grapplePressed = false;
+        Debug.Log("grapple actions unlocked");
 
-        //_ssControls.ShadowStridePlayer.Tether.started += ctx => animator.SetBool("TetherPressed", true);
-        //_ssControls.ShadowStridePlayer.Tether.canceled += ctx => animator.SetBool("TetherPressed", false);
+        _ssControls.ShadowStridePlayer.Grapple.started += ctx => animator.SetBool("GrapplePressed",  true);
+        _ssControls.ShadowStridePlayer.Grapple.started += ctx => onGrapplePressed();
+
+        _ssControls.ShadowStridePlayer.Grapple.canceled += ctx => animator.SetBool("GrapplePressed", false);
+
+        _ssControls.ShadowStridePlayer.Tether.started += ctx => animator.SetTrigger("TetherPressed");
 
     }
 

@@ -41,8 +41,9 @@ public class Base_State : StateMachineBehaviour
             stateInitalized = true;
             _ssControls = playerController._ssControls;
 
-
+            InitInputActions(animator);
         }
+        
         animator.Play(layerIndex);
 
 
@@ -87,8 +88,14 @@ public class Base_State : StateMachineBehaviour
         playerController.transform.localScale = new Vector2(move_dir, 1);
     }
 
+    void InitInputActions(Animator animator)
+    {
+        _ssControls.ShadowStridePlayer.Move.performed += ctx => animator.SetInteger("HorizAxis", Mathf.RoundToInt(ctx.ReadValue<Vector2>().x));
+    }
+
+
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-   
+
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{

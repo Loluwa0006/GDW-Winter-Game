@@ -21,15 +21,18 @@ public class Player_Tether : Base_State
             playerController = animator.gameObject.GetComponent<PlayerController>();
 
         }
-       foreach (TetherPoint tether in tetherPoints)
+
+        GameObject[] tetherTags = GameObject.FindGameObjectsWithTag("TetherPoint");
+        for (int i = 0; i < tetherTags.Length; i++)
         {
-            if (tether == null)
+            if (i > 1)
             {
-                tetherPoints.Remove(tether);
+                tetherPoints.Remove(tetherTags[i].GetComponent<TetherPoint>());
+                Destroy(tetherTags[i]);
             }
-            //another state clears all tethers, so we need to make sure that they still exist when we enter the state
         }
-        TetherPoint newTether = Instantiate(tetherPointPrefab);
+
+            TetherPoint newTether = Instantiate(tetherPointPrefab);
 
         Vector2 tetherDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         tetherDirection = tetherDirection - new Vector2(animator.transform.position.x, animator.gameObject.transform.position.y);
@@ -50,8 +53,11 @@ public class Player_Tether : Base_State
             {
                 Destroy(tetherPoints[0].gameObject);
             }
-            tetherPoints[1].breakLink();
-            tetherPoints.RemoveAt(0);
+            if (tetherPoints[1] != null)
+            {
+                tetherPoints[1].breakLink();
+            }
+                tetherPoints.RemoveAt(0);
         }
         //no more than 2 tethers, otherwise we destroy the oldest one
 
@@ -71,12 +77,13 @@ public class Player_Tether : Base_State
 
     }
 
-   
-
-    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("TetherPressed", Input.GetMouseButton(1));
+        
     }
+
+
+
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

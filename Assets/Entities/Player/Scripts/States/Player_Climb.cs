@@ -54,8 +54,8 @@ public class Player_Climb : Base_State
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-       
-                animator.SetBool("TouchingWall", touchingWall());
+        
+       animator.SetBool("TouchingWall", touchingWall());
             
         
        
@@ -87,10 +87,12 @@ public class Player_Climb : Base_State
             newSpeed.y += climbAcceleration;
             newSpeed.y = Mathf.Max(newSpeed.y, climbSpeed);
         }
-        else if (animator.GetFloat("JumpBuffer") <= 0) //if the player is trying to leave the wall, stop resetting speed
+        else 
         {
             newSpeed.y = 0;
+            _rb.linearVelocity = Vector2.zero;
         }
+       
 
         if (Mathf.Sign(move_dir.x) != wallDirection || move_dir.x == 0)
         {
@@ -113,6 +115,8 @@ public class Player_Climb : Base_State
         {
             wallBounceTracker -= Time.deltaTime;
         }
+
+      
         _rb.linearVelocity = newSpeed;
         
     }

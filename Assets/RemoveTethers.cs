@@ -1,13 +1,14 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RemoveTethers : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-    foreach (GameObject tether in GameObject.FindGameObjectsWithTag("TetherPoint"))
+    for (int i = 0; i < GameObject.FindGameObjectsWithTag("TetherPoint").Length; i++)
         {
-            Destroy(tether);
+            Destroy(GameObject.FindGameObjectsWithTag("TetherPoint")[i]);
         }
     }
 
