@@ -57,7 +57,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseTracker.text = "Mouse Position: " + Camera.main.ScreenToWorldPoint(Input.mousePosition).ToString();
         velocityTracker.text = "Velocity: " + _rb.linearVelocity.ToString(); 
         //   Debug.Log("Current state is now " + animator.GetCurrentAnimatorStateInfo(0).ToString());
     }

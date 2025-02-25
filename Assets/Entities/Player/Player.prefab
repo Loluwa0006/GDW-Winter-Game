@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3432561615940374158}
   - component: {fileID: 8233227760860231440}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoyoteTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 775784180172110431}
   - component: {fileID: 5471190393618022851}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackBuffer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 763565566672607678}
   - component: {fileID: 3888083728963275374}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: JumpBuffer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 6972796821543124617}
   - component: {fileID: 2186834193266078834}
   - component: {fileID: 2932344813579778816}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5441342506683394030}
   - component: {fileID: 5498151469765157080}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -19,8 +19,8 @@ TagManager:
   - Tether
   - MoveableObject
   - PlayerAttack
-  - 
-  - 
+  - IntelObject
+  - ExitArea
   - 
   - 
   - 
