@@ -90,6 +90,7 @@
     <Compile Include="Assets\Entities\Enemies\LookInDirectionAction.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\GrappleManager.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_CrouchRun.cs" />
+    <Compile Include="Assets\LevelObjects\SceneHandler.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Tether.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\AirState.cs" />
   </ItemGroup>
@@ -1119,16 +1120,20 @@
       <HintPath>Library\ScriptAssemblies\Unity.AppUI.Navigation.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="NavMeshPlus">
+      <HintPath>Library\ScriptAssemblies\NavMeshPlus.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="PsdPlugin">
       <HintPath>Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.AI.Navigation">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.2D.Common.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.Common.Path.Editor">
@@ -1145,6 +1150,10 @@
     </Reference>
     <Reference Include="Unity.2D.IK.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NavMeshPlusEditor">
+      <HintPath>Library\ScriptAssemblies\NavMeshPlusEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.IK.Runtime">

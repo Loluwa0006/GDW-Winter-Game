@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineCamera
   - TetherPoint
+  - IntelObject
   layers:
   - Default
   - TransparentFX

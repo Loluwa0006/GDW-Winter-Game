@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
 
             rawImage.transform.parent = intelUI.transform;
         }
-        if (intelObjects.Count > 0) 
+        if (intelObjects.Count >= intelRequired) 
         { 
             exitArea.SetActive (true);
         }

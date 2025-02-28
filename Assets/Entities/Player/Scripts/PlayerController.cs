@@ -7,15 +7,12 @@ public class PlayerController : MonoBehaviour
 {
     Animator animator;
     BoxCollider2D hurtbox;
-    [SerializeField] Text state_traacker;
-    [SerializeField] float ground_checker_length;
-    [SerializeField] LayerMask groundMask;
-
-    [SerializeField] Text mouseTracker;
-    [SerializeField] Text velocityTracker;
-
     Rigidbody2D _rb;
-   [SerializeField] public  ShadowStrideControls _ssControls;
+
+    [SerializeField] Text stateTracker;
+    [SerializeField] Text velocityTracker;
+    [SerializeField] LayerMask groundMask;
+    [SerializeField] public  ShadowStrideControls _ssControls;
 
     public Transform _respawnPoint;
     public enum grappleElements
@@ -63,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateStateTracker(string newState)
     {
-        state_traacker.text = "State: " + newState;
+        stateTracker.text = "State: " + newState;
     }
 
     public int HasParameter(string parameterName)
@@ -128,6 +125,8 @@ public class PlayerController : MonoBehaviour
         //deepseek code over
 
         animator.SetBool("IsGrounded", false);
+
+        _rb.linearVelocity = Vector2.zero;
 
     }
 }

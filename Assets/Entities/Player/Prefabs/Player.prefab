@@ -156,9 +156,10 @@ GameObject:
   - component: {fileID: 6972796821543124617}
   - component: {fileID: 2186834193266078834}
   - component: {fileID: 2932344813579778816}
+  - component: {fileID: 8660094409929866952}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,8 +263,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!61 &8282859744739588695
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -322,13 +323,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a6cd66362b87c479f94261937f41a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state_traacker: {fileID: 0}
-  ground_checker_length: 0
+  stateTracker: {fileID: 0}
+  velocityTracker: {fileID: 0}
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
-  mouseTracker: {fileID: 0}
-  velocityTracker: {fileID: 0}
+    m_Bits: 192
   _respawnPoint: {fileID: 0}
   grappleElement: 0
 --- !u!114 &2186834193266078834
@@ -380,6 +379,28 @@ MonoBehaviour:
   m_DefaultActionMap: ShadowStridePlayer
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!95 &8660094409929866952
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6913523165401640048}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e96eaa70393d0d647b4dae15311a472a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7348073395663940065
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5441342506683394030}
   - component: {fileID: 5498151469765157080}
+  - component: {fileID: 2335791529287543042}
   m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
@@ -458,3 +480,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2335791529287543042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7348073395663940065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e94ff79ced4ddc4eae06ce57843c963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitboxInfo: {fileID: 5498151469765157080}
+  damage: 2
+  hasKnockback: 0
+  hasStun: 0
+  attackPush: {x: 0, y: 0}
+  attackLanded: 0

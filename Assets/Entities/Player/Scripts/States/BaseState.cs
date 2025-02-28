@@ -4,7 +4,9 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Base_State : StateMachineBehaviour
 {
-    const float GROUND_CHECKER_LENGTH = 0.5f;
+    protected const float GROUND_CHECKER_LENGTH = 0.5f;
+
+    const float GROUND_CHECKER_RATIO = 0.8f;
 
     protected PlayerInput playerInput;
     protected PlayerController playerController;
@@ -19,8 +21,14 @@ public class Base_State : StateMachineBehaviour
 
     protected ShadowStrideControls _ssControls;
 
-   
+    BoxCollider2D playerControllerHitbox;
+    Vector2 groundColliderSize;
+
+
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+
+
 
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -42,8 +50,13 @@ public class Base_State : StateMachineBehaviour
             _ssControls = playerController._ssControls;
 
             InitInputActions(animator);
+            playerControllerHitbox = playerController.GetHurtbox();
+            groundColliderSize = Vector2.Scale(playerControllerHitbox.size, new Vector2(GROUND_CHECKER_RATIO, GROUND_CHECKER_RATIO));
+            //Shrink ground collider size to make sure player is standing on top of something
+            //Without this the player would stick to walls by having the furthest parts of the model touch said wall
+
         }
-        
+
         animator.Play(layerIndex);
 
 
@@ -60,26 +73,33 @@ public class Base_State : StateMachineBehaviour
         bool crouch_held = playerInput.actions["Crouch"].IsPressed();
         animator.SetBool("CrouchHeld", crouch_held);
 
-        animator.SetBool("IsGrounded", isGrounded());
+
+        animator.SetBool("IsGrounded", TouchingGround());
+
+       
 
         setFacing();
+
+
     }
 
 
-    public bool touchingGround()
+
+
+    public bool TouchingGround()
     {
         BoxCollider2D playerControllerHitbox = playerController.GetHurtbox();
         Vector2 groundColliderSize = Vector2.Scale(playerControllerHitbox.size, new Vector2(0.8f, 0.8f));
-            RaycastHit2D hit = Physics2D.BoxCast(playerController.transform.position, groundColliderSize, 0, new Vector2(0, -1), GROUND_CHECKER_LENGTH, groundMask);
-            return hit;
-        }
-    
-    public virtual bool isGrounded()
+        RaycastHit2D hit = Physics2D.BoxCast(playerController.transform.position, groundColliderSize, 0, new Vector2(0, -1), GROUND_CHECKER_LENGTH, groundMask);
+        return hit;
+    }
+    public virtual bool IsGrounded()
     {
   
 
-        return touchingGround();
+        return TouchingGround();
     }
+
 
     protected void setFacing()
     {

@@ -24,7 +24,7 @@ public class GroundGrapple : BaseGrapple
 
         _distanceJoint.distance -= pullStrengthAcceleration;
         if (_distanceJoint.distance < minDistance)
-        { if (!isGrounded())
+        { if (!IsGrounded())
             {
                 _distanceJoint.distance = minDistance;
             }

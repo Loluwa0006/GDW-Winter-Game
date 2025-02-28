@@ -10,7 +10,7 @@ public class Player_Jump : AirState
        
         _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, _rb.linearVelocity.y + jumpVelocity);
         animator.SetBool("IsGrounded", false);
-        Debug.Log(animator.GetParameter(playerController.HasParameter("JumpBuffer")).ToString());
+        animator.SetFloat("JumpBuffer", 0.0f);
         //reset buffer every time you jump so player doesn't accidently jump again
     }
 
@@ -35,7 +35,10 @@ public class Player_Jump : AirState
 
 
         animator.SetBool("MovingUpwards", (_rb.linearVelocity.y > 0));
-        animator.SetBool("TouchingWall", touchingWall());
+        animator.SetBool("TouchingWall", TouchingWall());
+
+       
+
 
         setFacing();
 

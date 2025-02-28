@@ -55,7 +55,7 @@ public class Player_Climb : Base_State
     {
 
         
-       animator.SetBool("TouchingWall", touchingWall());
+       animator.SetBool("TouchingWall", TouchingWall());
             
         
        
@@ -121,7 +121,7 @@ public class Player_Climb : Base_State
         
     }
 
-    public bool touchingWall()
+    public bool TouchingWall()
     {
         
         RaycastHit2D hit = Physics2D.Raycast(_rb.position, new Vector2(wallDirection, 0), WALL_CHECKER_LENGTH, wallMask);

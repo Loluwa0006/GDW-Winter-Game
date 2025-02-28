@@ -49,6 +49,8 @@ public class AirState : Base_State
 
             initalizedAirState =true;
         }
+        playerController.transform.rotation = Quaternion.identity;
+        _rb.freezeRotation = true;
 
     }
 
@@ -75,9 +77,15 @@ public class AirState : Base_State
 
         bool crouch_held = playerInput.actions["Crouch"].IsPressed();
         animator.SetBool("CrouchHeld", crouch_held);
-        animator.SetBool("IsGrounded", touchingGround());
+
+        bool touchingGround = TouchingGround();
+        if (!touchingGround)
+        {
+            _rb.freezeRotation = false;
+        }
+        animator.SetBool("IsGrounded", touchingGround);
         animator.SetBool("MovingUpwards", (_rb.linearVelocity.y > 0));
-        animator.SetBool("TouchingWall", touchingWall());
+        animator.SetBool("TouchingWall", TouchingWall());
 
         if (playerInput.actions["Jump"].WasPressedThisFrame())
         {
@@ -98,7 +106,7 @@ public class AirState : Base_State
         }
         return jumpGravity;    
     }
-    public bool touchingWall()
+    public bool TouchingWall()
     {
         float moveDir = playerInput.actions["Move"].ReadValue<Vector2>().x;
             if (moveDir == 0) { return false; } //need to be moving in direction of wall

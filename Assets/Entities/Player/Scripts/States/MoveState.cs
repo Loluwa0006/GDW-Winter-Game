@@ -16,6 +16,7 @@ public class MoveState : Base_State
 
     bool groundedLastFrame = false;
 
+    float desiredSpeed;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
          
@@ -43,12 +44,20 @@ public class MoveState : Base_State
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
-        Vector2 newSpeed = _rb.linearVelocity;
-        newSpeed.x = _rb.linearVelocity.x + acceleration * move_dir;
-        newSpeed.x = Mathf.Clamp(newSpeed.x, -max_speed, max_speed);
 
+        bool touchingGround = TouchingGround();
+        int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
+        Vector2 newSpeed = new Vector2 (desiredSpeed, 0);
+      //  desiredSpeed = _rb.linearVelocity.magnitude + acceleration * move_dir;
+        //use magnitude instead of x to account for slopes
+       //  desiredSpeed = Mathf.Clamp(newSpeed.x, -max_speed, max_speed);
+        newSpeed = SetRealVelocity(move_dir);
+
+        Debug.Log("Desired Speed is " + desiredSpeed);
+        Debug.Log("New speed is " +  newSpeed);
+        Debug.Log("_rb mag is " + _rb.linearVelocity.magnitude);
         _rb.linearVelocity = newSpeed;
+
 
         animator.SetInteger("HorizAxis", move_dir);
 
@@ -64,35 +73,60 @@ public class MoveState : Base_State
         animator.SetFloat("AttackBuffer", attackBuffer.timeRemaining());
         animator.SetBool("CrouchHeld", crouchHeld);
 
-        animator.SetBool("IsGrounded", isGrounded());
+        bool isGrounded = IsGrounded();
+        if (!isGrounded)
+        {
+            playerController.transform.rotation = Quaternion.identity;
+        }
+        animator.SetBool("IsGrounded", IsGrounded());
 
         if (playerInput.actions["Jump"].IsPressed())
         {
             jumpBuffer.StartTimer();
         }
         animator.SetFloat("JumpBuffer", jumpBuffer.timeRemaining());
-        if (groundedLastFrame && !touchingGround())
+        if (groundedLastFrame && !TouchingGround())
         {
             coyoteTimer.StartTimer();
         }
 
         if (move_dir == 0) { move_dir = Mathf.RoundToInt(playerController.transform.localScale.x); }
-        Debug.Log("Setting scale to " + move_dir.ToString());
         playerController.gameObject.transform.localScale = new Vector2(move_dir, 1);
+        //look in direction of movement
 
-        Debug.Log(playerController.gameObject.name);
 
         setFacing();
+
+        
+    }
+
+  
+    Vector3 SetRealVelocity(float moveDir)
+    {
+
+        //Need to account for slopes
+        RaycastHit2D hit = Physics2D.Raycast(playerController.transform.position, new Vector2(0, -1), GROUND_CHECKER_LENGTH * 2, groundMask);
+        //Multiply ground checker length by 2 because downward slopes will make the raycast miss
+
+        Vector3 slopeNormal = Vector3.Cross(hit.normal, new Vector2(moveDir, 0)) * desiredSpeed;
+        //Use cross product to return normal of slope
+
+        playerController.transform.rotation = Quaternion.LookRotation(slopeNormal);
+
+        Debug.Log("Slope normal is " + slopeNormal);
+
+        return slopeNormal * desiredSpeed;
+
     }
 
 
-    public override bool isGrounded()
+    public override bool IsGrounded()
     {
-        if (!touchingGround() && coyoteTimer.isStopped())
+        if (!TouchingGround() && coyoteTimer.isStopped())
         {
             coyoteTimer.StartTimer(COYOTE_DURATION, false);
         }
-        if (touchingGround() || !coyoteTimer.isStopped())
+        if (TouchingGround() || !coyoteTimer.isStopped())
         {
             return true;
         }

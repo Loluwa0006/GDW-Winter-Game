@@ -57,7 +57,7 @@ public class GrappleManager : Base_State
             Debug.DrawLine(playerController.transform.position, hit.point, Color.red);
         }
         animator.SetBool("InGrappleRange", hit);
-        animator.SetBool("IsGrounded", isGrounded());
+        animator.SetBool("IsGrounded", IsGrounded());
 
         animator.SetBool("GrapplePressed", Input.GetMouseButton(0));
         //Debug.Log("Mouse pressed = " + Input.GetMouseButton(0));
