@@ -4304,7 +4304,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TestArea
+          m_StringArgument: PlatformFighter
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1456479823
@@ -5619,7 +5619,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.562561, y: 1}
+  m_AnchoredPosition: {x: -4.5625, y: 1}
   m_SizeDelta: {x: -121.2314, y: -125.1423}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1847211849

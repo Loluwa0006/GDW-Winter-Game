@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     [SerializeField] float defaultWaitTime = 1.0f;
     [SerializeField] bool repeat = false;
 
-    UnityEvent timerOver;
+    public UnityEvent timerOver = new UnityEvent();
 
     float waitTime = 0.0f;
 
@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
 
 
 
-    private void Start()
+    private void Awake()
     {
         timerOver = new UnityEvent();
     }
@@ -37,7 +37,7 @@ public class Timer : MonoBehaviour
         {
             timerID = newID;
         }
-        Debug.Log("Timer already named");
+        Debug.Log("Timer already named " + timerID);
     }
     public void StartTimer(float waitTime, bool repeat = false, bool destroyOnFinish = false)
     {
@@ -51,7 +51,7 @@ public class Timer : MonoBehaviour
         this.destroyOnFinish = destroyOnFinish;
 
         timerActive = true;
-        Debug.Log("Internal wait time is " + this.waitTime.ToString() + ", parameter is " + waitTime.ToString());
+      //  Debug.Log("Internal wait time is " + this.waitTime.ToString() + ", parameter is " + waitTime.ToString());
 
     }
 
@@ -71,6 +71,12 @@ public class Timer : MonoBehaviour
 
     }
 
+    public void StopTimer()
+    {
+        timerActive = false;
+        remainingTime = defaultWaitTime;
+    }
+
     void Update()
     {
 
@@ -78,7 +84,7 @@ public class Timer : MonoBehaviour
         if (timerActive)
         {
             remainingTime -= Time.deltaTime;
-            remainingTime = Mathf.Max(remainingTime, 0);
+            //wremainingTime = Mathf.Max(remainingTime, 0);
             if (remainingTime <= 0)
             {
                 onTimerOver();
@@ -87,7 +93,6 @@ public class Timer : MonoBehaviour
     }
     public float timeRemaining()
     {
-        //Debug.Log(remainingTime.ToString());
         return remainingTime;
     }
 

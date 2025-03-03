@@ -12,6 +12,8 @@ public class Player_Tether : Base_State
     [SerializeField] TetherPoint tetherPointPrefab;
     
     List<TetherPoint> tetherPoints = new List<TetherPoint>();
+
+    Collider2D playerCollider;
   
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -19,7 +21,8 @@ public class Player_Tether : Base_State
        if (!stateInitalized)
         {
             playerController = animator.gameObject.GetComponent<PlayerController>();
-
+            playerCollider = playerController.GetHurtbox();
+            stateInitalized = true;
         }
 
         GameObject[] tetherTags = GameObject.FindGameObjectsWithTag("TetherPoint");
@@ -34,15 +37,13 @@ public class Player_Tether : Base_State
 
             TetherPoint newTether = Instantiate(tetherPointPrefab);
 
-        Vector2 tetherDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        tetherDirection = tetherDirection - new Vector2(animator.transform.position.x, animator.gameObject.transform.position.y);
-
+        Vector3 aimDirection = new Vector2(animator.GetInteger("HorizAxis"), animator.GetInteger("VertAxis"));
         newTether.transform.position = animator.gameObject.transform.position;
 
 
 
         tetherPoints.Add(newTether);
-        newTether.FireTether(tetherDirection);
+        newTether.FireTether(aimDirection, playerCollider);
 
        
         newTether.name = "Tether " + tetherPoints.IndexOf(newTether).ToString();

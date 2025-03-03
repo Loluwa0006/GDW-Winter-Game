@@ -73,11 +73,13 @@
     <Compile Include="Assets\Entities\Player\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\BaseState.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Jump.cs" />
+    <Compile Include="Assets\Entities\Player\PlayerTwoControls.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\GroundGrapple.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\TetherPoint.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Climb.cs" />
     <Compile Include="Assets\LevelObjects\BaseElement.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\RemoveTethers.cs" />
+    <Compile Include="Assets\Entities\Player\PlayerOneControls.cs" />
     <Compile Include="Assets\Entities\Enemies\CheckIfPlayerIsInLineOfSightAction.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Crouch.cs" />
     <Compile Include="Assets\Utilities\Timer.cs" />

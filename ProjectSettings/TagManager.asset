@@ -7,6 +7,7 @@ TagManager:
   - CinemachineCamera
   - TetherPoint
   - IntelObject
+  - OffScreenDetector
   layers:
   - Default
   - TransparentFX

@@ -35,6 +35,11 @@ public class HitboxComponent : MonoBehaviour
             return;
 //can only hit with attacks once;
         }
+        else if (collision.gameObject == transform.parent.gameObject)
+        {
+            return;
+            //can't hit yourself
+        }
         HealthComponent health = collision.GetComponent<HealthComponent>();
         if (health != null)
         {

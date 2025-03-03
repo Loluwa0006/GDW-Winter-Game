@@ -10,6 +10,7 @@ public class TetherPoint : MonoBehaviour
 
     [SerializeField] float tetherSpeed = 50.0f;
     [SerializeField] float pullStrength = 20.0f;
+    [SerializeField] Collider2D _collider;
 
     bool tetherLocked = false;
 
@@ -27,12 +28,13 @@ public class TetherPoint : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+
   
-    public void FireTether(Vector2 dir)
+    public void FireTether(Vector2 dir, Collider2D playerCollider)
     {
-        
-    
-        _rb.linearVelocity = dir.normalized * tetherSpeed;
+
+        Physics2D.IgnoreCollision(_collider, playerCollider);
+        _rb.linearVelocity = dir * tetherSpeed;
    
     }
 

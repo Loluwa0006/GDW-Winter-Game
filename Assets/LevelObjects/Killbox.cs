@@ -9,7 +9,7 @@ public class Killbox : MonoBehaviour
         PlayerController playerController = collision.GetComponent<PlayerController>();
         if (playerController != null)
         {
-            playerController.Respawn();
+            playerController.onPlayerDeath();
 
         }
     }

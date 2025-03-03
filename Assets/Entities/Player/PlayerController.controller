@@ -586,6 +586,7 @@ MonoBehaviour:
   _joint: {fileID: 0}
   tetherSpeed: 5
   pullStrength: 20
+  _collider: {fileID: 0}
   connectedTether: {fileID: 0}
   lineRenderer: {fileID: 0}
   connectedObject: {fileID: 0}
@@ -1394,6 +1395,12 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: TetherPressed
     m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: VertAxis
+    m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -2251,7 +2258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useFixedUpdate: 1
   jointDamping: 7
-  pullStrengthAcceleration: 0.1
+  pullStrengthAcceleration: 0.25
   minDistance: 7
   grappleBoost: 0
 --- !u!1102 &6923466398299755040

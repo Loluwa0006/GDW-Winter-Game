@@ -50,7 +50,6 @@ public class AirState : Base_State
             initalizedAirState =true;
         }
         playerController.transform.rotation = Quaternion.identity;
-        _rb.freezeRotation = true;
 
     }
 
@@ -79,10 +78,7 @@ public class AirState : Base_State
         animator.SetBool("CrouchHeld", crouch_held);
 
         bool touchingGround = TouchingGround();
-        if (!touchingGround)
-        {
-            _rb.freezeRotation = false;
-        }
+      
         animator.SetBool("IsGrounded", touchingGround);
         animator.SetBool("MovingUpwards", (_rb.linearVelocity.y > 0));
         animator.SetBool("TouchingWall", TouchingWall());
