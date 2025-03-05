@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.RuleTile.TilingRuleOutput;
+using System.Collections;
 
 public class Base_State : StateMachineBehaviour
 {
@@ -23,7 +24,6 @@ public class Base_State : StateMachineBehaviour
     protected InputActionAsset _ssControls;
 
     BoxCollider2D playerControllerHitbox;
-    Vector2 groundColliderSize;
 
 
 
@@ -51,7 +51,6 @@ public class Base_State : StateMachineBehaviour
 
             InitInputActions(animator);
             playerControllerHitbox = playerController.GetHurtbox();
-            groundColliderSize = Vector2.Scale(playerControllerHitbox.size, new Vector2(GROUND_CHECKER_RATIO, GROUND_CHECKER_RATIO));
             //Shrink ground collider size to make sure player is standing on top of something
             //Without this the player would stick to walls by having the furthest parts of the model touch said wall
 
@@ -90,13 +89,16 @@ public class Base_State : StateMachineBehaviour
 
     public bool TouchingGround()
     {
-        BoxCollider2D playerControllerHitbox = playerController.GetHurtbox();
-        Vector2 groundColliderSize = Vector2.Scale(playerControllerHitbox.size, new Vector2(0.8f, 0.8f));
-        RaycastHit2D hit = Physics2D.BoxCast(playerController.transform.position, groundColliderSize, 0, new Vector2(0, -1), GROUND_CHECKER_LENGTH, groundMask);
-        return hit;
+        RaycastHit2D hit = Physics2D.BoxCast(playerController.transform.position, playerController.groundColliderSize, 0, new Vector2(0, -1), GROUND_CHECKER_LENGTH, groundMask);
+     
+            return hit;
     }
 
-    
+ 
+
+
+
+
     public virtual bool IsGrounded()
     {
   

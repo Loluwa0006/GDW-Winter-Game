@@ -22,14 +22,7 @@ public class BaseElement : MonoBehaviour
 
    public List<ElementType> reactableElements = new List<ElementType>();
 
-    Collider2D element_collider;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    private void Start()
-    {
-        element_collider = GetComponent<Collider2D>();
-    }
+  
     public ElementType GetElementType()
     {
         return elementType;

@@ -4,7 +4,6 @@ using UnityEngine;
 public class MoveState : Base_State
 {
 
-    const float COYOTE_DURATION = 20f;
 
     Rigidbody2D _rb;
 
@@ -50,10 +49,12 @@ public class MoveState : Base_State
         newSpeed.x = _rb.linearVelocity.x + acceleration * move_dir;
         newSpeed.x = Mathf.Clamp(newSpeed.x, -max_speed, max_speed);
 
-        _rb.linearVelocity = newSpeed;
+        if (animator.GetInteger("HitstunAmount") <= 0)
+        {
+            _rb.linearVelocity = newSpeed;
+        }
 
 
-     
 
         animator.SetInteger("HorizAxis", move_dir);
 
@@ -120,9 +121,9 @@ public class MoveState : Base_State
     {
         if (!TouchingGround() && coyoteTimer.isStopped())
         {
-            coyoteTimer.StartTimer(COYOTE_DURATION, false);
+            coyoteTimer.StartTimer();
         }
-        if (TouchingGround() || !coyoteTimer.isStopped())
+        if (TouchingGround())// || !coyoteTimer.isStopped())
         {
             return true;
         }

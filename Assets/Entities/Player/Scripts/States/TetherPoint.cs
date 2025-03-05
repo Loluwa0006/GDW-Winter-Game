@@ -10,6 +10,7 @@ public class TetherPoint : MonoBehaviour
 
     [SerializeField] float tetherSpeed = 50.0f;
     [SerializeField] float pullStrength = 20.0f;
+    [SerializeField] float slingStrength = 300.0f;
     [SerializeField] Collider2D _collider;
 
     bool tetherLocked = false;
@@ -22,31 +23,36 @@ public class TetherPoint : MonoBehaviour
 
    [SerializeField] Rigidbody2D connectedObject;
 
+    [SerializeField] HealthComponent healthComponent;
 
 
+
+    PlayerController playerController;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    private void Awake()
+    {
+        //  healthComponent.onEntityMaxDamageReached.AddListener(breakLink);
+    }
 
-  
-    public void FireTether(Vector2 dir, Collider2D playerCollider)
+    public void FireTether(Vector2 dir, PlayerController player)
     {
 
-        Physics2D.IgnoreCollision(_collider, playerCollider);
+        Physics2D.IgnoreCollision(_collider, player.GetHurtbox());
+        playerController = player;
         _rb.linearVelocity = dir * tetherSpeed;
    
     }
 
     public void linkToTether(TetherPoint tether)
     {
-        Debug.Log("LINKING");
         connectedTether = tether;
         if (tether.connectedTether == null)
         {
             tether.connectedTether = this;
         }
-        Debug.Log("LINK SUCCESSFUL");
 
     }
 
@@ -54,6 +60,7 @@ public class TetherPoint : MonoBehaviour
     {
         connectedTether = null;
         lineRenderer.SetPosition(1, transform.position);
+        lineRenderer.enabled = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -61,7 +68,20 @@ public class TetherPoint : MonoBehaviour
         tetherLocked = true;
 
         tetherPosition = collision.collider.transform.position;
-        Rigidbody2D collider_rb = collision.collider.gameObject.GetComponent<Rigidbody2D>();
+        MoveableObject moveableObject = collision.collider.gameObject.GetComponent<MoveableObject>();
+        Rigidbody2D collider_rb;
+
+        if (moveableObject)
+        {
+            collider_rb = moveableObject._rb;
+            moveableObject.DamagedEntity.AddListener(OnMoveableObjectCollision);
+            //If the moveable object collides with a player, break the tether
+        }
+        else
+        {
+           collider_rb = collision.collider.gameObject.GetComponent<Rigidbody2D>();
+        }
+        Collider2D collider = collision.collider.gameObject.GetComponent<Collider2D>();
         if (collider_rb != null)
         {
             connectedObject = collider_rb;
@@ -71,15 +91,32 @@ public class TetherPoint : MonoBehaviour
         }
         _rb.linearVelocity = Vector2.zero;
         _rb.gravityScale = 0.0f;
+        if (connectedTether)
+        {
+            Physics2D.IgnoreCollision(collider, _collider);
+            Physics2D.IgnoreCollision(connectedTether._collider, collider);
+            //prevents the object from slamming into a tether instead of a player 
+        }
     }
 
+    void OnMoveableObjectCollision()
+    {
+        if (connectedTether != null)
+        {
+            Destroy(connectedTether.gameObject);
+        }
+        Destroy(gameObject);
+    }
     private void FixedUpdate()
     {
         if (connectedTether != null)
         {
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, connectedTether.transform.position);
-            pullObjects();
+            if (connectedObject != null && connectedTether.tetherLocked)
+            {
+                pullObjects();
+            }
 
             //Debug.Log("Connected tether is " + connectedTether.gameObject.name);
         }
@@ -89,16 +126,29 @@ public class TetherPoint : MonoBehaviour
 
     void pullObjects()
     {
-        if (connectedObject != null && connectedTether.tetherLocked)
+        if (connectedTether.connectedObject == connectedObject || !tetherLocked)
         {
-            if (connectedTether.connectedObject == connectedObject)
-            {
-                return;
-            }
-            Vector2 directionToTether = (connectedTether.transform.position - connectedObject.transform.position).normalized;
-            connectedObject.AddForce(directionToTether * pullStrength);
+            return;
+        }
+       
+        Vector2 directionToTether = (connectedTether.transform.position - connectedObject.transform.position).normalized;
+        switch (playerController._currentGrapple)
+        {
+            case PlayerController.GrapplePresets.REGULAR:
+                connectedObject.AddForce(directionToTether * pullStrength); 
+                break;
+            case PlayerController.GrapplePresets.SLINGSHOT:
+              //  connectedObject.linearVelocity = Vector2.zero;
+                //reset it so that there's no force to counter act it
+                //since it's only 1 time, it would suck without this
+                connectedObject.AddForce(directionToTether * slingStrength);
+                tetherLocked = false;
+                break;
+            case PlayerController.GrapplePresets.CHARGE:
+                break; //to do later
 
         }
+
     }
   
     public bool tetherLinked() { return tetherLocked; }

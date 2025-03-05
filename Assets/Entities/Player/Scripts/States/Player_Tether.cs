@@ -43,7 +43,7 @@ public class Player_Tether : Base_State
 
 
         tetherPoints.Add(newTether);
-        newTether.FireTether(aimDirection, playerCollider);
+        newTether.FireTether(aimDirection, playerController);
 
        
         newTether.name = "Tether " + tetherPoints.IndexOf(newTether).ToString();
@@ -68,6 +68,7 @@ public class Player_Tether : Base_State
                 tetherPoints[1].linkToTether(tetherPoints[0]);
             
         }
+        
 
 
         Debug.Log(tetherPoints.Count); 

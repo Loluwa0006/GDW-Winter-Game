@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 387606008300953395}
   - component: {fileID: 3719361217320218766}
   - component: {fileID: 4088307801806060075}
-  - component: {fileID: 3369220673270439183}
   - component: {fileID: 2665315777600108226}
+  - component: {fileID: 5574188189812217441}
+  - component: {fileID: 7745500042434766522}
   m_Layer: 10
-  m_Name: TestObject
+  m_Name: BaseMoveableObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,30 +168,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b4fc157e8ad1543a2dd87eeeb28ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 100
+  maxHealth: 999
+  health: 0
   onEntityDamaged:
     m_PersistentCalls:
       m_Calls: []
   onEntityHealed:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3369220673270439183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4291361715169242795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62b4fc157e8ad1543a2dd87eeeb28ecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  max_health: 100
-  onEntityDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-  onEntityHealed:
+  onEntityMaxDamageReached:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2665315777600108226
@@ -207,3 +193,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementType: 4
   reactableElements: 
+--- !u!114 &5574188189812217441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4291361715169242795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1714b75e2b715448c79aed137adf79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb: {fileID: 387606008300953395}
+  _knockbackScaleFactor: 0.7
+  _damageScaleFactor: 1.8
+  _minKnockback: 30
+  _baseKnockback: 15
+  _minSpeed: 12
+  _minStunTime: 12
+  _minDamage: 5
+  _healthToStunScale: 0.0925
+  _minRiseAmount: 25
+  DamagedEntity:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7745500042434766522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4291361715169242795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44c618cd71cff8489517e4020eb92b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerID: 
+  defaultWaitTime: 1
+  repeat: 0
+  startOnWake: 0
+  timerOver:
+    m_PersistentCalls:
+      m_Calls: []

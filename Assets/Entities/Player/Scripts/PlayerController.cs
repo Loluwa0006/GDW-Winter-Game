@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Text stateTracker;
     [SerializeField] Text velocityTracker;
     [SerializeField] LayerMask groundMask;
-    [SerializeField] public  InputActionAsset _ssControls;
 
    public List<InputActionAsset> _playerKeybinds = new List<InputActionAsset>();
 
@@ -25,23 +24,26 @@ public class PlayerController : MonoBehaviour
     Dictionary<string, Timer> _timerList = new Dictionary<string, Timer>();
 
 
-   [SerializeField] PlayerInput _playerInput;
+   public PlayerInput _playerInput;
 
-    UnityEvent<int> playerDead = new UnityEvent<int>();
-    UnityEvent playerEliminated = new UnityEvent();
+   public UnityEvent<int> playerDead = new UnityEvent<int>();
+    public UnityEvent<int> playerEliminated;
 
 
     public int playerIndex = 1;
     int _remainingLives = 3;
-    public enum grappleElements
+    public enum GrapplePresets
     {
-        AIR,
-        EARTH,
-        FIRE,
-        GRAVITY
+        REGULAR,
+        SLINGSHOT,
+        CHARGE
     }
-    public grappleElements grappleElement = grappleElements.AIR;
+    public GrapplePresets _currentGrapple = GrapplePresets.REGULAR;
 
+
+    HealthComponent healthComponent;
+
+    public Vector2 groundColliderSize;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -50,10 +52,19 @@ public class PlayerController : MonoBehaviour
     {
         InitTimerList();
         _playerInput = GetComponent<PlayerInput>();
-      
+        healthComponent = GetComponent<HealthComponent>();
+        healthComponent.onEntityDamaged.AddListener(OnPlayerStruck);
+        groundColliderSize = GetHurtbox().size * 0.8f;
+        
     }
 
-
+    
+    void OnPlayerStruck(float damageTaken, int stunTime)
+    {
+        
+            animator.SetInteger("HitstunAmount", stunTime);
+        
+    }
 
     public void EnablePlayer(int playerIndex)
     {
@@ -76,6 +87,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+     //   Debug.Log(_rb.linearVelocity.ToString() + " is current velocity");
       //  velocityTracker.text = "Velocity: " + _rb.linearVelocity.ToString(); 
         //   Debug.Log("Current state is now " + animator.GetCurrentAnimatorStateInfo(0).ToString());
     }
@@ -121,14 +133,14 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Added timer " + timer.GetID());
         }
     }
-    public void onPlayerDeath()
+   public void onPlayerDeath()
     {
         _remainingLives--;
         Debug.Log("dead");
         playerDead.Invoke(playerIndex);
         if (_remainingLives <= 0)
         {
-            playerEliminated.Invoke();
+            playerEliminated.Invoke(playerIndex);
             Destroy(gameObject);
         }
         else
@@ -140,10 +152,7 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = _respawnPoint.position;
 
-        //below is deepseek code
-        // Loop through all parameters
         ResetAnimatorParameters();
-        //deepseek code over
 
         animator.SetBool("IsGrounded", false);
 

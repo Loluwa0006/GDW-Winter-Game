@@ -12,22 +12,21 @@ public class GroundGrapple : BaseGrapple
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
-        _rb.linearVelocity = new Vector2 (_rb.linearVelocity.x + Mathf.Sign(_rb.linearVelocity.x) * grappleBoost , grappleBoost);
+        Vector3 grapplePos = new Vector2(animator.GetFloat("GrapplePointX"), animator.GetFloat("GrapplePointY"));
+        Vector2 boost = (grapplePos - playerController.transform.position).normalized * grappleBoost;
+        _rb.linearVelocity = _rb.linearVelocity + boost;
      
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-    //    base.OnStateUpdate(animator, stateInfo, layerIndex);
+    // base.OnStateUpdate(animator, stateInfo, layerIndex);
 
         DrawRope();
 
-        _distanceJoint.distance -= pullStrengthAcceleration;
-        if (_distanceJoint.distance < minDistance)
-        { if (!IsGrounded())
-            {
-                _distanceJoint.distance = minDistance;
-            }
+        if (_distanceJoint.distance >= minDistance)
+        {
+            _distanceJoint.distance -= pullStrengthAcceleration;
         }
 
     }

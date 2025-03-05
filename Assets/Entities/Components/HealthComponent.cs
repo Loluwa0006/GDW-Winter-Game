@@ -1,42 +1,61 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 public class HealthComponent : MonoBehaviour
 {
-    [SerializeField] int max_health = 100;
-    int health = 0;
+    [SerializeField] int maxHealth = 999;
+    [SerializeField] float health = 0;
     //Dont touch in editor, just expose it
-    public UnityEvent onEntityDamaged;
+    public UnityEvent<float, int> onEntityDamaged;
     public UnityEvent onEntityHealed;
-    
+    public UnityEvent onEntityMaxDamageReached;
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private void Awake()
     {
-        health = max_health;
     }
 
-    public virtual void Damage(int damage_taken = 1)
+    public virtual void Damage(float damageTaken = 1.0f, int stunTime = 1)
     {
-        health -= damage_taken;
-        if (health < 0)
+
+        damageTaken = (float)Math.Round(damageTaken, 2);
+
+        health += damageTaken;
+        health = Mathf.Clamp(health, 0, maxHealth);
+        
+        if (health >= maxHealth)
         {
-            onEntityDead();
+            onEntityMaxDamageReached.Invoke();
         }
 
-        onEntityDamaged.Invoke();
-        
+
+        onEntityDamaged.Invoke(damageTaken, stunTime);
+
+        Debug.Log("Hit object for damage " + damageTaken.ToString() + " while stunning them for " + stunTime.ToString());
+
     }
+
+    public float CalculateStun()
+    {
+        return 0.0f;
+        //might be used later for classic attacks
+    }
+
 
     public virtual void Heal(int heal_amount = 1)
     {
         health += heal_amount;
-        health = Mathf.Clamp(health, 0, max_health);
+        health = Mathf.Clamp(health, 0, maxHealth);
         onEntityHealed.Invoke(); 
     }
 
-    void onEntityDead()
+    public float getHealth()
     {
-        Destroy(gameObject);
+        return health;
     }
     // Update is called o  nce per frame
     void Update()

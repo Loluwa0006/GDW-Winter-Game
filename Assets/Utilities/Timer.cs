@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
 
     [SerializeField] float defaultWaitTime = 1.0f;
     [SerializeField] bool repeat = false;
+    [SerializeField] bool startOnWake = false;
 
     public UnityEvent timerOver = new UnityEvent();
 
@@ -25,6 +26,12 @@ public class Timer : MonoBehaviour
     private void Awake()
     {
         timerOver = new UnityEvent();
+        timerOver.AddListener(onTimerOver);
+        if (startOnWake)
+        {
+            StartTimer(repeat);
+        }
+     
     }
     public string GetID()
     {
@@ -62,7 +69,7 @@ public class Timer : MonoBehaviour
         
        this.repeat = repeat;
         
-        remainingTime = this.waitTime;
+        remainingTime = waitTime;
 
         this.destroyOnFinish = destroyOnFinish;
 
@@ -74,7 +81,7 @@ public class Timer : MonoBehaviour
     public void StopTimer()
     {
         timerActive = false;
-        remainingTime = defaultWaitTime;
+        remainingTime = waitTime;
     }
 
     void Update()
@@ -87,7 +94,8 @@ public class Timer : MonoBehaviour
             //wremainingTime = Mathf.Max(remainingTime, 0);
             if (remainingTime <= 0)
             {
-                onTimerOver();
+                Debug.Log("calling signal timerOver");
+                timerOver.Invoke();
             }
         }
     }
@@ -102,14 +110,15 @@ public class Timer : MonoBehaviour
     }
     void onTimerOver()
     {
-        timerOver.Invoke();
+        
         if (destroyOnFinish)
         {
             Destroy(gameObject);
         }
        else if (repeat)
         {
-            remainingTime = waitTime;
+            Debug.Log("restarting");
+            StartTimer(repeat);
         }
         else
         {

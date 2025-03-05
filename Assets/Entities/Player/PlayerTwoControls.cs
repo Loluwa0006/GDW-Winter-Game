@@ -56,12 +56,12 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Grapple"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""9dca0d28-d723-4ede-becf-e4791d4f8c07"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Tether"",
@@ -99,17 +99,6 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f9a1f0ac-3c21-4d92-af8c-4487b89dc048"",
-                    ""path"": ""<XRController>/{Primary2DAxis}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XR"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -193,17 +182,6 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7838834b-4498-4111-a96b-1f8d62560fbf"",
-                    ""path"": ""<XRController>/secondaryButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XR"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""73a6f191-22af-49b0-9425-02d7efa7d018"",
                     ""path"": ""<Keyboard>/b"",
                     ""interactions"": """",
@@ -252,7 +230,7 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/n"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Grapple"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -304,10 +282,10 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e9de2e82-ddd3-4443-90ec-cc6510d506b5"",
-                    ""path"": ""<Keyboard>/p"",
+                    ""path"": ""<Keyboard>/semicolon"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""DestroyTether"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
