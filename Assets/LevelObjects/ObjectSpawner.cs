@@ -18,7 +18,6 @@ public class ObjectSpawner : MonoBehaviour
     private void Start()
     {
         spawnTimer.timerOver.AddListener(SpawnObject);
-
     }
 
     private void FixedUpdate()

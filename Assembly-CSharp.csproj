@@ -65,6 +65,7 @@
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Run.cs" />
     <Compile Include="Assets\LevelObjects\Killbox.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\MoveState.cs" />
+    <Compile Include="Assets\LevelObjects\AssortedItems\ItemHolder.cs" />
     <Compile Include="Assets\LevelObjects\MoveableObjects\MoveableObject.cs" />
     <Compile Include="Assets\Entities\Player\ShadowStrideControls.cs" />
     <Compile Include="Assets\LevelObjects\ObjectSpawner.cs" />

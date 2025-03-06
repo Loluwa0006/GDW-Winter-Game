@@ -23,7 +23,6 @@ public class TetherPoint : MonoBehaviour
 
    [SerializeField] Rigidbody2D connectedObject;
 
-    [SerializeField] HealthComponent healthComponent;
 
 
 
