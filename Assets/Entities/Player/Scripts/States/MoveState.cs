@@ -4,6 +4,7 @@ using UnityEngine;
 public class MoveState : Base_State
 {
 
+    const float COYOTE_DURATION = 20f;
 
     Rigidbody2D _rb;
 
@@ -44,16 +45,18 @@ public class MoveState : Base_State
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
+        bool touchingGround = TouchingGround();
         int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
-        Vector2 newSpeed = _rb.linearVelocity;
-        newSpeed.x = _rb.linearVelocity.x + acceleration * move_dir;
-        newSpeed.x = Mathf.Clamp(newSpeed.x, -max_speed, max_speed);
+        Vector2 newSpeed = new Vector2 (desiredSpeed, 0);
+      //  desiredSpeed = _rb.linearVelocity.magnitude + acceleration * move_dir;
+        //use magnitude instead of x to account for slopes
+       //  desiredSpeed = Mathf.Clamp(newSpeed.x, -max_speed, max_speed);
+        newSpeed = SetRealVelocity(move_dir);
 
-        if (animator.GetInteger("HitstunAmount") <= 0)
-        {
-            _rb.linearVelocity = newSpeed;
-        }
-
+        Debug.Log("Desired Speed is " + desiredSpeed);
+        Debug.Log("New speed is " +  newSpeed);
+        Debug.Log("_rb mag is " + _rb.linearVelocity.magnitude);
+        _rb.linearVelocity = newSpeed;
 
 
         animator.SetInteger("HorizAxis", move_dir);
@@ -121,9 +124,9 @@ public class MoveState : Base_State
     {
         if (!TouchingGround() && coyoteTimer.isStopped())
         {
-            coyoteTimer.StartTimer();
+            coyoteTimer.StartTimer(COYOTE_DURATION, false);
         }
-        if (TouchingGround())// || !coyoteTimer.isStopped())
+        if (TouchingGround() || !coyoteTimer.isStopped())
         {
             return true;
         }

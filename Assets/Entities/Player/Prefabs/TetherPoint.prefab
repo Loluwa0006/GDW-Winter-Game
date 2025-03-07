@@ -114,7 +114,7 @@ Rigidbody2D:
     m_Bits: 1216
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 768
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -135,7 +135,7 @@ BoxCollider2D:
     m_Bits: 1216
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 768
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -181,12 +181,9 @@ MonoBehaviour:
   _joint: {fileID: 8826897123185642277}
   tetherSpeed: 70
   pullStrength: 45
-  slingStrength: 2000
-  _collider: {fileID: 3454669539962596529}
   connectedTether: {fileID: 0}
   lineRenderer: {fileID: 6748576307739557638}
   connectedObject: {fileID: 0}
-  healthComponent: {fileID: 0}
 --- !u!120 &6748576307739557638
 LineRenderer:
   serializedVersion: 2

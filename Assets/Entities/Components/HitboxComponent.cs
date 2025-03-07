@@ -26,15 +26,7 @@ public class HitboxComponent : MonoBehaviour
     attackTypes attackType = attackTypes.STRIKE;
 
 
-    private void Awake()
-    {
-
-        Collider2D parentHurtbox = transform.parent.GetComponent<Collider2D>();
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), parentHurtbox);
-    }
-
-
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,7 +35,6 @@ public class HitboxComponent : MonoBehaviour
             return;
 //can only hit with attacks once;
         }
-       
         HealthComponent health = collision.GetComponent<HealthComponent>();
         if (health != null)
         {
@@ -65,8 +56,6 @@ public class HitboxComponent : MonoBehaviour
         }
         attackLanded = true;
     }
-
-
 
 
 

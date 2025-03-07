@@ -1,8 +1,6 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.RuleTile.TilingRuleOutput;
-using System.Collections;
 
 public class Base_State : StateMachineBehaviour
 {
@@ -21,9 +19,10 @@ public class Base_State : StateMachineBehaviour
 
    protected bool stateInitalized = false;
 
-    protected InputActionAsset _ssControls;
+    protected ShadowStrideControls _ssControls;
 
     BoxCollider2D playerControllerHitbox;
+    Vector2 groundColliderSize;
 
 
 
@@ -48,9 +47,11 @@ public class Base_State : StateMachineBehaviour
                 animator.updateMode = AnimatorUpdateMode.Normal;
             }
             stateInitalized = true;
+            _ssControls = playerController._ssControls;
 
             InitInputActions(animator);
             playerControllerHitbox = playerController.GetHurtbox();
+            groundColliderSize = Vector2.Scale(playerControllerHitbox.size, new Vector2(GROUND_CHECKER_RATIO, GROUND_CHECKER_RATIO));
             //Shrink ground collider size to make sure player is standing on top of something
             //Without this the player would stick to walls by having the furthest parts of the model touch said wall
 
@@ -66,10 +67,8 @@ public class Base_State : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Vector2 move = playerInput.actions["Move"].ReadValue<Vector2>();
-
-        animator.SetInteger("HorizAxis", Mathf.RoundToInt(move.x));
-        animator.SetInteger("VertAxis", Mathf.RoundToInt(move.y));
+        int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
+        animator.SetInteger("HorizAxis", move_dir);
 
         bool crouch_held = playerInput.actions["Crouch"].IsPressed();
         animator.SetBool("CrouchHeld", crouch_held);
@@ -89,16 +88,11 @@ public class Base_State : StateMachineBehaviour
 
     public bool TouchingGround()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(playerController.transform.position, playerController.groundColliderSize, 0, new Vector2(0, -1), GROUND_CHECKER_LENGTH, groundMask);
-     
-            return hit;
+        BoxCollider2D playerControllerHitbox = playerController.GetHurtbox();
+        Vector2 groundColliderSize = Vector2.Scale(playerControllerHitbox.size, new Vector2(0.8f, 0.8f));
+        RaycastHit2D hit = Physics2D.BoxCast(playerController.transform.position, groundColliderSize, 0, new Vector2(0, -1), GROUND_CHECKER_LENGTH, groundMask);
+        return hit;
     }
-
- 
-
-
-
-
     public virtual bool IsGrounded()
     {
   
@@ -116,7 +110,7 @@ public class Base_State : StateMachineBehaviour
 
     void InitInputActions(Animator animator)
     {
-        //_ssControls.FindAction("Move").performed += ctx => animator.SetInteger("HorizAxis", Mathf.RoundToInt(ctx.ReadValue<Vector2>().x));
+        _ssControls.ShadowStridePlayer.Move.performed += ctx => animator.SetInteger("HorizAxis", Mathf.RoundToInt(ctx.ReadValue<Vector2>().x));
     }
 
 

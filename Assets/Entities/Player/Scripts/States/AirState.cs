@@ -27,7 +27,6 @@ public class AirState : Base_State
     LayerMask wallMask;
 
 
-
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
       
@@ -51,6 +50,7 @@ public class AirState : Base_State
             initalizedAirState =true;
         }
         playerController.transform.rotation = Quaternion.identity;
+        _rb.freezeRotation = true;
 
     }
 
@@ -79,7 +79,10 @@ public class AirState : Base_State
         animator.SetBool("CrouchHeld", crouch_held);
 
         bool touchingGround = TouchingGround();
-      
+        if (!touchingGround)
+        {
+            _rb.freezeRotation = false;
+        }
         animator.SetBool("IsGrounded", touchingGround);
         animator.SetBool("MovingUpwards", (_rb.linearVelocity.y > 0));
         animator.SetBool("TouchingWall", TouchingWall());
@@ -91,9 +94,8 @@ public class AirState : Base_State
         animator.SetFloat("JumpBuffer", jumpBuffer.timeRemaining());
 
         setFacing();
-
     }
-  
+
 
     protected float getGravity()
     { 
@@ -112,6 +114,4 @@ public class AirState : Base_State
         RaycastHit2D hit = Physics2D.BoxCast(playerController.transform.position, playerController.GetHurtbox().size, 0, new Vector2(moveDir, 0), WALL_CHECKER_LENGTH, wallMask);
         return hit;
     }
-
-
 }

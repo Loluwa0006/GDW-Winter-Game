@@ -1,100 +1,66 @@
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using UnityEngine.InputSystem;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(HealthComponent))]
 [System.Serializable]
 public class PlayerController : MonoBehaviour
 {
-   [SerializeField] Animator animator;
-   [SerializeField] BoxCollider2D hurtbox;
-   [SerializeField] Rigidbody2D _rb;
+    Animator animator;
+    BoxCollider2D hurtbox;
+    Rigidbody2D _rb;
 
     [SerializeField] Text stateTracker;
     [SerializeField] Text velocityTracker;
     [SerializeField] LayerMask groundMask;
-
-   public List<InputActionAsset> _playerKeybinds = new List<InputActionAsset>();
+    [SerializeField] public  ShadowStrideControls _ssControls;
 
     public Transform _respawnPoint;
-
-    Dictionary<string, Timer> _timerList = new Dictionary<string, Timer>();
-
-
-   public PlayerInput _playerInput;
-
-   public UnityEvent<int> playerDead = new UnityEvent<int>();
-    public UnityEvent<int> playerEliminated;
-
-
-    public int playerIndex = 1;
-    int _remainingLives = 3;
-    public enum GrapplePresets
+    public enum grappleElements
     {
-        REGULAR,
-        SLINGSHOT,
-        CHARGE
+        AIR,
+        EARTH,
+        FIRE,
+        GRAVITY
     }
-    public GrapplePresets _currentGrapple = GrapplePresets.REGULAR;
-
-
-    HealthComponent healthComponent;
-
-    public Vector2 groundColliderSize;
+    public grappleElements grappleElement = grappleElements.AIR;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private void Awake()
+
+    void Awake()
     {
-        InitTimerList();
-        _playerInput = GetComponent<PlayerInput>();
-        healthComponent = GetComponent<HealthComponent>();
-        healthComponent.onEntityDamaged.AddListener(OnPlayerStruck);
-        groundColliderSize = GetHurtbox().size * 0.8f;
-        
+        animator = GetComponent<Animator>();
+        hurtbox = GetComponent<BoxCollider2D>();
+        _rb = GetComponent<Rigidbody2D>();
+        _ssControls = new ShadowStrideControls();
     }
 
-    
-    void OnPlayerStruck(float damageTaken, int stunTime)
+    private void OnEnable()
     {
-        
-            animator.SetInteger("HitstunAmount", stunTime);
-        
+        if (_ssControls == null)
+        {
+            _ssControls = new ShadowStrideControls();
+        }
+        _ssControls.Enable();
+
+        Debug.Log("enabled controls");
     }
-
-    public void EnablePlayer(int playerIndex)
+    private void OnDisable()
     {
-        this.playerIndex = playerIndex;
-       
-       _playerInput.actions = _playerKeybinds[playerIndex - 1];
-
-
-
-        _playerInput.actions.Enable();
-
-        Debug.Log("enabled controls for player " + playerIndex.ToString());
-
-    }
-    public void DisablePlayer()
-    {
-        _playerInput.actions.Disable();
+        _ssControls.Disable();
     }
 
     // Update is called once per frame
     void Update()
     {
-     //   Debug.Log(_rb.linearVelocity.ToString() + " is current velocity");
-      //  velocityTracker.text = "Velocity: " + _rb.linearVelocity.ToString(); 
+        velocityTracker.text = "Velocity: " + _rb.linearVelocity.ToString(); 
         //   Debug.Log("Current state is now " + animator.GetCurrentAnimatorStateInfo(0).ToString());
     }
 
     public void UpdateStateTracker(string newState)
     {
-        //stateTracker.text = "State: " + newState;
+        stateTracker.text = "State: " + newState;
     }
 
     public int HasParameter(string parameterName)
@@ -116,55 +82,24 @@ public class PlayerController : MonoBehaviour
 
     public Timer GetTimer(string timerName)
     {
-        if (_timerList.ContainsKey(timerName))
+        foreach (Component component in GetComponentsInChildren<Timer>() )
         {
-            return _timerList[timerName];
+            Timer timer = (Timer) component;
+            if (timer.GetID() == timerName)
+            {
+                return timer;
+            }
         }
         Debug.Log("Couldn't find timer of name " + timerName);
         return null;
     }
 
-    void InitTimerList()
-    {
-        foreach (Component component in GetComponentsInChildren<Timer>())
-        {
-            Timer timer = (Timer)component;
-            _timerList.Add(timer.GetID(), timer);
-            Debug.Log("Added timer " + timer.GetID());
-        }
-    }
-   public void onPlayerDeath()
-    {
-        _remainingLives--;
-        Debug.Log("dead");
-        playerDead.Invoke(playerIndex);
-        if (_remainingLives <= 0)
-        {
-            playerEliminated.Invoke(playerIndex);
-            Destroy(gameObject);
-        }
-        else
-        {
-            Respawn();
-        }
-    }
-    void Respawn()
+    public void Respawn()
     {
         transform.position = _respawnPoint.position;
 
-        ResetAnimatorParameters();
-
-        animator.SetBool("IsGrounded", false);
-
-        _rb.linearVelocity = Vector2.zero;
-
-
-    }
-
-    void ResetAnimatorParameters()
-    {
         //below is deepseek code
-
+        // Loop through all parameters
         foreach (AnimatorControllerParameter param in animator.parameters)
         {
             switch (param.type)
@@ -189,7 +124,9 @@ public class PlayerController : MonoBehaviour
         }
         //deepseek code over
 
-    }
+        animator.SetBool("IsGrounded", false);
 
-   
+        _rb.linearVelocity = Vector2.zero;
+
+    }
 }
