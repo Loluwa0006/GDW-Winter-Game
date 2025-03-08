@@ -262,11 +262,4 @@ AnimationClip:
     flags: 0
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: UpdateStateTracker
-    data: Idle
-    objectReferenceParameter: {fileID: 11500000, guid: e3a6cd66362b87c479f94261937f41a1, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

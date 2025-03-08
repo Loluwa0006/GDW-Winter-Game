@@ -22,6 +22,7 @@ public class AirState : Base_State
 
 
     const float WALL_CHECKER_LENGTH = 0.45f;
+    const float SLAM_CHECKER_LENGTH = 2.0f;
     Timer jumpBuffer;
 
     LayerMask wallMask;
@@ -83,6 +84,7 @@ public class AirState : Base_State
         animator.SetBool("IsGrounded", touchingGround);
         animator.SetBool("MovingUpwards", (_rb.linearVelocity.y > 0));
         animator.SetBool("TouchingWall", TouchingWall());
+        animator.SetBool("CanSlam", CanSlam());
 
         if (playerInput.actions["Jump"].WasPressedThisFrame())
         {
@@ -113,5 +115,11 @@ public class AirState : Base_State
         return hit;
     }
 
+    public bool CanSlam()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(_rb.position, new Vector2(0, -1), SLAM_CHECKER_LENGTH, groundMask);
+        return !hit;
+        //invert it, because if its colliding, then the player is too close to the ground 
+    }
 
 }

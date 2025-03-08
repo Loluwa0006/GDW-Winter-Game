@@ -32,10 +32,7 @@ public class MoveState : Base_State
         {
             coyoteTimer = playerController.GetTimer("Coyote");
         }
-        if (attackBuffer == null)
-        {
-            attackBuffer = playerController.GetTimer("AttackBuffer");
-        }
+      
 
     }
 
@@ -43,44 +40,20 @@ public class MoveState : Base_State
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-        int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
+        int move_dir = animator.GetInteger("HorizAxis");
         Vector2 newSpeed = _rb.linearVelocity;
         newSpeed.x = _rb.linearVelocity.x + acceleration * move_dir;
         newSpeed.x = Mathf.Clamp(newSpeed.x, -max_speed, max_speed);
+        _rb.linearVelocity = newSpeed;
 
         if (animator.GetInteger("HitstunAmount") <= 0)
         {
             _rb.linearVelocity = newSpeed;
         }
-
-
-
-        animator.SetInteger("HorizAxis", move_dir);
-
-
-        bool crouchHeld = playerInput.actions["Crouch"].IsPressed(); 
-        bool attackPressed = playerInput.actions["Attack"].IsPressed();
-
-        if (attackPressed)
-        {
-            attackBuffer.StartTimer();
-        }
-
-        animator.SetFloat("AttackBuffer", attackBuffer.timeRemaining());
-        animator.SetBool("CrouchHeld", crouchHeld);
-
-        bool isGrounded = IsGrounded();
-        if (!isGrounded)
-        {
-            playerController.transform.rotation = Quaternion.identity;
-        }
+ 
         animator.SetBool("IsGrounded", IsGrounded());
 
-        if (playerInput.actions["Jump"].IsPressed())
-        {
-            jumpBuffer.StartTimer();
-        }
+       
         animator.SetFloat("JumpBuffer", jumpBuffer.timeRemaining());
         if (groundedLastFrame && !TouchingGround())
         {
@@ -129,6 +102,18 @@ public class MoveState : Base_State
         }
         return false;
 
+    }
+
+   
+    protected override void InitInputActions(Animator animator)
+    {
+        playerInput.actions["Attack"].started += ctx => animator.SetTrigger("AttackPressed");
+        playerInput.actions["Jump"].started += ctx => jumpBuffer.StartTimer();
+        playerInput.actions["Move"].performed += ctx => animator.SetInteger("HorizAxis", (Mathf.RoundToInt(ctx.ReadValue<Vector2>().x)));
+
+
+
+        //_ssControls.FindAction("Move").performed += ctx => animator.SetInteger("HorizAxis", Mathf.RoundToInt(ctx.ReadValue<Vector2>().x));
     }
 
 }

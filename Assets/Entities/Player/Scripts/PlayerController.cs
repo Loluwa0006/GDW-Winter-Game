@@ -9,13 +9,21 @@ using UnityEngine.Events;
 [System.Serializable]
 public class PlayerController : MonoBehaviour
 {
-   [SerializeField] Animator animator;
+
+    public UnityEvent hitboxEnabled = new UnityEvent();
+    public UnityEvent hitboxDisabled = new UnityEvent();
+    //these exists to get around the inability of being able to connect statemachinebehavior functions to animation clips
+    //because unity sucks uber omega butt cheeks
+
+    [SerializeField] Animator animator;
    [SerializeField] BoxCollider2D hurtbox;
    [SerializeField] Rigidbody2D _rb;
 
     [SerializeField] Text stateTracker;
     [SerializeField] Text velocityTracker;
     [SerializeField] LayerMask groundMask;
+
+    [SerializeField] HitboxComponent hitbox;
 
    public List<InputActionAsset> _playerKeybinds = new List<InputActionAsset>();
 
@@ -55,27 +63,34 @@ public class PlayerController : MonoBehaviour
         healthComponent = GetComponent<HealthComponent>();
         healthComponent.onEntityDamaged.AddListener(OnPlayerStruck);
         groundColliderSize = GetHurtbox().size * 0.8f;
-        
+        GetHitbox();
+    
+    }
+    public void OnHitboxEnabled()
+    {
+        hitboxEnabled.Invoke();
     }
 
-    
+    public void OnHitboxDisabled()
+    {
+        hitboxDisabled.Invoke();
+    }
+
     void OnPlayerStruck(float damageTaken, int stunTime)
     {
-        
-            animator.SetInteger("HitstunAmount", stunTime);
-        
+     animator.SetInteger("HitstunAmount", stunTime);
+    }
+
+    public HitboxComponent GetHitbox()
+    {
+        return hitbox;
     }
 
     public void EnablePlayer(int playerIndex)
     {
         this.playerIndex = playerIndex;
-       
        _playerInput.actions = _playerKeybinds[playerIndex - 1];
-
-
-
         _playerInput.actions.Enable();
-
         Debug.Log("enabled controls for player " + playerIndex.ToString());
 
     }
@@ -84,19 +99,7 @@ public class PlayerController : MonoBehaviour
         _playerInput.actions.Disable();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-     //   Debug.Log(_rb.linearVelocity.ToString() + " is current velocity");
-      //  velocityTracker.text = "Velocity: " + _rb.linearVelocity.ToString(); 
-        //   Debug.Log("Current state is now " + animator.GetCurrentAnimatorStateInfo(0).ToString());
-    }
-
-    public void UpdateStateTracker(string newState)
-    {
-        //stateTracker.text = "State: " + newState;
-    }
-
+ 
     public int HasParameter(string parameterName)
     {
         for (int i = 0; i < animator.parameterCount; i++)
@@ -157,6 +160,8 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("IsGrounded", false);
 
         _rb.linearVelocity = Vector2.zero;
+
+        healthComponent.Heal(Mathf.RoundToInt(healthComponent.getHealth()) + 1);
 
 
     }
