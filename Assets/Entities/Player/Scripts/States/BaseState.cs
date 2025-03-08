@@ -1,8 +1,6 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.RuleTile.TilingRuleOutput;
-using System.Collections;
 
 public class Base_State : StateMachineBehaviour
 {
@@ -21,9 +19,10 @@ public class Base_State : StateMachineBehaviour
 
    protected bool stateInitalized = false;
 
-    protected InputActionAsset _ssControls;
+    protected ShadowStrideControls _ssControls;
 
     BoxCollider2D playerControllerHitbox;
+    Vector2 groundColliderSize;
 
 
 
@@ -48,6 +47,7 @@ public class Base_State : StateMachineBehaviour
                 animator.updateMode = AnimatorUpdateMode.Normal;
             }
             stateInitalized = true;
+            _ssControls = playerController._ssControls;
 
             playerControllerHitbox = playerController.GetHurtbox();
             InitInputActions(animator);
@@ -66,10 +66,8 @@ public class Base_State : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Vector2 move = playerInput.actions["Move"].ReadValue<Vector2>();
-
-        animator.SetInteger("HorizAxis", Mathf.RoundToInt(move.x));
-        animator.SetInteger("VertAxis", Mathf.RoundToInt(move.y));
+        int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
+        animator.SetInteger("HorizAxis", move_dir);
 
         bool crouch_held = playerInput.actions["Crouch"].IsPressed();
         animator.SetBool("CrouchHeld", crouch_held);
@@ -85,11 +83,23 @@ public class Base_State : StateMachineBehaviour
             return hit;
     }
 
+ 
+
+
+
+
+ 
+
+
+
+
     public virtual bool IsGrounded()
     {
         return TouchingGround();
     }
+        playerInput.actions["Attack"].started += ctx => animator.SetTrigger("AttackPressed");
 
+        //_ssControls.FindAction("Move").performed += ctx => animator.SetInteger("HorizAxis", Mathf.RoundToInt(ctx.ReadValue<Vector2>().x));
     protected void setFacing()
     {
         int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
@@ -99,8 +109,6 @@ public class Base_State : StateMachineBehaviour
 
    protected virtual void InitInputActions(Animator animator)
     {
-        playerInput.actions["Attack"].started += ctx => animator.SetTrigger("AttackPressed");
-
         //_ssControls.FindAction("Move").performed += ctx => animator.SetInteger("HorizAxis", Mathf.RoundToInt(ctx.ReadValue<Vector2>().x));
     }
 

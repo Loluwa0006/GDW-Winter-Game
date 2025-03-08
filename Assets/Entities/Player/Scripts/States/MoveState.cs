@@ -4,6 +4,7 @@ using UnityEngine;
 public class MoveState : Base_State
 {
 
+    const float COYOTE_DURATION = 20f;
 
     Rigidbody2D _rb;
 
@@ -94,9 +95,9 @@ public class MoveState : Base_State
     {
         if (!TouchingGround() && coyoteTimer.isStopped())
         {
-            coyoteTimer.StartTimer();
+            coyoteTimer.StartTimer(COYOTE_DURATION, false);
         }
-        if (TouchingGround())// || !coyoteTimer.isStopped())
+        if (TouchingGround() || !coyoteTimer.isStopped())
         {
             return true;
         }

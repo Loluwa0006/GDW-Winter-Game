@@ -23,18 +23,15 @@ public class HitboxComponent : MonoBehaviour
     public UnityEvent hitboxConnected = new UnityEvent();
 
 
-    private void Awake()
-    {
-
-        Collider2D parentHurtbox = transform.parent.GetComponent<Collider2D>();
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), parentHurtbox);
-    }
-
-
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerEnter2D(Collider2D collision)
     {
+       
+       
+       
+       
+       
        
        
         HealthComponent health = collision.GetComponent<HealthComponent>();
@@ -67,17 +64,17 @@ public class HitboxComponent : MonoBehaviour
             rb.AddForce(push);
             Debug.Log("Hit " + collision.attachedRigidbody.gameObject.name);
         }
-        hitboxConnected.Invoke();
-        enabled = false;
-    }
-
-
     public Vector2 GetKnockBack(float health, float damage)
     {
         Vector2 moveKnockback = _baseKnockback +( Vector2.one * (health * _knockbackScaleFactor))  ;
         Debug.Log("Knocking entity back " + moveKnockback.ToString());
         return moveKnockback;
     }
+
+
+
+
+
 
 
     // Update is called once per frame

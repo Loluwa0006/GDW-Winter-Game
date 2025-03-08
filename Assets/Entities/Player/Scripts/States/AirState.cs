@@ -28,7 +28,6 @@ public class AirState : Base_State
     LayerMask wallMask;
 
 
-
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
       
@@ -52,6 +51,7 @@ public class AirState : Base_State
             initalizedAirState =true;
         }
         playerController.transform.rotation = Quaternion.identity;
+        _rb.freezeRotation = true;
 
     }
 
@@ -80,7 +80,10 @@ public class AirState : Base_State
         animator.SetBool("CrouchHeld", crouch_held);
 
         bool touchingGround = TouchingGround();
-      
+        if (!touchingGround)
+        {
+            _rb.freezeRotation = false;
+        }
         animator.SetBool("IsGrounded", touchingGround);
         animator.SetBool("MovingUpwards", (_rb.linearVelocity.y > 0));
         animator.SetBool("TouchingWall", TouchingWall());
@@ -93,9 +96,8 @@ public class AirState : Base_State
         animator.SetFloat("JumpBuffer", jumpBuffer.timeRemaining());
 
         setFacing();
-
     }
-  
+
 
     protected float getGravity()
     { 
@@ -115,11 +117,5 @@ public class AirState : Base_State
         return hit;
     }
 
-    public bool CanSlam()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(_rb.position, new Vector2(0, -1), SLAM_CHECKER_LENGTH, groundMask);
-        return !hit;
-        //invert it, because if its colliding, then the player is too close to the ground 
-    }
 
 }
