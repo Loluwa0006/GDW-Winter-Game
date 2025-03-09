@@ -68,7 +68,6 @@
     <Compile Include="Assets\Entities\Player\Scripts\States\MoveState.cs" />
     <Compile Include="Assets\LevelObjects\AssortedItems\ItemHolder.cs" />
     <Compile Include="Assets\LevelObjects\MoveableObjects\MoveableObject.cs" />
-    <Compile Include="Assets\Entities\Player\ShadowStrideControls.cs" />
     <Compile Include="Assets\LevelObjects\ObjectSpawner.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Idle.cs" />
     <Compile Include="Assets\Entities\Components\HealthComponent.cs" />
@@ -615,10 +614,6 @@
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil\Mono.Cecil.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
-      <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
@@ -1447,18 +1442,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
-      <Project>{AF357C94-E47C-B9BC-76CD-7F58C4518A54}</Project>
-      <Name>AstarPathfindingProjectEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="AstarPathfindingProject.csproj">
-      <Project>{C9FA7E8B-7704-41AD-2125-233088A13229}</Project>
-      <Name>AstarPathfindingProject</Name>
-    </ProjectReference>
-    <ProjectReference Include="PackageToolsEditor.csproj">
-      <Project>{5C915639-140C-F145-8363-926CA5AA2128}</Project>
-      <Name>PackageToolsEditor</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

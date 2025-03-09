@@ -10,7 +10,8 @@ public class PauseMenuFunctions : MonoBehaviour
     public GameObject _pauseMenu;
     public Slider _brightness;
     public Slider _volume;
-    public Image _overLay;
+    public SpriteRenderer _overLay;
+    public AudioSource _bgmPlayer;
 
     bool _isPauseMenuActive = false;
 
@@ -27,7 +28,7 @@ public class PauseMenuFunctions : MonoBehaviour
         }
 
         DarkOverlay();
-        
+        VolumeControl();
     }
 
     void SwichToPause()
@@ -51,13 +52,13 @@ public class PauseMenuFunctions : MonoBehaviour
 
     void VolumeControl()
     {
-
+        _bgmPlayer.volume = _volume.value;
     }
 
     void DarkOverlay()
     {
         var tempColor = _overLay.color;
-        tempColor.a = _brightness.value;
+        tempColor.a = (1 - _brightness.value);
         _overLay.color = tempColor;
     }
 }

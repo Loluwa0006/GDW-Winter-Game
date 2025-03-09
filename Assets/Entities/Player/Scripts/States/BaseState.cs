@@ -19,7 +19,6 @@ public class Base_State : StateMachineBehaviour
 
    protected bool stateInitalized = false;
 
-    protected ShadowStrideControls _ssControls;
 
     BoxCollider2D playerControllerHitbox;
     Vector2 groundColliderSize;
