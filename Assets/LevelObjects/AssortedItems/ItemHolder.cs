@@ -40,7 +40,8 @@ public class ItemHolder : MonoBehaviour
     {
         _startingPosition = transform.position;
         _rb.linearVelocity = new Vector2(_moveSpeed, 0);
-        _restartTimer.StartTimer(_cooldown);
+        //_restartTimer.StartTimer(_cooldown);
+        StartItemDropProcess();
 
     }
 
@@ -87,7 +88,7 @@ public class ItemHolder : MonoBehaviour
                 _itemToDrop.transform.localPosition = new Vector2(boxCollider.size.x, boxCollider.size.y);
             }
         }
-        _itemToDrop._rb.gravityScale = 0.001f;
+        _itemToDrop._rb.gravityScale = 0.0f;
         //can't be 0 or linear velocity doesn't work
         _itemToDrop._rb.linearVelocity = _rb.linearVelocity;
 

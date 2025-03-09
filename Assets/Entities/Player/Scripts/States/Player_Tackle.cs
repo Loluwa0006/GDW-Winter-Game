@@ -68,7 +68,7 @@ public class Player_Tackle : Base_State
     {
         base.OnStateExit(animator, stateInfo, layerIndex);
         _rb.linearVelocity = Vector2.zero;
-        playerController.GetHitbox().enabled = false;
+        playerController.GetHitbox().gameObject.SetActive(false);
     }
 
 }

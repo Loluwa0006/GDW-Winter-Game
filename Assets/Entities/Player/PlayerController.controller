@@ -547,8 +547,6 @@ MonoBehaviour:
   _joint: {fileID: 0}
   tetherSpeed: 5
   pullStrength: 20
-  slingStrength: 300
-  _collider: {fileID: 0}
   connectedTether: {fileID: 0}
   lineRenderer: {fileID: 0}
   connectedObject: {fileID: 0}
@@ -1926,7 +1924,7 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -170, y: 40, z: 0}
+  m_AnyStatePosition: {x: -180, y: 10, z: 0}
   m_EntryPosition: {x: 810, y: -140, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

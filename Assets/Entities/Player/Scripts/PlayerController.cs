@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Text stateTracker;
     [SerializeField] Text velocityTracker;
-    [SerializeField] LayerMask groundMask;
+    public LayerMask groundMask;
 
     [SerializeField] HitboxComponent hitbox;
 
@@ -53,6 +53,10 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 groundColliderSize;
 
+    [SerializeField] LayerMask platformMask;
+
+    [SerializeField] LayerMask playerMask;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -65,6 +69,27 @@ public class PlayerController : MonoBehaviour
         groundColliderSize = GetHurtbox().size * 0.8f;
         GetHitbox();
 
+    }
+
+    private void Update()
+    {
+        platformLogic();
+    }
+
+    void platformLogic()
+    {
+        Collider2D hurtbox =GetHurtbox();
+        if (_rb.linearVelocity.y > 0)
+        {
+            
+            hurtbox.excludeLayers = 1 << platformMask;
+            _rb.excludeLayers = hurtbox.excludeLayers;
+        }
+        else
+        {
+            hurtbox.excludeLayers = 0;
+            _rb.excludeLayers = 0;
+        }
     }
     public void OnHitboxEnabled()
     {

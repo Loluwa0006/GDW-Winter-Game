@@ -110,11 +110,21 @@ public class MoveState : Base_State
     {
         playerInput.actions["Attack"].started += ctx => animator.SetTrigger("AttackPressed");
         playerInput.actions["Jump"].started += ctx => jumpBuffer.StartTimer();
-        playerInput.actions["Move"].performed += ctx => animator.SetInteger("HorizAxis", (Mathf.RoundToInt(ctx.ReadValue<Vector2>().x)));
+        playerInput.actions["Move"].performed += ctx => SetMovementAxis(animator, ctx.ReadValue<Vector2>());
+        playerInput.actions["Move"].canceled += ctx => SetMovementAxis(animator, Vector2.zero);
+
+
 
 
 
         //_ssControls.FindAction("Move").performed += ctx => animator.SetInteger("HorizAxis", Mathf.RoundToInt(ctx.ReadValue<Vector2>().x));
+    }
+
+    void SetMovementAxis(Animator animator, Vector2 movement)
+    {
+        Vector2Int axis = Vector2Int.RoundToInt(movement);
+        animator.SetInteger("HorizAxis", axis.x);
+        animator.SetInteger("VertAxis", axis.y);
     }
 
 }

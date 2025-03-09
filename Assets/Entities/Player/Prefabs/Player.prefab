@@ -433,10 +433,10 @@ MonoBehaviour:
   velocityTracker: {fileID: 0}
   groundMask:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 33984
   hitbox: {fileID: 2335791529287543042}
   _playerKeybinds:
-  - {fileID: -944628639613478452, guid: 1897b2b8e2f5aa44eb9ad4010a432fa1, type: 3}
+  - {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   - {fileID: -944628639613478452, guid: e0ce308bafbedfc429a96209dbff8d94, type: 3}
   _respawnPoint: {fileID: 0}
   _playerInput: {fileID: 2932344813579778816}
@@ -449,6 +449,12 @@ MonoBehaviour:
   playerIndex: 1
   _currentGrapple: 0
   groundColliderSize: {x: 0, y: 0}
+  platformMask:
+    serializedVersion: 2
+    m_Bits: 32768
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &2186834193266078834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,7 +547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5441342506683394030
 Transform:
   m_ObjectHideFlags: 0

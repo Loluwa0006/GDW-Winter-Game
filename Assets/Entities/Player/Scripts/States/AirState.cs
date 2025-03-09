@@ -58,7 +58,7 @@ public class AirState : Base_State
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Vector2 newSpeed = _rb.linearVelocity;
-        int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
+        int move_dir = animator.GetInteger("HorizAxis");
         if (newSpeed.magnitude < maxSpeed || Mathf.Sign(newSpeed.x) != move_dir)
         {
             newSpeed.x += acceleration * move_dir;
@@ -74,11 +74,6 @@ public class AirState : Base_State
 
         _rb.linearVelocity = newSpeed;
 
-        animator.SetInteger("HorizAxis", move_dir);
-
-        bool crouch_held = playerInput.actions["Crouch"].IsPressed();
-        animator.SetBool("CrouchHeld", crouch_held);
-
         bool touchingGround = TouchingGround();
 
         animator.SetBool("IsGrounded", touchingGround);
@@ -86,10 +81,7 @@ public class AirState : Base_State
         animator.SetBool("TouchingWall", TouchingWall());
         animator.SetBool("CanSlam", CanSlam());
 
-        if (playerInput.actions["Jump"].WasPressedThisFrame())
-        {
-            jumpBuffer.StartTimer();
-        }
+        
         animator.SetFloat("JumpBuffer", jumpBuffer.timeRemaining());
 
         setFacing();

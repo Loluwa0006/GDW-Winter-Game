@@ -47,7 +47,7 @@ public class Player_SlamLand : Base_State
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _hitbox.enabled = false;
+        _hitbox.gameObject.SetActive(false);
     }
 
 }
