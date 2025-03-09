@@ -22,14 +22,16 @@ public class AirState : Base_State
 
 
     const float WALL_CHECKER_LENGTH = 0.45f;
+    const float SLAM_CHECKER_LENGTH = 2.0f;
     Timer jumpBuffer;
 
     LayerMask wallMask;
 
 
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-      
+
 
         useFixedUpdate = true;
         base.OnStateEnter(animator, stateInfo, layerIndex);
@@ -39,18 +41,17 @@ public class AirState : Base_State
 
             jumpBuffer = playerController.GetTimer("JumpBuffer");
 
-          
+
 
             jumpVelocity = (2 * jumpHeight) / jumpTimeToPeak;
-            jumpGravity = ((-2 * jumpHeight) / (jumpTimeToPeak * jumpTimeToPeak)) ;
-            fallGravity = ((-2 * jumpHeight) / (jumpTimeToDescent * jumpTimeToDescent)) ;
+            jumpGravity = ((-2 * jumpHeight) / (jumpTimeToPeak * jumpTimeToPeak));
+            fallGravity = ((-2 * jumpHeight) / (jumpTimeToDescent * jumpTimeToDescent));
 
             _rb = animator.GetComponentInParent<Rigidbody2D>();
 
-            initalizedAirState =true;
+            initalizedAirState = true;
         }
         playerController.transform.rotation = Quaternion.identity;
-        _rb.freezeRotation = true;
 
     }
 
@@ -58,7 +59,7 @@ public class AirState : Base_State
     {
         Vector2 newSpeed = _rb.linearVelocity;
         int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
-        if (newSpeed.magnitude < maxSpeed || Mathf.Sign(newSpeed.x) != move_dir) 
+        if (newSpeed.magnitude < maxSpeed || Mathf.Sign(newSpeed.x) != move_dir)
         {
             newSpeed.x += acceleration * move_dir;
             newSpeed.x = Mathf.Clamp(newSpeed.x, -maxSpeed, maxSpeed);
@@ -79,13 +80,11 @@ public class AirState : Base_State
         animator.SetBool("CrouchHeld", crouch_held);
 
         bool touchingGround = TouchingGround();
-        if (!touchingGround)
-        {
-            _rb.freezeRotation = false;
-        }
+
         animator.SetBool("IsGrounded", touchingGround);
         animator.SetBool("MovingUpwards", (_rb.linearVelocity.y > 0));
         animator.SetBool("TouchingWall", TouchingWall());
+        animator.SetBool("CanSlam", CanSlam());
 
         if (playerInput.actions["Jump"].WasPressedThisFrame())
         {
@@ -94,24 +93,33 @@ public class AirState : Base_State
         animator.SetFloat("JumpBuffer", jumpBuffer.timeRemaining());
 
         setFacing();
+
     }
 
 
     protected float getGravity()
-    { 
+    {
 
         if (_rb.linearVelocity.y <= 0)
         {
             return fallGravity;
         }
-        return jumpGravity;    
+        return jumpGravity;
     }
     public bool TouchingWall()
     {
         float moveDir = playerInput.actions["Move"].ReadValue<Vector2>().x;
-            if (moveDir == 0) { return false; } //need to be moving in direction of wall
+        if (moveDir == 0) { return false; } //need to be moving in direction of wall
 
         RaycastHit2D hit = Physics2D.BoxCast(playerController.transform.position, playerController.GetHurtbox().size, 0, new Vector2(moveDir, 0), WALL_CHECKER_LENGTH, wallMask);
         return hit;
     }
+
+    public bool CanSlam()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(_rb.position, new Vector2(0, -1), SLAM_CHECKER_LENGTH, groundMask);
+        return !hit;
+        //invert it, because if its colliding, then the player is too close to the ground 
+    }
+
 }

@@ -19,7 +19,6 @@ public class Base_State : StateMachineBehaviour
 
    protected bool stateInitalized = false;
 
-    protected ShadowStrideControls _ssControls;
 
     BoxCollider2D playerControllerHitbox;
     Vector2 groundColliderSize;
@@ -47,14 +46,10 @@ public class Base_State : StateMachineBehaviour
                 animator.updateMode = AnimatorUpdateMode.Normal;
             }
             stateInitalized = true;
-            _ssControls = playerController._ssControls;
 
-            InitInputActions(animator);
             playerControllerHitbox = playerController.GetHurtbox();
-            groundColliderSize = Vector2.Scale(playerControllerHitbox.size, new Vector2(GROUND_CHECKER_RATIO, GROUND_CHECKER_RATIO));
-            //Shrink ground collider size to make sure player is standing on top of something
-            //Without this the player would stick to walls by having the furthest parts of the model touch said wall
-
+            InitInputActions(animator);
+            
         }
 
         animator.Play(layerIndex);
@@ -68,39 +63,23 @@ public class Base_State : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
-        animator.SetInteger("HorizAxis", move_dir);
-
-        bool crouch_held = playerInput.actions["Crouch"].IsPressed();
-        animator.SetBool("CrouchHeld", crouch_held);
-
 
         animator.SetBool("IsGrounded", TouchingGround());
-
-       
-
         setFacing();
-
-
     }
-
-
-
 
     public bool TouchingGround()
     {
-        BoxCollider2D playerControllerHitbox = playerController.GetHurtbox();
-        Vector2 groundColliderSize = Vector2.Scale(playerControllerHitbox.size, new Vector2(0.8f, 0.8f));
-        RaycastHit2D hit = Physics2D.BoxCast(playerController.transform.position, groundColliderSize, 0, new Vector2(0, -1), GROUND_CHECKER_LENGTH, groundMask);
-        return hit;
+        RaycastHit2D hit = Physics2D.BoxCast(playerController.transform.position, playerController.groundColliderSize, 0, new Vector2(0, -1), GROUND_CHECKER_LENGTH, groundMask);
+            return hit;
     }
+
     public virtual bool IsGrounded()
     {
-  
-
         return TouchingGround();
     }
 
-
+        //_ssControls.FindAction("Move").performed += ctx => animator.SetInteger("HorizAxis", Mathf.RoundToInt(ctx.ReadValue<Vector2>().x));
     protected void setFacing()
     {
         int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
@@ -108,23 +87,22 @@ public class Base_State : StateMachineBehaviour
         playerController.transform.localScale = new Vector2(move_dir, 1);
     }
 
-    void InitInputActions(Animator animator)
+   protected virtual void InitInputActions(Animator animator)
     {
-        _ssControls.ShadowStridePlayer.Move.performed += ctx => animator.SetInteger("HorizAxis", Mathf.RoundToInt(ctx.ReadValue<Vector2>().x));
+        playerInput.actions["Attack"].started += ctx => animator.SetTrigger("AttackPressed");
+        playerInput.actions["Move"].performed += ctx => SetMovementAxis(animator, ctx.ReadValue<Vector2>());
+
+        //_ssControls.FindAction("Move").performed += ctx => animator.SetInteger("HorizAxis", Mathf.RoundToInt(ctx.ReadValue<Vector2>().x));
     }
 
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    void SetMovementAxis(Animator animator, Vector2 axis)
+    {
+        Vector2Int axisAsInt = new Vector2Int(Mathf.RoundToInt(axis.x), Mathf.RoundToInt(axis.y));
 
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
+        animator.SetInteger("HorizAxis", axisAsInt.x);
+        animator.SetInteger("VertAxis", axisAsInt.y);
+    }
 
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
     //}
 }
