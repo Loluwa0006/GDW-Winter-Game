@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
     //because unity sucks uber omega butt cheeks
 
     [SerializeField] Animator animator;
-   [SerializeField] BoxCollider2D hurtbox;
-   [SerializeField] Rigidbody2D _rb;
+    [SerializeField] BoxCollider2D hurtbox;
+    [SerializeField] Rigidbody2D _rb;
 
     [SerializeField] Text stateTracker;
     [SerializeField] Text velocityTracker;
@@ -25,16 +25,16 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] HitboxComponent hitbox;
 
-   public List<InputActionAsset> _playerKeybinds = new List<InputActionAsset>();
+    public List<InputActionAsset> _playerKeybinds = new List<InputActionAsset>();
 
     public Transform _respawnPoint;
 
     Dictionary<string, Timer> _timerList = new Dictionary<string, Timer>();
 
 
-   public PlayerInput _playerInput;
+    public PlayerInput _playerInput;
 
-   public UnityEvent<int> playerDead = new UnityEvent<int>();
+    public UnityEvent<int> playerDead = new UnityEvent<int>();
     public UnityEvent<int> playerEliminated;
 
 
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
         healthComponent.onEntityDamaged.AddListener(OnPlayerStruck);
         groundColliderSize = GetHurtbox().size * 0.8f;
         GetHitbox();
-    
+
     }
     public void OnHitboxEnabled()
     {
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     void OnPlayerStruck(float damageTaken, int stunTime)
     {
-     animator.SetInteger("HitstunAmount", stunTime);
+        animator.SetInteger("HitstunAmount", stunTime);
     }
 
     public HitboxComponent GetHitbox()
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
     public void EnablePlayer(int playerIndex)
     {
         this.playerIndex = playerIndex;
-       _playerInput.actions = _playerKeybinds[playerIndex - 1];
+        _playerInput.actions = _playerKeybinds[playerIndex - 1];
         _playerInput.actions.Enable();
         Debug.Log("enabled controls for player " + playerIndex.ToString());
 
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         _playerInput.actions.Disable();
     }
 
- 
+
     public int HasParameter(string parameterName)
     {
         for (int i = 0; i < animator.parameterCount; i++)
@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Added timer " + timer.GetID());
         }
     }
-   public void onPlayerDeath()
+    public void onPlayerDeath()
     {
         _remainingLives--;
         Debug.Log("dead");
@@ -196,5 +196,5 @@ public class PlayerController : MonoBehaviour
 
     }
 
-   
+
 }

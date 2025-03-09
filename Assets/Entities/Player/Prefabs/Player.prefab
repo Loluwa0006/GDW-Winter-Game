@@ -436,7 +436,7 @@ MonoBehaviour:
     m_Bits: 192
   hitbox: {fileID: 2335791529287543042}
   _playerKeybinds:
-  - {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: -944628639613478452, guid: 7ddd7cd06a0926d4280acea1f8480191, type: 3}
   - {fileID: -944628639613478452, guid: e0ce308bafbedfc429a96209dbff8d94, type: 3}
   _respawnPoint: {fileID: 0}
   _playerInput: {fileID: 2932344813579778816}

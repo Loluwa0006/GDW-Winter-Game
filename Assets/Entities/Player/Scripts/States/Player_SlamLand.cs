@@ -22,7 +22,8 @@ public class Player_SlamLand : Base_State
             _rb = animator.gameObject.GetComponent<Rigidbody2D>();
             animator.updateMode = AnimatorUpdateMode.Fixed;
             playerInput = animator.gameObject.GetComponent<PlayerInput>();
-            _hitbox = playerInput.GetComponent<HitboxComponent>();
+            playerController = animator.gameObject.GetComponent<PlayerController>();
+            _hitbox = playerController.GetHitbox();
             moveAsset = playerInput.actions["Move"];
            stateInitalized = true;
         }

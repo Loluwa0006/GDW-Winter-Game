@@ -47,13 +47,10 @@ public class Base_State : StateMachineBehaviour
                 animator.updateMode = AnimatorUpdateMode.Normal;
             }
             stateInitalized = true;
-            _ssControls = playerController._ssControls;
 
             playerControllerHitbox = playerController.GetHurtbox();
             InitInputActions(animator);
-            //Shrink ground collider size to make sure player is standing on top of something
-            //Without this the player would stick to walls by having the furthest parts of the model touch said wall
-
+            
         }
 
         animator.Play(layerIndex);
@@ -67,14 +64,9 @@ public class Base_State : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
-        animator.SetInteger("HorizAxis", move_dir);
 
-        bool crouch_held = playerInput.actions["Crouch"].IsPressed();
-        animator.SetBool("CrouchHeld", crouch_held);
         animator.SetBool("IsGrounded", TouchingGround());
         setFacing();
-
-
     }
 
     public bool TouchingGround()
@@ -83,21 +75,10 @@ public class Base_State : StateMachineBehaviour
             return hit;
     }
 
- 
-
-
-
-
- 
-
-
-
-
     public virtual bool IsGrounded()
     {
         return TouchingGround();
     }
-        playerInput.actions["Attack"].started += ctx => animator.SetTrigger("AttackPressed");
 
         //_ssControls.FindAction("Move").performed += ctx => animator.SetInteger("HorizAxis", Mathf.RoundToInt(ctx.ReadValue<Vector2>().x));
     protected void setFacing()
@@ -109,9 +90,20 @@ public class Base_State : StateMachineBehaviour
 
    protected virtual void InitInputActions(Animator animator)
     {
+        playerInput.actions["Attack"].started += ctx => animator.SetTrigger("AttackPressed");
+        playerInput.actions["Move"].performed += ctx => SetMovementAxis(animator, ctx.ReadValue<Vector2>());
+
         //_ssControls.FindAction("Move").performed += ctx => animator.SetInteger("HorizAxis", Mathf.RoundToInt(ctx.ReadValue<Vector2>().x));
     }
 
-   
+
+    void SetMovementAxis(Animator animator, Vector2 axis)
+    {
+        Vector2Int axisAsInt = new Vector2Int(Mathf.RoundToInt(axis.x), Mathf.RoundToInt(axis.y));
+
+        animator.SetInteger("HorizAxis", axisAsInt.x);
+        animator.SetInteger("VertAxis", axisAsInt.y);
+    }
+
     //}
 }

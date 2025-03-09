@@ -79,6 +79,7 @@
     <Compile Include="Assets\Entities\Player\PlayerTwoControls.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\GroundGrapple.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\TetherPoint.cs" />
+    <Compile Include="Assets\PauseMenu\PauseMenu.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Climb.cs" />
     <Compile Include="Assets\LevelObjects\BaseElement.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\RemoveTethers.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Assets\Entities\Components\HitboxComponent.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Land.cs" />
     <Compile Include="Assets\Entities\Enemies\LookInDirectionAction.cs" />
+    <Compile Include="Assets\PauseMenu\PauseMenuFunctions.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\GrappleManager.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_CrouchRun.cs" />
     <Compile Include="Assets\LevelObjects\SceneHandler.cs" />

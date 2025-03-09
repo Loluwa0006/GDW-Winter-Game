@@ -5,20 +5,18 @@ public class GrappleManager : Base_State
 {
     [SerializeField] LayerMask _grapplableLayers;
 
-  [SerializeField]  float _maxDistance = 35.0f;
+    [SerializeField] float _maxDistance = 35.0f;
 
-    Animator animator;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
+
         if (!stateInitalized)
         {
-            this.animator = animator;
-            groundMask = LayerMask.GetMask("Ground");
+            groundMask = LayerMask.GetMask("Ground", " Wall");
             playerInput = animator.GetComponentInParent<PlayerInput>();
             playerController = animator.GetComponent<PlayerController>();
-            _ssControls = playerController._ssControls;
             if (useFixedUpdate)
             {
                 animator.updateMode = AnimatorUpdateMode.Fixed;
@@ -31,11 +29,7 @@ public class GrappleManager : Base_State
             InitInputActions(animator);
 
         }
-        //Debug.Log(animator == null);
-        //Debug.Log(animator.layerCount.ToString ());
-        //Debug.Log(animator.GetLayerIndex("Grapple"));
-        //Debug.Log(layerIndex.ToString());
-        animator.Play(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name, layerIndex);
+
 
 
 
@@ -45,9 +39,7 @@ public class GrappleManager : Base_State
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        Vector2 directiontomouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        directiontomouse = directiontomouse - new Vector2 (playerController.transform.position.x, playerController.transform.position.y);
-        
+
 
         Vector2 move = playerInput.actions["Move"].ReadValue<Vector2>();
 
@@ -63,36 +55,22 @@ public class GrappleManager : Base_State
         {
             animator.SetFloat("GrapplePointX", hit.point.x);
             animator.SetFloat("GrapplePointY", hit.point.y);
-            Debug.DrawLine(playerController.transform.position, hit.point, Color.red);
         }
         animator.SetBool("InGrappleRange", hit);
         animator.SetBool("IsGrounded", IsGrounded());
 
-        animator.SetBool("GrapplePressed", Input.GetMouseButton(0));
+        // animator.SetBool("GrapplePressed", playerInput.actions["Grapple"].IsPressed() );
         //Debug.Log("Mouse pressed = " + Input.GetMouseButton(0));
-
     }
 
-    private void onGrapplePressed()
+
+
+  protected override void InitInputActions(Animator animator)
     {
-        Debug.Log("grappling button pressed");
+        playerInput.actions["DestroyTether"].started += ctx => animator.SetBool("DestroyTethers", true);
+        playerInput.actions["DestroyTether"].canceled += ctx => animator.SetBool("DestroyTethers", false);
+        playerInput.actions["Grapple"].performed += ctx => animator.SetBool("GrapplePressed", true);
+        playerInput.actions["Grapple"].canceled += ctx => animator.SetBool("GrapplePressed", false);
+        playerInput.actions["Tether"].started += ctx => animator.SetTrigger("TetherPressed");
     }
-
-
-    void InitInputActions(Animator animator)
-    {
-        _ssControls.ShadowStridePlayer.DestroyTether.started += ctx => animator.SetBool("DestroyTethers", true);
-        _ssControls.ShadowStridePlayer.DestroyTether.canceled += ctx => animator.SetBool("DestroyTethers", false);
-
-        Debug.Log("grapple actions unlocked");
-
-        _ssControls.ShadowStridePlayer.Grapple.started += ctx => animator.SetBool("GrapplePressed",  true);
-        _ssControls.ShadowStridePlayer.Grapple.started += ctx => onGrapplePressed();
-
-        _ssControls.ShadowStridePlayer.Grapple.canceled += ctx => animator.SetBool("GrapplePressed", false);
-
-        _ssControls.ShadowStridePlayer.Tether.started += ctx => animator.SetTrigger("TetherPressed");
-
-    }
-
 }
