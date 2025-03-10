@@ -37,6 +37,15 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""27c5f898-bc57-4ee1-8800-db469aca5fe3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""f1ba0d36-48eb-4cd5-b651-1c94a6531f70"",
@@ -150,26 +159,59 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""1635d3fe-58b6-4ba9-a4e2-f4b964f6b5c8"",
-                    ""path"": ""<XRController>/{Primary2DAxis}"",
+                    ""name"": ""D-Pad"",
+                    ""id"": ""7b1fb1c8-a193-47cc-ac1b-8f4dfb3d86e4"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""XR"",
+                    ""groups"": """",
                     ""action"": ""Move"",
-                    ""isComposite"": false,
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""3ea4d645-4504-4529-b061-ab81934c3752"",
-                    ""path"": ""<Joystick>/stick"",
+                    ""name"": ""up"",
+                    ""id"": ""9035bd22-1c40-4720-be45-e64166f6b392"",
+                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Joystick"",
+                    ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""0f0e736f-fece-46d2-adee-d88acf4406c0"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""8ba99dad-6f9a-4ef6-8fa7-da5d699dbd07"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""fd301bef-6e2c-4020-b094-e866e23cfac4"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -201,6 +243,50 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""XR"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f4649ac-64a8-4a73-af11-b3faef356a4d"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36e52cba-0905-478e-a818-f4bfcb9f3b9a"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e49d75e-8f2f-4bae-8172-f61eff733bf2"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd640c07-2f63-476f-afe2-5e9f4bd05fbb"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -866,6 +952,7 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
         // BattleControls
         m_BattleControls = asset.FindActionMap("BattleControls", throwIfNotFound: true);
         m_BattleControls_Move = m_BattleControls.FindAction("Move", throwIfNotFound: true);
+        m_BattleControls_Crouch = m_BattleControls.FindAction("Crouch", throwIfNotFound: true);
         m_BattleControls_Jump = m_BattleControls.FindAction("Jump", throwIfNotFound: true);
         m_BattleControls_Grapple = m_BattleControls.FindAction("Grapple", throwIfNotFound: true);
         m_BattleControls_Tether = m_BattleControls.FindAction("Tether", throwIfNotFound: true);
@@ -951,6 +1038,7 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_BattleControls;
     private List<IBattleControlsActions> m_BattleControlsActionsCallbackInterfaces = new List<IBattleControlsActions>();
     private readonly InputAction m_BattleControls_Move;
+    private readonly InputAction m_BattleControls_Crouch;
     private readonly InputAction m_BattleControls_Jump;
     private readonly InputAction m_BattleControls_Grapple;
     private readonly InputAction m_BattleControls_Tether;
@@ -961,6 +1049,7 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
         private @PlayerOneControls m_Wrapper;
         public BattleControlsActions(@PlayerOneControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_BattleControls_Move;
+        public InputAction @Crouch => m_Wrapper.m_BattleControls_Crouch;
         public InputAction @Jump => m_Wrapper.m_BattleControls_Jump;
         public InputAction @Grapple => m_Wrapper.m_BattleControls_Grapple;
         public InputAction @Tether => m_Wrapper.m_BattleControls_Tether;
@@ -978,6 +1067,9 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -1000,6 +1092,9 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -1198,6 +1293,7 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
     public interface IBattleControlsActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnGrapple(InputAction.CallbackContext context);
         void OnTether(InputAction.CallbackContext context);

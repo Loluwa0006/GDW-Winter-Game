@@ -18,7 +18,7 @@ public class ItemHolder : MonoBehaviour
 
     [SerializeField] List<MoveableObject> _objectPrefabs = new List<MoveableObject>();
     [SerializeField] float _groundCheckerLength = 45.0f;
-    LayerMask _groundMask;
+    [SerializeField] LayerMask _groundMask;
 
     Vector2 _startingPosition;
 
@@ -50,13 +50,14 @@ public class ItemHolder : MonoBehaviour
         _timeUntilDrop -= Time.deltaTime;
         if (_timeUntilDrop < 0.0f && !itemDropped && OverGround())
         {
+            Debug.Log("Time to drop item!");
             DropItem();
         }
     }
 
     void DropItem()
     {
-        if (_itemToDrop == null) return;
+        
         _itemToDrop.transform.parent = null;
         itemDropped = true;
         _itemToDrop._rb.gravityScale = 1.0f;
@@ -78,7 +79,6 @@ public class ItemHolder : MonoBehaviour
         {
             float diameter = circleCollider.radius * 2;
             _itemToDrop.transform.localPosition = new Vector2(diameter, diameter);
-
         }
         else
         {
@@ -89,11 +89,7 @@ public class ItemHolder : MonoBehaviour
             }
         }
         _itemToDrop._rb.gravityScale = 0.0f;
-        //can't be 0 or linear velocity doesn't work
         _itemToDrop._rb.linearVelocity = _rb.linearVelocity;
-
-
-
     }
 
     bool OverGround()
