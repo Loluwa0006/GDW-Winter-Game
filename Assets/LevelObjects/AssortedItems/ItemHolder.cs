@@ -18,7 +18,7 @@ public class ItemHolder : MonoBehaviour
 
     [SerializeField] List<MoveableObject> _objectPrefabs = new List<MoveableObject>();
     [SerializeField] float _groundCheckerLength = 45.0f;
-    [SerializeField] LayerMask _groundMask;
+    LayerMask _groundMask;
 
     Vector2 _startingPosition;
 

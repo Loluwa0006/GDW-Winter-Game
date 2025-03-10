@@ -1994,7 +1994,7 @@ MonoBehaviour:
   useFixedUpdate: 1
   _grapplableLayers:
     serializedVersion: 2
-    m_Bits: 1216
+    m_Bits: 33984
   _maxDistance: 35
 --- !u!1102 &9096686860011297467
 AnimatorState:

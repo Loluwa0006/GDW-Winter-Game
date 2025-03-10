@@ -37,15 +37,6 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Crouch"",
-                    ""type"": ""Button"",
-                    ""id"": ""8648f416-4cb9-4d1c-a205-aca6cf5466eb"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""47dff180-df81-4424-9c9c-23a3f197f91e"",
@@ -193,28 +184,6 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6277f75b-2a35-4964-bb29-d33b911a87f0"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Crouch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""73abfb3e-cbd4-4761-b8aa-9641f7221e50"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Crouch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""7258257d-2141-44b6-887c-3b2bcedd4349"",
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
@@ -282,7 +251,7 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e9de2e82-ddd3-4443-90ec-cc6510d506b5"",
-                    ""path"": ""<Keyboard>/semicolon"",
+                    ""path"": ""<Keyboard>/period"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -875,7 +844,6 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
         // BattleControls
         m_BattleControls = asset.FindActionMap("BattleControls", throwIfNotFound: true);
         m_BattleControls_Move = m_BattleControls.FindAction("Move", throwIfNotFound: true);
-        m_BattleControls_Crouch = m_BattleControls.FindAction("Crouch", throwIfNotFound: true);
         m_BattleControls_Jump = m_BattleControls.FindAction("Jump", throwIfNotFound: true);
         m_BattleControls_Grapple = m_BattleControls.FindAction("Grapple", throwIfNotFound: true);
         m_BattleControls_Tether = m_BattleControls.FindAction("Tether", throwIfNotFound: true);
@@ -961,7 +929,6 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_BattleControls;
     private List<IBattleControlsActions> m_BattleControlsActionsCallbackInterfaces = new List<IBattleControlsActions>();
     private readonly InputAction m_BattleControls_Move;
-    private readonly InputAction m_BattleControls_Crouch;
     private readonly InputAction m_BattleControls_Jump;
     private readonly InputAction m_BattleControls_Grapple;
     private readonly InputAction m_BattleControls_Tether;
@@ -972,7 +939,6 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
         private @PlayerTwoControls m_Wrapper;
         public BattleControlsActions(@PlayerTwoControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_BattleControls_Move;
-        public InputAction @Crouch => m_Wrapper.m_BattleControls_Crouch;
         public InputAction @Jump => m_Wrapper.m_BattleControls_Jump;
         public InputAction @Grapple => m_Wrapper.m_BattleControls_Grapple;
         public InputAction @Tether => m_Wrapper.m_BattleControls_Tether;
@@ -990,9 +956,6 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Crouch.started += instance.OnCrouch;
-            @Crouch.performed += instance.OnCrouch;
-            @Crouch.canceled += instance.OnCrouch;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -1015,9 +978,6 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Crouch.started -= instance.OnCrouch;
-            @Crouch.performed -= instance.OnCrouch;
-            @Crouch.canceled -= instance.OnCrouch;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -1216,7 +1176,6 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
     public interface IBattleControlsActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnCrouch(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnGrapple(InputAction.CallbackContext context);
         void OnTether(InputAction.CallbackContext context);

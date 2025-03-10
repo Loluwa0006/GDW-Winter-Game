@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Crouch",
-                    "type": "Button",
-                    "id": "8648f416-4cb9-4d1c-a205-aca6cf5466eb",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "47dff180-df81-4424-9c9c-23a3f197f91e",
@@ -171,28 +162,6 @@
                 },
                 {
                     "name": "",
-                    "id": "6277f75b-2a35-4964-bb29-d33b911a87f0",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "73abfb3e-cbd4-4761-b8aa-9641f7221e50",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "7258257d-2141-44b6-887c-3b2bcedd4349",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
@@ -260,7 +229,7 @@
                 {
                     "name": "",
                     "id": "e9de2e82-ddd3-4443-90ec-cc6510d506b5",
-                    "path": "<Keyboard>/semicolon",
+                    "path": "<Keyboard>/period",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
