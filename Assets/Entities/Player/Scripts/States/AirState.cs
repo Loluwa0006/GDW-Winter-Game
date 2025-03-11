@@ -81,7 +81,7 @@ public class AirState : Base_State
         animator.SetBool("TouchingWall", TouchingWall());
         animator.SetBool("CanSlam", CanSlam());
 
-        
+       
         animator.SetFloat("JumpBuffer", jumpBuffer.timeRemaining());
 
         setFacing();

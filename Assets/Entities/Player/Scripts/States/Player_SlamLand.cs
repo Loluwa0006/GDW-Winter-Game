@@ -11,8 +11,6 @@ public class Player_SlamLand : Base_State
     [SerializeField] float _bounceAmount = 0.4f;
     [SerializeField] float _slamSpeed = 45.0f;
 
-    InputAction moveAsset;
-
     HitboxComponent _hitbox;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -24,10 +22,9 @@ public class Player_SlamLand : Base_State
             playerInput = animator.gameObject.GetComponent<PlayerInput>();
             playerController = animator.gameObject.GetComponent<PlayerController>();
             _hitbox = playerController.GetHitbox();
-            moveAsset = playerInput.actions["Move"];
            stateInitalized = true;
         }
-        EndSlamMovement();
+        EndSlamMovement(animator);
         
 
         animator.Play(layerIndex);
@@ -40,14 +37,17 @@ public class Player_SlamLand : Base_State
     }
     
 
-    public void EndSlamMovement()
+    public void EndSlamMovement(Animator animator)
     {
-        _rb.linearVelocity = new Vector2(_rb.linearVelocity.x * (moveAsset.ReadValue<Vector2>().x * (1 + _bonusSpeedMultiplierOnExit)), _slamSpeed *  _bounceAmount);
+        Debug.Log(_rb.linearVelocity.x * (1 + _bonusSpeedMultiplierOnExit));
+        //Debug.Log(_rb.linearVelocity.x * (1 + _bonusSpeedMultiplierOnExit) * animator.GetInteger("HorizAxis"));
+        
+        _rb.linearVelocity = new Vector2(_rb.linearVelocity.x * (1 + (_bonusSpeedMultiplierOnExit * animator.GetInteger("HorizAxis"))), _slamSpeed *  _bounceAmount);
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _hitbox.gameObject.SetActive(false);
+        _hitbox.enabled = false;
     }
 
 }

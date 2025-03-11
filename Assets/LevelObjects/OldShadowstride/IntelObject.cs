@@ -10,7 +10,7 @@ public class IntelObject : MonoBehaviour
     {
         if (levelManager != null)
         {
-            levelManager.OnIntelSecured(this, intelIcon);
+           // levelManager.OnIntelSecured(this, intelIcon);
             gameObject.SetActive(false);
         }
     }

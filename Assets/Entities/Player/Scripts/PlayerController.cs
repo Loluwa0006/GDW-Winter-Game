@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     public UnityEvent hitboxEnabled = new UnityEvent();
     public UnityEvent hitboxDisabled = new UnityEvent();
+    public UnityEvent<int> playerDead = new UnityEvent<int>();
+    public UnityEvent<int> playerEliminated;
     //these exists to get around the inability of being able to connect statemachinebehavior functions to animation clips
     //because unity sucks uber omega butt cheeks
 
@@ -21,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Text stateTracker;
     [SerializeField] Text velocityTracker;
-    public LayerMask groundMask;
+    [SerializeField] LayerMask groundMask;
 
     [SerializeField] HitboxComponent hitbox;
 
@@ -34,12 +36,11 @@ public class PlayerController : MonoBehaviour
 
     public PlayerInput _playerInput;
 
-    public UnityEvent<int> playerDead = new UnityEvent<int>();
-    public UnityEvent<int> playerEliminated;
+
 
 
     public int playerIndex = 1;
-    int _remainingLives = 3;
+    public int _remainingLives = 3;
     public enum GrapplePresets
     {
         REGULAR,
@@ -53,10 +54,6 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 groundColliderSize;
 
-    [SerializeField] LayerMask platformMask;
-
-    [SerializeField] LayerMask playerMask;
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -69,27 +66,6 @@ public class PlayerController : MonoBehaviour
         groundColliderSize = GetHurtbox().size * 0.8f;
         GetHitbox();
 
-    }
-
-    private void Update()
-    {
-        platformLogic();
-    }
-
-    void platformLogic()
-    {
-        Collider2D hurtbox =GetHurtbox();
-        if (_rb.linearVelocity.y > 0)
-        {
-            
-            hurtbox.excludeLayers = 1 << platformMask;
-            _rb.excludeLayers = hurtbox.excludeLayers;
-        }
-        else
-        {
-            hurtbox.excludeLayers = 0;
-            _rb.excludeLayers = 0;
-        }
     }
     public void OnHitboxEnabled()
     {
@@ -116,7 +92,7 @@ public class PlayerController : MonoBehaviour
         this.playerIndex = playerIndex;
         _playerInput.actions = _playerKeybinds[playerIndex - 1];
         _playerInput.actions.Enable();
-        Debug.Log("enabled controls for player " + playerIndex.ToString());
+       // Debug.Log("enabled controls for player " + playerIndex.ToString());
 
     }
     public void DisablePlayer()
@@ -148,7 +124,7 @@ public class PlayerController : MonoBehaviour
         {
             return _timerList[timerName];
         }
-        Debug.Log("Couldn't find timer of name " + timerName);
+        Debug.LogWarning("Couldn't find timer of name " + timerName);
         return null;
     }
 
@@ -188,7 +164,7 @@ public class PlayerController : MonoBehaviour
 
         healthComponent.Heal(Mathf.RoundToInt(healthComponent.getHealth()) + 1);
 
-
+        playerDead.Invoke(_remainingLives);
     }
 
     void ResetAnimatorParameters()

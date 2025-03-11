@@ -21,7 +21,7 @@ public class MoveableObject : MonoBehaviour
     [SerializeField] float _minRiseAmount = 5.0f;
     //when entity is hit they always go up by at least this amount
 
-   public UnityEvent DamagedEntity; 
+    public UnityEvent DamagedEntity;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,22 +36,22 @@ public class MoveableObject : MonoBehaviour
         }
     }
 
-    
-   
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (_rb.linearVelocity.magnitude < _minSpeed)
         {
             return;
         }
-     
+
         HealthComponent health = collision.gameObject.GetComponent<HealthComponent>();
         float damage = 0.0f;
         int stunTime = 0;
         if (health != null)
         {
-            damage = Mathf.Max( _rb.linearVelocity.magnitude * _rb.mass * _damageScaleFactor, _minDamage);
-            stunTime = Mathf.RoundToInt(Mathf.Max(_minStunTime, (health.getHealth() * damage) * _healthToStunScale) );
+            damage = Mathf.Max(_rb.linearVelocity.magnitude * _rb.mass * _damageScaleFactor, _minDamage);
+            stunTime = Mathf.RoundToInt(Mathf.Max(_minStunTime, (health.getHealth() * damage) * _healthToStunScale));
             health.Damage(damage, stunTime);
             DamagedEntity.Invoke();
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
@@ -61,7 +61,7 @@ public class MoveableObject : MonoBehaviour
                 rb.AddForce(GetKnockBack(health.getHealth(), damage, normal));
             }
         }
-       
+
 
     }
 

@@ -34,15 +34,13 @@ public class Player_Tether : Base_State
 
             TetherPoint newTether = Instantiate(tetherPointPrefab);
 
-        Vector2 tetherDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        tetherDirection = tetherDirection - new Vector2(animator.transform.position.x, animator.gameObject.transform.position.y);
-
+        Vector2 tetherDirection = new Vector2(animator.GetInteger("HorizAxis"), animator.GetInteger("VertAxis"));
         newTether.transform.position = animator.gameObject.transform.position;
 
 
 
         tetherPoints.Add(newTether);
-        newTether.FireTether(tetherDirection);
+        newTether.FireTether(tetherDirection, playerController);
 
        
         newTether.name = "Tether " + tetherPoints.IndexOf(newTether).ToString();

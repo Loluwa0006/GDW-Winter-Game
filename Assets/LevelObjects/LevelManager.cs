@@ -26,6 +26,9 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] CinemachineTargetGroup cinemachineFramer;
 
+    [SerializeField] PlayerHUD hudPrefab;
+
+    [SerializeField] GameObject hudHolder;
 
 
     private void Awake()
@@ -53,12 +56,19 @@ public class LevelManager : MonoBehaviour
             SetPlayerLocation(_playerList[i], i);
             SetPlayerID(_playerList[i], i);
             InitPlayerEvents(_playerList[i]);
+            AddNewHud(_playerList[i]);
 
             cinemachineFramer.AddMember(_playerList[i].transform, 1, 0.5f);
 
             //playerInput.currentActionMap = playerInput.action
 
         }
+    }
+
+    void AddNewHud(PlayerController player)
+    {
+        PlayerHUD newHud = Instantiate(hudPrefab, hudHolder.transform);
+        newHud.initPlayerHUD(player);
     }
 
     void SetPlayerID(PlayerController player, int index)
@@ -76,23 +86,7 @@ public class LevelManager : MonoBehaviour
         player.playerEliminated.AddListener(OnPlayerEliminated);
         player.playerDead.AddListener(OnPlayerDefeated);
     }
-    public void OnIntelSecured(IntelObject intel, Sprite intelIcon)
-    {
-        intelObjects.Add(intel);
-
-        if (intelUI != null)
-        {
-            RawImage rawImage = new GameObject().AddComponent<RawImage>();
-
-            rawImage.transform.parent = intelUI.transform;
-        }
-        if (intelObjects.Count >= intelRequired)
-        {
-            exitArea.SetActive(true);
-        }
-
-    }
-
+     
     private void Update()
     {
 
@@ -124,15 +118,15 @@ public class LevelManager : MonoBehaviour
         index -= 1;
         //need to shift index backwards to account for data structures starting at 0
         cinemachineFramer.RemoveMember(_activePlayers[index].transform);
-
+        Debug.Log(_activePlayers[index].gameObject.name + " defeated");
+        _activePlayers.RemoveAt(index);
 
 
         if (_activePlayers.Count == 1)
         {
             OnGameFinished();
         }
-        Debug.Log(_activePlayers[index].gameObject.name + " defeated");
-        _activePlayers.RemoveAt(index);
+      
     }
     public void OnPlayerDefeated(int index)
     {

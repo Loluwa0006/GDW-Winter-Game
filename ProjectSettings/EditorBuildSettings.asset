@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PlatformStage1.unity
     guid: bab029c2cf246994999cbb89486ecc6b
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Shadowstride.unity
     guid: 8e9ffe39cd651e648bb170c5257e2ac6
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 99f9c9493070a9d4c979a8fec7c5a8d3, type: 2}

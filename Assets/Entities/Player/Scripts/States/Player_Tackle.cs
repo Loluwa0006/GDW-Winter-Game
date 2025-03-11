@@ -17,6 +17,8 @@ public class Player_Tackle : Base_State
     bool _hitboxEventsConnected = false;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.Play(layerIndex);
+
         if (!stateInitalized)
         {
             _rb = animator.gameObject.GetComponent<Rigidbody2D>();
@@ -36,7 +38,6 @@ public class Player_Tackle : Base_State
 
 
         _tackleDirection = Mathf.RoundToInt(playerController.transform.localScale.x);
-        animator.Play(layerIndex);
     }
 
   
@@ -68,7 +69,7 @@ public class Player_Tackle : Base_State
     {
         base.OnStateExit(animator, stateInfo, layerIndex);
         _rb.linearVelocity = Vector2.zero;
-        playerController.GetHitbox().gameObject.SetActive(false);
+        playerController.GetHitbox().enabled = false;
     }
 
 }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7d66f8e0b19a4684c973c99146bf244e
+guid: 1571d4fc06af10e418d94d619c3078be
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5382197054143347865
-    second: Anvil_0
+      213: -4745845850201273048
+    second: StockTracker_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Anvil_0
+      name: StockTracker_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 32
-        width: 155
-        height: 122
+        x: 0
+        y: 0
+        width: 111
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99c3e5364b761ba40800000000000000
-      internalID: 5382197054143347865
+      spriteID: 82dcdf3085e532eb0800000000000000
+      internalID: -4745845850201273048
       vertices: []
       indices: 
       edges: []

@@ -58,7 +58,7 @@ public class PauseMenuFunctions : MonoBehaviour
     void DarkOverlay()
     {
         var tempColor = _overLay.color;
-        tempColor.a = (1 - _brightness.value);
+        tempColor.a = _brightness.value;
         _overLay.color = tempColor;
     }
 }

@@ -92,7 +92,7 @@ public class ControlMenu : MonoBehaviour
     {
         _controlToChange = control;
         _listeningForKey = true;
-        StartCoroutine(RebindCompositeControl(), index);
+       // StartCoroutine(RebindCompositeControl(), index);
     }
     public IEnumerator RebindControls()
     {

@@ -40,7 +40,6 @@ public class ItemHolder : MonoBehaviour
     {
         _startingPosition = transform.position;
         _rb.linearVelocity = new Vector2(_moveSpeed, 0);
-        //_restartTimer.StartTimer(_cooldown);
         StartItemDropProcess();
 
     }

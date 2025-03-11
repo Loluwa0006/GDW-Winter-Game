@@ -8,7 +8,7 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] float health = 0;
     //Dont touch in editor, just expose it
     public UnityEvent<float, int> onEntityDamaged;
-    public UnityEvent onEntityHealed;
+    public UnityEvent<float, int> onEntityHealed;
     public UnityEvent onEntityMaxDamageReached;
 
 
@@ -35,7 +35,7 @@ public class HealthComponent : MonoBehaviour
 
         onEntityDamaged.Invoke(damageTaken, stunTime);
 
-        Debug.Log("Hit object for damage " + damageTaken.ToString() + " while stunning them for " + stunTime.ToString());
+       // Debug.Log("Hit object for damage " + damageTaken.ToString() + " while stunning them for " + stunTime.ToString());
 
     }
 
@@ -48,15 +48,17 @@ public class HealthComponent : MonoBehaviour
 
     public virtual void Heal(int heal_amount = 1)
     {
-        health += heal_amount;
+        health -= heal_amount;
         health = Mathf.Clamp(health, 0, maxHealth);
-        onEntityHealed.Invoke();
+        onEntityHealed.Invoke(0.0f, heal_amount);
     }
 
     public float getHealth()
     {
         return health;
     }
+
+    
     // Update is called o  nce per frame
     void Update()
     {

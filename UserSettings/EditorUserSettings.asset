@@ -6,25 +6,16 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedSceneGuid-0:
-      value: 5b540d0003505a020e0a5a77412609444e151a7b7b7825657f7c4a36b0e1376e
+      value: 01505656570c0a090e085e76467a06444f4e41292e2a7e6979714b36e1e3623a
       flags: 0
     RecentlyUsedSceneGuid-1:
-      value: 5102005e51015d5e0c0a5d7115205c4447151a7d2d7e23357d711f65b3b86d6f
-      flags: 0
-    RecentlyUsedSceneGuid-2:
-<<<<<<< HEAD
       value: 56050c0300565e0a0b5c5e2312260a44434f1b7829787263797c4a61b7b06168
       flags: 0
-    RecentlyUsedSceneGuid-3:
+    RecentlyUsedSceneGuid-2:
       value: 510957500702590b0f085a7643270c4414151c722d2d20617b701e66e7e1616e
       flags: 0
-    RecentlyUsedSceneGuid-4:
-=======
-      value: 5b520d0503545b0d0c0c0a2715770748154f4d2c7d7d7e627a7d4a35b4e1646a
-      flags: 0
     RecentlyUsedSceneGuid-3:
->>>>>>> parent of fe0c98f (Main Menu v0.2)
-      value: 01505656570c0a090e085e76467a06444f4e41292e2a7e6979714b36e1e3623a
+      value: 5b540d0003505a020e0a5a77412609444e151a7b7b7825657f7c4a36b0e1376e
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650

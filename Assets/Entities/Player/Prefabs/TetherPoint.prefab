@@ -181,9 +181,12 @@ MonoBehaviour:
   _joint: {fileID: 8826897123185642277}
   tetherSpeed: 70
   pullStrength: 45
+  slingStrength: 300
+  _collider: {fileID: 3454669539962596529}
   connectedTether: {fileID: 0}
   lineRenderer: {fileID: 6748576307739557638}
   connectedObject: {fileID: 0}
+  healthComponent: {fileID: 0}
 --- !u!120 &6748576307739557638
 LineRenderer:
   serializedVersion: 2

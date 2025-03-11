@@ -109,22 +109,22 @@ public class BaseGrapple : Base_State
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
 
-        RaycastHit2D hit = nearGround();
-        if (hit)
-        {
-            Debug.Log("ground anti magnetism go!!!");
-            //  _distanceJoint.distance -= 0.05f;
-            Vector2 grappleDistance = (playerController.transform.position - hit.transform.position);
-            _distanceJoint.distance = grappleDistance.magnitude - (_boxCollider.size.y + 0.6f);
-            //This is to force the player off the ground so they can keep swinging in case they go from land to air
-        }
+   //     RaycastHit2D hit = nearGround();
+        ////if (hit)
+        ////{
+        ////    Debug.Log("ground anti magnetism go!!!");
+        ////    _distanceJoint.distance -= 0.05f;
+        ////    Vector2 grappleDistance = (playerController.transform.position - hit.transform.position);
+        ////    _distanceJoint.distance = grappleDistance.magnitude - (_boxCollider.size.y + 0.6f);
+        ////    This is to force the player off the ground so they can keep swinging in case they go from land to air
+        ////}
 
 
 
-        DrawRope();
+            DrawRope();
     }
 
-    void InitInputActions(Animator animator)
+    protected override void InitInputActions(Animator animator)
     {
 
 

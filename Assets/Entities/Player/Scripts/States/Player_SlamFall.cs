@@ -41,8 +41,12 @@ public class Player_SlamFall : Base_State
         float moveDir = animator.GetInteger("HorizAxis");
 
         Vector2 newSpeed = _rb.linearVelocity;
-        newSpeed.x += _slamTurnSpeed * moveDir;
-        newSpeed.x = Mathf.Clamp(moveDir, -_maxTurnSpeed, _maxTurnSpeed);
+        if (Mathf.Abs(newSpeed.x) < _maxTurnSpeed)
+        {
+            newSpeed.x += _slamTurnSpeed * moveDir;
+            newSpeed.x = Mathf.Clamp(moveDir, -_maxTurnSpeed, _maxTurnSpeed);
+        }
+        
         _rb.linearVelocity = newSpeed;
     }
 
