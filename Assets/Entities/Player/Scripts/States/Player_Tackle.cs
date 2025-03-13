@@ -19,6 +19,9 @@ public class Player_Tackle : Base_State
 
     int _tackleDirection;
 
+    const float SLAM_CHECKER_LENGTH = 2.0f;
+
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.Play(layerIndex);
@@ -69,6 +72,8 @@ public class Player_Tackle : Base_State
                 _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, -tackleGravity);
             }
         }
+        animator.SetBool("CanSlam", CanSlam());
+
 
 
     }
@@ -85,6 +90,29 @@ public class Player_Tackle : Base_State
         playerController.hitboxDisabled.RemoveListener(EndTackleMovement);
 
 
+    }
+
+    public bool CanSlam()
+    {
+        Vector2 spawnPos = new Vector2(_rb.position.x, _rb.position.y - playerController.groundColliderSize.y);
+        RaycastHit2D hit = Physics2D.Raycast(spawnPos, new Vector2(0, -1), SLAM_CHECKER_LENGTH, groundMask);
+        Color rayColor = Color.red;
+        bool valToReturn = false;
+        if (hit)
+        {
+            rayColor = Color.green;
+
+            valToReturn = false;
+        }
+        else
+        {
+            valToReturn = true;
+        }
+
+
+        Debug.DrawRay(spawnPos, new Vector2(0, -1), rayColor);
+        return valToReturn;
+        //invert it, because if its colliding, then the player is too close to the ground 
     }
 
 }

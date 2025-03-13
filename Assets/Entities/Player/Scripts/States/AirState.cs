@@ -111,22 +111,22 @@ public class AirState : Base_State
 
     public bool CanSlam()
     {
-        RaycastHit2D hit = Physics2D.Raycast(_rb.position, new Vector2(0, -1), SLAM_CHECKER_LENGTH, groundMask);
+        Vector2 spawnPos = new Vector2(_rb.position.x, _rb.position.y - playerController.groundColliderSize.y);
+        RaycastHit2D hit = Physics2D.Raycast(spawnPos, new Vector2(0, -1), SLAM_CHECKER_LENGTH, groundMask);
         Color rayColor = Color.red;
         bool valToReturn = false;
         if (hit)
         {
             rayColor = Color.green;
-            Debug.Log("Hit object " + hit.collider.transform.name + " which is DEF NOT " + playerController.transform.name);
-            if (hit.collider.transform.name == playerController.transform.name)
-            {
-                valToReturn = false;
-            }
+           
             valToReturn = false;
         }
-        valToReturn = true;
+        else
+        {
+            valToReturn = true;
+        }
 
-        Debug.DrawLine(playerController.transform.position, hit.point, rayColor);
+        Debug.DrawRay(spawnPos, new Vector2(0, -1), rayColor);
         return valToReturn;
         //invert it, because if its colliding, then the player is too close to the ground 
     }

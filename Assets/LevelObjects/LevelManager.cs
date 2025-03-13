@@ -7,13 +7,8 @@ using UnityEngine.InputSystem;
 using Unity.Cinemachine;
 public class LevelManager : MonoBehaviour
 {
-    List<IntelObject> intelObjects = new List<IntelObject>();
-    [SerializeField] GameObject intelUI;
+   
     [SerializeField] PlayerController _playerPrefab;
-
-    [SerializeField] int intelRequired = 1;
-
-    [SerializeField] GameObject exitArea;
 
     float levelTime = 0.0f;
     Dictionary<int, PlayerController> _playerList = new Dictionary<int, PlayerController>();
