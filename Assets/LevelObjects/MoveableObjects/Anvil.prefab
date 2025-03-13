@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6165045665293680236}
   - component: {fileID: 2461861673100252975}
   - component: {fileID: 5748548934680683014}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Anvil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,19 +192,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 973732559930175018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da1714b75e2b715448c79aed137adf79, type: 3}
+  m_Script: {fileID: 11500000, guid: 000185bd903b9614cbdce7ceb3317ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 0}
-  _knockbackScaleFactor: 0.85
-  _damageScaleFactor: 0.03
-  _minKnockback: 45
-  _baseKnockback: 20
-  _minSpeed: 3
-  _minStunTime: 15
-  _minDamage: 15
-  _healthToStunScale: 0.12
-  _minRiseAmount: 12
+  _knockbackScaleFactor: 0.7
+  _damageScaleFactor: 0.015
+  _minKnockback: 30
+  _baseKnockback: 15
+  _minSpeed: 5
+  _minStunTime: 12
+  _minDamage: 5
   DamagedEntity:
     m_PersistentCalls:
       m_Calls: []

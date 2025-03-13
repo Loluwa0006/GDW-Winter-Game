@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7484017010812916712}
   - component: {fileID: 902589804392502083}
   - component: {fileID: 5670390529929243139}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,11 +200,9 @@ MonoBehaviour:
   _damageScaleFactor: 0.015
   _minKnockback: 30
   _baseKnockback: 15
-  _minSpeed: 5
+  _minSpeed: 3
   _minStunTime: 12
   _minDamage: 5
-  _healthToStunScale: 0.0925
-  _minRiseAmount: 5
   DamagedEntity:
     m_PersistentCalls:
       m_Calls: []

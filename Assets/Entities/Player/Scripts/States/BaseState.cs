@@ -34,9 +34,10 @@ public class Base_State : StateMachineBehaviour
     {
         if (!stateInitalized)
         {
-            groundMask = LayerMask.GetMask("Ground", "Wall");
             playerInput = animator.GetComponentInParent<PlayerInput>();
             playerController = animator.GetComponent<PlayerController>();
+            groundMask = playerController.groundMask;
+
             if (useFixedUpdate)
             {
                 animator.updateMode = AnimatorUpdateMode.Fixed;

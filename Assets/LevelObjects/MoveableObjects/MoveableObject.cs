@@ -13,15 +13,15 @@ public class MoveableObject : MonoBehaviour
     [SerializeField] float _knockbackScaleFactor = 0.7f;
     [SerializeField] float _damageScaleFactor = 0.015f;
     [SerializeField] float _minKnockback = 30.0f;
+    //saved as a float instead of a vector because normal determines knockback direction
     [SerializeField] float _baseKnockback = 15.0f;
     [SerializeField] float _minSpeed = 5.0f;
     [SerializeField] int _minStunTime = 12;
     [SerializeField] int _minDamage = 5;
-    [SerializeField] float _healthToStunScale = 0.0925f;
-    [SerializeField] float _minRiseAmount = 5.0f;
-    //when entity is hit they always go up by at least this amount
 
-   public UnityEvent DamagedEntity; 
+   public UnityEvent DamagedEntity;
+
+    Vector2 prevSpeed;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,8 +36,13 @@ public class MoveableObject : MonoBehaviour
         }
     }
 
-    
-   
+    private void FixedUpdate()
+    {
+        prevSpeed = _rb.linearVelocity;
+    }
+
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (_rb.linearVelocity.magnitude < _minSpeed)
@@ -45,36 +50,63 @@ public class MoveableObject : MonoBehaviour
             return;
         }
      
-        HealthComponent health = collision.gameObject.GetComponent<HealthComponent>();
-        float damage = 0.0f;
-        int stunTime = 0;
-        if (health != null)
+        
+
+        if (Vector2.Dot(collision.contacts[0].normal, _rb.linearVelocity.normalized)  > -0.05)
         {
-            damage = Mathf.Max( _rb.linearVelocity.magnitude * _rb.mass * _damageScaleFactor, _minDamage);
-            stunTime = Mathf.RoundToInt(Mathf.Max(_minStunTime, (health.getHealth() * damage) * _healthToStunScale) );
+            Debug.Log("was pushin");
+            return;
+        }
+        HealthComponent healthComponent = collision.gameObject.GetComponent<HealthComponent>();
+        float damage = 0.0f;
+
+        if (healthComponent != null)
+        {
+            float health = healthComponent.getHealth();
+           /* damage = Mathf.Max( _rb.linearVelocity.magnitude * _rb.mass * _damageScaleFactor, _minDamage);
+            Vector2 knockback = GetKnockBack(health, damage, collision.contacts[0].normal);
             //health.Damage(GetKnockBack(health.getHealth(), damage),damage, stunTime);
             DamagedEntity.Invoke();
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
                 Vector2 normal = collision.contacts[0].normal;
-                Debug.Log("GLIZZLERS normal = " + normal.ToString());
-                health.Damage(GetKnockBack(health.getHealth(), damage, normal), damage);
+                healthComponent.Damage(knockback, damage);
+                rb.AddForce(GetKnockBack(health, damage, normal));
+            }*/
+            damage = Mathf.Max(_rb.linearVelocity.magnitude * _rb.mass * _damageScaleFactor, _minDamage);
+            Vector2 knockback = GetKnockBack(health, damage, collision.contacts[0].normal);
+
+            healthComponent.Damage(knockback, damage);
+            Rigidbody2D hitRb = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (hitRb != null)
+            {
+                hitRb.AddForce(knockback, ForceMode2D.Impulse);
             }
+
+            DamagedEntity.Invoke();
+
         }
-        else
-        {
-            Debug.Log("... no health detected");
-        }
+       
        
 
     }
   
     public Vector2 GetKnockBack(float health, float damage, Vector2 normal)
     {
-        Vector2 knockback = Mathf.Max(health * _knockbackScaleFactor + _minKnockback, _minKnockback) * normal;
-        knockback.y = Mathf.Max(_minRiseAmount, knockback.y);
-        Debug.Log("Knocking entity back " + knockback.ToString());
+        Debug.Log("GLIZZLERS normal = " + normal.ToString());
+
+        float knockbackForce = Mathf.Max(health * _knockbackScaleFactor + _minKnockback, _minKnockback);
+        Vector2 knockback = knockbackForce * -normal;
+        if (knockback.y < 3.0f)
+        {
+            knockback.y = 1.0f;
+        }
+        Debug.Log($"Knocking entity back {knockback}");
         return knockback;
+
+        // Vector2 moveKnockback = Vector2.Max(_baseKnockback, _baseKnockback * (Vector2.one * (health * _knockbackScaleFactor)));
+        //   Debug.Log("Knocking entity back " + moveKnockback.ToString());
+        //   return moveKnockback;
     }
 }

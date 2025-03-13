@@ -179,6 +179,10 @@ MonoBehaviour:
   onEntityMaxDamageReached:
     m_PersistentCalls:
       m_Calls: []
+  onEntityDead:
+    m_PersistentCalls:
+      m_Calls: []
+  _remainingLives: 3
 --- !u!114 &2665315777600108226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,19 +206,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 4291361715169242795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da1714b75e2b715448c79aed137adf79, type: 3}
+  m_Script: {fileID: 11500000, guid: 000185bd903b9614cbdce7ceb3317ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb: {fileID: 387606008300953395}
+  _rb: {fileID: 0}
   _knockbackScaleFactor: 0.7
-  _damageScaleFactor: 1.8
+  _damageScaleFactor: 0.015
   _minKnockback: 30
   _baseKnockback: 15
-  _minSpeed: 12
+  _minSpeed: 5
   _minStunTime: 12
   _minDamage: 5
   _healthToStunScale: 0.0925
-  _minRiseAmount: 25
   DamagedEntity:
     m_PersistentCalls:
       m_Calls: []

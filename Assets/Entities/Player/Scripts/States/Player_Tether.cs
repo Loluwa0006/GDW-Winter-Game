@@ -35,7 +35,7 @@ public class Player_Tether : Base_State
             TetherPoint newTether = Instantiate(tetherPointPrefab);
 
         Vector2 tetherDirection = new Vector2(animator.GetInteger("HorizAxis"), animator.GetInteger("VertAxis"));
-        newTether.transform.position = animator.gameObject.transform.position;
+        newTether.transform.position = playerController.transform.position;
 
 
 

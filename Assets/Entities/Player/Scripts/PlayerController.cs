@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Text stateTracker;
     [SerializeField] Text velocityTracker;
-    [SerializeField] LayerMask groundMask;
+    public LayerMask groundMask;
 
     [SerializeField] HitboxComponent hitbox;
 
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
         healthComponent.SetLives(healthComponent.getRemainingLives() - 1);
 
         _rb.sharedMaterial.bounciness = 0.0f;
-        _rb.sharedMaterial.friction = 1.0f;
+        _rb.sharedMaterial.friction = 0.0f;
     }
 
     void ResetAnimatorParameters()
