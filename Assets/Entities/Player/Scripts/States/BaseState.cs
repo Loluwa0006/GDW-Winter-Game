@@ -71,7 +71,15 @@ public class Base_State : StateMachineBehaviour
     public bool TouchingGround()
     {
         RaycastHit2D hit = Physics2D.BoxCast(playerController.transform.position, playerController.groundColliderSize, 0, new Vector2(0, -1), GROUND_CHECKER_LENGTH, groundMask);
-            return hit;
+        if (hit)
+        {
+            if (hit.transform == playerController.transform)
+            {
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 
     public virtual bool IsGrounded()
@@ -89,7 +97,7 @@ public class Base_State : StateMachineBehaviour
 
    protected virtual void InitInputActions(Animator animator)
     {
-        playerInput.actions["Attack"].started += ctx => animator.SetTrigger("AttackPressed");
+        playerInput.actions["Attack"].performed += ctx => animator.SetTrigger("AttackPressed");
         playerInput.actions["Move"].performed += ctx => SetMovementAxis(animator, ctx.ReadValue<Vector2>());
 
         //_ssControls.FindAction("Move").performed += ctx => animator.SetInteger("HorizAxis", Mathf.RoundToInt(ctx.ReadValue<Vector2>().x));

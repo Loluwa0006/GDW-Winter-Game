@@ -439,15 +439,14 @@ MonoBehaviour:
   velocityTracker: {fileID: 0}
   groundMask:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 1472
   hitbox: {fileID: 2335791529287543042}
   _playerKeybinds:
   - {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  - {fileID: -944628639613478452, guid: e0ce308bafbedfc429a96209dbff8d94, type: 3}
+  - {fileID: -944628639613478452, guid: b2436c92029dac946bc0d0bb47c32ceb, type: 3}
   _respawnPoint: {fileID: 0}
   _playerInput: {fileID: 2932344813579778816}
   playerIndex: 1
-  _remainingLives: 3
   _currentGrapple: 0
   groundColliderSize: {x: 0, y: 0}
 --- !u!114 &2186834193266078834
@@ -473,6 +472,10 @@ MonoBehaviour:
   onEntityMaxDamageReached:
     m_PersistentCalls:
       m_Calls: []
+  onEntityDead:
+    m_PersistentCalls:
+      m_Calls: []
+  _remainingLives: 3
 --- !u!114 &2932344813579778816
 MonoBehaviour:
   m_ObjectHideFlags: 0

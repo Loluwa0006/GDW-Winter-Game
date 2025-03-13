@@ -68,6 +68,7 @@
     <Compile Include="Assets\Entities\Player\Scripts\States\MoveState.cs" />
     <Compile Include="Assets\LevelObjects\AssortedItems\ItemHolder.cs" />
     <Compile Include="Assets\LevelObjects\MoveableObjects\MoveableObject.cs" />
+    <Compile Include="Assets\Entities\Player\PlayerTwoActions.cs" />
     <Compile Include="Assets\LevelObjects\ObjectSpawner.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Idle.cs" />
     <Compile Include="Assets\Entities\Components\HealthComponent.cs" />
@@ -76,7 +77,6 @@
     <Compile Include="Assets\LevelObjects\OldShadowstride\ExitArea.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\BaseState.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Jump.cs" />
-    <Compile Include="Assets\Entities\Player\PlayerTwoControls.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\GroundGrapple.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\TetherPoint.cs" />
     <Compile Include="Assets\PauseMenu\PauseMenu.cs" />

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tetherball_Background_0: 236636875299324508
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

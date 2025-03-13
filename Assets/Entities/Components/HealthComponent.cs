@@ -10,6 +10,10 @@ public class HealthComponent : MonoBehaviour
     public UnityEvent<float, int> onEntityDamaged;
     public UnityEvent<float, int> onEntityHealed;
     public UnityEvent onEntityMaxDamageReached;
+    public UnityEvent onEntityDead;
+    const int minHitstun = 4;
+    const float hitstunScale = 0.015f;
+    [SerializeField] int _remainingLives = 3;  
 
 
 
@@ -19,9 +23,9 @@ public class HealthComponent : MonoBehaviour
     {
     }
 
-    public virtual void Damage(float damageTaken = 1.0f, int stunTime = 1)
+    public virtual void Damage(Vector2 knockback, float damageTaken = 1.0f)
     {
-
+        int stunTime = CalculateStun(knockback);
         damageTaken = (float)Math.Round(damageTaken, 2);
 
         health += damageTaken;
@@ -39,9 +43,9 @@ public class HealthComponent : MonoBehaviour
 
     }
 
-    public float CalculateStun()
+    public int CalculateStun(Vector2 knockback)
     {
-        return 0.0f;
+        return Mathf.RoundToInt(minHitstun * (knockback.magnitude) * hitstunScale);
         //might be used later for classic attacks
     }
 
@@ -58,6 +62,20 @@ public class HealthComponent : MonoBehaviour
         return health;
     }
 
+    public int getRemainingLives()
+    {
+        return _remainingLives;
+    }
+
+    public void SetLives(int newLifeAmount) 
+    {
+        if (_remainingLives < newLifeAmount)
+        {
+            onEntityDead.Invoke();
+        }
+        _remainingLives = newLifeAmount;
+        
+    }
     
     // Update is called o  nce per frame
     void Update()

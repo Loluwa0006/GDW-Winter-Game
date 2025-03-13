@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7225024878023987553}
   - component: {fileID: 1271180562914968725}
   - component: {fileID: 7989643855677116325}
-  - component: {fileID: 5408604257551373362}
   - component: {fileID: 7484017010812916712}
   - component: {fileID: 902589804392502083}
+  - component: {fileID: 5670390529929243139}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -110,31 +110,6 @@ MonoBehaviour:
   timerOver:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5408604257551373362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204790433877662729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da1714b75e2b715448c79aed137adf79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rb: {fileID: 7484017010812916712}
-  _knockbackScaleFactor: 0.7
-  _damageScaleFactor: 0.015
-  _minKnockback: 20
-  _baseKnockback: 12
-  _minSpeed: 4
-  _minStunTime: 9
-  _minDamage: 5
-  _healthToStunScale: 0.08
-  _minRiseAmount: 5
-  DamagedEntity:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!50 &7484017010812916712
 Rigidbody2D:
   serializedVersion: 5
@@ -208,3 +183,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.82, y: 1.82}
   m_EdgeRadius: 0
+--- !u!114 &5670390529929243139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204790433877662729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 000185bd903b9614cbdce7ceb3317ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb: {fileID: 7484017010812916712}
+  _knockbackScaleFactor: 0.7
+  _damageScaleFactor: 0.015
+  _minKnockback: 30
+  _baseKnockback: 15
+  _minSpeed: 5
+  _minStunTime: 12
+  _minDamage: 5
+  _healthToStunScale: 0.0925
+  _minRiseAmount: 5
+  DamagedEntity:
+    m_PersistentCalls:
+      m_Calls: []

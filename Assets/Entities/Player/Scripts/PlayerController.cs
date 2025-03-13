@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
 
 
     public int playerIndex = 1;
-    public int _remainingLives = 3;
     public enum GrapplePresets
     {
         REGULAR,
@@ -60,7 +59,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         InitTimerList();
-        _playerInput = GetComponent<PlayerInput>();
         healthComponent = GetComponent<HealthComponent>();
         healthComponent.onEntityDamaged.AddListener(OnPlayerStruck);
         groundColliderSize = GetHurtbox().size * 0.8f;
@@ -91,8 +89,13 @@ public class PlayerController : MonoBehaviour
     {
         this.playerIndex = playerIndex;
         _playerInput.actions = _playerKeybinds[playerIndex - 1];
+         
         _playerInput.actions.Enable();
-       // Debug.Log("enabled controls for player " + playerIndex.ToString());
+        _playerInput.SwitchCurrentActionMap("BattleControls");       
+        Debug.Log("Enabled actions for player " + playerIndex.ToString());
+        // Debug.Log("enabled controls for player " + playerIndex.ToString());
+        _playerInput.enabled = false;
+        _playerInput.enabled = true;
 
     }
     public void DisablePlayer()
@@ -139,10 +142,10 @@ public class PlayerController : MonoBehaviour
     }
     public void onPlayerDeath()
     {
-        _remainingLives--;
         Debug.Log("dead");
         playerDead.Invoke(playerIndex);
-        if (_remainingLives <= 0)
+        int lives = healthComponent.getRemainingLives() - 1;
+        if (lives <= 0)
         {
             playerEliminated.Invoke(playerIndex);
             Destroy(gameObject);
@@ -164,7 +167,10 @@ public class PlayerController : MonoBehaviour
 
         healthComponent.Heal(Mathf.RoundToInt(healthComponent.getHealth()) + 1);
 
-        playerDead.Invoke(_remainingLives);
+        healthComponent.SetLives(healthComponent.getRemainingLives() - 1);
+
+        _rb.sharedMaterial.bounciness = 0.0f;
+        _rb.sharedMaterial.friction = 1.0f;
     }
 
     void ResetAnimatorParameters()

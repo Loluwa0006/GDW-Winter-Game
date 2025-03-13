@@ -36,7 +36,7 @@ public class Player_Tackle : Base_State
         }
 
 
-
+        _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, 0.0f);
         _tackleDirection = Mathf.RoundToInt(playerController.transform.localScale.x);
     }
 

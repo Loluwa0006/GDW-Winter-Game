@@ -59,12 +59,9 @@ public class LevelManager : MonoBehaviour
             AddNewHud(_playerList[i]);
 
             cinemachineFramer.AddMember(_playerList[i].transform, 1, 0.5f);
-
             //playerInput.currentActionMap = playerInput.action
-
         }
     }
-
     void AddNewHud(PlayerController player)
     {
         PlayerHUD newHud = Instantiate(hudPrefab, hudHolder.transform);

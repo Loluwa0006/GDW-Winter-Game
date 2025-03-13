@@ -41,12 +41,10 @@ public class GrappleManager : Base_State
 
 
 
-        Vector2 move = playerInput.actions["Move"].ReadValue<Vector2>();
+        Vector2 move = new Vector2(animator.GetInteger("HorizAxis"), animator.GetInteger("VertAxis"));
 
-        animator.SetInteger("HorizAxis", Mathf.RoundToInt(move.x));
-        animator.SetInteger("VertAxis", Mathf.RoundToInt(move.y));
 
-        Vector3 aimDirection = new Vector2(animator.GetInteger("HorizAxis"), animator.GetInteger("VertAxis"));
+        Vector3 aimDirection = move;
 
         RaycastHit2D hit = Physics2D.Raycast(playerController.transform.position, aimDirection, _maxDistance, _grapplableLayers);
         //Debug.DrawLine(playerController.transform.position,playerController.transform.position + ( aimDirection * _maxDistance), Color.red);

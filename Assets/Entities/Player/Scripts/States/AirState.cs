@@ -63,7 +63,6 @@ public class AirState : Base_State
         {
             newSpeed.x += acceleration * move_dir;
             newSpeed.x = Mathf.Clamp(newSpeed.x, -maxSpeed, maxSpeed);
-
         }
 
         newSpeed.y += getGravity() * Time.deltaTime;
@@ -72,7 +71,10 @@ public class AirState : Base_State
             newSpeed.y = maxFallSpeed;
         }
 
-        _rb.linearVelocity = newSpeed;
+        if (animator.GetInteger("HitstunAmount") <= 0)
+        {
+            _rb.linearVelocity = newSpeed;
+        }
 
         bool touchingGround = TouchingGround();
 
