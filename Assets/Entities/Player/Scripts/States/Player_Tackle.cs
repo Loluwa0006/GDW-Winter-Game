@@ -10,11 +10,15 @@ public class Player_Tackle : Base_State
     Rigidbody2D _rb;
 
     [SerializeField] float _tackleSpeed = 45.0f;
+    [SerializeField] float verticalSpeedSlow = 0.85f;
+
+    [SerializeField] float tackleGravity = 5.0f;
+
+    bool useGravity = false;
 
 
     int _tackleDirection;
 
-    bool _hitboxEventsConnected = false;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.Play(layerIndex);
@@ -27,14 +31,12 @@ public class Player_Tackle : Base_State
 
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
-        if (!_hitboxEventsConnected)
-        {
-            _hitboxEventsConnected = true;
+       
             playerController.hitboxEnabled.AddListener(StartTackleMovement);
             playerController.hitboxDisabled.AddListener(EndTackleMovement);
 
-        }
 
+        useGravity = false;
 
         _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, 0.0f);
         _tackleDirection = Mathf.RoundToInt(playerController.transform.localScale.x);
@@ -44,12 +46,13 @@ public class Player_Tackle : Base_State
 
     public void StartTackleMovement()
     {
-        _rb.linearVelocity = new Vector2(_tackleSpeed * _tackleDirection, 0.0f);
+        _rb.linearVelocity = new Vector2(_tackleSpeed * _tackleDirection, _rb.linearVelocity.y * (1 - verticalSpeedSlow));
     }
 
     public void EndTackleMovement()
     {
         _rb.linearVelocity = Vector2.zero;
+        useGravity = true;
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -57,7 +60,14 @@ public class Player_Tackle : Base_State
         base.OnStateUpdate(animator, stateInfo, layerIndex);
         if (animator.GetInteger("HitstunAmount") <= 0)
         {
-            _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, 0.0f);
+            if (!useGravity)
+            {
+                _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, 0.0f);
+            }
+            else
+            {
+                _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, -tackleGravity);
+            }
         }
 
 
@@ -70,6 +80,11 @@ public class Player_Tackle : Base_State
         base.OnStateExit(animator, stateInfo, layerIndex);
         _rb.linearVelocity = Vector2.zero;
         playerController.GetHitbox().enabled = false;
+
+        playerController.hitboxEnabled.RemoveListener(StartTackleMovement);
+        playerController.hitboxDisabled.RemoveListener(EndTackleMovement);
+
+
     }
 
 }

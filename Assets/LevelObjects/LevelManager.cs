@@ -25,6 +25,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] List<Transform> spawnLocations = new List<Transform>();
 
     [SerializeField] CinemachineTargetGroup cinemachineFramer;
+    [SerializeField] CinemachineGroupFraming _cinemachineGrouper;
 
     [SerializeField] PlayerHUD hudPrefab;
 
@@ -61,6 +62,7 @@ public class LevelManager : MonoBehaviour
             cinemachineFramer.AddMember(_playerList[i].transform, 1, 0.5f);
             //playerInput.currentActionMap = playerInput.action
         }
+        _cinemachineGrouper.enabled = true;
     }
     void AddNewHud(PlayerController player)
     {

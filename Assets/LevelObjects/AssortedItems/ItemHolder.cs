@@ -61,6 +61,7 @@ public class ItemHolder : MonoBehaviour
         itemDropped = true;
         _itemToDrop._rb.gravityScale = 1.0f;
         _itemToDrop._rb.linearVelocity = Vector2.zero;
+        _itemToDrop.GetComponent<Collider2D>().enabled = true;
         //do not inherit velocity of parent or else it will go flying
     }
     void StartItemDropProcess()
@@ -78,6 +79,7 @@ public class ItemHolder : MonoBehaviour
         {
             float diameter = circleCollider.radius * 2;
             _itemToDrop.transform.localPosition = new Vector2(diameter, diameter);
+            circleCollider.enabled = false;
         }
         else
         {
@@ -85,6 +87,7 @@ public class ItemHolder : MonoBehaviour
             if (boxCollider)
             {
                 _itemToDrop.transform.localPosition = new Vector2(boxCollider.size.x, boxCollider.size.y);
+                boxCollider.enabled = false;
             }
         }
         _itemToDrop._rb.gravityScale = 0.0f;

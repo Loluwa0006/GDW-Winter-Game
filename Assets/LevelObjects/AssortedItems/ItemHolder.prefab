@@ -136,11 +136,11 @@ MonoBehaviour:
   _minTimeUntilDrop: 0
   _maxTimeUntilDrop: 0.85
   _objectPrefabs:
-  - {fileID: 5574188189812217441, guid: 1564a2dc3d3a69f4281ea3cdc08250fe, type: 3}
+  - {fileID: 5574188189812217441, guid: 37a0a739819d68e42b49b88b5bbd5179, type: 3}
   _groundCheckerLength: 45
   _groundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
 --- !u!114 &5171436874392685138
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,6 +29,8 @@ public class TetherPoint : MonoBehaviour
 
     PlayerController playerController;
 
+    const float SLINGSHOTMASSFACTOR = 4.5f;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -138,10 +140,11 @@ public class TetherPoint : MonoBehaviour
                 connectedObject.AddForce(directionToTether * pullStrength);
                 break;
             case PlayerController.GrapplePresets.SLINGSHOT:
-                //  connectedObject.linearVelocity = Vector2.zero;
+                  connectedObject.linearVelocity = Vector2.zero;
                 //reset it so that there's no force to counter act it
                 //since it's only 1 time, it would suck without this
-                connectedObject.AddForce(directionToTether * slingStrength);
+                //we also scale it with mass so that its not trash with heavier objects like anvils
+                connectedObject.AddForce(directionToTether * slingStrength * ( 1 + connectedObject.mass * SLINGSHOTMASSFACTOR));
                 tetherLocked = false;
                 break;
             case PlayerController.GrapplePresets.CHARGE:
