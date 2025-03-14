@@ -2234,6 +2234,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4650897967910084888, guid: 50b15082626f37443bf238c4f70bba0e, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: e14b2bce772d4de4da82e22ec299028c, type: 3}
+    - target: {fileID: 4650897967910084888, guid: 50b15082626f37443bf238c4f70bba0e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e14b2bce772d4de4da82e22ec299028c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2250,6 +2258,22 @@ PrefabInstance:
     - target: {fileID: 1342085607167384837, guid: a8d967ce69ee30249a08dcee6e72549f, type: 3}
       propertyPath: m_Name
       value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733759778605021618, guid: a8d967ce69ee30249a08dcee6e72549f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 131.61742
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733759778605021618, guid: a8d967ce69ee30249a08dcee6e72549f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 74.80038
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733759778605021618, guid: a8d967ce69ee30249a08dcee6e72549f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -961.1295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733759778605021618, guid: a8d967ce69ee30249a08dcee6e72549f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -387.6694
       objectReference: {fileID: 0}
     - target: {fileID: 8627127712591533429, guid: a8d967ce69ee30249a08dcee6e72549f, type: 3}
       propertyPath: _bgmPlayer

@@ -23,7 +23,6 @@ public class TetherPoint : MonoBehaviour
 
     [SerializeField] Rigidbody2D connectedObject;
 
-    [SerializeField] HealthComponent healthComponent;
 
 
 
@@ -32,12 +31,7 @@ public class TetherPoint : MonoBehaviour
     const float SLINGSHOTMASSFACTOR = 4.5f;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    private void Awake()
-    {
-        //  healthComponent.onEntityMaxDamageReached.AddListener(breakLink);
-    }
+   
 
     public void FireTether(Vector2 dir, PlayerController player)
     {

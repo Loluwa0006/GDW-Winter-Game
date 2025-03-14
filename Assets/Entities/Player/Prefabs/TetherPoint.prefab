@@ -111,10 +111,10 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 1216
+    m_Bits: 1472
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 512
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -132,10 +132,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 1216
+    m_Bits: 1472
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -186,7 +186,6 @@ MonoBehaviour:
   connectedTether: {fileID: 0}
   lineRenderer: {fileID: 6748576307739557638}
   connectedObject: {fileID: 0}
-  healthComponent: {fileID: 0}
 --- !u!120 &6748576307739557638
 LineRenderer:
   serializedVersion: 2
