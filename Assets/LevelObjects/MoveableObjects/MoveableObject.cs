@@ -94,7 +94,7 @@ public class MoveableObject : MonoBehaviour
   
     public Vector2 GetKnockBack(float health, float damage, Vector2 normal)
     {
-        Debug.Log("GLIZZLERS normal = " + normal.ToString());
+       //Debug.Log("GLIZZLERS normal = " + normal.ToString());
 
         float knockbackForce = Mathf.Max(health * _knockbackScaleFactor + _minKnockback, _minKnockback);
         Vector2 knockback = knockbackForce * -normal;

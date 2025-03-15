@@ -10,4 +10,9 @@ public class SceneHandler : MonoBehaviour
             SceneManager.LoadScene(newScene);
         }
     }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(GameManager.instance.GetSelectedLevel());
+    }
 }

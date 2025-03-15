@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     int numberOfPlayers = 2;
 
+    string currentLevel = "PlatformStage1";
+
     PlayerController.GrapplePresets[] playerSelectedTether = new PlayerController.GrapplePresets[MAX_PLAYERS];
     private void Awake()
     {
@@ -34,5 +36,15 @@ public class GameManager : MonoBehaviour
     public int GetPlayerCount()
     {
         return numberOfPlayers;
+    }
+
+    public string GetSelectedLevel()
+    {
+        return currentLevel;
+    }
+
+    public void SetSelectedLevel(string newLevel)
+    {
+        currentLevel = newLevel;
     }
 }
