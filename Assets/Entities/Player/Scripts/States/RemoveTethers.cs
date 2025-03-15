@@ -6,9 +6,11 @@ public class RemoveTethers : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-    for (int i = 0; i < GameObject.FindGameObjectsWithTag("TetherPoint").Length; i++)
+        GameObject[] tethers = GameObject.FindGameObjectsWithTag("TetherPoint");
+    foreach (GameObject obj in tethers)
         {
-            Destroy(GameObject.FindGameObjectsWithTag("TetherPoint")[i]);
+            TetherPoint tether = obj.GetComponent<TetherPoint>();
+            tether.RemoveTether();
         }
     }
 

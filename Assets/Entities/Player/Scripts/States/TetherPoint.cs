@@ -1,10 +1,15 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 [System.Serializable]
 public class TetherPoint : MonoBehaviour
 {
+    const float SLINGSHOTMASSFACTOR = 4.5f;
+    const float CHARGE_SPEED = 0.08f;
+    const float MAX_CHARGE_AMOUNT = 1.75f;
+
     public Rigidbody2D _rb;
     public FixedJoint2D _joint;
 
@@ -23,15 +28,10 @@ public class TetherPoint : MonoBehaviour
 
     [SerializeField] Rigidbody2D connectedObject;
 
-
-
-
     PlayerController playerController;
 
-    const float SLINGSHOTMASSFACTOR = 4.5f;
-
-
-   
+    float tetherCharge = 0.0f;
+    
 
     public void FireTether(Vector2 dir, PlayerController player)
     {
@@ -114,6 +114,11 @@ public class TetherPoint : MonoBehaviour
                 pullObjects();
             }
 
+            if (playerController._currentGrapple == PlayerController.GrapplePresets.CHARGE)
+            {
+                tetherCharge += CHARGE_SPEED;
+            }
+
             //Debug.Log("Connected tether is " + connectedTether.gameObject.name);
         }
 
@@ -141,18 +146,24 @@ public class TetherPoint : MonoBehaviour
                 connectedObject.AddForce(directionToTether * slingStrength * ( 1 + connectedObject.mass * SLINGSHOTMASSFACTOR));
                 tetherLocked = false;
                 break;
-            case PlayerController.GrapplePresets.CHARGE:
-                break; //to do later
 
         }
 
     }
-
-    public bool tetherLinked() { return tetherLocked; }
-
     // Update is called once per frame
-    void Update()
+    public void RemoveTether()
     {
-
+        if (playerController._currentGrapple == PlayerController.GrapplePresets.CHARGE && connectedObject != null)
+        {
+            Vector2 directionToTether = (connectedTether.transform.position - connectedObject.transform.position).normalized;
+            if (tetherCharge > MAX_CHARGE_AMOUNT)
+            {
+                tetherCharge = MAX_CHARGE_AMOUNT;
+            }
+            Vector2 force = directionToTether * slingStrength * (0.5f + tetherCharge) * SLINGSHOTMASSFACTOR;
+            Debug.Log("EDGEMAXXING force is " + force.ToString());
+            connectedObject.AddForce(force);
+        }
+        Destroy(gameObject);
     }
 }
