@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
         _playerInput.actions = _playerKeybinds[playerIndex - 1];
         _playerInput.actions.Enable();
         _playerInput.SwitchCurrentActionMap("BattleControls");    
-        _playerInput.SwitchCurrentControlScheme("KeyboardMouse", Keyboard.current);
+       // _playerInput.SwitchCurrentControlScheme("KeyboardMouse", Keyboard.current);
         Debug.Log("Enabled actions for player " + playerIndex.ToString());
         // Debug.Log("enabled controls for player " + playerIndex.ToString());
        
