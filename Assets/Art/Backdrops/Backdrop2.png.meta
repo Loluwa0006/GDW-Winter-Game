@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4b24bd544d9762a49ad8aa1798810239
+guid: 44e3e3a4462b35949a393cc429aad010
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2993288901812793854
-    second: wipeout_stage_1_0
+      213: 575291468296595578
+    second: Backdrop2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wipeout_stage_1_0
+      name: Backdrop2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 3024
-        height: 4032
+        width: 1000
+        height: 700
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 20e44595a93b576d0800000000000000
-      internalID: -2993288901812793854
+      spriteID: a78a12ada88dbf700800000000000000
+      internalID: 575291468296595578
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wipeout_stage_1_0: -2993288901812793854
+      Backdrop2_0: 575291468296595578
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

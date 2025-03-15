@@ -73,6 +73,7 @@ public class Player_Tackle : Base_State
             }
         }
         animator.SetBool("CanSlam", CanSlam());
+        
 
 
 

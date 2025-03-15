@@ -448,7 +448,7 @@ MonoBehaviour:
   _playerInput: {fileID: 2932344813579778816}
   playerIndex: 1
   _currentGrapple: 0
-  groundColliderSize: {x: 0, y: 0}
+  groundColliderSize: {x: 0.8, y: 0.8}
 --- !u!114 &2186834193266078834
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ public class BaseGrapple : Base_State
 
     protected Rigidbody2D _rb;
 
-    const float GRAPPLE_GRAVITY = 0.8f;
+    const float GRAPPLE_GRAVITY_REDUCTION = 0.2f;
 
 
     float groundCheckerLength = 0.85f;
@@ -76,7 +76,8 @@ public class BaseGrapple : Base_State
         _distanceJoint.connectedAnchor = _grapplePoint;
         _grappleLine.enabled = true;
         _distanceJoint.enabled = true;
-        _rb.gravityScale = GRAPPLE_GRAVITY;
+        _rb.gravityScale -= GRAPPLE_GRAVITY_REDUCTION;
+
 
 
 
@@ -126,14 +127,8 @@ public class BaseGrapple : Base_State
 
     protected override void InitInputActions(Animator animator)
     {
-
-
         playerInput.actions["Grapple"].performed += ctx => animator.SetBool("GrapplePressed", true);
-
         playerInput.actions["Grapple"].canceled += ctx => animator.SetBool("GrapplePressed", false);
-
-
-
     }
 
 
@@ -142,7 +137,7 @@ public class BaseGrapple : Base_State
         _distanceJoint.enabled = false;
         _grappleLine.enabled = false;
 
-        _rb.gravityScale = 1.0f;
+        _rb.gravityScale += GRAPPLE_GRAVITY_REDUCTION;
     }
 
 }

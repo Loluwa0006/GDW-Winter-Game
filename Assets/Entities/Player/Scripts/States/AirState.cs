@@ -126,6 +126,7 @@ public class AirState : Base_State
             valToReturn = true;
         }
 
+        
         Debug.DrawRay(spawnPos, new Vector2(0, -1), rayColor);
         return valToReturn;
         //invert it, because if its colliding, then the player is too close to the ground 

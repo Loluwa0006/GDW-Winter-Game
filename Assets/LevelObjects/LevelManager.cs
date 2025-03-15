@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
     }
     private void Start()
     {
-        addPlayers(2);
+        addPlayers(GameManager.instance.GetPlayerCount()) ;
     }
 
 

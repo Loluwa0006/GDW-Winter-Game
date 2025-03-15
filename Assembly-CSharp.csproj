@@ -63,12 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Run.cs" />
-    <Compile Include="Assets\LevelObjects\Killbox.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_SlamLand.cs" />
+    <Compile Include="Assets\LevelObjects\AssortedItems\SceneHandler.cs" />
+    <Compile Include="Assets\LevelObjects\GameManager.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\MoveState.cs" />
     <Compile Include="Assets\LevelObjects\AssortedItems\ItemHolder.cs" />
     <Compile Include="Assets\LevelObjects\MoveableObjects\MoveableObject.cs" />
-    <Compile Include="Assets\Entities\Player\PlayerTwoActions.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Idle.cs" />
     <Compile Include="Assets\Entities\Components\HealthComponent.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\PlayerController.cs" />
@@ -76,11 +76,13 @@
     <Compile Include="Assets\LevelObjects\OldShadowstride\ExitArea.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\BaseState.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Jump.cs" />
+    <Compile Include="Assets\LevelObjects\AssortedItems\Killbox.cs" />
+    <Compile Include="Assets\Entities\Player\PlayerTwoControls.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\GroundGrapple.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\TetherPoint.cs" />
     <Compile Include="Assets\PauseMenu\PauseMenu.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Climb.cs" />
-    <Compile Include="Assets\LevelObjects\BaseElement.cs" />
+    <Compile Include="Assets\LevelObjects\OldShadowstride\BaseElement.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\RemoveTethers.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Slam.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Tackle.cs" />
@@ -100,7 +102,6 @@
     <Compile Include="Assets\PauseMenu\PauseMenuFunctions.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\GrappleManager.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_CrouchRun.cs" />
-    <Compile Include="Assets\LevelObjects\SceneHandler.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\UI\PlayerHUD.cs" />
     <Compile Include="Assets\LevelObjects\AssortedItems\ObjectSpawner.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Hitstun.cs" />
