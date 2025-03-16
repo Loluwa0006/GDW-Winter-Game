@@ -25,14 +25,12 @@ public class MoveState : Base_State
         {
             _rb = animator.GetComponentInParent<Rigidbody2D>();
         }
-        if (jumpBuffer == null)
-        {
+        
             jumpBuffer = playerController.GetTimer("JumpBuffer");
-        }
-        if (coyoteTimer == null)
-        {
+        
+      
             coyoteTimer = playerController.GetTimer("Coyote");
-        }
+        
       
 
     }
@@ -75,7 +73,7 @@ public class MoveState : Base_State
     {
 
         //Need to account for slopes
-        RaycastHit2D hit = Physics2D.Raycast(playerController.transform.position, new Vector2(0, -1), GROUND_CHECKER_LENGTH * 2, groundMask);
+        RaycastHit2D hit = Physics2D.Raycast(playerController.transform.position, new Vector2(0, -1), GROUND_CHECKER_LENGTH * 2, playerController.groundMask);
         //Multiply ground checker length by 2 because downward slopes will make the raycast miss
 
         Vector3 slopeNormal = Vector3.Cross(hit.normal, new Vector2(moveDir, 0)) * desiredSpeed;

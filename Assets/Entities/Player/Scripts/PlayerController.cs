@@ -65,6 +65,20 @@ public class PlayerController : MonoBehaviour
         GetHitbox();
 
     }
+
+    private void Update()
+    {
+       if (_rb.linearVelocity.y > 0)
+        {
+            _rb.excludeLayers = LayerMask.GetMask("Platform");
+            hurtbox.excludeLayers = LayerMask.GetMask("Platform");
+        }
+       else
+        {
+            _rb.excludeLayers = 0;
+            hurtbox.excludeLayers = 0;
+        }
+    }
     public void OnHitboxEnabled()
     {
         hitboxEnabled.Invoke();
@@ -137,12 +151,11 @@ public class PlayerController : MonoBehaviour
         {
             Timer timer = (Timer)component;
             _timerList.Add(timer.GetID(), timer);
-            Debug.Log("Added timer " + timer.GetID());
+          //  Debug.Log("Added timer " + timer.GetID());
         }
     }
     public void onPlayerDeath()
     {
-        Debug.Log("dead");
         playerDead.Invoke(playerIndex);
         int lives = healthComponent.getRemainingLives() - 1;
         if (lives <= 0)

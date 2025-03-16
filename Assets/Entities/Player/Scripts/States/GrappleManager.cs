@@ -7,14 +7,12 @@ public class GrappleManager : Base_State
 
     [SerializeField] float _maxDistance = 35.0f;
 
-
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
 
         if (!stateInitalized)
         {
-            groundMask = LayerMask.GetMask("Ground", " Wall");
             playerInput = animator.GetComponentInParent<PlayerInput>();
             playerController = animator.GetComponent<PlayerController>();
             if (useFixedUpdate)

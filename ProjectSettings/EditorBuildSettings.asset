@@ -6,17 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestArea.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 0
-    path: Assets/Scenes/PlatformFighter.unity
-    guid: 2348444ead13ecc41bb7a6ee08b61897
+    path: Assets/Scenes/MainMenu.unity
+    guid: adbe4598c3a008646a51deb02323617a
   - enabled: 1
     path: Assets/Scenes/PlatformStage1.unity
     guid: bab029c2cf246994999cbb89486ecc6b
   - enabled: 1
-    path: Assets/Scenes/Shadowstride.unity
-    guid: 8e9ffe39cd651e648bb170c5257e2ac6
+    path: Assets/Scenes/GrayboxLevelOne.unity
+    guid: 548eec71f22abe5458c2e04345725050
+  - enabled: 1
+    path: Assets/Scenes/GrayboxLevelTwo.unity
+    guid: 28c6b700bf643d34bbd8aef169c5ea56
+  - enabled: 1
+    path: Assets/Scenes/PlatformStage3.unity
+    guid: 054f1ff19bf17b24ab44ec84ead83d88
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 99f9c9493070a9d4c979a8fec7c5a8d3, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 13484b5b5ae0b5e4b8d8e9969fbf7935, type: 3}

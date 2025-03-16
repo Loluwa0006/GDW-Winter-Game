@@ -39,7 +39,7 @@ public class Player_SlamLand : Base_State
 
     public void EndSlamMovement(Animator animator)
     {
-        Debug.Log(_rb.linearVelocity.x * (1 + _bonusSpeedMultiplierOnExit));
+       // Debug.Log(_rb.linearVelocity.x * (1 + _bonusSpeedMultiplierOnExit));
         //Debug.Log(_rb.linearVelocity.x * (1 + _bonusSpeedMultiplierOnExit) * animator.GetInteger("HorizAxis"));
         
         _rb.linearVelocity = new Vector2(_rb.linearVelocity.x * (1 + (_bonusSpeedMultiplierOnExit * animator.GetInteger("HorizAxis"))), _slamSpeed *  _bounceAmount);

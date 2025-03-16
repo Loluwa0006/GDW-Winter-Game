@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class PlayerHUD : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] TMP_Text stockOverflowDisplay;
     [SerializeField] GameObject StockImageHolder;
     [SerializeField] GameObject stockImage;
+    [SerializeField] Image HUDBackground;
+
+   [SerializeField] List<Color32> HUDColors;
 
     HealthComponent playerHealth;
 
@@ -25,6 +29,11 @@ public class PlayerHUD : MonoBehaviour
         SetPercentageDisplay(playerHealth.getHealth(), 0);
 
         player.playerDead.AddListener(SetLifeDisplay);
+
+        Debug.Log("Setting up HUD for player " + player.playerIndex.ToString());
+        HUDBackground.color = HUDColors[player.playerIndex - 1];
+        
+
     }
 
     void EndHUD(int playerIndex)

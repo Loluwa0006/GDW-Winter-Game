@@ -7,8 +7,8 @@ using UnityEngine.Events;
 public class TetherPoint : MonoBehaviour
 {
     const float SLINGSHOTMASSFACTOR = 4.5f;
-    const float CHARGE_SPEED = 0.08f;
-    const float MAX_CHARGE_AMOUNT = 1.75f;
+    const float CHARGE_SPEED = 0.12f;
+    const float MAX_CHARGE_AMOUNT = 2.75f;
 
     public Rigidbody2D _rb;
     public FixedJoint2D _joint;
@@ -161,7 +161,7 @@ public class TetherPoint : MonoBehaviour
                 tetherCharge = MAX_CHARGE_AMOUNT;
             }
             Vector2 force = directionToTether * slingStrength * (0.5f + tetherCharge) * SLINGSHOTMASSFACTOR;
-            Debug.Log("EDGEMAXXING force is " + force.ToString());
+           
             connectedObject.AddForce(force);
         }
         Destroy(gameObject);

@@ -112,7 +112,7 @@ public class AirState : Base_State
     public bool CanSlam()
     {
         Vector2 spawnPos = new Vector2(_rb.position.x, _rb.position.y - playerController.groundColliderSize.y);
-        RaycastHit2D hit = Physics2D.Raycast(spawnPos, new Vector2(0, -1), SLAM_CHECKER_LENGTH, groundMask);
+        RaycastHit2D hit = Physics2D.Raycast(spawnPos, new Vector2(0, -1), SLAM_CHECKER_LENGTH, playerController.groundMask);
         Color rayColor = Color.red;
         bool valToReturn = false;
         if (hit)

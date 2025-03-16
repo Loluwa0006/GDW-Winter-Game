@@ -51,7 +51,6 @@ public class BaseGrapple : Base_State
             }
             _distanceJoint.autoConfigureConnectedAnchor = false;
             _distanceJoint.enableCollision = true;
-            groundMask = LayerMask.GetMask("Ground", " Wall");
             playerInput = animator.GetComponentInParent<PlayerInput>();
             playerController = animator.GetComponent<PlayerController>();
             if (useFixedUpdate)
@@ -96,7 +95,7 @@ public class BaseGrapple : Base_State
 
     RaycastHit2D nearGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(playerController.transform.position, new Vector2(0, -1), groundCheckerLength, groundMask);
+        RaycastHit2D hit = Physics2D.Raycast(playerController.transform.position, new Vector2(0, -1), groundCheckerLength, playerController.groundMask);
         Color rayColor = Color.red;
         if (hit)
         {

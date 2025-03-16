@@ -13,12 +13,7 @@ public class Base_State : StateMachineBehaviour
 
     [SerializeField] protected bool useFixedUpdate = false;
 
-   protected LayerMask groundMask ;
-
-
-
    protected bool stateInitalized = false;
-
 
     BoxCollider2D playerControllerHitbox;
     Vector2 groundColliderSize;
@@ -36,7 +31,6 @@ public class Base_State : StateMachineBehaviour
         {
             playerInput = animator.GetComponentInParent<PlayerInput>();
             playerController = animator.GetComponent<PlayerController>();
-            groundMask = playerController.groundMask;
 
             if (useFixedUpdate)
             {
@@ -71,7 +65,7 @@ public class Base_State : StateMachineBehaviour
 
     public bool TouchingGround()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(playerController.transform.position, playerController.groundColliderSize, 0, new Vector2(0, -1), GROUND_CHECKER_LENGTH, groundMask);
+        RaycastHit2D hit = Physics2D.BoxCast(playerController.transform.position, playerController.groundColliderSize, 0, new Vector2(0, -1), GROUND_CHECKER_LENGTH, playerController.groundMask);
         if (hit)
         {
             if (hit.transform == playerController.transform)
