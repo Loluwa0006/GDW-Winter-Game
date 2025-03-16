@@ -80,6 +80,15 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DropDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""01f6e1e2-17f4-4103-ac5d-159f6d04713d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""MultiTap"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -311,6 +320,28 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""DestroyTether"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""05829a5e-0e35-44ef-9e40-a4cb1878e07e"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardMouse"",
+                    ""action"": ""DropDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a91353e-1e8d-4274-a291-04492d5db028"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""DropDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -899,6 +930,7 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
         m_BattleControls_Tether = m_BattleControls.FindAction("Tether", throwIfNotFound: true);
         m_BattleControls_Attack = m_BattleControls.FindAction("Attack", throwIfNotFound: true);
         m_BattleControls_DestroyTether = m_BattleControls.FindAction("DestroyTether", throwIfNotFound: true);
+        m_BattleControls_DropDown = m_BattleControls.FindAction("DropDown", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -984,6 +1016,7 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_BattleControls_Tether;
     private readonly InputAction m_BattleControls_Attack;
     private readonly InputAction m_BattleControls_DestroyTether;
+    private readonly InputAction m_BattleControls_DropDown;
     public struct BattleControlsActions
     {
         private @PlayerOneControls m_Wrapper;
@@ -994,6 +1027,7 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
         public InputAction @Tether => m_Wrapper.m_BattleControls_Tether;
         public InputAction @Attack => m_Wrapper.m_BattleControls_Attack;
         public InputAction @DestroyTether => m_Wrapper.m_BattleControls_DestroyTether;
+        public InputAction @DropDown => m_Wrapper.m_BattleControls_DropDown;
         public InputActionMap Get() { return m_Wrapper.m_BattleControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1021,6 +1055,9 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
             @DestroyTether.started += instance.OnDestroyTether;
             @DestroyTether.performed += instance.OnDestroyTether;
             @DestroyTether.canceled += instance.OnDestroyTether;
+            @DropDown.started += instance.OnDropDown;
+            @DropDown.performed += instance.OnDropDown;
+            @DropDown.canceled += instance.OnDropDown;
         }
 
         private void UnregisterCallbacks(IBattleControlsActions instance)
@@ -1043,6 +1080,9 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
             @DestroyTether.started -= instance.OnDestroyTether;
             @DestroyTether.performed -= instance.OnDestroyTether;
             @DestroyTether.canceled -= instance.OnDestroyTether;
+            @DropDown.started -= instance.OnDropDown;
+            @DropDown.performed -= instance.OnDropDown;
+            @DropDown.canceled -= instance.OnDropDown;
         }
 
         public void RemoveCallbacks(IBattleControlsActions instance)
@@ -1231,6 +1271,7 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
         void OnTether(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnDestroyTether(InputAction.CallbackContext context);
+        void OnDropDown(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

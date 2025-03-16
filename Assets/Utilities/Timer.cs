@@ -81,7 +81,7 @@ public class Timer : MonoBehaviour
     public void StopTimer()
     {
         timerActive = false;
-        remainingTime = waitTime;
+        remainingTime = 0.0f;
     }
 
     void Update()

@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 groundColliderSize;
 
-
+     bool droppingThroughPlatform;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void Awake()
@@ -63,8 +64,21 @@ public class PlayerController : MonoBehaviour
         healthComponent.onEntityDamaged.AddListener(OnPlayerStruck);
         groundColliderSize = GetHurtbox().size * 0.8f;
         GetHitbox();
-
+        _playerInput.actions["DropDown"].performed += ctx => StartCoroutine( DropThroughPlatform() );
     }
+
+    private IEnumerator DropThroughPlatform()
+    {
+        Debug.Log("Dropping thorugh platform");
+        droppingThroughPlatform = true;
+        _rb.excludeLayers = LayerMask.GetMask("Platform");
+        hurtbox.excludeLayers = LayerMask.GetMask("Platform");
+        yield return new WaitForSeconds(0.5f);
+        _rb.excludeLayers = 0;
+        hurtbox.excludeLayers = 0;
+        droppingThroughPlatform = false;
+    }
+
 
     private void Update()
     {
@@ -73,7 +87,7 @@ public class PlayerController : MonoBehaviour
             _rb.excludeLayers = LayerMask.GetMask("Platform");
             hurtbox.excludeLayers = LayerMask.GetMask("Platform");
         }
-       else
+       else if (!droppingThroughPlatform) 
         {
             _rb.excludeLayers = 0;
             hurtbox.excludeLayers = 0;

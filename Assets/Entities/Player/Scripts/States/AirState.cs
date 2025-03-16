@@ -23,7 +23,7 @@ public class AirState : Base_State
 
     const float WALL_CHECKER_LENGTH = 0.45f;
     const float SLAM_CHECKER_LENGTH = 2.0f;
-    Timer jumpBuffer;
+    protected Timer jumpBuffer;
 
     LayerMask wallMask;
 

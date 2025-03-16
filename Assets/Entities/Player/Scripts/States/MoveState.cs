@@ -10,7 +10,7 @@ public class MoveState : Base_State
 
     [SerializeField] float acceleration = 0.5f;
     [SerializeField] float max_speed = 2.5f;
-     Timer jumpBuffer;
+    Timer jumpBuffer;
     Timer attackBuffer;
     Timer coyoteTimer;
 
@@ -19,20 +19,14 @@ public class MoveState : Base_State
     float desiredSpeed;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-         
+
         base.OnStateEnter(animator, stateInfo, layerIndex);
         if (_rb == null)
         {
             _rb = animator.GetComponentInParent<Rigidbody2D>();
         }
-        
-            jumpBuffer = playerController.GetTimer("JumpBuffer");
-        
-      
-            coyoteTimer = playerController.GetTimer("Coyote");
-        
-      
-
+        jumpBuffer = playerController.GetTimer("JumpBuffer");
+        coyoteTimer = playerController.GetTimer("Coyote");
     }
 
 
@@ -48,10 +42,10 @@ public class MoveState : Base_State
         {
             _rb.linearVelocity = newSpeed;
         }
- 
+
         animator.SetBool("IsGrounded", IsGrounded());
 
-       
+
         animator.SetFloat("JumpBuffer", jumpBuffer.timeRemaining());
         if (groundedLastFrame && !TouchingGround())
         {
@@ -65,10 +59,10 @@ public class MoveState : Base_State
 
         setFacing();
 
-        
+
     }
 
-  
+
     Vector3 SetRealVelocity(float moveDir)
     {
 
@@ -102,7 +96,7 @@ public class MoveState : Base_State
 
     }
 
-   
+
     protected override void InitInputActions(Animator animator)
     {
         playerInput.actions["Attack"].started += ctx => animator.SetTrigger("AttackPressed");
@@ -123,3 +117,5 @@ public class MoveState : Base_State
         animator.SetInteger("VertAxis", axis.y);
     }
 }
+
+  
