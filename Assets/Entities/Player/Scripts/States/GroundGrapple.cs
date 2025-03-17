@@ -5,16 +5,14 @@ public class GroundGrapple : BaseGrapple
 {
     [SerializeField] float pullStrengthAcceleration = 0.1f;
     [SerializeField] float minDistance = 3.0f;
-    float initalDistance = 0.0f;
 
-    [SerializeField] float grappleBoost = 8.5f;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        initalDistance = _distanceJoint.distance;
 
-        _rb.linearVelocity = new Vector2 (_rb.linearVelocity.x + Mathf.Sign(_rb.linearVelocity.x) * grappleBoost , grappleBoost);
+        
      
     }
 
@@ -22,13 +20,7 @@ public class GroundGrapple : BaseGrapple
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
 
-        _distanceJoint.distance -= pullStrengthAcceleration;
-        if (_distanceJoint.distance < minDistance)
-        { if (!IsGrounded())
-            {
-                _distanceJoint.distance = minDistance;
-            }
-        }
+      
 
     }
 

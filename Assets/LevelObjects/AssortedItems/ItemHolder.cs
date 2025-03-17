@@ -2,6 +2,7 @@ using Unity.AppUI.UI;
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.Cinemachine;
 
 public class ItemHolder : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class ItemHolder : MonoBehaviour
 
     MoveableObject _itemToDrop;
 
+    [SerializeField] CinemachineTargetGroup _targetGroup;
+
 
 
     
@@ -41,6 +44,10 @@ public class ItemHolder : MonoBehaviour
         _startingPosition = transform.position;
         _rb.linearVelocity = new Vector2(_moveSpeed, 0);
         StartItemDropProcess();
+        if (_targetGroup == null)
+        {
+            _targetGroup = GameObject.FindGameObjectWithTag("TargetGroup").GetComponent<CinemachineTargetGroup>();
+        }
 
     }
 
@@ -63,9 +70,12 @@ public class ItemHolder : MonoBehaviour
         _itemToDrop._rb.linearVelocity = Vector2.zero;
         _itemToDrop.GetComponent<Collider2D>().enabled = true;
         //do not inherit velocity of parent or else it will go flying
+        _targetGroup.RemoveMember(transform);
+
     }
     void StartItemDropProcess()
     {
+        _targetGroup.AddMember(transform, 0.5f, 0.5f);
         _timeUntilDrop = Random.Range(_minTimeUntilDrop, _maxTimeUntilDrop);
         transform.position = _startingPosition;
         itemDropped = false;

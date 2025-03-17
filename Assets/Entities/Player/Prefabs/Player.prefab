@@ -437,12 +437,11 @@ MonoBehaviour:
   _rb: {fileID: 1128387069451279553}
   stateTracker: {fileID: 0}
   velocityTracker: {fileID: 0}
+  _grapplePrefab: {fileID: 5846582620101333399, guid: a9eb5e5e0d2b48c40a0155d5c1570abb, type: 3}
+  _activeGrapple: {fileID: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 34240
-  noPlatformMask:
-    serializedVersion: 2
-    m_Bits: 32768
   hitbox: {fileID: 2335791529287543042}
   _playerKeybinds:
   - {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
@@ -568,6 +567,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 01f6e1e2-17f4-4103-ac5d-159f6d04713d
+    m_ActionName: 'BattleControls/DropDown[/Keyboard/s]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: BattleControls

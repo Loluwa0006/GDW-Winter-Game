@@ -940,7 +940,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: GrapplePressed
+    m_ConditionEvent: GrappleActive
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6285311444908962083}
@@ -1234,6 +1234,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: GrappleActive
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   - m_Name: HorizAxis
     m_Type: 3
     m_DefaultFloat: 0
@@ -1489,7 +1495,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: GrapplePressed
+    m_ConditionEvent: GrappleActive
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6285311444908962083}
@@ -1767,9 +1773,9 @@ AnimatorStateMachine:
   - {fileID: -6478100956054997799}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -5233763908583029759}
-    second: []
   - first: {fileID: 7789591163263193577}
+    second: []
+  - first: {fileID: -5233763908583029759}
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 2800, y: -430, z: 0}
@@ -2038,7 +2044,7 @@ MonoBehaviour:
   useFixedUpdate: 1
   _grapplableLayers:
     serializedVersion: 2
-    m_Bits: 1216
+    m_Bits: 33984
   _maxDistance: 35
 --- !u!1102 &9096686860011297467
 AnimatorState:

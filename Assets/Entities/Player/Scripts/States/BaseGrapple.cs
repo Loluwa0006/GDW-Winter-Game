@@ -31,10 +31,10 @@ public class BaseGrapple : Base_State
 
 
 
-
+    
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        animator.SetBool("GrappleActive", true);
 
         if (!stateInitalized)
         {
@@ -51,16 +51,12 @@ public class BaseGrapple : Base_State
             }
             _distanceJoint.autoConfigureConnectedAnchor = false;
             _distanceJoint.enableCollision = true;
-            playerInput = animator.GetComponentInParent<PlayerInput>();
-            playerController = animator.GetComponent<PlayerController>();
-            if (useFixedUpdate)
-            {
+            playerInput = animator.gameObject.GetComponent<PlayerInput>();
+            playerController = animator.gameObject.GetComponent<PlayerController>();
+           
                 animator.updateMode = AnimatorUpdateMode.Fixed;
-            }
-            else
-            {
-                animator.updateMode = AnimatorUpdateMode.Normal;
-            }
+
+             
             _boxCollider = playerController.GetHurtbox(); ;
 
             stateInitalized = true;
@@ -70,9 +66,9 @@ public class BaseGrapple : Base_State
 
         }
 
-        _grapplePoint = new Vector3(animator.GetFloat("GrapplePointX"), animator.GetFloat("GrapplePointY"), 1);
+        SetGrapple(GrappleManager.grappleInfo);
+
         DrawRope();
-        _distanceJoint.connectedAnchor = _grapplePoint;
         _grappleLine.enabled = true;
         _distanceJoint.enabled = true;
         _rb.gravityScale -= GRAPPLE_GRAVITY_REDUCTION;
@@ -85,49 +81,52 @@ public class BaseGrapple : Base_State
     protected void DrawRope()
     {
 
-        if (_grappleLine != null)
+        if (_grappleLine != null && playerController._activeGrapple != null)
         {
             _grappleLine.SetPosition(0, playerController.transform.position);
-            _grappleLine.SetPosition(1, _grapplePoint);
+            _grappleLine.SetPosition(1, playerController._activeGrapple.transform.position);
         }
 
     }
 
-    RaycastHit2D nearGround()
+    void SetGrapple(RaycastHit2D hit)
     {
-        RaycastHit2D hit = Physics2D.Raycast(playerController.transform.position, new Vector2(0, -1), groundCheckerLength, playerController.groundMask);
-        Color rayColor = Color.red;
-        if (hit)
+        if (!hit.collider)
         {
-            rayColor = Color.green;
+            return;
+         
         }
-        Debug.DrawLine(playerController.transform.position, new Vector2(playerController.transform.position.x, playerController.transform.position.y - 1), rayColor);
-        return hit;
+        float rotation = Vector2.Angle(playerController.transform.position, hit.point);
+        playerController._activeGrapple = Instantiate(playerController._grapplePrefab, hit.point, Quaternion.Euler(0, 0, rotation), hit.collider.transform);
+        playerController._activeGrapple.transform.localScale = playerController._grapplePrefab.transform.localScale;
     }
+
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
+        if (playerController._activeGrapple != null)
+        {
+            animator.SetBool("GrappleActive", true);
+            _grapplePoint = playerController._activeGrapple.transform.position;
+            _distanceJoint.connectedAnchor = _grapplePoint;
 
-   //     RaycastHit2D hit = nearGround();
-        ////if (hit)
-        ////{
-        ////    Debug.Log("ground anti magnetism go!!!");
-        ////    _distanceJoint.distance -= 0.05f;
-        ////    Vector2 grappleDistance = (playerController.transform.position - hit.transform.position);
-        ////    _distanceJoint.distance = grappleDistance.magnitude - (_boxCollider.size.y + 0.6f);
-        ////    This is to force the player off the ground so they can keep swinging in case they go from land to air
-        ////}
+        }
+        else
+        {
+            animator.SetBool("GrappleActive", false);
+            animator.SetBool("InGrappleRange", false);
+            //just assume for at least 1 frame that the player can't grapple anything else
+            //to make sure that they find another valid target
+        }
 
-
-
-            DrawRope();
+        DrawRope();
+        
     }
 
     protected override void InitInputActions(Animator animator)
     {
-        playerInput.actions["Grapple"].performed += ctx => animator.SetBool("GrapplePressed", true);
-        playerInput.actions["Grapple"].canceled += ctx => animator.SetBool("GrapplePressed", false);
+        playerInput.actions["Grapple"].canceled += ctx => Destroy(playerController._activeGrapple);
     }
 
 
@@ -137,6 +136,7 @@ public class BaseGrapple : Base_State
         _grappleLine.enabled = false;
 
         _rb.gravityScale += GRAPPLE_GRAVITY_REDUCTION;
+
     }
 
 }

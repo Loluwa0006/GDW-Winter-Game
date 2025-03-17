@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Text stateTracker;
     [SerializeField] Text velocityTracker;
+
+    public GameObject _grapplePrefab;
+    public GameObject _activeGrapple;
     public LayerMask groundMask;
 
     [SerializeField] HitboxComponent hitbox;
@@ -59,12 +62,16 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        InitTimerList();
         healthComponent = GetComponent<HealthComponent>();
         healthComponent.onEntityDamaged.AddListener(OnPlayerStruck);
         groundColliderSize = GetHurtbox().size * 0.8f;
         GetHitbox();
         _playerInput.actions["DropDown"].performed += ctx => StartCoroutine( DropThroughPlatform() );
+    }
+
+    private void Start()
+    {
+        InitTimerList();
     }
 
     private IEnumerator DropThroughPlatform()
@@ -198,6 +205,8 @@ public class PlayerController : MonoBehaviour
 
         _rb.sharedMaterial.bounciness = 0.0f;
         _rb.sharedMaterial.friction = 0.0f;
+
+        Destroy(_activeGrapple);
     }
 
     void ResetAnimatorParameters()
