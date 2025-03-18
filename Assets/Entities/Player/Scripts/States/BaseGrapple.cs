@@ -61,6 +61,7 @@ public class BaseGrapple : Base_State
         SetGrapple(GrappleManager.grappleInfo);
 
         DrawRope();
+        OnStateUpdate(animator, stateInfo, layerIndex);
         _grappleLine.enabled = true;
         _distanceJoint.enabled = true;
         _rb.gravityScale -= GRAPPLE_GRAVITY_REDUCTION;
