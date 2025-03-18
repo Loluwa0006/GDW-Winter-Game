@@ -1,4 +1,5 @@
 using Newtonsoft.Json.Bson;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,13 +24,6 @@ public class BaseGrapple : Base_State
     protected Rigidbody2D _rb;
 
     const float GRAPPLE_GRAVITY_REDUCTION = 0.2f;
-
-
-    float groundCheckerLength = 0.85f;
-
-    BoxCollider2D _boxCollider;
-
-
 
     
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -56,9 +50,7 @@ public class BaseGrapple : Base_State
            
                 animator.updateMode = AnimatorUpdateMode.Fixed;
 
-             
-            _boxCollider = playerController.GetHurtbox(); ;
-
+            
             stateInitalized = true;
 
             _rb = animator.gameObject.GetComponent<Rigidbody2D>();
@@ -73,7 +65,7 @@ public class BaseGrapple : Base_State
         _distanceJoint.enabled = true;
         _rb.gravityScale -= GRAPPLE_GRAVITY_REDUCTION;
 
-
+        
 
 
     }
@@ -97,11 +89,13 @@ public class BaseGrapple : Base_State
          
         }
         float rotation = Vector2.Angle(playerController.transform.position, hit.point);
-        playerController._activeGrapple = Instantiate(playerController._grapplePrefab, hit.point, Quaternion.Euler(0, 0, rotation), hit.collider.transform);
-        playerController._activeGrapple.transform.localScale = playerController._grapplePrefab.transform.localScale;
+        playerController._activeGrapple = Instantiate(playerController._grapplePrefab, hit.point, Quaternion.Euler(0, 0, rotation));
+        playerController._activeGrapple.transform.SetParent(hit.collider.transform, true);
+        Debug.Log("Base localScale = " + playerController._grapplePrefab.transform.localScale.ToString());
+
     }
 
-
+  
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
@@ -110,7 +104,6 @@ public class BaseGrapple : Base_State
             animator.SetBool("GrappleActive", true);
             _grapplePoint = playerController._activeGrapple.transform.position;
             _distanceJoint.connectedAnchor = _grapplePoint;
-
         }
         else
         {
@@ -119,6 +112,8 @@ public class BaseGrapple : Base_State
             //just assume for at least 1 frame that the player can't grapple anything else
             //to make sure that they find another valid target
         }
+
+
 
         DrawRope();
         
