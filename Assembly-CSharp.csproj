@@ -107,6 +107,7 @@
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Hitstun.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Tether.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\AirState.cs" />
+    <Compile Include="Assets\LevelObjects\StageSelect.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_SlamStart.cs" />
   </ItemGroup>
   <ItemGroup>

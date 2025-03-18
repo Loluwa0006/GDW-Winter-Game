@@ -10,6 +10,7 @@ public class TetherPoint : MonoBehaviour
     const float CHARGE_SPEED = 0.12f;
     const float MAX_CHARGE_AMOUNT = 2.75f;
 
+    const float MIN_CHARGE_AMOUNT = 0.75f;
     public Rigidbody2D _rb;
     public FixedJoint2D _joint;
 
@@ -49,6 +50,7 @@ public class TetherPoint : MonoBehaviour
         {
             tether.connectedTether = this;
         }
+        DrawLine();
 
     }
 
@@ -107,8 +109,7 @@ public class TetherPoint : MonoBehaviour
     {
         if (connectedTether != null)
         {
-            lineRenderer.SetPosition(0, transform.position);
-            lineRenderer.SetPosition(1, connectedTether.transform.position);
+            DrawLine();
             if (connectedObject != null && connectedTether.tetherLocked)
             {
                 pullObjects();
@@ -125,6 +126,11 @@ public class TetherPoint : MonoBehaviour
 
     }
 
+    void DrawLine()
+    {
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, connectedTether.transform.position);
+    }
     void pullObjects()
     {
         if (connectedTether.connectedObject == connectedObject || !tetherLocked)
@@ -160,10 +166,18 @@ public class TetherPoint : MonoBehaviour
             {
                 tetherCharge = MAX_CHARGE_AMOUNT;
             }
-            Vector2 force = directionToTether * slingStrength * (0.5f + tetherCharge) * SLINGSHOTMASSFACTOR;
+            Vector2 force = directionToTether * slingStrength * (MIN_CHARGE_AMOUNT + tetherCharge) * SLINGSHOTMASSFACTOR;
            
             connectedObject.AddForce(force);
         }
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if (connectedTether != null)
+        {
+            Destroy(connectedTether.gameObject);
+        }
     }
 }

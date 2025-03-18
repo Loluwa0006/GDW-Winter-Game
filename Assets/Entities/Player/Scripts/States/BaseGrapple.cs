@@ -62,6 +62,8 @@ public class BaseGrapple : Base_State
 
         DrawRope();
         OnStateUpdate(animator, stateInfo, layerIndex);
+        //^ those who know (need to update position before enabling hook so you don't stop every time
+        //  grapple starts because unity...
         _grappleLine.enabled = true;
         _distanceJoint.enabled = true;
         _rb.gravityScale -= GRAPPLE_GRAVITY_REDUCTION;

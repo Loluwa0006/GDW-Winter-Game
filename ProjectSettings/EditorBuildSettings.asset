@@ -6,19 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/UI/MainMenu.unity
     guid: adbe4598c3a008646a51deb02323617a
   - enabled: 1
-    path: Assets/Scenes/PlatformStage1.unity
+    path: Assets/Scenes/Stages/The Grid.unity
     guid: bab029c2cf246994999cbb89486ecc6b
   - enabled: 1
-    path: Assets/Scenes/GrayboxLevelOne.unity
+    path: Assets/Scenes/Stages/Moonside Mountain.unity
     guid: 548eec71f22abe5458c2e04345725050
   - enabled: 1
-    path: Assets/Scenes/GrayboxLevelTwo.unity
+    path: Assets/Scenes/Stages/Castle Autumn.unity
     guid: 28c6b700bf643d34bbd8aef169c5ea56
   - enabled: 1
-    path: Assets/Scenes/PlatformStage3.unity
+    path: Assets/Scenes/Stages/Reality's Edge.unity
     guid: 054f1ff19bf17b24ab44ec84ead83d88
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 99f9c9493070a9d4c979a8fec7c5a8d3, type: 2}
