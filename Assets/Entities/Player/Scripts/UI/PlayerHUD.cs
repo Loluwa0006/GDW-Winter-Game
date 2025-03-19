@@ -16,7 +16,7 @@ public class PlayerHUD : MonoBehaviour
 
     HealthComponent playerHealth;
 
-    const int maxLivesToDisplay = 6;
+    const int  MAX_LIVES_TO_DISPLAY = 6;
     public void initPlayerHUD(PlayerController player)
     {
         playerHealth = player.GetComponent<HealthComponent>();
@@ -25,10 +25,10 @@ public class PlayerHUD : MonoBehaviour
         player.playerEliminated.AddListener(EndHUD);
         playerDisplayName.text = player.name;
 
-        SetLifeDisplay(playerHealth.getRemainingLives());
-        SetPercentageDisplay(playerHealth.getHealth(), 0);
+        SetLifeDisplay(player, playerHealth.GetRemainingLives());
+        SetPercentageDisplay(playerHealth.GetHealth(), 0);
 
-        player.playerDead.AddListener(SetLifeDisplay);
+        playerHealth.onEntityDead.AddListener(SetLifeDisplay);
 
         Debug.Log("Setting up HUD for player " + player.playerIndex.ToString());
         HUDBackground.color = HUDColors[player.playerIndex - 1];
@@ -36,14 +36,15 @@ public class PlayerHUD : MonoBehaviour
 
     }
 
-    void EndHUD(int playerIndex)
+    void EndHUD(PlayerController player)
     {
         percentageTracker.text = "";
-        SetLifeDisplay(0);
+        SetLifeDisplay(player, 0);
     }
 
-    void SetLifeDisplay(int remainingLives) 
+    void SetLifeDisplay(PlayerController player, int remainingLives) 
     {
+        Debug.Log("Remaining Lives is now " + remainingLives.ToString());
        
         if (remainingLives <= 0)
         {
@@ -54,7 +55,7 @@ public class PlayerHUD : MonoBehaviour
             return;
         }
 
-        if (remainingLives > maxLivesToDisplay)
+        if (remainingLives > MAX_LIVES_TO_DISPLAY)
         {
             for (int i = 1; i < StockImageHolder.transform.childCount; i++)
             {
@@ -66,26 +67,26 @@ public class PlayerHUD : MonoBehaviour
         }
         else
         {
-            stockOverflowDisplay.gameObject.SetActive(false);
-            while (StockImageHolder.transform.childCount < remainingLives)
+            int currentStocks = StockImageHolder.transform.childCount;
+            //deepseek code starts
+            for (int i = currentStocks; i < remainingLives; i++)
             {
-                GameObject newImage = Instantiate(stockImage, StockImageHolder.transform);
+                Instantiate(stockImage, StockImageHolder.transform);
             }
 
-
-
-
-            for (int i = StockImageHolder.transform.childCount - 1; i >= remainingLives; i--)
+            for (int i = currentStocks; i > remainingLives; i--)
             {
-                Destroy(StockImageHolder.transform.GetChild(i).gameObject);
+                Destroy(StockImageHolder.transform.GetChild(StockImageHolder.transform.childCount - 1).gameObject);
             }
+            //deepseek code ends
+
         }
         }
     
 
     void SetPercentageDisplay(float damage, int stunTime)
     {
-        percentageTracker.text = Mathf.RoundToInt(playerHealth.getHealth()).ToString();
+        percentageTracker.text = Mathf.RoundToInt(playerHealth.GetHealth()).ToString();
     }
 
 

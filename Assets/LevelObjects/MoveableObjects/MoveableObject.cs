@@ -62,7 +62,7 @@ public class MoveableObject : MonoBehaviour
 
         if (healthComponent != null)
         {
-            float health = healthComponent.getHealth();
+            float health = healthComponent.GetHealth();
            /* damage = Mathf.Max( _rb.linearVelocity.magnitude * _rb.mass * _damageScaleFactor, _minDamage);
             Vector2 knockback = GetKnockBack(health, damage, collision.contacts[0].normal);
             //health.Damage(GetKnockBack(health.getHealth(), damage),damage, stunTime);

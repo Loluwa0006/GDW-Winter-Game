@@ -10,19 +10,29 @@ public class HealthComponent : MonoBehaviour
     public UnityEvent<float, int> onEntityDamaged;
     public UnityEvent<float, int> onEntityHealed;
     public UnityEvent onEntityMaxDamageReached;
-    public UnityEvent onEntityDead;
+    public UnityEvent<PlayerController, int> onEntityDead;
+    //player that died, lives remaining
     const int minHitstun = 4;
     const float hitstunScale = 0.015f;
-    [SerializeField] int _remainingLives = 3;  
+    [SerializeField] int _remainingLives = 3;
+
+    public int playerIndex = 0;
+
+    PlayerController player;
 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private void Awake()
+    private void Start()
     {
+        if (GameManager.instance != null)
+        {
+            _remainingLives = (int)GameManager.instance.GetMatchSetting("StockCount");
+        }
+        player = GetComponent<PlayerController>();
+       
     }
-
     public virtual void Damage(Vector2 knockback, float damageTaken = 1.0f)
     {
         int stunTime = CalculateStun(knockback);
@@ -57,24 +67,22 @@ public class HealthComponent : MonoBehaviour
         onEntityHealed.Invoke(0.0f, heal_amount);
     }
 
-    public float getHealth()
+    public float GetHealth()
     {
         return health;
     }
 
-    public int getRemainingLives()
+    public int GetRemainingLives()
     {
         return _remainingLives;
     }
 
-    public void SetLives(int newLifeAmount) 
+    public void RemoveLife()
     {
-        if (_remainingLives < newLifeAmount)
-        {
-            onEntityDead.Invoke();
-        }
-        _remainingLives = newLifeAmount;
-        
+        Debug.Log("GRAH, IM COOKED");
+        _remainingLives--;
+        onEntityDead.Invoke(player, GetRemainingLives());
+        health = 0;
     }
     
     // Update is called o  nce per frame

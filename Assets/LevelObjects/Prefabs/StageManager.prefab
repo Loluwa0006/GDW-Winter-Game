@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2791674826463577929}
   - component: {fileID: 1615671834194767125}
   - component: {fileID: 4650897967910084888}
+  - component: {fileID: 7403836663789699094}
   m_Layer: 0
   m_Name: StageManager
   m_TagString: Untagged
@@ -45,16 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca068efcb71d9104fa9a1fb05541afd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelUI: {fileID: 0}
   _playerPrefab: {fileID: 6972796821543124617, guid: 3b7892f62750816449249e5557c225d9, type: 3}
-  intelRequired: 1
-  exitArea: {fileID: 0}
   spawnLocations:
   - {fileID: 0}
   - {fileID: 0}
   cinemachineFramer: {fileID: 0}
   _cinemachineGrouper: {fileID: 0}
-  hudPrefab: {fileID: 6910233994651780073, guid: 8603a6f434bca124295e2a43233adebd, type: 3}
+  hudPrefab: {fileID: 2532957960890343652, guid: 8603a6f434bca124295e2a43233adebd, type: 3}
   hudHolder: {fileID: 0}
 --- !u!82 &4650897967910084888
 AudioSource:
@@ -153,3 +151,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7403836663789699094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2418437206774361982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd977e3d9b3c19e4087633b9f3c270e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,8 +37,9 @@ public class GameManager : MonoBehaviour
 
     void InitSettings()
     {
-        gameSettings.Add("Brightness", 100);
-        gameSettings.Add("Volume", 100);
+        gameSettings.Add("Brightness", 1.0f);
+        gameSettings.Add("Volume", 1.0f);
+        gameSettings.Add("TimerDuration", 60f * 7/*i don't feel like doing math */ );
 
 
         matchSettings.Add("CameraShake", false);
@@ -45,7 +47,7 @@ public class GameManager : MonoBehaviour
         matchSettings.Add("UseTimer", false);
         matchSettings.Add("TeamBattle", false);
 
-
+     
         //including team battles because there might be a use case in the future
     }
 
@@ -95,6 +97,31 @@ public class GameManager : MonoBehaviour
         Debug.LogWarning("Could not find setting " + settingName + " in match settings.") ;
         return null;
 
+    }
+
+    public bool SetMatchSetting(string settingName, object value)
+    {
+        
+        if (matchSettings.ContainsKey(settingName))
+        {
+            matchSettings[settingName] = value;
+            return true;
+        }
+        Debug.LogWarning("Could not set setting (" + settingName + ") in match settings"); 
+        return false;
+    }
+
+    public bool SetGameSetting(string settingName, object value)
+    {
+       
+
+        if (gameSettings.ContainsKey(settingName))
+        {
+            gameSettings[settingName] = value;
+            return true;
+        }
+        Debug.LogWarning("Could not set setting " + settingName + " in game settings");
+        return false;
     }
 }
 

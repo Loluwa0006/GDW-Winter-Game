@@ -13,8 +13,7 @@ public class PlayerController : MonoBehaviour
 
     public UnityEvent hitboxEnabled = new UnityEvent();
     public UnityEvent hitboxDisabled = new UnityEvent();
-    public UnityEvent<int> playerDead = new UnityEvent<int>();
-    public UnityEvent<int> playerEliminated;
+    public UnityEvent<PlayerController> playerEliminated;
     //these exists to get around the inability of being able to connect statemachinebehavior functions to animation clips
     //because unity sucks uber omega butt cheeks
 
@@ -60,13 +59,28 @@ public class PlayerController : MonoBehaviour
      bool droppingThroughPlatform;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    LayerMask platformMask;
+
     private void Awake()
+    {
+        InitHealthComponent();
+        groundColliderSize = GetHurtbox().size * 0.8f;
+        GetHitbox();
+
+        InitUniversalInputActions();
+        platformMask = LayerMask.GetMask("Platform");
+    }
+
+    void InitHealthComponent()
     {
         healthComponent = GetComponent<HealthComponent>();
         healthComponent.onEntityDamaged.AddListener(OnPlayerStruck);
-        groundColliderSize = GetHurtbox().size * 0.8f;
-        GetHitbox();
-        _playerInput.actions["DropDown"].performed += ctx => StartCoroutine( DropThroughPlatform() );
+    }
+
+    void InitUniversalInputActions()
+    {
+        _playerInput.actions["DropDown"].performed += ctx => StartCoroutine(DropThroughPlatform());
+
     }
 
     private void Start()
@@ -78,8 +92,8 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Dropping thorugh platform");
         droppingThroughPlatform = true;
-        _rb.excludeLayers = LayerMask.GetMask("Platform");
-        hurtbox.excludeLayers = LayerMask.GetMask("Platform");
+        _rb.excludeLayers = platformMask;
+        hurtbox.excludeLayers = platformMask;
         yield return new WaitForSeconds(0.5f);
         _rb.excludeLayers = 0;
         hurtbox.excludeLayers = 0;
@@ -91,13 +105,13 @@ public class PlayerController : MonoBehaviour
     {
        if (_rb.linearVelocity.y > 0)
         {
-            _rb.excludeLayers = LayerMask.GetMask("Platform");
-            hurtbox.excludeLayers = LayerMask.GetMask("Platform");
+            _rb.excludeLayers |= platformMask;
+            hurtbox.excludeLayers |= platformMask;
         }
        else if (!droppingThroughPlatform) 
         {
-            _rb.excludeLayers = 0;
-            hurtbox.excludeLayers = 0;
+            _rb.excludeLayers &= ~0;
+            hurtbox.excludeLayers &= ~0;
         }
     }
     public void OnHitboxEnabled()
@@ -131,6 +145,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Enabled actions for player " + playerIndex.ToString());
         // Debug.Log("enabled controls for player " + playerIndex.ToString());
        
+        healthComponent.playerIndex = playerIndex;
 
     }
     public void DisablePlayer()
@@ -177,11 +192,10 @@ public class PlayerController : MonoBehaviour
     }
     public void onPlayerDeath()
     {
-        playerDead.Invoke(playerIndex);
-        int lives = healthComponent.getRemainingLives() - 1;
+        int lives = healthComponent.GetRemainingLives() - 1;
         if (lives <= 0)
         {
-            playerEliminated.Invoke(playerIndex);
+            playerEliminated.Invoke(this);
             Destroy(gameObject);
         }
         else
@@ -191,22 +205,29 @@ public class PlayerController : MonoBehaviour
     }
     void Respawn()
     {
+
         transform.position = _respawnPoint.position;
 
         ResetAnimatorParameters();
 
         animator.SetBool("IsGrounded", false);
 
+        healthComponent.RemoveLife();
+
+        
+        Destroy(_activeGrapple);
+
+        ResetRigidBody();
+    }
+
+    void ResetRigidBody()
+    {
         _rb.linearVelocity = Vector2.zero;
-
-        healthComponent.Heal(Mathf.RoundToInt(healthComponent.getHealth()) + 1);
-
-        healthComponent.SetLives(healthComponent.getRemainingLives() - 1);
 
         _rb.sharedMaterial.bounciness = 0.0f;
         _rb.sharedMaterial.friction = 0.0f;
 
-        Destroy(_activeGrapple);
+        _rb.gravityScale = 1.0f;
     }
 
     void ResetAnimatorParameters()

@@ -13,36 +13,37 @@ public class PauseMenuFunctions : MonoBehaviour
     public SpriteRenderer _overLay;
     public AudioSource _bgmPlayer;
 
-    bool _isPauseMenuActive = false;
+   [SerializeField] bool isLocked = false;
+    //reusing the scene for the main menu, don't want the player to be able to turn it off
+    //if its locked its always active
 
     private void Start()
     {
-        _pauseMenu.SetActive(false);
+        if (!isLocked)
+        {
+            _pauseMenu.SetActive(false);
+        }
+        if (GameManager.instance)
+        {
+            _brightness.value = (float)GameManager.instance.GetGameSetting("Brightness");
+            _volume.value = (float)GameManager.instance.GetGameSetting("Volume");
+        }
     }
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape) && !isLocked)
         {
-            SwichToPause();
+            SwitchState();
         }
 
         DarkOverlay();
         VolumeControl();
     }
 
-    void SwichToPause()
+    void SwitchState()
     {
-        if (!_isPauseMenuActive)
-        {
-            _pauseMenu.SetActive(true);
-            _isPauseMenuActive = true;
-        }
-        else if (_isPauseMenuActive)
-        {
-            _pauseMenu.SetActive(false);
-            _isPauseMenuActive = false;
-        }
+        _pauseMenu.SetActive(!_pauseMenu.activeSelf);
     }
 
     void DisableMenu()
@@ -52,13 +53,22 @@ public class PauseMenuFunctions : MonoBehaviour
 
     void VolumeControl()
     {
-        _bgmPlayer.volume = _volume.value;
+        if (_bgmPlayer)
+        {
+            _bgmPlayer.volume = _volume.value;
+            GameManager.instance.SetGameSetting("Volume", _volume.value);
+        }
     }
 
     void DarkOverlay()
     {
-        var tempColor = _overLay.color;
-        tempColor.a = _brightness.value;
-        _overLay.color = tempColor;
+        if (_overLay)
+        {
+            var tempColor = _overLay.color;
+            tempColor.a = 1 - _brightness.value;
+            _overLay.color = tempColor;
+
+            GameManager.instance.SetGameSetting("Brightness", _brightness.value);
+        }
     }
 }

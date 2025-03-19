@@ -86,7 +86,7 @@ public class LevelManager : MonoBehaviour
     void InitPlayerEvents(PlayerController player)
     {
         player.playerEliminated.AddListener(OnPlayerEliminated);
-        player.playerDead.AddListener(OnPlayerDefeated);
+        player.GetComponent<HealthComponent>().onEntityDead.AddListener(OnPlayerDefeated);
     }
      
     private void Update()
@@ -115,9 +115,9 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 0.0f;
     }
 
-    public void OnPlayerEliminated(int index)
+    public void OnPlayerEliminated(PlayerController player)
     {
-        index -= 1;
+        int index = _activePlayers.IndexOf(player);
         //need to shift index backwards to account for data structures starting at 0
         cinemachineFramer.RemoveMember(_activePlayers[index].transform);
         Debug.Log(_activePlayers[index].gameObject.name + " defeated");
@@ -130,7 +130,7 @@ public class LevelManager : MonoBehaviour
         }
       
     }
-    public void OnPlayerDefeated(int index)
+    public void OnPlayerDefeated(PlayerController player, int lives)
     {
 
     }

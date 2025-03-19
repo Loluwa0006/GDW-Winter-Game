@@ -27,7 +27,11 @@ public class HitboxComponent : MonoBehaviour
     {
 
         Collider2D parentHurtbox = transform.parent.GetComponent<Collider2D>();
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), parentHurtbox);
+        if (parentHurtbox != null)
+        {
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), parentHurtbox);
+            //makes it so that you can't hit yourself
+        }
     }
 
 
@@ -40,7 +44,7 @@ public class HitboxComponent : MonoBehaviour
         Vector2 push = Vector2.zero;
         if (health != null)
         {
-          push = GetKnockBack(health.getHealth(), damage);
+          push = GetKnockBack(health.GetHealth(), damage);
           health.Damage(push, damage);
 
         }
