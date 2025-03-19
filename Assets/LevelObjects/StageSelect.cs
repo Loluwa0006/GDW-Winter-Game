@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 
 public class StageSelect : MonoBehaviour
 {
@@ -32,9 +33,15 @@ public class StageSelect : MonoBehaviour
 
    public void SetStockCount(TMP_InputField stockTracker)
     {
-       if (int.TryParse(stockTracker.text, out int result ))
+        stockTracker.text = stockTracker.text.Trim();
+        if (int.TryParse(stockTracker.text, out int result))
         {
+            Debug.Log("Result is " + result.ToString());
             GameManager.instance.SetMatchSetting("StockCount", result);
+        }
+        else
+        {
+            Debug.LogWarning("Could not parse stock tracker text (" + stockTracker.text + ") as int");
         }
     }
 
@@ -47,6 +54,8 @@ public class StageSelect : MonoBehaviour
         GameManager.instance.SetMatchSetting("StockCount", stocks);
 
         TMP_InputField stockTracker = button.transform.parent.GetComponent<TMP_InputField>();
-        stockTracker.text = stocks.ToString();
+         
+        stockTracker.text = stocks.ToString().Trim();
+        SetStockCount(stockTracker);
     }
 }

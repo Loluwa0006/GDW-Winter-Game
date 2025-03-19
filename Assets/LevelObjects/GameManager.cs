@@ -30,11 +30,15 @@ public class GameManager : MonoBehaviour
         else
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
         InitSettings();
     }
-
+    public static GameManager getManager()
+    {
+        return instance;
+    }
     void InitSettings()
     {
         gameSettings.Add("Brightness", 1.0f);

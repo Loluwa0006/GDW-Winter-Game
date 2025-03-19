@@ -25,7 +25,7 @@ public class PlayerHUD : MonoBehaviour
         player.playerEliminated.AddListener(EndHUD);
         playerDisplayName.text = player.name;
 
-        SetLifeDisplay(player, playerHealth.GetRemainingLives());
+        SetLifeDisplay(player, (int) GameManager.instance.GetMatchSetting("StockCount"));
         SetPercentageDisplay(playerHealth.GetHealth(), 0);
 
         playerHealth.onEntityDead.AddListener(SetLifeDisplay);

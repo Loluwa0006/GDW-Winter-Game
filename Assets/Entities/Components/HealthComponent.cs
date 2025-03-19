@@ -30,6 +30,10 @@ public class HealthComponent : MonoBehaviour
         {
             _remainingLives = (int)GameManager.instance.GetMatchSetting("StockCount");
         }
+        else
+        {
+            Debug.Log("Couldn't find game manager");
+        }
         player = GetComponent<PlayerController>();
        
     }
@@ -75,6 +79,11 @@ public class HealthComponent : MonoBehaviour
     public int GetRemainingLives()
     {
         return _remainingLives;
+    }
+
+    public void SetRemainingLives(int lives)
+    {
+        _remainingLives = lives;
     }
 
     public void RemoveLife()

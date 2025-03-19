@@ -62,6 +62,15 @@ public class LevelManager : MonoBehaviour
             InitPlayerEvents(_playerList[i]);
             AddNewHud(_playerList[i]);
 
+            if (GameManager.getManager())
+            {
+                _playerList[i].GetComponent<HealthComponent>().SetRemainingLives((int) GameManager.instance.GetMatchSetting("StockCount"));
+            }
+            else
+            {
+                Debug.Log("WHERE? WHERE ARE U GAME MANAGER");
+            }
+
             cinemachineFramer.AddMember(_playerList[i].transform, 1, 0.5f);
             //playerInput.currentActionMap = playerInput.action
         }
