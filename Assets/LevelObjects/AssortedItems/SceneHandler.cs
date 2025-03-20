@@ -15,4 +15,9 @@ public class SceneHandler : MonoBehaviour
     {
         SceneManager.LoadScene(GameManager.instance.GetSelectedLevel());
     }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }

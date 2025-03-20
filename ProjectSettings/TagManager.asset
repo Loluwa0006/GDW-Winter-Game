@@ -10,6 +10,7 @@ TagManager:
   - OffScreenDetector
   - TargetGroup
   - LevelManager
+  - ItemDropper
   layers:
   - Default
   - TransparentFX

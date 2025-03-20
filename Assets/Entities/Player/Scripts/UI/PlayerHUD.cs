@@ -17,9 +17,10 @@ public class PlayerHUD : MonoBehaviour
     HealthComponent playerHealth;
 
     const int  MAX_LIVES_TO_DISPLAY = 6;
-    public void initPlayerHUD(PlayerController player)
+    public void InitPlayerHUD(PlayerController player)
     {
         playerHealth = player.GetComponent<HealthComponent>();
+        playerHealth.healthInitalized.AddListener(SetLifeDisplay);
         playerHealth.onEntityDamaged.AddListener(SetPercentageDisplay);
         playerHealth.onEntityHealed.AddListener(SetPercentageDisplay);
         player.playerEliminated.AddListener(EndHUD);
@@ -31,6 +32,7 @@ public class PlayerHUD : MonoBehaviour
         SetPercentageDisplay(playerHealth.GetHealth(), 0);
 
         playerHealth.onEntityDead.AddListener(SetLifeDisplay);
+        playerHealth.onEntityDead.AddListener( (player,lives) => SetPercentageDisplay(0,0) );
 
         Debug.Log("Setting up HUD for player " + player.playerIndex.ToString());
         HUDBackground.color = HUDColors[player.playerIndex - 1];
@@ -46,6 +48,7 @@ public class PlayerHUD : MonoBehaviour
 
     void SetLifeDisplay(PlayerController player, int remainingLives) 
     {
+        Debug.Log("We set up life display! BROTHA");
         Debug.Log("Remaining Lives is now " + remainingLives.ToString());
        
         if (remainingLives <= 0)
@@ -83,6 +86,7 @@ public class PlayerHUD : MonoBehaviour
             //deepseek code ends
 
         }
+       
         }
     
 
@@ -91,5 +95,6 @@ public class PlayerHUD : MonoBehaviour
         percentageTracker.text = Mathf.RoundToInt(playerHealth.GetHealth()).ToString();
     }
 
+  
 
 }

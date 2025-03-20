@@ -4,14 +4,15 @@ using System;
 
 public class HealthComponent : MonoBehaviour
 {
-    [SerializeField] int maxHealth = 999;
-    [SerializeField] float health = 0;
-    //Dont touch in editor, just expose it
+    int maxHealth = 999;
+    float health = 0;
     public UnityEvent<float, int> onEntityDamaged;
     public UnityEvent<float, int> onEntityHealed;
     public UnityEvent onEntityMaxDamageReached;
     public UnityEvent<PlayerController, int> onEntityDead;
     //player that died, lives remaining
+    public UnityEvent <PlayerController, int> healthInitalized;
+    //player that was set up, lives
     const int minHitstun = 4;
     const float hitstunScale = 0.015f;
     [SerializeField] int _remainingLives = 3;
@@ -19,6 +20,8 @@ public class HealthComponent : MonoBehaviour
     public int playerIndex = 0;
 
     PlayerController player;
+
+    
 
 
 
@@ -35,7 +38,9 @@ public class HealthComponent : MonoBehaviour
             Debug.Log("Couldn't find game manager");
         }
         player = GetComponent<PlayerController>();
-       
+        healthInitalized.Invoke(player, _remainingLives);
+
+
     }
     public virtual void Damage(Vector2 knockback, float damageTaken = 1.0f)
     {
@@ -89,10 +94,10 @@ public class HealthComponent : MonoBehaviour
     public void RemoveLife()
     {
         _remainingLives--;
-        onEntityDead.Invoke(player, GetRemainingLives());
         ResetHealth();
+        onEntityDead.Invoke(player, GetRemainingLives());
     }
-    
+
     public void AddLife()
     {
         _remainingLives++;

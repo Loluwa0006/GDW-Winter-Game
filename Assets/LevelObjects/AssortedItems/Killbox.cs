@@ -14,7 +14,10 @@ public class Killbox : MonoBehaviour
         }
         else
         {
-            Destroy(collision.gameObject);
+            if (collision.tag != "ItemDropper")
+            {
+               Destroy(collision.gameObject);
+            }
         }
     }
 }

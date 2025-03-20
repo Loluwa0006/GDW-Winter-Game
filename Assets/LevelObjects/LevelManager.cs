@@ -71,7 +71,7 @@ public class LevelManager : MonoBehaviour
     void AddNewHud(PlayerController player)
     {
         PlayerHUD newHud = Instantiate(hudPrefab, hudHolder.transform);
-        newHud.initPlayerHUD(player);
+        newHud.InitPlayerHUD(player);
     }
 
     void SetPlayerID(PlayerController player, int index)
@@ -138,7 +138,7 @@ public class LevelManager : MonoBehaviour
 
     public void EndGame()
     {
-        for (int i = 0; i < _playerList.Count; i++)
+        for (int i = _playerList.Count - 1; i > 0; i++)
         {
             PlayerController player = _playerList[i];
             player._playerInput.DeactivateInput();
@@ -146,5 +146,6 @@ public class LevelManager : MonoBehaviour
             player.GetComponent<HealthComponent>().onEntityDamaged.RemoveAllListeners();
             Destroy(_playerList[i].gameObject);
         }
+        _playerList.Clear();
     }
 }
