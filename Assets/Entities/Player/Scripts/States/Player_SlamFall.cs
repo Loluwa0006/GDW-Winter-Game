@@ -25,7 +25,6 @@ public class Player_SlamFall : Base_State
 
         
 
-        _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, -_slamSpeed);
 
 
         animator.Play(layerIndex);
@@ -46,7 +45,8 @@ public class Player_SlamFall : Base_State
             newSpeed.x += _slamTurnSpeed * moveDir;
             newSpeed.x = Mathf.Clamp(moveDir, -_maxTurnSpeed, _maxTurnSpeed);
         }
-        
+        newSpeed.y = -_slamSpeed;
+
         _rb.linearVelocity = newSpeed;
     }
 
