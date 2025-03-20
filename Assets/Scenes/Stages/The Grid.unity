@@ -390,13 +390,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6e64c4ad48b034ba24539ae8c7eded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 6
+  cooldown: 10
   spawnedObject:
     m_PersistentCalls:
       m_Calls: []
   objectPrefabs:
   - {fileID: 5670390529929243139, guid: 6c523fc119fa7b748b9298bb39c3217e, type: 3}
   - {fileID: 5748548934680683014, guid: 20821277c60d32d4ca5770ba92d440cc, type: 3}
+  - {fileID: 1465583423544427781, guid: 5b40008e3cf82a14c98a18bd9c1f75e3, type: 3}
 --- !u!114 &248252798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,6 +1242,7 @@ MonoBehaviour:
   objectPrefabs:
   - {fileID: 5670390529929243139, guid: 6c523fc119fa7b748b9298bb39c3217e, type: 3}
   - {fileID: 5748548934680683014, guid: 20821277c60d32d4ca5770ba92d440cc, type: 3}
+  - {fileID: 1465583423544427781, guid: 5b40008e3cf82a14c98a18bd9c1f75e3, type: 3}
 --- !u!114 &747531797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1305,13 +1307,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6e64c4ad48b034ba24539ae8c7eded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 6
+  cooldown: 10
   spawnedObject:
     m_PersistentCalls:
       m_Calls: []
   objectPrefabs:
   - {fileID: 5670390529929243139, guid: 6c523fc119fa7b748b9298bb39c3217e, type: 3}
   - {fileID: 5748548934680683014, guid: 20821277c60d32d4ca5770ba92d440cc, type: 3}
+  - {fileID: 1465583423544427781, guid: 5b40008e3cf82a14c98a18bd9c1f75e3, type: 3}
 --- !u!114 &831239056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2184,6 +2187,7 @@ MonoBehaviour:
   objectPrefabs:
   - {fileID: 5670390529929243139, guid: 6c523fc119fa7b748b9298bb39c3217e, type: 3}
   - {fileID: 5748548934680683014, guid: 20821277c60d32d4ca5770ba92d440cc, type: 3}
+  - {fileID: 1465583423544427781, guid: 5b40008e3cf82a14c98a18bd9c1f75e3, type: 3}
 --- !u!114 &1686585615
 MonoBehaviour:
   m_ObjectHideFlags: 0

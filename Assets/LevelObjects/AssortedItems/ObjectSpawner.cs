@@ -13,12 +13,26 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] List<MoveableObject> objectPrefabs = new List<MoveableObject>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    [SerializeField] bool spawnOnMatchStart = false;
 
 
     bool stopSpawning = false;
 
     private void Start()
     {
+        if (!spawnOnMatchStart)
+        {
+            StartCoroutine(StartSpawning());
+        }
+        else
+        {
+            StartCoroutine(SpawnObject());
+        }
+    }
+    
+    IEnumerator StartSpawning()
+    {
+        yield return new WaitForSeconds(cooldown);
         StartCoroutine(SpawnObject());
     }
 

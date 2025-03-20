@@ -12,9 +12,8 @@ public class MoveableObject : MonoBehaviour
 
     [SerializeField] float _knockbackScaleFactor = 0.7f;
     [SerializeField] float _damageScaleFactor = 0.015f;
-    [SerializeField] float _minKnockback = 30.0f;
+    [SerializeField] float _baseKnockback = 30.0f;
     //saved as a float instead of a vector because normal determines knockback direction
-    [SerializeField] float _baseKnockback = 15.0f;
     [SerializeField] float _minSpeed = 5.0f;
     [SerializeField] int _minStunTime = 12;
     [SerializeField] int _minDamage = 5;
@@ -63,17 +62,7 @@ public class MoveableObject : MonoBehaviour
         if (healthComponent != null)
         {
             float health = healthComponent.GetHealth();
-           /* damage = Mathf.Max( _rb.linearVelocity.magnitude * _rb.mass * _damageScaleFactor, _minDamage);
-            Vector2 knockback = GetKnockBack(health, damage, collision.contacts[0].normal);
-            //health.Damage(GetKnockBack(health.getHealth(), damage),damage, stunTime);
-            DamagedEntity.Invoke();
-            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                Vector2 normal = collision.contacts[0].normal;
-                healthComponent.Damage(knockback, damage);
-                rb.AddForce(GetKnockBack(health, damage, normal));
-            }*/
+          
             damage = Mathf.Max(_rb.linearVelocity.magnitude * _rb.mass * _damageScaleFactor, _minDamage);
             Vector2 knockback = GetKnockBack(health, damage, collision.contacts[0].normal);
 
@@ -94,9 +83,8 @@ public class MoveableObject : MonoBehaviour
   
     public Vector2 GetKnockBack(float health, float damage, Vector2 normal)
     {
-       //Debug.Log("GLIZZLERS normal = " + normal.ToString());
 
-        float knockbackForce = Mathf.Max(health * _knockbackScaleFactor + _minKnockback, _minKnockback);
+        float knockbackForce = Mathf.Max(health * _knockbackScaleFactor + _baseKnockback, _baseKnockback);
         Vector2 knockback = knockbackForce * -normal;
         if (knockback.y < 3.0f)
         {

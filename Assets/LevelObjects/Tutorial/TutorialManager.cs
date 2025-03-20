@@ -50,9 +50,8 @@ public class TutorialManager : MonoBehaviour
             "Let's begin by going over basic movement. It's important to understand the basics,",
             "before we get to the more advanced parts.",
         };
-        StartCoroutine(DisplayPrompts(prompts));
-        yield return new WaitUntil(() => allPromptsOver);       
-        StartCoroutine(WalkMovement());
+        yield return StartCoroutine(DisplayPrompts(prompts));
+        yield return StartCoroutine(WalkMovement());
     }
 
     IEnumerator WalkMovement()
@@ -69,7 +68,7 @@ public class TutorialManager : MonoBehaviour
             "as well as landing strikes on your opponents.",
             "Lets continue with jumping."
         };
-        StartCoroutine (DisplayPrompts(prompts));
+       yield return StartCoroutine (DisplayPrompts(prompts));
         yield return new WaitUntil( () => allPromptsOver);
         StartCoroutine(JumpMovement());
     }
@@ -81,7 +80,7 @@ public class TutorialManager : MonoBehaviour
         {
             "You can press the " + tutorialPlayer._playerInput.actions["Jump"].controls[0].name + " button to jump.",
         };
-   
+
         StartCoroutine(DisplayPrompts(prompts));
         yield return new WaitUntil(() => allPromptsOver);
         jumpPlatform.SetActive(true);
@@ -92,6 +91,7 @@ public class TutorialManager : MonoBehaviour
 
         tutorialPlayer._playerInput.actions["Move"].Enable();
         tutorialPlayer._playerInput.actions["Jump"].Enable();
+        EnableActionsExclusive("Move", "Jump");
         conditionTracker = 0;
         yield return new WaitUntil(() => conditionTracker >= 1);
         DisablePlayer();
@@ -114,11 +114,10 @@ public class TutorialManager : MonoBehaviour
         string[] prompts =
         {
             "As a nimble, and much younger knight than I, you have the ability to climb walls.",
-            "This lets you quickly get to areas you can reach just by jumping.",
+            "This lets you quickly get to areas you can't reach just by jumping.",
         };
-        StartCoroutine(DisplayPrompts(prompts));
+        yield return StartCoroutine(DisplayPrompts(prompts));
         
-        yield return new WaitUntil( ()  => allPromptsOver);
         climbingWall.SetActive(true);
 
         string[] promptsTwo =
@@ -130,8 +129,7 @@ public class TutorialManager : MonoBehaviour
             "Hold up to climb up, or hold down to slide."
         };
 
-        StartCoroutine (DisplayPrompts(promptsTwo));
-        yield return new WaitUntil( () => allPromptsOver);      
+        yield return StartCoroutine (DisplayPrompts(promptsTwo));
         conditionTracker = 0;
         tutorialPlayer._playerInput.actions["Move"].Enable();
         tutorialPlayer._playerInput.actions["Jump"].Enable();
@@ -140,12 +138,18 @@ public class TutorialManager : MonoBehaviour
 
         string[] promptsThree =
         {
-            "Nice. That covers basic movement.",
-            "Now let's get to something a bit more violent."
+            "Your ability to scale walls like this makes you quite the meanace!",
+            "Now, let's put to the test what've you've learned."
         };
-        StartCoroutine(DisplayPrompts(promptsThree));
-        yield return new WaitUntil(() => allPromptsOver);
+        yield return StartCoroutine(DisplayPrompts(promptsThree));
         Debug.Log("End of basic movement");
+
+        StartCoroutine(Grapple());
+    }
+
+    public IEnumerator Grapple()
+    {
+        yield return null;
     }
 
 
@@ -179,6 +183,16 @@ public class TutorialManager : MonoBehaviour
             yield return new WaitForSeconds(characterDisplaySpeed);
         }
         promptOver = true;
+    }
+
+    public void EnableActionsExclusive(params string[] actions)
+    {
+        DisablePlayer();
+        foreach (string action in actions)
+        {
+            tutorialPlayer._playerInput.actions[action].Enable();
+        }
+        //exclusive means we turn off every action except for the requested ones
     }
 
     // Update is called once per frame

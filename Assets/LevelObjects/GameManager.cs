@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     void InitSettings()
     {
         gameSettings.Add("Brightness", 1.0f);
-        gameSettings.Add("Volume", 1.0f);
+        gameSettings.Add("Volume", 0.0f);
         gameSettings.Add("TimerDuration", 60f * 7/*i don't feel like doing math */ );
 
 

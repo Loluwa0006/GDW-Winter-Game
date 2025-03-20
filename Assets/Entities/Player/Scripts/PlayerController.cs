@@ -90,10 +90,10 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DropThroughPlatform()
     {
-        Debug.Log("Dropping thorugh platform");
         droppingThroughPlatform = true;
         _rb.excludeLayers = platformMask;
         hurtbox.excludeLayers = platformMask;
+
         yield return new WaitForSeconds(0.5f);
         _rb.excludeLayers = 0;
         hurtbox.excludeLayers = 0;
@@ -105,13 +105,13 @@ public class PlayerController : MonoBehaviour
     {
        if (_rb.linearVelocity.y > 0)
         {
-            _rb.excludeLayers |= platformMask;
-            hurtbox.excludeLayers |= platformMask;
+            _rb.excludeLayers = platformMask;
+            hurtbox.excludeLayers = platformMask;
         }
        else if (!droppingThroughPlatform) 
         {
-            _rb.excludeLayers &= ~0;
-            hurtbox.excludeLayers &= ~0;
+            _rb.excludeLayers = 0;
+            hurtbox.excludeLayers = 0;
         }
     }
     public void OnHitboxEnabled()
