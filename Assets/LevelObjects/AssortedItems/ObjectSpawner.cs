@@ -2,30 +2,34 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Events;
+using System.Collections;
+using Unity.VisualScripting;
 
-[RequireComponent(typeof(Timer))]
 public class ObjectSpawner : MonoBehaviour
 {
+
+    public float cooldown = 6.0f;
     public UnityEvent spawnedObject = new UnityEvent();
     [SerializeField] List<MoveableObject> objectPrefabs = new List<MoveableObject>();
-    Timer spawnTimer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Awake()
-    {
-        spawnTimer = GetComponent<Timer>();
-    }
+
+
+
+    bool stopSpawning = false;
 
     private void Start()
     {
-        spawnTimer.timerOver.AddListener(SpawnObject);
+        StartCoroutine(SpawnObject());
     }
+
+
 
     private void FixedUpdate()
     {
-        Debug.Log("Spawn timer wait time = " + spawnTimer.timeRemaining().ToString());
+
     }
 
-    public void SpawnObject()
+    public IEnumerator SpawnObject()
     {
         Debug.Log("Spawning object");
         int randomIndex = Random.Range(0, objectPrefabs.Count);
@@ -34,6 +38,12 @@ public class ObjectSpawner : MonoBehaviour
         newObject.transform.position = transform.position;
 
         spawnedObject.Invoke();
+        yield return new WaitForSeconds(cooldown);
+        if (stopSpawning )
+        {
+            yield return null;
+        }
+        StartCoroutine(SpawnObject());
     }
 
     // Update is called once per frame

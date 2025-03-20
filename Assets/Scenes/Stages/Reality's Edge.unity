@@ -397,6 +397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4871433523977337233, guid: 900481127aeedc54f9061eb11677d03e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitToMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 4938208673429260891, guid: 900481127aeedc54f9061eb11677d03e, type: 3}
       propertyPath: _bgmPlayer
       value: 

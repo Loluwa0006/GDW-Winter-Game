@@ -88,12 +88,21 @@ public class HealthComponent : MonoBehaviour
 
     public void RemoveLife()
     {
-        Debug.Log("GRAH, IM COOKED");
         _remainingLives--;
         onEntityDead.Invoke(player, GetRemainingLives());
-        health = 0;
+        ResetHealth();
     }
     
+    public void AddLife()
+    {
+        _remainingLives++;
+    }
+
+    public void ResetHealth()
+    {
+        health = 0;
+    }
+
     // Update is called o  nce per frame
     void Update()
     {

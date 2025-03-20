@@ -1,7 +1,5 @@
-using Unity.AppUI.UI;
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using Unity.Cinemachine;
 
 public class ItemHolder : MonoBehaviour

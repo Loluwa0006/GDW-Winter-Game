@@ -43,7 +43,7 @@ public class Player_Climb : Base_State
         wallBounceTracker = wallBounceDuration;
         DetatchTracker = mismatchedInputDetatchTimer;
 
-        Debug.Log(wallDirection);
+       // Debug.Log(wallDirection);
 
     }
 

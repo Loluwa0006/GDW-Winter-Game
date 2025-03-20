@@ -8,6 +8,8 @@ TagManager:
   - TetherPoint
   - IntelObject
   - OffScreenDetector
+  - TargetGroup
+  - LevelManager
   layers:
   - Default
   - TransparentFX

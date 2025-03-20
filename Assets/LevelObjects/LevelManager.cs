@@ -62,15 +62,7 @@ public class LevelManager : MonoBehaviour
             InitPlayerEvents(_playerList[i]);
             AddNewHud(_playerList[i]);
 
-            if (GameManager.getManager())
-            {
-                _playerList[i].GetComponent<HealthComponent>().SetRemainingLives((int) GameManager.instance.GetMatchSetting("StockCount"));
-            }
-            else
-            {
-                Debug.Log("WHERE? WHERE ARE U GAME MANAGER");
-            }
-
+            
             cinemachineFramer.AddMember(_playerList[i].transform, 1, 0.5f);
             //playerInput.currentActionMap = playerInput.action
         }
@@ -142,5 +134,17 @@ public class LevelManager : MonoBehaviour
     public void OnPlayerDefeated(PlayerController player, int lives)
     {
 
+    }
+
+    public void EndGame()
+    {
+        for (int i = 0; i < _playerList.Count; i++)
+        {
+            PlayerController player = _playerList[i];
+            player._playerInput.DeactivateInput();
+            player.playerEliminated.RemoveAllListeners();
+            player.GetComponent<HealthComponent>().onEntityDamaged.RemoveAllListeners();
+            Destroy(_playerList[i].gameObject);
+        }
     }
 }
