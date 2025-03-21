@@ -82,6 +82,7 @@ public class ItemHolder : MonoBehaviour
         _itemToDrop.GetComponent<Collider2D>().enabled = true;
         //do not inherit velocity of parent or else it will go flying
         _targetGroup.RemoveMember(transform);
+        _restartTimer.StartTimer(_cooldown);
 
     }
     void StartItemDropProcess()

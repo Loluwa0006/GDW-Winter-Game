@@ -93,17 +93,6 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""978bfe49-cc26-4a3d-ab7b-7d7a29327403"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""MovementKeys"",
                     ""id"": ""00ca640b-d935-4593-8157-c05846ea39b3"",
                     ""path"": ""Dpad"",
@@ -216,7 +205,7 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""eb40bb66-4559-4dfa-9a2f-820438abb426"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""/Keyboard/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
@@ -227,7 +216,7 @@ public partial class @PlayerOneControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""daba33a1-ad0c-4742-a909-43ad1cdfbeb6"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<DualShockGamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",

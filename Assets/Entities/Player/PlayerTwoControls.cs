@@ -93,17 +93,6 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""2c3363e2-bd22-484d-94c9-49dd1319e4eb"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""MovementKeys"",
                     ""id"": ""b0ca83b4-e7b2-4e82-8ba8-047fb1bfeaba"",
                     ""path"": ""Dpad"",
@@ -216,7 +205,7 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0e77bd19-1e89-472d-9a02-b951959a5905"",
-                    ""path"": ""<Keyboard>/b"",
+                    ""path"": ""/Keyboard/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",

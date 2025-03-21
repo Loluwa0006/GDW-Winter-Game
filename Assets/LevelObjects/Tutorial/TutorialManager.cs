@@ -12,9 +12,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] float timeBetweenPrompts = 3.0f;
 
     [SerializeField] PlayerController tutorialPlayer;
-
-    [SerializeField] GameObject jumpPlatform;
-    [SerializeField] GameObject climbingWall;
+    [SerializeField] Animator animator;
 
 
     public UnityEvent conditionMet = new UnityEvent();
@@ -22,13 +20,17 @@ public class TutorialManager : MonoBehaviour
     bool allPromptsOver = false;
 
    public int conditionTracker = 0;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+
+    //Basic Movement
+    [SerializeField] GameObject MovementTeaching;
+    [SerializeField] GameObject MovementTest;
+
 
     private void Start()
     {
         StartCoroutine( PlayerWelcome());
-        jumpPlatform.SetActive(false);
-        climbingWall.SetActive(false);
+
     }
 
     public void DisablePlayer()
@@ -41,8 +43,8 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator PlayerWelcome()
     {
-        DisablePlayer();   
-
+        DisablePlayer();
+        
         string[] prompts =
         {
             "Welcome to the tutorial!",
@@ -56,7 +58,7 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator WalkMovement()
     {
-        tutorialPlayer._playerInput.actions["Move"].Enable();
+        EnableActionsExclusive("Move");
         DisplayPrompt("Start with basic movement back and forth.");
         conditionTracker = 0;
 
@@ -70,6 +72,7 @@ public class TutorialManager : MonoBehaviour
         };
        yield return StartCoroutine (DisplayPrompts(prompts));
         yield return new WaitUntil( () => allPromptsOver);
+        OnMechanicLearned();
         StartCoroutine(JumpMovement());
     }
 
@@ -83,14 +86,10 @@ public class TutorialManager : MonoBehaviour
 
         StartCoroutine(DisplayPrompts(prompts));
         yield return new WaitUntil(() => allPromptsOver);
-        jumpPlatform.SetActive(true);
         prompts[0] = "See that platform over there? Try to jump on top of it.";
         StartCoroutine(DisplayPrompts(prompts));
         yield return new WaitUntil(() => allPromptsOver);
 
-
-        tutorialPlayer._playerInput.actions["Move"].Enable();
-        tutorialPlayer._playerInput.actions["Jump"].Enable();
         EnableActionsExclusive("Move", "Jump");
         conditionTracker = 0;
         yield return new WaitUntil(() => conditionTracker >= 1);
@@ -104,7 +103,7 @@ public class TutorialManager : MonoBehaviour
 
         StartCoroutine(DisplayPrompts(newPrompts));
         yield return new WaitUntil(() => allPromptsOver);
-
+        OnMechanicLearned();
         StartCoroutine(ClimbMovement());
     }
 
@@ -118,8 +117,6 @@ public class TutorialManager : MonoBehaviour
         };
         yield return StartCoroutine(DisplayPrompts(prompts));
         
-        climbingWall.SetActive(true);
-
         string[] promptsTwo =
         {
             "To start a climb, jump up and hold the direction of the wall.",
@@ -142,9 +139,35 @@ public class TutorialManager : MonoBehaviour
             "Now, let's put to the test what've you've learned."
         };
         yield return StartCoroutine(DisplayPrompts(promptsThree));
-        Debug.Log("End of basic movement");
-
-        StartCoroutine(Grapple());
+        animator.SetBool("MovementLearned", true);
+        OnMechanicLearned();
+        StartCoroutine(StartMovementTest());
+    }
+    public IEnumerator StartMovementTest()
+    {
+      
+        animator.SetBool("MovementLearned", true);
+        string[] prompts =
+        {
+            "Try to make it to the destination on the right.",
+            "It's ok if you fall, I had the wizards construct a special field to catch you.",
+            "Feel free to take as much time as you need."
+        };
+        DisablePlayer();
+        yield return DisplayPrompts(prompts);
+        tutorialPlayer.transform.position = tutorialPlayer._respawnPoint.transform.position;
+        //die so they respawn at the start point
+        EnableActionsExclusive("Move", "Jump");
+        conditionTracker = 0;
+        yield return new WaitUntil(() => conditionTracker >= 1);
+        string[] celebration =
+        {
+            "Good work knight! I wasn't expecting you to get it so soon!",
+            "Took me hours last night... my back still aches. Miss being young.",
+            "Anyways, you've proven yourself ready to start the next part of your training!"
+        };
+        DisablePlayer();
+        yield return StartCoroutine(DisplayPrompts(celebration));
     }
 
     public IEnumerator Grapple()
@@ -195,9 +218,8 @@ public class TutorialManager : MonoBehaviour
         //exclusive means we turn off every action except for the requested ones
     }
 
-    // Update is called once per frame
-    void Update()
+   void OnMechanicLearned()
     {
-        
+        animator.SetTrigger("LearnedMechanic");
     }
 }

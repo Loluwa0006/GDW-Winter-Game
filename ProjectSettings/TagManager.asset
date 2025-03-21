@@ -12,6 +12,7 @@ TagManager:
   - LevelManager
   - ItemDropper
   - MoveableObject
+  - TutorialManager
   layers:
   - Default
   - TransparentFX

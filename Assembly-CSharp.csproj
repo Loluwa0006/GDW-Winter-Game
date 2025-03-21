@@ -98,9 +98,9 @@
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Land.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\GrappleManager.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_CrouchRun.cs" />
+    <Compile Include="Assets\LevelObjects\Tutorial\TutorialTrigger.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\UI\PlayerHUD.cs" />
     <Compile Include="Assets\LevelObjects\AssortedItems\ObjectSpawner.cs" />
-    <Compile Include="Assets\TutorialTrigger.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Hitstun.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Tether.cs" />
     <Compile Include="Assets\LevelObjects\PauseMenu\PauseMenuFunctions.cs" />

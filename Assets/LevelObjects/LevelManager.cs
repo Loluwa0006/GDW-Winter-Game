@@ -160,9 +160,11 @@ public class LevelManager : MonoBehaviour
         foreach (var player in _activePlayers)
         {
             HealthComponent healthComponent = player.GetComponent<HealthComponent>();
-            if (healthComponent.GetRemainingLives() >= mostLives)
+            int lives = healthComponent.GetRemainingLives();
+            if (lives >= mostLives)
             {
-                mostLives = healthComponent.GetRemainingLives();
+                mostLives = lives;
+                Debug.Log(player.name + " has " + lives.ToString() + " lives remaining");
             }
             else
             {

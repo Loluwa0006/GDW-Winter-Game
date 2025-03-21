@@ -3,32 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\temia\\GDW-Winter-Game\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|c:\\users\\temia\\gdw-winter-game\\assets\\levelobjects\\assorteditems\\killbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\levelobjects\\assorteditems\\killbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\levelobjects\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\levelobjects\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|c:\\users\\temia\\gdw-winter-game\\assets\\levelobjects\\assorteditems\\itemholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\levelobjects\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\levelobjects\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\levelobjects\\assorteditems\\itemholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\levelobjects\\assorteditems\\itemholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\entities\\player\\scripts\\ui\\playerhud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\entities\\player\\scripts\\ui\\playerhud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\levelobjects\\assorteditems\\objectspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\levelobjects\\assorteditems\\objectspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\entities\\components\\healthcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\entities\\components\\healthcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\entities\\player\\scripts\\states\\basestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\entities\\player\\scripts\\states\\basestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\entities\\player\\scripts\\states\\player_climb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\entities\\player\\scripts\\states\\player_climb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\entities\\player\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\entities\\player\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\entities\\components\\healthcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\entities\\components\\healthcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\levelobjects\\moveableobjects\\moveableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\levelobjects\\moveableobjects\\moveableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\levelobjects\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\levelobjects\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\entities\\player\\scripts\\ui\\playerhud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\entities\\player\\scripts\\ui\\playerhud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\levelobjects\\pausemenu\\pausemenufunctions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,24 +51,8 @@
       "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\levelobjects\\assorteditems\\scenehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\levelobjects\\assorteditems\\objectspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\levelobjects\\assorteditems\\objectspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\levelobjects\\tutorial\\tutorialmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\levelobjects\\tutorial\\tutorialmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\levelobjects\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\levelobjects\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\entities\\player\\scripts\\states\\basestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\entities\\player\\scripts\\states\\basestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\entities\\player\\scripts\\states\\player_climb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\entities\\player\\scripts\\states\\player_climb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\tutorialtrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -78,37 +74,24 @@
       "DocumentGroups": [
         {
           "DockedHeight": 322,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Killbox.cs",
-              "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\AssortedItems\\Killbox.cs",
-              "RelativeDocumentMoniker": "Assets\\LevelObjects\\AssortedItems\\Killbox.cs",
-              "ToolTip": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\AssortedItems\\Killbox.cs",
-              "RelativeToolTip": "Assets\\LevelObjects\\AssortedItems\\Killbox.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAQwBIAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T19:19:19.926Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ItemHolder.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\AssortedItems\\ItemHolder.cs",
               "RelativeDocumentMoniker": "Assets\\LevelObjects\\AssortedItems\\ItemHolder.cs",
               "ToolTip": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\AssortedItems\\ItemHolder.cs",
               "RelativeToolTip": "Assets\\LevelObjects\\AssortedItems\\ItemHolder.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAArwEsAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAAnwDQAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-20T19:17:49.874Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "HealthComponent.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Components\\HealthComponent.cs",
               "RelativeDocumentMoniker": "Assets\\Entities\\Components\\HealthComponent.cs",
@@ -116,35 +99,38 @@
               "RelativeToolTip": "Assets\\Entities\\Components\\HealthComponent.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAArwCgAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T18:50:42.673Z"
+              "WhenOpened": "2025-03-20T18:50:42.673Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Player\\Scripts\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\Entities\\Player\\Scripts\\PlayerController.cs",
               "ToolTip": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Player\\Scripts\\PlayerController.cs",
               "RelativeToolTip": "Assets\\Entities\\Player\\Scripts\\PlayerController.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAIA8wDYAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAAAAwBoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T17:27:42.49Z"
+              "WhenOpened": "2025-03-20T17:27:42.49Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "MoveableObject.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\MoveableObjects\\MoveableObject.cs",
               "RelativeDocumentMoniker": "Assets\\LevelObjects\\MoveableObjects\\MoveableObject.cs",
               "ToolTip": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\MoveableObjects\\MoveableObject.cs",
               "RelativeToolTip": "Assets\\LevelObjects\\MoveableObjects\\MoveableObject.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAuwFYAAABoAAAAAAAAAA==",
+              "ViewState": "AgIAAF4AAAAAAAAAAAArwGUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T16:10:50.138Z"
+              "WhenOpened": "2025-03-20T16:10:50.138Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 1,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\LevelObjects\\GameManager.cs",
@@ -152,23 +138,25 @@
               "RelativeToolTip": "Assets\\LevelObjects\\GameManager.cs",
               "ViewState": "AgIAAGAAAAAAAAAAAAAqwC0AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T05:43:57.972Z"
+              "WhenOpened": "2025-03-20T05:43:57.972Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "PlayerHUD.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Player\\Scripts\\UI\\PlayerHUD.cs",
               "RelativeDocumentMoniker": "Assets\\Entities\\Player\\Scripts\\UI\\PlayerHUD.cs",
               "ToolTip": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Player\\Scripts\\UI\\PlayerHUD.cs",
               "RelativeToolTip": "Assets\\Entities\\Player\\Scripts\\UI\\PlayerHUD.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAewBYAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T05:36:33.291Z"
+              "WhenOpened": "2025-03-20T05:36:33.291Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "SceneHandler.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\AssortedItems\\SceneHandler.cs",
               "RelativeDocumentMoniker": "Assets\\LevelObjects\\AssortedItems\\SceneHandler.cs",
@@ -180,19 +168,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "LevelManager.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\LevelManager.cs",
               "RelativeDocumentMoniker": "Assets\\LevelObjects\\LevelManager.cs",
               "ToolTip": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\LevelManager.cs",
               "RelativeToolTip": "Assets\\LevelObjects\\LevelManager.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAIwDcAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAANMAAAAAAAAAAAArwM4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T05:27:08.139Z"
+              "WhenOpened": "2025-03-20T05:27:08.139Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "PauseMenuFunctions.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\PauseMenu\\PauseMenuFunctions.cs",
               "RelativeDocumentMoniker": "Assets\\LevelObjects\\PauseMenu\\PauseMenuFunctions.cs",
@@ -204,7 +193,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 4,
               "Title": "BaseState.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Player\\Scripts\\States\\BaseState.cs",
               "RelativeDocumentMoniker": "Assets\\Entities\\Player\\Scripts\\States\\BaseState.cs",
@@ -212,11 +201,12 @@
               "RelativeToolTip": "Assets\\Entities\\Player\\Scripts\\States\\BaseState.cs",
               "ViewState": "AgIAAGAAAAAAAAAAAAAawGkAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T03:41:20.091Z"
+              "WhenOpened": "2025-03-20T03:41:20.091Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 5,
               "Title": "Player_Climb.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Player\\Scripts\\States\\Player_Climb.cs",
               "RelativeDocumentMoniker": "Assets\\Entities\\Player\\Scripts\\States\\Player_Climb.cs",
@@ -224,23 +214,25 @@
               "RelativeToolTip": "Assets\\Entities\\Player\\Scripts\\States\\Player_Climb.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAkwC0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T22:25:21.074Z"
+              "WhenOpened": "2025-03-19T22:25:21.074Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 3,
               "Title": "ObjectSpawner.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\AssortedItems\\ObjectSpawner.cs",
               "RelativeDocumentMoniker": "Assets\\LevelObjects\\AssortedItems\\ObjectSpawner.cs",
               "ToolTip": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\AssortedItems\\ObjectSpawner.cs",
               "RelativeToolTip": "Assets\\LevelObjects\\AssortedItems\\ObjectSpawner.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwB8AAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAjwCQAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T21:30:03.817Z"
+              "WhenOpened": "2025-03-19T21:30:03.817Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 15,
               "Title": "PauseMenuFunctions.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\PauseMenu\\PauseMenuFunctions.cs",
               "RelativeDocumentMoniker": "Assets\\PauseMenu\\PauseMenuFunctions.cs",
@@ -252,7 +244,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 13,
               "Title": "TutorialTrigger.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\TutorialTrigger.cs",
               "RelativeDocumentMoniker": "Assets\\TutorialTrigger.cs",
@@ -264,7 +256,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "TutorialManager.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\Tutorial\\TutorialManager.cs",
               "RelativeDocumentMoniker": "Assets\\LevelObjects\\Tutorial\\TutorialManager.cs",
@@ -276,7 +268,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 14,
               "Title": "TutorialPrompt.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\Tutorial\\TutorialPrompt.cs",
               "RelativeDocumentMoniker": "Assets\\LevelObjects\\Tutorial\\TutorialPrompt.cs",

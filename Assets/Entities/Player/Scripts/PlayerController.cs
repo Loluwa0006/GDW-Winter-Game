@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
 
     public List<InputActionAsset> _playerKeybinds = new List<InputActionAsset>();
 
-    [HideInInspector]
     public Transform _respawnPoint;
 
     Dictionary<string, Timer> _timerList = new Dictionary<string, Timer>();
@@ -73,6 +72,13 @@ public class PlayerController : MonoBehaviour
 
         InitUniversalInputActions();
         platformMask = LayerMask.GetMask("Platform");
+
+        PhysicsMaterial2D material2D = new PhysicsMaterial2D();
+
+        material2D.bounciness = _rb.sharedMaterial.bounciness;
+        material2D.friction = _rb.sharedMaterial.friction;
+
+        _rb.sharedMaterial = material2D;
     }
 
     void InitHealthComponent()
@@ -194,7 +200,7 @@ public class PlayerController : MonoBehaviour
           //  Debug.Log("Added timer " + timer.GetID());
         }
     }
-    public void onPlayerDeath()
+    public void OnPlayerDeath()
     {
         int lives = healthComponent.GetRemainingLives() - 1;
         if (lives <= 0)

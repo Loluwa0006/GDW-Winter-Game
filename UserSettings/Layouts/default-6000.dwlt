@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2048
     height: 1188.8
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Animator
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: fab80000
       m_LastClickedID: 0
       m_ExpandedIDs: 42fbffff
       m_RenameOverlay:
@@ -600,11 +600,11 @@ MonoBehaviour:
       displayed: 1
       id: unity-grid-and-snap-toolbar
       index: 1
-      contents: '{"m_Layout":1,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":24.0,"y":-68.60000610351563},"m_SnapOffsetDelta":{"x":0.0,"y":0.000030517578125},"m_FloatingSnapCorner":2,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
+      contents: '{"m_Layout":1,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":24.0,"y":-68.5999755859375},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":2,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
-      snapOffset: {x: 24, y: -68.600006}
-      snapOffsetDelta: {x: 0, y: 0.000030517578}
+      snapOffset: {x: 24, y: -68.599976}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 2
       layout: 1
       size: {x: 0, y: 0}
@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 518.1454, y: 549.4847, z: -4.7679276}
+    m_Target: {x: 8.125923, y: 0.7017563, z: -7.375168}
     speed: 2
     m_Value: {x: 0, y: 0, z: 0}
   m_RenderMode: 0
@@ -1192,7 +1192,7 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 497.7772
+    m_Target: 22.09688
     speed: 2
     m_Value: 10
   m_Ortho:

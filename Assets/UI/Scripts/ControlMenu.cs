@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using TMPro;
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEngine.UI;
 [System.Serializable]
 public class ControlMenu : MonoBehaviour
 {
@@ -52,7 +54,11 @@ public class ControlMenu : MonoBehaviour
         foreach (InputAction action in asset.actionMaps[0].actions)
         {
         
-            
+           if (action.name == "DropDown")
+            {
+                continue;
+                //drop down isn't its own action, its just pressing down twice
+            }
      
             Transform targetControl = ControlContent.transform.Find(action.name).transform;
 
@@ -133,9 +139,15 @@ public class ControlMenu : MonoBehaviour
         if (_lastKeyPressed != string.Empty)
         {
             action.ChangeBinding(index).WithPath(_lastKeyPressed);
+            _lastKeyPressed = string.Empty;
         }
         ChangeDisplayedControls(_playerIndex);
         _listeningForKey = false;
+
     }
 
+    public void SwapControlScheme(Toggle toggle)
+    {
+        toggle.isOn = !toggle.isOn;
+    }
 }

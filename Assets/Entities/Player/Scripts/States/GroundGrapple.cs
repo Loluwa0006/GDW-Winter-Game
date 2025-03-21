@@ -3,8 +3,6 @@ using UnityEngine;
 [System.Serializable]
 public class GroundGrapple : BaseGrapple
 {
-    [SerializeField] float pullStrengthAcceleration = 0.1f;
-    [SerializeField] float minDistance = 3.0f;
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state

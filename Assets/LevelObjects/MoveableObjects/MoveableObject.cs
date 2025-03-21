@@ -15,7 +15,6 @@ public class MoveableObject : MonoBehaviour
     [SerializeField] float _baseKnockback = 30.0f;
     //saved as a float instead of a vector because normal determines knockback direction
     [SerializeField] float _minSpeed = 5.0f;
-    [SerializeField] int _minStunTime = 12;
     [SerializeField] int _minDamage = 5;
 
    public UnityEvent DamagedEntity;
