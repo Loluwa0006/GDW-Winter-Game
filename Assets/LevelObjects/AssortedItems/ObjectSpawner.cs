@@ -28,21 +28,12 @@ public class ObjectSpawner : MonoBehaviour
         {
             StartCoroutine(SpawnObject());
         }
-    }
-    
+    } 
     IEnumerator StartSpawning()
     {
         yield return new WaitForSeconds(cooldown);
         StartCoroutine(SpawnObject());
     }
-
-
-
-    private void FixedUpdate()
-    {
-
-    }
-
     public IEnumerator SpawnObject()
     {
         Debug.Log("Spawning object");
@@ -58,11 +49,5 @@ public class ObjectSpawner : MonoBehaviour
             yield return null;
         }
         StartCoroutine(SpawnObject());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     int numberOfPlayers = 2;
 
     string currentLevel = "PlatformStage1";
+
+    [SerializeField] AudioSource BGMPlayer;
 
 
     Dictionary<string, object> gameSettings = new Dictionary<string, object>();
@@ -32,8 +35,17 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
+        DontDestroyOnLoad(BGMPlayer.gameObject);
+        SceneManager.sceneLoaded += EndBGM;
         InitSettings();
+    }
+
+    void EndBGM(Scene scene, LoadSceneMode sceneMode)
+    {
+        if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "StageSelect")
+        {
+            BGMPlayer.Stop();
+        }
     }
     public static GameManager getManager()
     {
@@ -43,9 +55,9 @@ public class GameManager : MonoBehaviour
     {
         gameSettings.Add("Brightness", 1.0f);
         gameSettings.Add("Volume", 0.0f);
-        gameSettings.Add("TimerDuration", 60f * 7/*i don't feel like doing math */ );
 
-
+        matchSettings.Add("MatchDuration", 7);
+        //save match duration as minutes
         matchSettings.Add("CameraShake", false);
         matchSettings.Add("StockCount", 3);
         matchSettings.Add("UseTimer", false);

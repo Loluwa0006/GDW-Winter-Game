@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5670390529929243139}
   m_Layer: 10
   m_Name: Box
-  m_TagString: Untagged
+  m_TagString: MoveableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,7 +198,6 @@ MonoBehaviour:
   _rb: {fileID: 7484017010812916712}
   _knockbackScaleFactor: 0.7
   _damageScaleFactor: 0.2
-  _minKnockback: 30
   _baseKnockback: 15
   _minSpeed: 3
   _minStunTime: 12

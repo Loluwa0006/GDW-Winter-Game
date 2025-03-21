@@ -22,6 +22,7 @@ public class MoveableObject : MonoBehaviour
 
     Vector2 prevSpeed;
 
+    int indexOfLastPlayerToPush;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -96,5 +97,10 @@ public class MoveableObject : MonoBehaviour
         // Vector2 moveKnockback = Vector2.Max(_baseKnockback, _baseKnockback * (Vector2.one * (health * _knockbackScaleFactor)));
         //   Debug.Log("Knocking entity back " + moveKnockback.ToString());
         //   return moveKnockback;
+    }
+
+    public void SetLastPlayerMove(int index)
+    {
+        indexOfLastPlayerToPush = index;
     }
 }

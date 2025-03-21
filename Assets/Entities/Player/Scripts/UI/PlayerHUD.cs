@@ -31,8 +31,8 @@ public class PlayerHUD : MonoBehaviour
         
         SetPercentageDisplay(playerHealth.GetHealth(), 0);
 
-        playerHealth.onEntityDead.AddListener(SetLifeDisplay);
-        playerHealth.onEntityDead.AddListener( (player,lives) => SetPercentageDisplay(0,0) );
+        playerHealth.livesChanged.AddListener(SetLifeDisplay);
+        playerHealth.livesChanged.AddListener( (player,lives) => SetPercentageDisplay(0,0) );
 
         Debug.Log("Setting up HUD for player " + player.playerIndex.ToString());
         HUDBackground.color = HUDColors[player.playerIndex - 1];
@@ -48,7 +48,6 @@ public class PlayerHUD : MonoBehaviour
 
     void SetLifeDisplay(PlayerController player, int remainingLives) 
     {
-        Debug.Log("We set up life display! BROTHA");
         Debug.Log("Remaining Lives is now " + remainingLives.ToString());
        
         if (remainingLives <= 0)
@@ -72,6 +71,7 @@ public class PlayerHUD : MonoBehaviour
         }
         else
         {
+            stockOverflowDisplay.gameObject.SetActive(false);
             int currentStocks = StockImageHolder.transform.childCount;
             //deepseek code starts
             for (int i = currentStocks; i < remainingLives; i++)

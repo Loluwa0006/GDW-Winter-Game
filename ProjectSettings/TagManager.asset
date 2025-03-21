@@ -11,6 +11,7 @@ TagManager:
   - TargetGroup
   - LevelManager
   - ItemDropper
+  - MoveableObject
   layers:
   - Default
   - TransparentFX

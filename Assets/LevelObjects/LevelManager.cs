@@ -1,13 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UI;
-using Unity.VisualScripting;
-using TMPro.EditorUtilities;
-using UnityEngine.InputSystem;
+using UnityEngine.Events;
 using Unity.Cinemachine;
+using System.Collections;
 public class LevelManager : MonoBehaviour
 {
-   
+
     [SerializeField] PlayerController _playerPrefab;
 
     float levelTime = 0.0f;
@@ -27,12 +25,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject hudHolder;
 
 
-    private void Awake()
-    {
-
-        //exitArea.SetActive(false);
-
-    }
+    [HideInInspector]
+    public UnityEvent StartedSuddenDeath = new ();
+   
     private void Start()
     {
         if (GameManager.instance != null)
@@ -62,7 +57,7 @@ public class LevelManager : MonoBehaviour
             InitPlayerEvents(_playerList[i]);
             AddNewHud(_playerList[i]);
 
-            
+
             cinemachineFramer.AddMember(_playerList[i].transform, 1, 0.5f);
             //playerInput.currentActionMap = playerInput.action
         }
@@ -87,9 +82,9 @@ public class LevelManager : MonoBehaviour
     void InitPlayerEvents(PlayerController player)
     {
         player.playerEliminated.AddListener(OnPlayerEliminated);
-        player.GetComponent<HealthComponent>().onEntityDead.AddListener(OnPlayerDefeated);
+        player.GetComponent<HealthComponent>().livesChanged.AddListener(OnPlayerDefeated);
     }
-     
+
     private void Update()
     {
 
@@ -129,23 +124,106 @@ public class LevelManager : MonoBehaviour
         {
             OnGameFinished();
         }
-      
+
     }
     public void OnPlayerDefeated(PlayerController player, int lives)
     {
 
     }
 
+    public void DestroyPlayer(PlayerController player)
+    {
+        player._playerInput.DeactivateInput();
+        player.playerEliminated.RemoveAllListeners();
+        player.GetComponent<HealthComponent>().onEntityDamaged.RemoveAllListeners();
+        _activePlayers.Remove(player);
+        Destroy(player.gameObject);
+    }
+
     public void EndGame()
     {
         for (int i = _playerList.Count - 1; i > 0; i++)
         {
-            PlayerController player = _playerList[i];
-            player._playerInput.DeactivateInput();
-            player.playerEliminated.RemoveAllListeners();
-            player.GetComponent<HealthComponent>().onEntityDamaged.RemoveAllListeners();
-            Destroy(_playerList[i].gameObject);
+           DestroyPlayer(_playerList[i]);
         }
         _playerList.Clear();
     }
-}
+
+    public void OnTimerOver()
+    {
+        StartCoroutine(TimerOver());
+    }
+
+    IEnumerator TimerOver ()
+    {
+        int mostLives = -9999;
+        foreach (var player in _activePlayers)
+        {
+            HealthComponent healthComponent = player.GetComponent<HealthComponent>();
+            if (healthComponent.GetRemainingLives() >= mostLives)
+            {
+                mostLives = healthComponent.GetRemainingLives();
+            }
+            else
+            {
+                _activePlayers.Remove(player);
+            }
+
+        }
+
+        //if there's more then 1, there's a tie, time for sudden death
+        if (_activePlayers.Count > 1)
+        {
+            Time.timeScale = 0.15f;
+            yield return new WaitForSecondsRealtime (2);
+            Time.timeScale = 1.0f;
+            StartedSuddenDeath.Invoke();
+            StartSuddenDeath();
+        }
+    }
+
+    void StartSuddenDeath()
+    {
+        foreach (var player in _playerList.Values)
+        {
+            if (!_activePlayers.Contains(player))
+            {
+                DestroyPlayer(player);
+            }
+        }
+
+        foreach (GameObject moveableObject in GameObject.FindGameObjectsWithTag("MoveableObject"))
+        {
+            Destroy(moveableObject);
+        }
+
+        foreach (GameObject itemDropper in GameObject.FindGameObjectsWithTag("ItemDropper"))
+        {
+            ObjectSpawner positionalSpawner = itemDropper.GetComponent<ObjectSpawner>();
+            if (positionalSpawner != null)
+            {
+                positionalSpawner.StopAllCoroutines();
+                positionalSpawner.StartCoroutine(positionalSpawner.SpawnObject());
+            }
+            else
+            {
+                ItemHolder dyanmicSpawner = itemDropper.GetComponent<ItemHolder>();
+                if (dyanmicSpawner != null)
+                {
+                    dyanmicSpawner.ResetDropper();
+                }
+            }
+        }
+        int index = 0;
+        foreach (var player in _activePlayers)
+            {
+                HealthComponent hp = player.GetComponent<HealthComponent>();
+                hp.Damage(Vector2.zero, 999);
+                //die in 1 hit
+                hp.SetRemainingLives(1);
+                //no more respawning
+                player.transform.position = spawnLocations[index].transform.position;
+            index++;
+            }
+        }
+    }

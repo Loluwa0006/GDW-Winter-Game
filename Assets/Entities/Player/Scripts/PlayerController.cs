@@ -10,10 +10,13 @@ using UnityEngine.Events;
 [System.Serializable]
 public class PlayerController : MonoBehaviour
 {
-
+    [HideInInspector]
     public UnityEvent hitboxEnabled = new UnityEvent();
+    [HideInInspector]
     public UnityEvent hitboxDisabled = new UnityEvent();
+    [HideInInspector]
     public UnityEvent<PlayerController> playerEliminated;
+    [HideInInspector]
     //these exists to get around the inability of being able to connect statemachinebehavior functions to animation clips
     //because unity sucks uber omega butt cheeks
 
@@ -21,10 +24,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] BoxCollider2D hurtbox;
     [SerializeField] Rigidbody2D _rb;
 
-    [SerializeField] Text stateTracker;
-    [SerializeField] Text velocityTracker;
 
     public GameObject _grapplePrefab;
+    [HideInInspector]
     public GameObject _activeGrapple;
     public LayerMask groundMask;
 
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
     public List<InputActionAsset> _playerKeybinds = new List<InputActionAsset>();
 
+    [HideInInspector]
     public Transform _respawnPoint;
 
     Dictionary<string, Timer> _timerList = new Dictionary<string, Timer>();
@@ -41,8 +44,9 @@ public class PlayerController : MonoBehaviour
 
 
 
-
+    [HideInInspector]
     public int playerIndex = 1;
+    [HideInInspector]
     public enum GrapplePresets
     {
         REGULAR,

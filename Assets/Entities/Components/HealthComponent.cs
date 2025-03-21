@@ -9,7 +9,7 @@ public class HealthComponent : MonoBehaviour
     public UnityEvent<float, int> onEntityDamaged;
     public UnityEvent<float, int> onEntityHealed;
     public UnityEvent onEntityMaxDamageReached;
-    public UnityEvent<PlayerController, int> onEntityDead;
+    public UnityEvent<PlayerController, int> livesChanged;
     //player that died, lives remaining
     public UnityEvent <PlayerController, int> healthInitalized;
     //player that was set up, lives
@@ -89,13 +89,14 @@ public class HealthComponent : MonoBehaviour
     public void SetRemainingLives(int lives)
     {
         _remainingLives = lives;
+        livesChanged.Invoke(player, lives);
     }
 
     public void RemoveLife()
     {
         _remainingLives--;
         ResetHealth();
-        onEntityDead.Invoke(player, GetRemainingLives());
+        livesChanged.Invoke(player, GetRemainingLives());
     }
 
     public void AddLife()

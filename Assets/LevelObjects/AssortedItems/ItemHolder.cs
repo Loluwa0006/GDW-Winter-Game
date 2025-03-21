@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.Cinemachine;
+using TMPro;
 
 public class ItemHolder : MonoBehaviour
 {
@@ -47,6 +48,18 @@ public class ItemHolder : MonoBehaviour
             _targetGroup = GameObject.FindGameObjectWithTag("TargetGroup").GetComponent<CinemachineTargetGroup>();
         }
 
+    }
+
+    public void ResetDropper()
+    {
+        transform.position = _startingPosition;
+        _targetGroup.RemoveMember(transform);
+        if (_itemToDrop != null)
+        {
+            Destroy(_itemToDrop.gameObject);
+        }
+        _timeUntilDrop = 0.0f;
+        StartItemDropProcess();
     }
 
     private void Update()
@@ -113,10 +126,7 @@ public class ItemHolder : MonoBehaviour
         Debug.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - _groundCheckerLength), rayColor);
         return hit;
     }
-    private void OnBecameInvisible()
-    {
-        _restartTimer.StartTimer(_cooldown);
-    }
+ 
 
    
 }

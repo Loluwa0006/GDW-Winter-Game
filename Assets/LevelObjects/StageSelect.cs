@@ -9,11 +9,17 @@ public class StageSelect : MonoBehaviour
     [SerializeField] TMP_Text selectedLevel;
     [SerializeField] SceneHandler SceneHandler;
 
+    [SerializeField] Color NoTimerColor = Color.red;
+    [SerializeField] Color UseTimerColor = Color.green;
+
+    [SerializeField] GameObject TimerDuration;
+
     Dictionary<string, Image> StageThumbnails = new Dictionary<string, Image>();
     public void SetStage(GameObject level)
     { 
        // GameManager.instance.SetSelectedLevel(level);
         selectedLevel.text = level.name;
+
     }
 
     public void StartGame()
@@ -48,7 +54,6 @@ public class StageSelect : MonoBehaviour
     public void IncrementStockCount(Button button)
     {
         int count = button.name.Contains("Increase") ? 1 : -1;
-        Debug.Log("Count is " + count.ToString());
         int stocks = (int) GameManager.instance.GetMatchSetting("StockCount");
         stocks += count;
         GameManager.instance.SetMatchSetting("StockCount", stocks);
@@ -56,6 +61,39 @@ public class StageSelect : MonoBehaviour
         TMP_InputField stockTracker = button.transform.parent.GetComponent<TMP_InputField>();
          
         stockTracker.text = stocks.ToString().Trim();
-        SetStockCount(stockTracker);
+    }
+
+    public void ToggleTimer(Toggle toggle)
+    {
+        bool isOn = toggle.isOn;
+        GameManager.instance.SetMatchSetting("UseTimer", isOn);
+        TimerDuration.SetActive(isOn);
+
+    }
+
+    public void SetTimerDuration(TMP_InputField timerField)
+    {
+        timerField.text = timerField.text.Trim();
+        if (int.TryParse(timerField.text, out int result))
+        {
+            Debug.Log("Result is " + result.ToString());
+            GameManager.instance.SetMatchSetting("MatchDuration", result );
+        }
+        else
+        {
+            Debug.LogWarning("Could not parse timer field text (" + timerField.text + ") as int");
+        }
+    }
+
+    public void IncrementTimerDuration(Button button)
+    {
+        int count = button.name.Contains("Increase") ? 1 : -1;
+        int time = (int) GameManager.instance.GetMatchSetting("MatchDuration");
+        time += count;
+        GameManager.instance.SetMatchSetting("MatchDuration", time);
+
+        TMP_InputField timerField = button.transform.parent.GetComponent<TMP_InputField>();
+
+        timerField.text = time.ToString().Trim();
     }
 }

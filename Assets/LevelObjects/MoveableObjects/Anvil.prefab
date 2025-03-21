@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5748548934680683014}
   m_Layer: 10
   m_Name: Anvil
-  m_TagString: Untagged
+  m_TagString: MoveableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,7 +198,6 @@ MonoBehaviour:
   _rb: {fileID: 0}
   _knockbackScaleFactor: 0.7
   _damageScaleFactor: 0.3
-  _minKnockback: 30
   _baseKnockback: 15
   _minSpeed: 5
   _minStunTime: 12
