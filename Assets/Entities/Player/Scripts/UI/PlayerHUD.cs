@@ -36,7 +36,8 @@ public class PlayerHUD : MonoBehaviour
 
         Debug.Log("Setting up HUD for player " + player.playerIndex.ToString());
         HUDBackground.color = HUDColors[player.playerIndex - 1];
-        
+         
+        player.GetComponent<SpriteRenderer>().color = HUDColors[player.playerIndex];
 
     }
 

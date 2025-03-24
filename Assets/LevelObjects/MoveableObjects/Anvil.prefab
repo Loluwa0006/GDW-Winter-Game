@@ -197,10 +197,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 0}
   _knockbackScaleFactor: 0.7
-  _damageScaleFactor: 0.3
+  _damageScaleFactor: 0.7
   _baseKnockback: 15
   _minSpeed: 5
-  _minStunTime: 12
   _minDamage: 5
   DamagedEntity:
     m_PersistentCalls:

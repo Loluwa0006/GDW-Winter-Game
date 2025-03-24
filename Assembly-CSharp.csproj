@@ -71,7 +71,6 @@
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Idle.cs" />
     <Compile Include="Assets\Entities\Components\HealthComponent.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\UI\Scripts\ControlMenu.cs" />
     <Compile Include="Assets\LevelObjects\OldShadowstride\ExitArea.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\BaseState.cs" />
     <Compile Include="Assets\LevelObjects\Tutorial\TutorialManager.cs" />
