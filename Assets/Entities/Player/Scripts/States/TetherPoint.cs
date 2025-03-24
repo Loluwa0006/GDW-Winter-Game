@@ -115,7 +115,7 @@ public class TetherPoint : MonoBehaviour
                 pullObjects();
             }
 
-            if (playerController._currentGrapple == PlayerController.GrapplePresets.CHARGE)
+            if (playerController.selectedTether == PlayerController.TetherPresets.CHARGE)
             {
                 tetherCharge += CHARGE_SPEED;
             }
@@ -129,7 +129,10 @@ public class TetherPoint : MonoBehaviour
     void DrawLine()
     {
         lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, connectedTether.transform.position);
+        if (connectedTether)
+        {
+            lineRenderer.SetPosition(1, connectedTether.transform.position);
+        }
     }
     void pullObjects()
     {
@@ -139,12 +142,12 @@ public class TetherPoint : MonoBehaviour
         }
 
         Vector2 directionToTether = (connectedTether.transform.position - connectedObject.transform.position).normalized;
-        switch (playerController._currentGrapple)
+        switch (playerController.selectedTether)
         {
-            case PlayerController.GrapplePresets.REGULAR:
+            case PlayerController.TetherPresets.CLASSIC:
                 connectedObject.AddForce(directionToTether * pullStrength);
                 break;
-            case PlayerController.GrapplePresets.SLINGSHOT:
+            case PlayerController.TetherPresets.SLINGSHOT:
                   connectedObject.linearVelocity = Vector2.zero;
                 //reset it so that there's no force to counter act it
                 //since it's only 1 time, it would suck without this
@@ -159,7 +162,7 @@ public class TetherPoint : MonoBehaviour
     // Update is called once per frame
     public void RemoveTether()
     {
-        if (playerController._currentGrapple == PlayerController.GrapplePresets.CHARGE && connectedObject != null)
+        if (playerController.selectedTether == PlayerController.TetherPresets.CHARGE && connectedObject != null)
         {
             Vector2 directionToTether = (connectedTether.transform.position - connectedObject.transform.position).normalized;
             if (tetherCharge > MAX_CHARGE_AMOUNT)

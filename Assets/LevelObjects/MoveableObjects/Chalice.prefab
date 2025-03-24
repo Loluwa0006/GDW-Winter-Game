@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1965710758804100361}
   - component: {fileID: 4739444874546967056}
   - component: {fileID: 1465583423544427781}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chalice
   m_TagString: MoveableObject
   m_Icon: {fileID: 0}

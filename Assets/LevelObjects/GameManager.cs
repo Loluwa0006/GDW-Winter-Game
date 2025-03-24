@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    const int MAX_PLAYERS = 4;
+    public const int MAX_PLAYERS = 4;
 
     int numberOfPlayers = 2;
 
@@ -20,9 +21,18 @@ public class GameManager : MonoBehaviour
     Dictionary<string, object> matchSettings = new Dictionary<string, object>();
 
 
+    
+    public class PlayerData
+    {
+        public InputActionAsset controls;
+        public PlayerController.TetherPresets selectedTether = PlayerController.TetherPresets.CLASSIC;
+        public int index = 0;
+        public string pName = "Player 1";
+    }
+    List<PlayerData> playerData = new List<PlayerData>();   
 
 
-    PlayerController.GrapplePresets[] playerSelectedTether = new PlayerController.GrapplePresets[MAX_PLAYERS];
+  
     private void Awake()
     {
        
@@ -38,6 +48,12 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(BGMPlayer.gameObject);
         SceneManager.sceneLoaded += EndBGM;
         InitSettings();
+
+        for (int i = 0; i < MAX_PLAYERS; i++)
+        {
+            PlayerData data = new PlayerData();
+            playerData.Add(data);
+        }
     }
 
     void EndBGM(Scene scene, LoadSceneMode sceneMode)
@@ -69,12 +85,17 @@ public class GameManager : MonoBehaviour
 
     public void SetPlayers(int num)
     {
-        numberOfPlayers = num;
+        numberOfPlayers = Mathf.Clamp(num, 2, MAX_PLAYERS);
     }
 
-    public void SetPlayerTether(int index, PlayerController.GrapplePresets grappleType)
+    public void SetPlayerTether(int index, PlayerController.TetherPresets preset)
     {
-        playerSelectedTether[index - 1] = grappleType;
+        playerData[index].selectedTether = preset;
+    }
+
+    public PlayerController.TetherPresets GetPlayerTether(int index)
+    {
+        return playerData[index].selectedTether;
     }
 
     public int GetPlayerCount()

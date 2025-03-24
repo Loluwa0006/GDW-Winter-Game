@@ -43,16 +43,15 @@ public class PlayerController : MonoBehaviour
 
 
 
-    [HideInInspector]
     public int playerIndex = 1;
     [HideInInspector]
-    public enum GrapplePresets
+    public enum TetherPresets
     {
-        REGULAR,
+        CLASSIC,
         SLINGSHOT,
         CHARGE
     }
-    public GrapplePresets _currentGrapple = GrapplePresets.REGULAR;
+    public TetherPresets selectedTether = TetherPresets.CLASSIC;
 
 
     HealthComponent healthComponent;
@@ -79,6 +78,8 @@ public class PlayerController : MonoBehaviour
         material2D.friction = _rb.sharedMaterial.friction;
 
         _rb.sharedMaterial = material2D;
+        _rb.gravityScale = 0.0f;
+        
     }
 
     void InitHealthComponent()
@@ -146,16 +147,19 @@ public class PlayerController : MonoBehaviour
 
     public void EnablePlayer(int playerIndex)
     {
-        Debug.Log("player index is " + playerIndex.ToString());
         this.playerIndex = playerIndex;
         _playerInput.actions = _playerKeybinds[playerIndex - 1];
         _playerInput.actions.Enable();
         _playerInput.SwitchCurrentActionMap("BattleControls");    
-       // _playerInput.SwitchCurrentControlScheme("KeyboardMouse", Keyboard.current);
-        Debug.Log("Enabled actions for player " + playerIndex.ToString());
-        // Debug.Log("enabled controls for player " + playerIndex.ToString());
-       
+        
         healthComponent.playerIndex = playerIndex;
+
+        if (GameManager.instance != null)
+        {
+            Debug.Log("Switching tether from " + selectedTether.ToString() + " to new tether " + GameManager.instance.GetPlayerTether(playerIndex-1));
+            selectedTether = GameManager.instance.GetPlayerTether(playerIndex - 1);
+            
+        }
 
     }
     public void DisablePlayer()

@@ -89,6 +89,7 @@ public class MoveableObject : MonoBehaviour
         if (knockback.y < 3.0f)
         {
             knockback.y = 1.0f;
+            //no friction with the ground!
         }
         Debug.Log($"Knocking entity back {knockback}");
         return knockback;

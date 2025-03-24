@@ -32,7 +32,7 @@ public class Player_Jump : AirState
         _rb.linearVelocity = newSpeed;
 
 
-        animator.SetBool("MovingUpwards", (_rb.linearVelocity.y > 0));
+        animator.SetBool("MovingUpwards", (_rb.linearVelocity.y < 0));
         animator.SetBool("TouchingWall", TouchingWall());
 
        

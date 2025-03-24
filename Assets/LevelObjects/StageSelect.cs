@@ -15,6 +15,33 @@ public class StageSelect : MonoBehaviour
     [SerializeField] GameObject TimerDuration;
 
     Dictionary<string, Image> StageThumbnails = new Dictionary<string, Image>();
+
+    [SerializeField] GameObject TetherSelectors;
+
+
+    private void Awake()
+    {
+
+        if (GameManager.instance != null)
+        {
+            if (TetherSelectors.transform.childCount > GameManager.instance.GetPlayerCount())
+            {
+                for (int i = GameManager.instance.GetPlayerCount(); i < TetherSelectors.transform.childCount; i++)
+                {
+                    Destroy(TetherSelectors.transform.GetChild(i).gameObject);
+                }
+            }
+        }
+        else
+        {
+            for (int i = 2; i < TetherSelectors.transform.childCount; i++)
+            {
+                Destroy(TetherSelectors.transform.GetChild(i).gameObject);
+            }
+            //Assume 2 players
+        }
+    }
+
     public void SetStage(GameObject level)
     { 
        // GameManager.instance.SetSelectedLevel(level);
