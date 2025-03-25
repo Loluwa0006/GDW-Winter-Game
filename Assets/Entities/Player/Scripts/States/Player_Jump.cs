@@ -10,6 +10,7 @@ public class Player_Jump : AirState
        
         _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpVelocity);
         animator.SetBool("IsGrounded", false);
+        animator.SetBool("MovingUpwards", true);
         jumpBuffer.StopTimer();
     }
 
@@ -32,7 +33,10 @@ public class Player_Jump : AirState
         _rb.linearVelocity = newSpeed;
 
 
-        animator.SetBool("MovingUpwards", (_rb.linearVelocity.y < 0));
+        if (_rb.linearVelocity.y < 0)
+        {
+            animator.SetBool("MovingUpwards", false);
+        }
         animator.SetBool("TouchingWall", TouchingWall());
 
        

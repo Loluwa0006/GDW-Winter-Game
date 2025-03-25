@@ -96,4 +96,4 @@ MonoBehaviour:
   LateralAdjustment: 0
   FovRange: {x: 1, y: 100}
   DollyRange: {x: -100, y: 100}
-  OrthoSizeRange: {x: 8, y: 12}
+  OrthoSizeRange: {x: 7, y: 10}

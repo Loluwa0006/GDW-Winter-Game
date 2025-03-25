@@ -1,5 +1,5 @@
 {
-    "name": "PlayerTwoControls",
+    "name": "PlayerFourActions",
     "maps": [
         {
             "name": "BattleControls",
@@ -84,7 +84,7 @@
                 {
                     "name": "up",
                     "id": "6d523668-3f5a-41cf-8dcd-14396815adf1",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/5",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -95,7 +95,7 @@
                 {
                     "name": "down",
                     "id": "0bfbe9d0-fde6-461e-94b2-b12453b47d9a",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/t",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -106,7 +106,7 @@
                 {
                     "name": "left",
                     "id": "bd776595-3ebf-4f91-98e9-e22881a96d5d",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -117,7 +117,7 @@
                 {
                     "name": "right",
                     "id": "a0da07fd-67a0-4c40-a633-c94765ce23e0",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -183,7 +183,7 @@
                 {
                     "name": "",
                     "id": "0e77bd19-1e89-472d-9a02-b951959a5905",
-                    "path": "<Keyboard>/b",
+                    "path": "<Keyboard>/6",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -204,8 +204,19 @@
                 },
                 {
                     "name": "",
+                    "id": "8826d9b1-65b4-4134-b168-28a2efdcf990",
+                    "path": "<XRController>/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "54ca55fe-28bc-4a0e-b3fe-7a293f404776",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Keyboard>/o",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -215,8 +226,8 @@
                 },
                 {
                     "name": "",
-                    "id": "af347ac1-0656-4181-8208-c74bb4cc3bf1",
-                    "path": "<Keyboard>/n",
+                    "id": "639cea7d-9f11-43d7-bdb0-a2be77f23da4",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -238,7 +249,7 @@
                 {
                     "name": "",
                     "id": "4f5b3d50-c546-403c-89f0-c24aebb65616",
-                    "path": "<Keyboard>/m",
+                    "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -249,7 +260,7 @@
                 {
                     "name": "",
                     "id": "bf3fbee3-fa27-4a96-aa20-cef2751a49b2",
-                    "path": "<Keyboard>/v",
+                    "path": "<Keyboard>/0",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -263,7 +274,7 @@
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": "",
                     "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -271,7 +282,7 @@
                 {
                     "name": "",
                     "id": "d2e579d8-a069-4e99-b4a6-3e9ed900f4f0",
-                    "path": "<Keyboard>/j",
+                    "path": "<Keyboard>/minus",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -281,7 +292,7 @@
                 },
                 {
                     "name": "",
-                    "id": "2835ea84-6070-4183-b7d2-d14e29c869ea",
+                    "id": "4b8047cc-4b0f-4141-aa9d-71dd3ff43996",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
@@ -293,7 +304,7 @@
                 {
                     "name": "",
                     "id": "019aa257-674b-4cc6-8996-0aaade70a81a",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/t",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -307,7 +318,7 @@
                     "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": "",
                     "action": "DropDown",
                     "isComposite": false,
                     "isPartOfComposite": false

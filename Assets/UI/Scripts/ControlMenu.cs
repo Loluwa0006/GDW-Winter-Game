@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 [System.Serializable]
 public class ControlMenu : MonoBehaviour
 {
@@ -19,13 +20,23 @@ public class ControlMenu : MonoBehaviour
 
     bool _listeningForKey = false;
 
+    [SerializeField] GameObject InputDevices;
+    [SerializeField] GameObject GamepadDevices;
+    [SerializeField] Button UseKeyboard;
+
+    [SerializeField] PlayerInput playerInput;
   
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         ChangeDisplayedControls(1);
+        InputSystem.onDeviceChange += SetGamepadButtons;
     }
 
+    private void Start()
+    {
+        SetGamepadButtons(null, InputDeviceChange.Removed);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -42,41 +53,36 @@ public class ControlMenu : MonoBehaviour
 
     public void ChangeDisplayedControls(int index)
     {
-     
-        _playerIndex = index;
+
+        OnPlayerIndexChanged(index);
 
         InputActionAsset asset = playerControlSchemes[index - 1];
 
         //actionmap 0 is battle controls
 
+        
+       
         foreach (InputAction action in asset.actionMaps[0].actions)
         {
-        
-            
-     
+            if (action.name == "DropDown")
+            {
+                continue;
+                //drop down is just down twice
+            }
             Transform targetControl = ControlContent.transform.Find(action.name).transform;
-
             for (int i = 0; i < targetControl.childCount; i++)
             {
-
                 Transform child = targetControl.GetChild(i);
-
                 for (int x = 0; x < child.childCount; x++)
                 {
-
                     Transform control = child.GetChild(x);  
                     TMP_Text text = control.GetComponent<TMP_Text>();
+                    Debug.Log(action.controls[i + x].path);
                     text.text = action.controls[i + x].displayName;
                 }
-               
 
-                
             }
-
-
-       
         }
-
     }
     public void StartRebind(string control)
     {
@@ -138,4 +144,81 @@ public class ControlMenu : MonoBehaviour
         _listeningForKey = false;
     }
 
+
+    void SetGamepadButtons(InputDevice device, InputDeviceChange change)
+    {
+
+        if (Gamepad.all.Count > GameManager.MAX_PLAYERS)
+        {
+            return;
+        }
+
+        foreach (Transform transform in GamepadDevices.transform)
+        {
+            transform.gameObject.SetActive(false);
+        }
+       for (int i = 0; i < Gamepad.all.Count; i++)
+        {
+            GamepadDevices.transform.GetChild(i).gameObject.SetActive(true);
+        }
+    }
+
+    public void SetGamepadForPlayer(Button button)
+    {
+
+        int pad = int.Parse(button.name);
+        Gamepad selectedPad = Gamepad.all[pad - 1]; //forgot to start at 1 in the editor, this is way faster, oops
+
+        GameManager.instance.SetPlayerDevice(_playerIndex, selectedPad);
+
+        SetDeviceColors();
+        button.GetComponent<Image>().color = Color.green;
+    }
+
+    public void SetKeyboardForPlayer(Button button)
+    {
+        SetDeviceColors();
+        button.GetComponent<Image>().color = Color.green;
+
+        GameManager.instance.SetPlayerDevice(_playerIndex, Keyboard.current);
+    }
+
+    public void SetDeviceColors()
+    {
+        for (int i = 0; i < GamepadDevices.transform.childCount; i++)
+        {
+            GamepadDevices.transform.GetChild(i).GetComponent<Image>().color = Color.white;
+        }
+    }
+
+    public void SetDeviceStatus(Button keyboardButton)
+    {
+        SetDeviceColors();
+        var device = GameManager.instance.GetPlayerDevice(_playerIndex);
+
+        if (device == Keyboard.current)
+        {
+            keyboardButton.GetComponent<Image>().color = Color.white;
+        }
+        else
+        {
+            int index = 0;
+            foreach (Gamepad pad in Gamepad.all)
+            {
+                if (pad == device)
+                {
+                    break;
+                }
+                index++;
+            }
+            GamepadDevices.transform.GetChild(index).GetComponent<Image>().color = Color.green;
+        }
+    }
+    public void OnPlayerIndexChanged(int index)
+    {
+         _playerIndex = index;
+        UseKeyboard.gameObject.SetActive(index <= 2);
+    }
+
+   
 }

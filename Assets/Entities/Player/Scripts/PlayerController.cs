@@ -152,13 +152,17 @@ public class PlayerController : MonoBehaviour
         _playerInput.actions.Enable();
         _playerInput.SwitchCurrentActionMap("BattleControls");    
         
+        if (playerIndex > 2)
+        {
+            _playerInput.SwitchCurrentControlScheme("Gamepad");
+            //player 3 and 4 can only use gamepad
+        }
         healthComponent.playerIndex = playerIndex;
 
         if (GameManager.instance != null)
         {
-            Debug.Log("Switching tether from " + selectedTether.ToString() + " to new tether " + GameManager.instance.GetPlayerTether(playerIndex-1));
+            // Debug.Log("Switching tether from " + selectedTether.ToString() + " to new tether " + GameManager.instance.GetPlayerTether(playerIndex-1));
             selectedTether = GameManager.instance.GetPlayerTether(playerIndex - 1);
-            
         }
 
     }

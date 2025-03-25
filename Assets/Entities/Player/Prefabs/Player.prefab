@@ -396,17 +396,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.002889514, y: -0.10402173}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.9, y: 1.11}
+    oldSize: {x: 1.12, y: 1.39}
     newSize: {x: 0.64, y: 0.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.1444747, y: 1.2080435}
   m_EdgeRadius: 0
 --- !u!114 &6972796821543124617
 MonoBehaviour:
@@ -444,7 +444,7 @@ MonoBehaviour:
   _respawnPoint: {fileID: 0}
   _playerInput: {fileID: 2932344813579778816}
   playerIndex: 1
-  _currentGrapple: 0
+  selectedTether: 0
   groundColliderSize: {x: 0.8, y: 0.8}
 --- !u!114 &2186834193266078834
 MonoBehaviour:
