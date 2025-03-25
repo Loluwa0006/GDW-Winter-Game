@@ -166,11 +166,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitboxInfo: {fileID: 67054227}
-  damage: 25
-  stunTime: 8
-  _knockbackScaleFactor: 2
-  _baseKnockback: {x: 0, y: 100}
+  damage: 10
+  stunTime: 1
+  _knockbackScaleFactor: 2.5
+  _baseKnockback: {x: 0, y: 20}
   attackLanded: 0
+  canSpike: 0
   hitboxConnected:
     m_PersistentCalls:
       m_Calls: []
@@ -850,11 +851,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitboxInfo: {fileID: 654664202}
-  damage: 25
-  stunTime: 8
-  _knockbackScaleFactor: 2
-  _baseKnockback: {x: 0, y: 100}
+  damage: 10
+  stunTime: 1
+  _knockbackScaleFactor: 2.5
+  _baseKnockback: {x: 0, y: 20}
   attackLanded: 0
+  canSpike: 0
   hitboxConnected:
     m_PersistentCalls:
       m_Calls: []
@@ -1025,6 +1027,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 750782375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &726191149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 209493970767065713, guid: 900481127aeedc54f9061eb11677d03e, type: 3}
+  m_PrefabInstance: {fileID: 244324756}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &750782374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,11 +1216,15 @@ PrefabInstance:
     - target: {fileID: 1615671834194767125, guid: 50b15082626f37443bf238c4f70bba0e, type: 3}
       propertyPath: hudHolder
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 726191149}
     - target: {fileID: 1615671834194767125, guid: 50b15082626f37443bf238c4f70bba0e, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1615671834194767125, guid: 50b15082626f37443bf238c4f70bba0e, type: 3}
+      propertyPath: _playerPrefab
+      value: 
+      objectReference: {fileID: 6972796821543124617, guid: a0176d13dadcffc4e8ae2697224b4dc5, type: 3}
     - target: {fileID: 1615671834194767125, guid: 50b15082626f37443bf238c4f70bba0e, type: 3}
       propertyPath: cinemachineFramer
       value: 
@@ -1615,11 +1626,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitboxInfo: {fileID: 1277466730}
-  damage: 25
-  stunTime: 8
-  _knockbackScaleFactor: 2
-  _baseKnockback: {x: 0, y: 100}
+  damage: 10
+  stunTime: 1
+  _knockbackScaleFactor: 2.5
+  _baseKnockback: {x: 0, y: 20}
   attackLanded: 0
+  canSpike: 0
   hitboxConnected:
     m_PersistentCalls:
       m_Calls: []
@@ -2326,11 +2338,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitboxInfo: {fileID: 1811384713}
-  damage: 25
-  stunTime: 8
-  _knockbackScaleFactor: 2
-  _baseKnockback: {x: 0, y: 100}
+  damage: 10
+  stunTime: 1
+  _knockbackScaleFactor: 2.5
+  _baseKnockback: {x: 0, y: 20}
   attackLanded: 0
+  canSpike: 0
   hitboxConnected:
     m_PersistentCalls:
       m_Calls: []
@@ -2495,6 +2508,7 @@ MonoBehaviour:
   _knockbackScaleFactor: 2
   _baseKnockback: {x: 0, y: 100}
   attackLanded: 0
+  canSpike: 1
   hitboxConnected:
     m_PersistentCalls:
       m_Calls: []

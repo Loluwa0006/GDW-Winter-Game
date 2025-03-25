@@ -45,20 +45,16 @@ public class GrappleManager : Base_State
         Vector3 aimDirection = move;
 
         RaycastHit2D hit = Physics2D.Raycast(playerController.transform.position, aimDirection, _maxDistance, _grapplableLayers);
-        //Debug.DrawLine(playerController.transform.position,playerController.transform.position + ( aimDirection * _maxDistance), Color.red);
 
         if (hit)
         {
             grappleInfo = hit;
-            animator.SetFloat("GrapplePointX", hit.point.x);
-            animator.SetFloat("GrapplePointY", hit.point.y);
+       
         }
 
         animator.SetBool("InGrappleRange", hit);
         animator.SetBool("IsGrounded", IsGrounded());
 
-        // animator.SetBool("GrapplePressed", playerInput.actions["Grapple"].IsPressed() );
-        //Debug.Log("Mouse pressed = " + Input.GetMouseButton(0));
     }
 
 

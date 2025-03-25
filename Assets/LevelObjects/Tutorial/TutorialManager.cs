@@ -26,9 +26,12 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject MovementTeaching;
     [SerializeField] GameObject MovementTest;
 
+    
+
 
     private void Start()
     {
+        conditionTracker = 0;
         StartCoroutine( PlayerWelcome());
 
     }
@@ -119,11 +122,9 @@ public class TutorialManager : MonoBehaviour
         
         string[] promptsTwo =
         {
-            "To start a climb, jump up and hold the direction of the wall.",
-            "The wall's on your right, so make sure to hold that input when you touch it.",
-            "At any time, you can cancel a climb into a jump, or hold the opposite direction-",
-            "to disconnect from it.",
-            "Hold up to climb up, or hold down to slide."
+            "To start climbing, jump up and move into the wall. In this case, hold right.",
+            "At any time, you can cancel a climb into a jump, or hold the other way to disconnect.",
+            "Hold up to climb, hold down to slide."
         };
 
         yield return StartCoroutine (DisplayPrompts(promptsTwo));
@@ -135,7 +136,7 @@ public class TutorialManager : MonoBehaviour
 
         string[] promptsThree =
         {
-            "Your ability to scale walls like this makes you quite the meanace!",
+            "Your ability to scale walls like this makes you quite the menace!",
             "Now, let's put to the test what've you've learned."
         };
         yield return StartCoroutine(DisplayPrompts(promptsThree));
@@ -155,10 +156,9 @@ public class TutorialManager : MonoBehaviour
         };
         DisablePlayer();
         yield return DisplayPrompts(prompts);
-        tutorialPlayer.transform.position = tutorialPlayer._respawnPoint.transform.position;
-        //die so they respawn at the start point
         EnableActionsExclusive("Move", "Jump");
         conditionTracker = 0;
+        ResetPlayerPosition();
         yield return new WaitUntil(() => conditionTracker >= 1);
         string[] celebration =
         {
@@ -168,6 +168,60 @@ public class TutorialManager : MonoBehaviour
         };
         DisablePlayer();
         yield return StartCoroutine(DisplayPrompts(celebration));
+        StartCoroutine(Tackling());
+        animator.SetBool("FinishedMovement", true);
+    }
+
+    public IEnumerator Tackling()
+    {
+        DisablePlayer();
+        
+        string[] prompts =
+        {
+            "Now that we've gone over movement that you'll need to dodge attacks",
+            "let's learn how to attack ourselves, shall we?",
+            "While you can't throw a punch or kick to save your life,",
+            "your speed could be used as an attack.",
+            "Press the " + tutorialPlayer._playerInput.actions["Attack"].controls[0].displayName + " button to dash forward, tackling opponents.",
+            "Doubles as a movement option as well, in case running was a bit too slow!"
+        };
+        yield return StartCoroutine(DisplayPrompts(prompts));
+        string[] slime =
+        {
+            "Oh, how fortunate!",
+            "Tackle that slime over there!"
+        };
+        yield return StartCoroutine (DisplayPrompts(slime));
+        EnableActionsExclusive("Attack");
+        conditionTracker = 0;
+        tutorialPlayer.transform.localScale = new Vector3(1, 1, 1);
+        //makes it so they tackle to the right
+        ResetPlayerPosition();
+        yield return new WaitUntil(() => conditionTracker >= 1);
+        DisablePlayer();
+        string[] reaction =
+        {
+            "WAIT, NOT THAT HAR-",
+            "*crash*",
+            "It looks like we might need a new tether teacher."
+        };
+        yield return StartCoroutine(DisplayPrompts(reaction));
+        OnMechanicLearned();
+        StartCoroutine(GroundPound());
+
+    }
+
+    public IEnumerator GroundPound()
+    {
+        string[] prompts =
+        {
+            "Well, I'm not even sure if I want to teach you this next technique...",
+            "Let's say, hypothetically of course, that if you were to jump,",
+            "and then press the attack key while holding a down input,",
+            "AND there was another slime who's been saying rather unplesant things about your mother..."
+        };
+        yield return StartCoroutine(DisplayPrompts(prompts));
+        EnableActionsExclusive("Jump", "Attack", "Move");
     }
 
     public IEnumerator Grapple()
@@ -181,7 +235,6 @@ public class TutorialManager : MonoBehaviour
         promptOver = false;
         promptDisplay.text = string.Empty;
         StartCoroutine(DisplayNextCharacter(prompt));
-
     }
 
     public IEnumerator DisplayPrompts(string[] prompts)
@@ -221,5 +274,11 @@ public class TutorialManager : MonoBehaviour
    void OnMechanicLearned()
     {
         animator.SetTrigger("LearnedMechanic");
+    }
+
+    public void ResetPlayerPosition()
+    {
+        tutorialPlayer.transform.position = tutorialPlayer._respawnPoint.transform.position;
+        tutorialPlayer.transform.localScale = tutorialPlayer._respawnPoint.transform.localScale;
     }
 }

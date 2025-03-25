@@ -84,6 +84,7 @@
     <Compile Include="Assets\Entities\Player\Scripts\States\GroundGrapple.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\TetherPoint.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Climb.cs" />
+    <Compile Include="Assets\TutorialBoundary.cs" />
     <Compile Include="Assets\LevelObjects\OldShadowstride\BaseElement.cs" />
     <Compile Include="Assets\MatchTimer.cs" />
     <Compile Include="Assets\Entities\Player\PlayerThreeActions 1.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Assets\LevelObjects\LevelManager.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Fall.cs" />
     <Compile Include="Assets\Entities\Components\HitboxComponent.cs" />
+    <Compile Include="Assets\Slime.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Land.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\GrappleManager.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_CrouchRun.cs" />

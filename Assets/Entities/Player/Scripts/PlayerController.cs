@@ -101,14 +101,18 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DropThroughPlatform()
     {
+
+        Debug.Log("Droppin ");
+
         droppingThroughPlatform = true;
         _rb.excludeLayers = platformMask;
         hurtbox.excludeLayers = platformMask;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.65f);
+        droppingThroughPlatform = false;
+        Debug.Log("stoppin ");
         _rb.excludeLayers = 0;
         hurtbox.excludeLayers = 0;
-        droppingThroughPlatform = false;
     }
 
 
@@ -161,8 +165,8 @@ public class PlayerController : MonoBehaviour
 
         if (GameManager.instance != null)
         {
-            // Debug.Log("Switching tether from " + selectedTether.ToString() + " to new tether " + GameManager.instance.GetPlayerTether(playerIndex-1));
             selectedTether = GameManager.instance.GetPlayerTether(playerIndex - 1);
+            //idk why this works but it does so i'm not touching it
         }
 
     }
@@ -205,7 +209,6 @@ public class PlayerController : MonoBehaviour
         {
             Timer timer = (Timer)component;
             _timerList.Add(timer.GetID(), timer);
-          //  Debug.Log("Added timer " + timer.GetID());
         }
     }
     public void OnPlayerDeath()
@@ -223,7 +226,6 @@ public class PlayerController : MonoBehaviour
     }
     void Respawn()
     {
-
         transform.position = _respawnPoint.position;
 
         ResetAnimatorParameters();
@@ -232,7 +234,6 @@ public class PlayerController : MonoBehaviour
 
         healthComponent.RemoveLife();
 
-        
         Destroy(_activeGrapple);
 
         ResetRigidBody();
@@ -251,7 +252,6 @@ public class PlayerController : MonoBehaviour
     void ResetAnimatorParameters()
     {
         //below is deepseek code
-
         foreach (AnimatorControllerParameter param in animator.parameters)
         {
             switch (param.type)

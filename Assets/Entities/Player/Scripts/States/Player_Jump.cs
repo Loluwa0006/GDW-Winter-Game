@@ -11,6 +11,7 @@ public class Player_Jump : AirState
         _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpVelocity);
         animator.SetBool("IsGrounded", false);
         animator.SetBool("MovingUpwards", true);
+        animator.SetFloat("JumpBuffer", 0.0f);
         jumpBuffer.StopTimer();
     }
 
