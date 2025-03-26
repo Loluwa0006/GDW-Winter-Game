@@ -20,8 +20,7 @@ public class HitboxComponent : MonoBehaviour
     //for animator purposes, reset this value so attacks can land
     public bool attackLanded = false;
 
-    public UnityEvent hitboxConnected = new UnityEvent();
-
+    public UnityEvent <GameObject, int> hitboxConnected = new();
 
     private void Awake()
     {
@@ -42,33 +41,37 @@ public class HitboxComponent : MonoBehaviour
 
         HealthComponent health = collision.GetComponent<HealthComponent>();
         Vector2 push = Vector2.zero;
+        int stun = 1;
         if (health != null)
         {
-          push = GetKnockBack(health.GetHealth(), damage);
-          health.Damage(push, damage);
+            push = GetKnockBack(health.GetHealth(), damage);
+            health.Damage(push, damage);
+            stun = health.CalculateStun(push);
 
         }
+
         else
         {
             Debug.Log("Couldn't get health component");
-        }
-        Rigidbody2D rb = collision.attachedRigidbody;
-        if (rb != null)
-        {
-            //Assume to the right of the object
-            //need to launch rigid body in opposite direction of where im facing, 
-            if (transform.position.x > collision.transform.position.x)
-            //if you're to the left of the object, push the other way
+
+            Rigidbody2D rb = collision.attachedRigidbody;
+            if (rb != null)
             {
-                push.x *= -1;
+                //Assume to the right of the object
+                //need to launch rigid body in opposite direction of where im facing, 
+                if (transform.position.x > collision.transform.position.x)
+                //if you're to the left of the object, push the other way
+                {
+                    push.x *= -1;
+                }
+
+                rb.AddForce(push);
+                Debug.Log("Hit " + collision.attachedRigidbody.gameObject.name);
             }
-            
-            rb.AddForce(push);
-            Debug.Log("Hit " + collision.attachedRigidbody.gameObject.name);
         }
-        hitboxConnected.Invoke();
-        enabled = false;
-    }
+            hitboxConnected.Invoke(collision.gameObject, stun);
+            enabled = false;
+        }
 
 
     public Vector2 GetKnockBack(float health, float damage)

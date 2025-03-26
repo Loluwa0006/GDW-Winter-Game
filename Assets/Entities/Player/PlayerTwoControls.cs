@@ -248,6 +248,17 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""6ea11b41-1184-4abf-8eb6-a3813580fa48"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grapple"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""28e6202c-3550-4124-bc9d-84722ca6bde8"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
@@ -264,6 +275,17 @@ public partial class @PlayerTwoControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
+                    ""action"": ""Tether"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""323fa2dc-100e-4ec9-8d76-25f1e035971c"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Tether"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

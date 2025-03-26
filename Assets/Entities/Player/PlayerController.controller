@@ -1304,13 +1304,13 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: GrapplePointX
+  - m_Name: KnockbackX
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: GrapplePointY
+  - m_Name: KnockbackY
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -1330,6 +1330,12 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: HitstunAmount
     m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: HitshakeAmount
+    m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -1837,9 +1843,9 @@ AnimatorStateMachine:
   - {fileID: -6478100956054997799}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: 7789591163263193577}
-    second: []
   - first: {fileID: -5233763908583029759}
+    second: []
+  - first: {fileID: 7789591163263193577}
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 2800, y: -430, z: 0}

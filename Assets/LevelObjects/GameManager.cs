@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     public const int MAX_PLAYERS = 4;
 
-    int numberOfPlayers = 2;
+    public int numberOfPlayers = 2;
 
     string currentLevel = "PlatformStage1";
 
@@ -54,9 +54,11 @@ public class GameManager : MonoBehaviour
         {
             PlayerData data = new PlayerData();
             playerData.Add(data);
+
+
         }
 
-        InputSystem.onDeviceChange += OnInputDeviceChanged;
+     //   InputSystem.onDeviceChange += OnInputDeviceChanged;
     }
 
     void EndBGM(Scene scene, LoadSceneMode sceneMode)
@@ -207,6 +209,12 @@ public class GameManager : MonoBehaviour
                 BGMPlayer.Play();
                 //just reset the game 
             }
+            numberOfPlayers -= 1;
+        }
+        else if (change == InputDeviceChange.Added)
+        {
+            numberOfPlayers += 1;
+            playerData[numberOfPlayers].inputDevice = device;
         }
     }
 

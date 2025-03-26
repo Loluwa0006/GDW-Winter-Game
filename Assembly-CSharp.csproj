@@ -64,7 +64,6 @@
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Run.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_SlamLand.cs" />
     <Compile Include="Assets\LevelObjects\AssortedItems\SceneHandler.cs" />
-    <Compile Include="Assets\Entities\Player\PlayerTwoControls 1.cs" />
     <Compile Include="Assets\LevelObjects\GameManager.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\MoveState.cs" />
     <Compile Include="Assets\LevelObjects\AssortedItems\ItemHolder.cs" />
@@ -87,7 +86,6 @@
     <Compile Include="Assets\TutorialBoundary.cs" />
     <Compile Include="Assets\LevelObjects\OldShadowstride\BaseElement.cs" />
     <Compile Include="Assets\MatchTimer.cs" />
-    <Compile Include="Assets\Entities\Player\PlayerThreeActions 1.cs" />
     <Compile Include="Assets\LevelObjects\PauseMenu\PauseMenu.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\RemoveTethers.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Tackle.cs" />

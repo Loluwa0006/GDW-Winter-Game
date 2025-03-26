@@ -26,18 +26,18 @@ public class PlayerHUD : MonoBehaviour
         player.playerEliminated.AddListener(EndHUD);
         playerDisplayName.text = player.name;
 
-        
+         
         SetLifeDisplay(player, playerHealth.GetRemainingLives());
-        
-        SetPercentageDisplay(playerHealth.GetHealth(), 0);
+
+        SetPercentageDisplay(playerHealth.GetHealth(), 0, 0, Vector2.zero);
 
         playerHealth.livesChanged.AddListener(SetLifeDisplay);
-        playerHealth.livesChanged.AddListener( (player,lives) => SetPercentageDisplay(0,0) );
+        playerHealth.livesChanged.AddListener( (player,lives) => SetPercentageDisplay(0,0, 0, Vector2.zero) );
 
         Debug.Log("Setting up HUD for player " + player.playerIndex.ToString());
         HUDBackground.color = HUDColors[player.playerIndex - 1];
          
-        player.GetComponent<SpriteRenderer>().color = HUDColors[player.playerIndex];
+        player.GetComponentInChildren<SpriteRenderer>().color = HUDColors[player.playerIndex];
 
     }
 
@@ -91,11 +91,16 @@ public class PlayerHUD : MonoBehaviour
         }
     
 
+    void SetPercentageDisplay(float damage, int stunTime, float shakeAmount, Vector2 knockback)
+    {
+        percentageTracker.text = Mathf.RoundToInt(playerHealth.GetHealth()).ToString();
+    }
+
     void SetPercentageDisplay(float damage, int stunTime)
     {
         percentageTracker.text = Mathf.RoundToInt(playerHealth.GetHealth()).ToString();
     }
 
-  
+
 
 }

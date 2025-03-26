@@ -10,6 +10,8 @@ using UnityEngine.Events;
 [System.Serializable]
 public class PlayerController : MonoBehaviour
 {
+    public GameObject playerSprite;
+
     [HideInInspector]
     public UnityEvent hitboxEnabled = new UnityEvent();
     [HideInInspector]
@@ -23,7 +25,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] BoxCollider2D hurtbox;
     [SerializeField] Rigidbody2D _rb;
-
 
     public GameObject _grapplePrefab;
     [HideInInspector]
@@ -139,9 +140,12 @@ public class PlayerController : MonoBehaviour
         hitboxDisabled.Invoke();
     }
 
-    void OnPlayerStruck(float damageTaken, int stunTime)
+    void OnPlayerStruck(float damageTaken, int stunTime, float shakeAmount, Vector2 knockback)
     {
         animator.SetInteger("HitstunAmount", stunTime);
+        animator.SetFloat("HitshakeAmount", shakeAmount);
+        animator.SetFloat("KnockbackX", knockback.x);
+        animator.SetFloat("KnockbackY", knockback.y);
     }
 
     public HitboxComponent GetHitbox()
@@ -156,11 +160,11 @@ public class PlayerController : MonoBehaviour
         _playerInput.actions.Enable();
         _playerInput.SwitchCurrentActionMap("BattleControls");    
         
-        if (playerIndex > 2)
+        if (playerIndex != 1 && Gamepad.all.Count > 0)
         {
-            _playerInput.SwitchCurrentControlScheme("Gamepad");
-            //player 3 and 4 can only use gamepad
+            _playerInput.SwitchCurrentControlScheme(Gamepad.all[playerIndex - 2]);
         }
+        
         healthComponent.playerIndex = playerIndex;
 
         if (GameManager.instance != null)
