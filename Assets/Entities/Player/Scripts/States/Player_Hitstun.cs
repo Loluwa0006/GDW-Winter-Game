@@ -1,5 +1,7 @@
 using System.Collections;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,8 +21,12 @@ public class Player_Hitstun : Base_State
     Transform spriteObject;
 
     const int  SHAKESCALE = 5;
- 
-    
+
+
+    CinemachineGroupFraming groupFraming;
+    Camera cam;
+
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (!stateInitalized)
@@ -30,6 +36,8 @@ public class Player_Hitstun : Base_State
             playerController = _rb.gameObject.GetComponent<PlayerController>();
             stateInitalized = true;
             spriteObject = playerController.playerSprite.transform;
+            groupFraming = GameObject.FindGameObjectWithTag("CinemachineCamera").GetComponent<CinemachineGroupFraming>();
+            cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
             //Shrink ground collider size to make sure player is standing on top of something
             //Without this the player would stick to walls by having the furthest parts of the model touch said wall
@@ -45,11 +53,15 @@ public class Player_Hitstun : Base_State
         Debug.Log("Stunned for " + animator.GetInteger("HitstunAmount").ToString());
 
         _rb.linearVelocity = Vector2.zero;
-        
+
+        float shakeAmount = animator.GetFloat("HitshakeAmount");
+        shakeAmount = shakeAmount * (cam.orthographicSize / groupFraming.OrthoSizeRange.y) + 0.5f; ;
+
 
     }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        
         if (decreaseHitstun)
         {
             animator.SetInteger("HitstunAmount", animator.GetInteger("HitstunAmount") - 1);
@@ -66,6 +78,10 @@ public class Player_Hitstun : Base_State
         float shakeAmount = animator.GetFloat("HitshakeAmount");
         float xShake = Random.Range(-shakeAmount, shakeAmount); 
         float yShake = Random.Range(shakeAmount, shakeAmount);
+        if (IsGrounded())
+        {
+            yShake = 0;
+        }
         spriteObject.transform.localPosition = new Vector2(xShake, yShake);
 
         shakeAmount = Mathf.Lerp(shakeAmount, 0, Time.deltaTime * SHAKESCALE);
@@ -75,7 +91,7 @@ public class Player_Hitstun : Base_State
         {
 
             Vector2 push = new Vector2(animator.GetFloat("KnockbackX"), animator.GetFloat("KnockbackY"));
-            _rb.AddForce(push);
+            _rb.AddForce(push, ForceMode2D.Impulse);
             shakeAmount = 0;
             spriteObject.transform.localPosition = Vector2.zero;
             decreaseHitstun = true;

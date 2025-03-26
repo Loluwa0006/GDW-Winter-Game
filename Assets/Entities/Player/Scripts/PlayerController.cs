@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using Unity.Cinemachine;
 
 [RequireComponent(typeof(HealthComponent))]
 [System.Serializable]
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] BoxCollider2D hurtbox;
     [SerializeField] Rigidbody2D _rb;
+    public CinemachineImpulseSource impulseSource;
 
     public GameObject _grapplePrefab;
     [HideInInspector]

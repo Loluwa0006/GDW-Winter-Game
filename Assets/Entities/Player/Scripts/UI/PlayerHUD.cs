@@ -17,6 +17,9 @@ public class PlayerHUD : MonoBehaviour
     HealthComponent playerHealth;
 
     const int  MAX_LIVES_TO_DISPLAY = 6;
+
+    const int MIN_FONT_SIZE = 36;
+    const int MAX_FONT_SIZE = 50;
     public void InitPlayerHUD(PlayerController player)
     {
         playerHealth = player.GetComponent<HealthComponent>();
@@ -93,12 +96,26 @@ public class PlayerHUD : MonoBehaviour
 
     void SetPercentageDisplay(float damage, int stunTime, float shakeAmount, Vector2 knockback)
     {
-        percentageTracker.text = Mathf.RoundToInt(playerHealth.GetHealth()).ToString();
+        float hp = playerHealth.GetHealth();
+        percentageTracker.text = Mathf.RoundToInt(hp).ToString();
+        SetPercentageText(hp);
     }
 
     void SetPercentageDisplay(float damage, int stunTime)
     {
-        percentageTracker.text = Mathf.RoundToInt(playerHealth.GetHealth()).ToString();
+        float hp = playerHealth.GetHealth();
+        percentageTracker.text = Mathf.RoundToInt(hp).ToString();
+        SetPercentageText(hp);
+    }
+    
+    void SetPercentageText(float dmg)
+    {
+        float transition = Mathf.Clamp01(dmg / 150.0f);
+        Debug.Log("Transition is now " + transition.ToString());
+        percentageTracker.color = Color.Lerp(Color.white, Color.red, transition);
+        
+        
+        percentageTracker.fontSize = Mathf.Lerp(MIN_FONT_SIZE, MAX_FONT_SIZE, transition);
     }
 
 

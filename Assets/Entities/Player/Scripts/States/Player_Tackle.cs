@@ -24,7 +24,16 @@ public class Player_Tackle : Base_State
 
     const float contactSpeed = 0.35f;
 
+    Transform spriteObject;
+
+   const float    SPRITE_SHAKE = 0.045f;
+    const float MIN_KNOCKBACK_FOR_CAMERA_SHAKE = 140f;
+    const float CAMERA_SHAKE = 0.1f;
     Animator animator;
+
+    bool shakePlayer = false;
+
+    
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -33,11 +42,17 @@ public class Player_Tackle : Base_State
         if (!stateInitalized)
         {
             _rb = animator.gameObject.GetComponent<Rigidbody2D>();
+            
             this.animator = animator;
 
         }
 
         base.OnStateEnter(animator, stateInfo, layerIndex);
+
+        if (spriteObject == null)
+        {
+            spriteObject = playerController.playerSprite.transform;
+        }
 
        
             playerController.hitboxEnabled.AddListener(StartTackleMovement);
@@ -55,25 +70,36 @@ public class Player_Tackle : Base_State
         
     }
 
-    void OnTackleCollision(GameObject obj, int stun)
+    void OnTackleCollision(GameObject obj, int stun, float dmg, Vector2 knockback)
     {
         if (obj.TryGetComponent<PlayerController> (out PlayerController player))
         {
             playerController.StartCoroutine(SetTackleHitstopSpeed(stun));
+            Debug.Log("Hit player for knockback of " + knockback.magnitude.ToString());
+            if (knockback.magnitude >= MIN_KNOCKBACK_FOR_CAMERA_SHAKE)
+            {
+                playerController.impulseSource.GenerateImpulse(CAMERA_SHAKE);
+            }
         }
     }
 
     IEnumerator SetTackleHitstopSpeed(int stun)
     {
-        float duration = stun / 1.5f;
+        float duration = stun / 2.0f;
         Debug.Log("Slowing down " + playerController.playerIndex + " to speed " + contactSpeed + " for " + duration.ToString());
         Vector2 oldSpeed = _rb.linearVelocity;
         animator.speed = contactSpeed;
         _rb.linearVelocity *= contactSpeed;
+        shakePlayer = true;
         yield return new WaitForSeconds(duration);
         _rb.linearVelocity = oldSpeed;
         animator.speed = 1.0f;
+        shakePlayer = false;
+        spriteObject.localPosition = Vector2.zero;
     }
+
+  
+
   
 
     public void StartTackleMovement()
@@ -103,6 +129,17 @@ public class Player_Tackle : Base_State
         }
         animator.SetBool("CanSlam", CanSlam());
 
+        if (shakePlayer)
+        {
+            float shakeX = Random.Range(-SPRITE_SHAKE, SPRITE_SHAKE);
+            float shakeY = 0.0f;
+            if (!IsGrounded()) 
+            {
+                shakeY = Random.Range(-SPRITE_SHAKE, SPRITE_SHAKE);
+
+            }
+            spriteObject.localPosition = new Vector2(shakeX, shakeY);
+        }
     }
 
 

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public class HitboxComponent : MonoBehaviour
 {
-
+    const float HEALTH_SCALE = 0.85f;
 
     public BoxCollider2D hitboxInfo;
 
@@ -20,7 +20,7 @@ public class HitboxComponent : MonoBehaviour
     //for animator purposes, reset this value so attacks can land
     public bool attackLanded = false;
 
-    public UnityEvent <GameObject, int> hitboxConnected = new();
+    public UnityEvent <GameObject, int, float, Vector2> hitboxConnected = new();
 
     private void Awake()
     {
@@ -42,9 +42,15 @@ public class HitboxComponent : MonoBehaviour
         HealthComponent health = collision.GetComponent<HealthComponent>();
         Vector2 push = Vector2.zero;
         int stun = 1;
+
         if (health != null)
         {
             push = GetKnockBack(health.GetHealth(), damage);
+            if (transform.position.x > collision.transform.position.x)
+            //if you're to the left of the object, push the other way
+            {
+                push.x *= -1;
+            }
             health.Damage(push, damage);
             stun = health.CalculateStun(push);
 
@@ -62,6 +68,7 @@ public class HitboxComponent : MonoBehaviour
                 if (transform.position.x > collision.transform.position.x)
                 //if you're to the left of the object, push the other way
                 {
+
                     push.x *= -1;
                 }
 
@@ -69,14 +76,14 @@ public class HitboxComponent : MonoBehaviour
                 Debug.Log("Hit " + collision.attachedRigidbody.gameObject.name);
             }
         }
-            hitboxConnected.Invoke(collision.gameObject, stun);
+            hitboxConnected.Invoke(collision.gameObject, stun, damage, push);
             enabled = false;
         }
 
 
     public Vector2 GetKnockBack(float health, float damage)
     {
-        Vector2 moveKnockback = Vector2.Max(_baseKnockback, _baseKnockback *  (Vector2.one * (health * _knockbackScaleFactor)));
+        Vector2 moveKnockback = Vector2.Max(_baseKnockback, _baseKnockback *  (Vector2.one * (health * HEALTH_SCALE) * _knockbackScaleFactor));
         Debug.Log("Knocking entity back " + moveKnockback.ToString());
         return moveKnockback;
     }
