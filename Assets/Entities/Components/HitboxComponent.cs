@@ -13,7 +13,6 @@ public class HitboxComponent : MonoBehaviour
     public int damage = 2;
     public int stunTime = 15;
 
-    //if stun time is not 0, then hitstun is fixed
     public float _knockbackScaleFactor;
     public Vector2 _baseKnockback = new Vector2(20, 50);
 
@@ -22,21 +21,45 @@ public class HitboxComponent : MonoBehaviour
 
     public UnityEvent <GameObject, int, float, Vector2> hitboxConnected = new();
 
+
+    Collider2D hitbox;
+    Collider2D parentHurtbox;
     private void Awake()
     {
-
-        Collider2D parentHurtbox = transform.parent.GetComponent<Collider2D>();
+        hitbox = GetComponent<Collider2D>();
+        parentHurtbox = transform.parent.GetComponent<Collider2D>();
         if (parentHurtbox != null)
         {
-            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), parentHurtbox);
+            Physics2D.IgnoreCollision(hitbox, parentHurtbox);
             //makes it so that you can't hit yourself
         }
     }
 
+    private void OnEnable()
+    {
+        Collider2D[] objects = Physics2D.OverlapBoxAll(transform.position, hitbox.bounds.size, 0);
 
+        foreach (Collider2D obj in objects)
+        {
+            if (obj != null)
+            {
+                if (parentHurtbox)
+                {
+                    if (obj == parentHurtbox) return;
+                }
+                HandleHit(obj);
+            }
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        HandleHit(collision);
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void HandleHit(Collider2D collision)
     {
 
         HealthComponent health = collision.GetComponent<HealthComponent>();
@@ -58,6 +81,7 @@ public class HitboxComponent : MonoBehaviour
 
         else
         {
+            push = _baseKnockback;
             Debug.Log("Couldn't get health component");
 
             Rigidbody2D rb = collision.attachedRigidbody;
@@ -72,8 +96,8 @@ public class HitboxComponent : MonoBehaviour
                     push.x *= -1;
                 }
 
-                rb.AddForce(push);
-                Debug.Log("Hit " + collision.attachedRigidbody.gameObject.name);
+                rb.AddForce(push, ForceMode2D.Impulse);
+                Debug.Log("Hit " + collision.attachedRigidbody.gameObject.name + " with push force of " + push.ToString()) ;
             }
         }
             hitboxConnected.Invoke(collision.gameObject, stun, damage, push);

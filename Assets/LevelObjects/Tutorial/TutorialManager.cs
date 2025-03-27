@@ -25,6 +25,8 @@ public class TutorialManager : MonoBehaviour
     //Basic Movement
     [SerializeField] GameObject MovementTeaching;
     [SerializeField] GameObject MovementTest;
+    [SerializeField] GameObject slimePrefab;
+    [SerializeField] Transform slimeSpawner;
 
     
 
@@ -202,7 +204,7 @@ public class TutorialManager : MonoBehaviour
         {
             "WAIT, NOT THAT HAR-",
             "*crash*",
-            "It looks like we might need a new tether teacher."
+            "My neck's going to roll for this..."
         };
         yield return StartCoroutine(DisplayPrompts(reaction));
         OnMechanicLearned();
@@ -220,7 +222,15 @@ public class TutorialManager : MonoBehaviour
             "and then press the attack key while holding a down input,",
             "AND there was another slime who's been saying rather unplesant things about your mother..."
         };
+
+        GameObject newSlime = Instantiate(slimePrefab);
+        newSlime.transform.position = slimeSpawner.transform.position;
+        conditionTracker = 0;
         yield return StartCoroutine(DisplayPrompts(prompts));
+
+        string[] reaction;
+        newSlime.transform.position = slimeSpawner.transform.position;
+        newSlime.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         EnableActionsExclusive("Jump", "Attack", "Move");
     }
 
