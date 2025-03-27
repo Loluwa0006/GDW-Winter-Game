@@ -180,7 +180,7 @@ MonoBehaviour:
   _rb: {fileID: 5248528639580477253}
   _joint: {fileID: 8826897123185642277}
   tetherSpeed: 70
-  pullStrength: 45
+  pullStrength: 15
   slingStrength: 300
   _collider: {fileID: 3454669539962596529}
   connectedTether: {fileID: 0}

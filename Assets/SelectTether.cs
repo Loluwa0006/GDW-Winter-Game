@@ -1,11 +1,20 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using TMPro;
 
 public class SelectTether : MonoBehaviour
 {
     public int index = 1;
 
-  
+   [SerializeField] Button selectedButton;
+
+    private void Awake()
+    {
+        SetTether(selectedButton);
+    }
+
     public void SetTether(Button button)
     {
         if (GameManager.instance == null)
@@ -15,7 +24,6 @@ public class SelectTether : MonoBehaviour
         }
         PlayerController.TetherPresets preset = PlayerController.TetherPresets.CLASSIC;
 
-        Debug.Log("name of button is " + button.name);
         switch (button.name)
         {
             case "Slingshot":
@@ -31,17 +39,16 @@ public class SelectTether : MonoBehaviour
                 preset = PlayerController.TetherPresets.CLASSIC;
                 break;
         }
-        Debug.Log("preset will now be " + preset.ToString());
+
         GameManager.instance.SetPlayerTether(index, preset);
         SetSelectedButton(button);
     }
 
      void SetSelectedButton(Button button)
-    {
-        foreach (Transform i in transform)
-        {
-            i.GetComponent<Image>().color = Color.white;
-        }
+     {
+        selectedButton.GetComponentInChildren<Image>().color = Color.white;
+        Debug.Log("Looking at button " + button.name);
         button.GetComponent<Image>().color = Color.green;
-    }
+        selectedButton = button;
+     }
 }

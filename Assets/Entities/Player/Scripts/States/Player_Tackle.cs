@@ -1,7 +1,4 @@
-using NUnit.Framework.Constraints;
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
 
 [System.Serializable]
@@ -32,6 +29,7 @@ public class Player_Tackle : Base_State
     Animator animator;
 
     bool shakePlayer = false;
+    bool shakeCamera = false;
 
     
 
@@ -44,6 +42,11 @@ public class Player_Tackle : Base_State
             _rb = animator.gameObject.GetComponent<Rigidbody2D>();
             
             this.animator = animator;
+
+            if (GameManager.instance != null )
+            {
+                shakeCamera = (bool)GameManager.instance.GetGameSetting("CameraShake");
+            }
 
         }
 
@@ -75,9 +78,10 @@ public class Player_Tackle : Base_State
         if (obj.TryGetComponent<PlayerController> (out PlayerController player))
         {
             playerController.StartCoroutine(SetTackleHitstopSpeed(stun));
-            Debug.Log("Hit player for knockback of " + knockback.magnitude.ToString());
-            if (knockback.magnitude >= MIN_KNOCKBACK_FOR_CAMERA_SHAKE)
+            //Debug.Log("Hit player for knockback of " + knockback.magnitude.ToString());
+            if (knockback.magnitude >= MIN_KNOCKBACK_FOR_CAMERA_SHAKE && shakeCamera)
             {
+                Debug.Log("Yes, " + knockback.magnitude + " is bigger then " + MIN_KNOCKBACK_FOR_CAMERA_SHAKE);
                 playerController.impulseSource.GenerateImpulse(CAMERA_SHAKE);
             }
         }
@@ -86,21 +90,23 @@ public class Player_Tackle : Base_State
     IEnumerator SetTackleHitstopSpeed(int stun)
     {
         float duration = stun / 2.0f;
-        Debug.Log("Slowing down " + playerController.playerIndex + " to speed " + contactSpeed + " for " + duration.ToString());
         Vector2 oldSpeed = _rb.linearVelocity;
         animator.speed = contactSpeed;
         _rb.linearVelocity *= contactSpeed;
         shakePlayer = true;
+
         yield return new WaitForSeconds(duration);
+
+        EndHitshake(oldSpeed);
+    }
+
+    void EndHitshake(Vector2 oldSpeed)
+    {
         _rb.linearVelocity = oldSpeed;
         animator.speed = 1.0f;
         shakePlayer = false;
         spriteObject.localPosition = Vector2.zero;
     }
-
-  
-
-  
 
     public void StartTackleMovement()
     {

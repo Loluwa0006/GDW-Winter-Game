@@ -66,6 +66,8 @@ public class PlayerController : MonoBehaviour
 
     LayerMask platformMask;
 
+    public List<Color> playerColors = new();
+
     private void Awake()
     {
         InitHealthComponent();
@@ -172,7 +174,12 @@ public class PlayerController : MonoBehaviour
         if (GameManager.instance != null)
         {
             selectedTether = GameManager.instance.GetPlayerTether(playerIndex - 1);
-            //idk why this works but it does so i'm not touching it
+            playerSprite.GetComponent<SpriteRenderer>().color = GameManager.instance.playerColors[playerIndex - 1];
+
+        }
+        else
+        {
+            playerSprite.GetComponent<SpriteRenderer>().color = playerColors[playerIndex - 1];
         }
 
     }

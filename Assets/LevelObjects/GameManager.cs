@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     }
     List<PlayerData> playerData = new List<PlayerData>();
 
-
+    public List<Color> playerColors = new List<Color>();
 
     private void Awake()
     {
@@ -76,10 +76,10 @@ public class GameManager : MonoBehaviour
     {
         gameSettings.Add("Brightness", 1.0f);
         gameSettings.Add("Volume", 0.0f);
+        gameSettings.Add("CameraShake", true);
 
         matchSettings.Add("MatchDuration", 7);
         //save match duration as minutes
-        matchSettings.Add("CameraShake", false);
         matchSettings.Add("StockCount", 3);
         matchSettings.Add("UseTimer", false);
         matchSettings.Add("TeamBattle", false);

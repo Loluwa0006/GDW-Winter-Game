@@ -47,6 +47,7 @@ public class TutorialManager : MonoBehaviour
     IEnumerator PlayerWelcome()
     {
         DisablePlayer();
+        ResetPlayerPosition();
         
         string[] prompts =
         {
@@ -169,6 +170,7 @@ public class TutorialManager : MonoBehaviour
         DisablePlayer();
         yield return StartCoroutine(DisplayPrompts(celebration));
         StartCoroutine(Tackling());
+        animator.ResetTrigger("LearnedMechanic");
         animator.SetBool("FinishedMovement", true);
     }
 
@@ -183,12 +185,10 @@ public class TutorialManager : MonoBehaviour
             "While you can't throw a punch or kick to save your life,",
             "your speed could be used as an attack.",
             "Press the " + tutorialPlayer._playerInput.actions["Attack"].controls[0].displayName + " button to dash forward, tackling opponents.",
-            "Doubles as a movement option as well, in case running was a bit too slow!"
         };
         yield return StartCoroutine(DisplayPrompts(prompts));
         string[] slime =
         {
-            "Oh, how fortunate!",
             "Tackle that slime over there!"
         };
         yield return StartCoroutine (DisplayPrompts(slime));
@@ -196,7 +196,6 @@ public class TutorialManager : MonoBehaviour
         conditionTracker = 0;
         tutorialPlayer.transform.localScale = new Vector3(1, 1, 1);
         //makes it so they tackle to the right
-        ResetPlayerPosition();
         yield return new WaitUntil(() => conditionTracker >= 1);
         DisablePlayer();
         string[] reaction =
@@ -213,6 +212,7 @@ public class TutorialManager : MonoBehaviour
 
     public IEnumerator GroundPound()
     {
+        ResetPlayerPosition();
         string[] prompts =
         {
             "Well, I'm not even sure if I want to teach you this next technique...",
@@ -239,6 +239,7 @@ public class TutorialManager : MonoBehaviour
 
     public IEnumerator DisplayPrompts(string[] prompts)
     {
+        promptDisplay.color = Color.white;
         allPromptsOver = false;
         for (int i = 0; i < prompts.Length; i++)
         {
@@ -248,6 +249,7 @@ public class TutorialManager : MonoBehaviour
             yield return new WaitUntil( () => promptOver);
             yield return new WaitForSeconds(timeBetweenPrompts);
         }
+        promptDisplay.color = Color.green;
         allPromptsOver = true;
     }
 

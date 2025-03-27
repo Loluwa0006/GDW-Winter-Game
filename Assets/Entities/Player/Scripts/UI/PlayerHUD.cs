@@ -23,24 +23,27 @@ public class PlayerHUD : MonoBehaviour
     public void InitPlayerHUD(PlayerController player)
     {
         playerHealth = player.GetComponent<HealthComponent>();
-        playerHealth.healthInitalized.AddListener(SetLifeDisplay);
-        playerHealth.onEntityDamaged.AddListener(SetPercentageDisplay);
-        playerHealth.onEntityHealed.AddListener(SetPercentageDisplay);
-        player.playerEliminated.AddListener(EndHUD);
         playerDisplayName.text = player.name;
 
-         
         SetLifeDisplay(player, playerHealth.GetRemainingLives());
 
         SetPercentageDisplay(playerHealth.GetHealth(), 0, 0, Vector2.zero);
 
-        playerHealth.livesChanged.AddListener(SetLifeDisplay);
-        playerHealth.livesChanged.AddListener( (player,lives) => SetPercentageDisplay(0,0, 0, Vector2.zero) );
+        HUDBackground.color = player.playerSprite.GetComponent<SpriteRenderer>().color;
 
-        Debug.Log("Setting up HUD for player " + player.playerIndex.ToString());
-        HUDBackground.color = HUDColors[player.playerIndex - 1];
-         
-        player.GetComponentInChildren<SpriteRenderer>().color = HUDColors[player.playerIndex];
+        AddHUDListeners(playerHealth, player);
+    }
+
+    void AddHUDListeners(HealthComponent health, PlayerController player)
+    {
+        health.healthInitalized.AddListener(SetLifeDisplay);
+        health.onEntityDamaged.AddListener(SetPercentageDisplay);
+        health.onEntityHealed.AddListener(SetPercentageDisplay);
+        player.playerEliminated.AddListener(EndHUD);
+
+
+        playerHealth.livesChanged.AddListener(SetLifeDisplay);
+        playerHealth.livesChanged.AddListener((player, lives) => SetPercentageDisplay(0, 0, 0, Vector2.zero));
 
     }
 

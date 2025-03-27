@@ -23,10 +23,14 @@ public class TetherPoint : MonoBehaviour
 
     Vector2 tetherPosition = Vector2.zero;
 
+
+    [HideInInspector]
     public TetherPoint connectedTether = null;
 
     [SerializeField] LineRenderer lineRenderer;
 
+
+    [HideInInspector]
     [SerializeField] Rigidbody2D connectedObject;
 
     PlayerController playerController;
@@ -145,14 +149,14 @@ public class TetherPoint : MonoBehaviour
         switch (playerController.selectedTether)
         {
             case PlayerController.TetherPresets.CLASSIC:
-                connectedObject.AddForce(directionToTether * pullStrength);
+                connectedObject.AddForce(directionToTether * pullStrength, ForceMode2D.Impulse);
                 break;
             case PlayerController.TetherPresets.SLINGSHOT:
-                  connectedObject.linearVelocity = Vector2.zero;
+                 //connectedObject.linearVelocity = Vector2.zero;
                 //reset it so that there's no force to counter act it
                 //since it's only 1 time, it would suck without this
                 //we also scale it with mass so that its not trash with heavier objects like anvils
-                connectedObject.AddForce(directionToTether * slingStrength * ( 1 + connectedObject.mass * SLINGSHOTMASSFACTOR));
+                connectedObject.AddForce(directionToTether * slingStrength * ( 1 + connectedObject.mass * SLINGSHOTMASSFACTOR), ForceMode2D.Impulse);
                 tetherLocked = false;
                 break;
 
@@ -171,7 +175,7 @@ public class TetherPoint : MonoBehaviour
             }
             Vector2 force = directionToTether * slingStrength * (MIN_CHARGE_AMOUNT + tetherCharge) * SLINGSHOTMASSFACTOR;
            
-            connectedObject.AddForce(force);
+            connectedObject.AddForce(force, ForceMode2D.Impulse);
         }
         Destroy(gameObject);
     }
