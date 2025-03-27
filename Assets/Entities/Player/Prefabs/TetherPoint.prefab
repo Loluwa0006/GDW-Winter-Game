@@ -105,13 +105,13 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.01
-  m_LinearDamping: 0
+  m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 1472
+    m_Bits: 34240
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -132,7 +132,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 1472
+    m_Bits: 34240
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -180,8 +180,8 @@ MonoBehaviour:
   _rb: {fileID: 5248528639580477253}
   _joint: {fileID: 8826897123185642277}
   tetherSpeed: 70
-  pullStrength: 15
-  slingStrength: 300
+  pullStrength: 4
+  slingStrength: 45
   _collider: {fileID: 3454669539962596529}
   connectedTether: {fileID: 0}
   lineRenderer: {fileID: 6748576307739557638}

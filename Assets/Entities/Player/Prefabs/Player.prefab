@@ -463,6 +463,9 @@ MonoBehaviour:
   playerEliminated:
     m_PersistentCalls:
       m_Calls: []
+  playerRespawned:
+    m_PersistentCalls:
+      m_Calls: []
   animator: {fileID: 8660094409929866952}
   hurtbox: {fileID: 8282859744739588695}
   _rb: {fileID: 1128387069451279553}

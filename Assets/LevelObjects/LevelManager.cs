@@ -27,6 +27,8 @@ public class LevelManager : MonoBehaviour
 
     [HideInInspector]
     public UnityEvent StartedSuddenDeath = new ();
+
+    Dictionary<PlayerController, bool> playerRespawned = new();
    
     private void Start()
     {
@@ -39,8 +41,22 @@ public class LevelManager : MonoBehaviour
         {
             addPlayers(2);
         }
+
     }
 
+    void InitRespawnEvents()
+    {
+        for (int i = 0; i < _playerList.Count; i++)
+        {
+            PlayerController p = _playerList[i];
+            p.playerRespawned.AddListener(SetRespawnEvent);
+        }
+    }
+
+    void SetRespawnEvent(PlayerController player)
+    {
+        playerRespawned[player] = true;
+    }
 
 
     public void addPlayers(int numberOfPlayers = 2)
@@ -48,6 +64,7 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < numberOfPlayers; i++)
         {
             _playerList[i] = Instantiate(_playerPrefab);
+            playerRespawned.Add(_playerList[i], false);
             _playerList[i].EnablePlayer(i + 1);
             _activePlayers.Add(_playerList[i]);
 
@@ -57,10 +74,10 @@ public class LevelManager : MonoBehaviour
             InitPlayerEvents(_playerList[i]);
             AddNewHud(_playerList[i]);
 
-
             cinemachineFramer.AddMember(_playerList[i].transform, 1, 0.5f);
             //playerInput.currentActionMap = playerInput.action
         }
+        InitRespawnEvents();
         _cinemachineGrouper.enabled = true;
     }
     void AddNewHud(PlayerController player)
@@ -128,7 +145,21 @@ public class LevelManager : MonoBehaviour
     }
     public void OnPlayerDefeated(PlayerController player, int lives)
     {
+        cinemachineFramer.RemoveMember(player.transform);
+        if (player.activeGrapple)
+        {
+            Destroy(player.activeGrapple);
+        }
+        player._playerInput.actions.Disable();
+        StartCoroutine(AddPlayerBackAfterKO(player));
+    }
 
+    IEnumerator AddPlayerBackAfterKO(PlayerController player)
+    {
+        yield return new WaitUntil(() => playerRespawned[player] == true);
+        cinemachineFramer.AddMember(player.transform, 1, 0.5f);
+        playerRespawned[player] = false;
+        player._playerInput.actions.Enable();
     }
 
     public void DestroyPlayer(PlayerController player)

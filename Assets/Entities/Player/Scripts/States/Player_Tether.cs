@@ -53,7 +53,7 @@ public class Player_Tether : Base_State
             }
             if (tetherPoints[1] != null)
             {
-                tetherPoints[1].breakLink();
+                tetherPoints[1].BreakLink();
             }
                 tetherPoints.RemoveAt(0);
         }
@@ -62,7 +62,7 @@ public class Player_Tether : Base_State
         if (tetherPoints.Count > 1)
         {
 
-                tetherPoints[1].linkToTether(tetherPoints[0]);
+                tetherPoints[1].LinkToTether(tetherPoints[0]);
             
         }
 

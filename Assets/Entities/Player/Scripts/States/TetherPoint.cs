@@ -6,11 +6,13 @@ using UnityEngine.Events;
 [System.Serializable]
 public class TetherPoint : MonoBehaviour
 {
-    const float SLINGSHOTMASSFACTOR = 4.5f;
+    const float SLINGSHOTMASSFACTOR = 1.15f;
     const float CHARGE_SPEED = 0.12f;
     const float MAX_CHARGE_AMOUNT = 2.75f;
 
     const float MIN_CHARGE_AMOUNT = 0.75f;
+
+    const float TARGET_REACHED_DISTANCE = 1.0f;
     public Rigidbody2D _rb;
     public FixedJoint2D _joint;
 
@@ -30,13 +32,16 @@ public class TetherPoint : MonoBehaviour
     [SerializeField] LineRenderer lineRenderer;
 
 
-    [HideInInspector]
     [SerializeField] Rigidbody2D connectedObject;
 
     PlayerController playerController;
 
     float tetherCharge = 0.0f;
-    
+
+    private void Awake()
+    {
+        lineRenderer.enabled = false;
+    }
 
     public void FireTether(Vector2 dir, PlayerController player)
     {
@@ -47,18 +52,19 @@ public class TetherPoint : MonoBehaviour
 
     }
 
-    public void linkToTether(TetherPoint tether)
+    public void LinkToTether(TetherPoint tether)
     {
         connectedTether = tether;
         if (tether.connectedTether == null)
         {
             tether.connectedTether = this;
         }
+        lineRenderer.enabled = true;
         DrawLine();
 
     }
 
-    public void breakLink()
+    public void BreakLink()
     {
         connectedTether = null;
         lineRenderer.SetPosition(1, transform.position);
@@ -67,9 +73,13 @@ public class TetherPoint : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (tetherLocked)
+        {
+            return;
+        }
         tetherLocked = true;
 
-        tetherPosition = collision.collider.transform.position;
+        tetherPosition = collision.contacts[0].point;
         MoveableObject moveableObject = collision.collider.gameObject.GetComponent<MoveableObject>();
         Rigidbody2D collider_rb;
 
@@ -92,7 +102,7 @@ public class TetherPoint : MonoBehaviour
             Debug.Log("Connecting to object " + collision.collider.name);
         }
         _rb.linearVelocity = Vector2.zero;
-        _rb.gravityScale = 0.0f;
+        _rb.gravityScale = 0;
         if (connectedTether)
         {
             Physics2D.IgnoreCollision(collider, _collider);
@@ -111,12 +121,12 @@ public class TetherPoint : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (connectedTether != null)
+        if (connectedTether)
         {
             DrawLine();
-            if (connectedObject != null && connectedTether.tetherLocked)
+            if (connectedTether.tetherLocked)
             {
-                pullObjects();
+                PullObjects();
             }
 
             if (playerController.selectedTether == PlayerController.TetherPresets.CHARGE)
@@ -125,6 +135,17 @@ public class TetherPoint : MonoBehaviour
             }
 
             //Debug.Log("Connected tether is " + connectedTether.gameObject.name);
+        }
+
+        if (tetherLocked && _rb.linearVelocity.magnitude > 0.0f)
+        {
+            Debug.Log("locked but still moving");
+            _rb.linearVelocity = Vector2.zero;
+        }
+
+        if (connectedObject)
+        {
+            if (TargetReached()) Destroy(gameObject);
         }
 
 
@@ -137,15 +158,49 @@ public class TetherPoint : MonoBehaviour
         {
             lineRenderer.SetPosition(1, connectedTether.transform.position);
         }
+        else
+        {
+            lineRenderer.enabled = false;
+        }
     }
-    void pullObjects()
+
+    bool BothTethersHaveSeperateObjects()
     {
-        if (connectedTether.connectedObject == connectedObject || !tetherLocked)
+        if (connectedTether.connectedObject == connectedObject)
+        {
+            Debug.Log("nope, connected to the same object");
+            return false;
+        }
+        else if (!connectedObject && !connectedTether.connectedObject)
+        {
+            Debug.Log("nope, no objects");
+            return false;
+        }
+        return true;
+    }
+
+    bool TargetReached()
+    {
+        if (connectedObject == null)
+        {
+            Debug.Log("no object");
+            return true;
+        }
+        if (Vector2.Distance(connectedTether.transform.position, transform.position) <= TARGET_REACHED_DISTANCE)
+        {
+            Debug.Log("too close");
+            return true;
+        }
+        return false;
+    }
+    void PullObjects()
+    {
+        if (!tetherLocked)
         {
             return;
         }
 
-        Vector2 directionToTether = (connectedTether.transform.position - connectedObject.transform.position).normalized;
+        Vector2 directionToTether = (connectedTether.transform.position - transform.position).normalized;
         switch (playerController.selectedTether)
         {
             case PlayerController.TetherPresets.CLASSIC:
@@ -157,7 +212,7 @@ public class TetherPoint : MonoBehaviour
                 //since it's only 1 time, it would suck without this
                 //we also scale it with mass so that its not trash with heavier objects like anvils
                 connectedObject.AddForce(directionToTether * slingStrength * ( 1 + connectedObject.mass * SLINGSHOTMASSFACTOR), ForceMode2D.Impulse);
-                tetherLocked = false;
+                RemoveTether();
                 break;
 
         }

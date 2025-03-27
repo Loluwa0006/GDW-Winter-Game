@@ -5,6 +5,7 @@ public class MoveState : Base_State
 {
 
     const float COYOTE_DURATION = 20f;
+    const float DECEL_DAMPING = 10.5f;
 
     Rigidbody2D _rb;
 
@@ -17,6 +18,8 @@ public class MoveState : Base_State
     bool groundedLastFrame = false;
 
     float desiredSpeed;
+
+    
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
@@ -35,12 +38,22 @@ public class MoveState : Base_State
     {
         int move_dir = animator.GetInteger("HorizAxis");
         Vector2 newSpeed = _rb.linearVelocity;
-        newSpeed.x = _rb.linearVelocity.x + acceleration * move_dir;
-        newSpeed.x = Mathf.Clamp(newSpeed.x, -max_speed, max_speed);
+   
 
         if (animator.GetInteger("HitstunAmount") <= 0)
         {
-            _rb.linearVelocity = newSpeed;
+            if (newSpeed.magnitude < max_speed || Mathf.Sign(newSpeed.x) != move_dir)
+            {
+                _rb.AddForce(new Vector2(1,0) * acceleration * move_dir, ForceMode2D.Impulse);
+            }
+            if (move_dir == 0)
+            {
+                _rb.linearDamping = DECEL_DAMPING;
+            }
+            else
+            {
+                _rb.linearDamping = 0.0f;
+            }
         }
 
         animator.SetBool("IsGrounded", IsGrounded());
@@ -115,6 +128,14 @@ public class MoveState : Base_State
 
         animator.SetInteger("HorizAxis", axis.x);
         animator.SetInteger("VertAxis", axis.y);
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (_rb)
+        {
+            _rb.linearDamping = 0.0f;
+        }
     }
 }
 

@@ -71,6 +71,6 @@ public class GrappleManager : Base_State
     void OnGrappleCancelled(Animator animator)
     {
         animator.SetBool("GrapplePressed", false);
-        Destroy(playerController._activeGrapple);
+        Destroy(playerController.activeGrapple);
     }
 }

@@ -41,8 +41,6 @@ public class AirState : Base_State
 
             jumpBuffer = playerController.GetTimer("JumpBuffer");
 
-
-
             jumpVelocity = (2 * jumpHeight) / jumpTimeToPeak;
             jumpGravity = ((-2 * jumpHeight) / (jumpTimeToPeak * jumpTimeToPeak));
             fallGravity = ((-2 * jumpHeight) / (jumpTimeToDescent * jumpTimeToDescent));

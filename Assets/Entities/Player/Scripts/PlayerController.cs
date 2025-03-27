@@ -13,15 +13,21 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject playerSprite;
 
+
+    const float RESPAWN_DELAY = 1.5f;
     [HideInInspector]
     public UnityEvent hitboxEnabled = new UnityEvent();
     [HideInInspector]
     public UnityEvent hitboxDisabled = new UnityEvent();
-    [HideInInspector]
-    public UnityEvent<PlayerController> playerEliminated;
-    [HideInInspector]
     //these exists to get around the inability of being able to connect statemachinebehavior functions to animation clips
     //because unity sucks uber omega butt cheeks
+
+    [HideInInspector]
+    public UnityEvent<PlayerController> playerEliminated;
+
+
+    [HideInInspector]
+    public UnityEvent<PlayerController> playerRespawned = new();
 
     [SerializeField] Animator animator;
     [SerializeField] BoxCollider2D hurtbox;
@@ -30,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject _grapplePrefab;
     [HideInInspector]
-    public GameObject _activeGrapple;
+    public GameObject activeGrapple;
     public LayerMask groundMask;
 
     [SerializeField] HitboxComponent hitbox;
@@ -84,7 +90,6 @@ public class PlayerController : MonoBehaviour
 
         _rb.sharedMaterial = material2D;
         _rb.gravityScale = 0.0f;
-        
     }
 
     void InitHealthComponent()
@@ -227,6 +232,7 @@ public class PlayerController : MonoBehaviour
     public void OnPlayerDeath()
     {
         int lives = healthComponent.GetRemainingLives() - 1;
+        
         if (lives <= 0)
         {
             playerEliminated.Invoke(this);
@@ -234,22 +240,28 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Respawn();
+            StartCoroutine( Respawn());
         }
     }
-    void Respawn()
+    IEnumerator Respawn()
     {
+        healthComponent.RemoveLife();
+        if (activeGrapple)
+        {
+            activeGrapple.SetActive(false);
+        }
+
+        yield return new WaitForSeconds(RESPAWN_DELAY);
         transform.position = _respawnPoint.position;
 
         ResetAnimatorParameters();
 
         animator.SetBool("IsGrounded", false);
 
-        healthComponent.RemoveLife();
-
-        Destroy(_activeGrapple);
-
         ResetRigidBody();
+
+        playerRespawned.Invoke(this);
+
     }
 
     void ResetRigidBody()

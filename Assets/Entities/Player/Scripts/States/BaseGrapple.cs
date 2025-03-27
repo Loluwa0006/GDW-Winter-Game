@@ -73,10 +73,10 @@ public class BaseGrapple : Base_State
     protected void DrawRope()
     {
 
-        if (_grappleLine != null && playerController._activeGrapple != null)
+        if (_grappleLine != null && playerController.activeGrapple != null)
         {
             _grappleLine.SetPosition(0, playerController.transform.position);
-            _grappleLine.SetPosition(1, playerController._activeGrapple.transform.position);
+            _grappleLine.SetPosition(1, playerController.activeGrapple.transform.position);
         }
 
     }
@@ -89,8 +89,8 @@ public class BaseGrapple : Base_State
          
         }
         float rotation = Vector2.Angle(playerController.transform.position, hit.point);
-        playerController._activeGrapple = Instantiate(playerController._grapplePrefab, hit.point, Quaternion.Euler(0, 0, rotation));
-        playerController._activeGrapple.transform.SetParent(hit.collider.transform, true);
+        playerController.activeGrapple = Instantiate(playerController._grapplePrefab, hit.point, Quaternion.Euler(0, 0, rotation));
+        playerController.activeGrapple.transform.SetParent(hit.collider.transform, true);
         Debug.Log("Base localScale = " + playerController._grapplePrefab.transform.localScale.ToString());
 
     }
@@ -99,10 +99,10 @@ public class BaseGrapple : Base_State
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
-        if (playerController._activeGrapple != null)
+        if (playerController.activeGrapple != null)
         {
             animator.SetBool("GrappleActive", true);
-            _grapplePoint = playerController._activeGrapple.transform.position;
+            _grapplePoint = playerController.activeGrapple.transform.position;
             _distanceJoint.connectedAnchor = _grapplePoint;
         }
         else
@@ -121,7 +121,7 @@ public class BaseGrapple : Base_State
 
     protected override void InitInputActions(Animator animator)
     {
-        playerInput.actions["Grapple"].canceled += ctx => Destroy(playerController._activeGrapple);
+        playerInput.actions["Grapple"].canceled += ctx => Destroy(playerController.activeGrapple);
     }
 
 
