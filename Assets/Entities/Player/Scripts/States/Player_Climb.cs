@@ -69,7 +69,7 @@ public class Player_Climb : Base_State
         {
             jumpBuffer.StartTimer();
         }
-        animator.SetFloat("JumpBuffer", jumpBuffer.timeRemaining());
+        animator.SetFloat("JumpBuffer", jumpBuffer.TimeRemaining());
 
 
 

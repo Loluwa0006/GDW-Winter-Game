@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CastleAutumn_Platform_0: -8623385297836025347
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

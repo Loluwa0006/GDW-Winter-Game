@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      blue knight run 1_0: -551975706622754492
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

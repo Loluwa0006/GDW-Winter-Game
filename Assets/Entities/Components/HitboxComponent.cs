@@ -37,6 +37,7 @@ public class HitboxComponent : MonoBehaviour
 
     private void OnEnable()
     {
+        
         Collider2D[] objects = Physics2D.OverlapBoxAll(transform.position, hitbox.bounds.size, 0);
 
         foreach (Collider2D obj in objects)

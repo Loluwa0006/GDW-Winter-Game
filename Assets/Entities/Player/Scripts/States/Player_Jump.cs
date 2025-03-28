@@ -43,7 +43,7 @@ public class Player_Jump : AirState
        
 
 
-        setFacing();
+        SetFacing();
 
     }
     

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MoonsideMountain_0: -7990429034357417638
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

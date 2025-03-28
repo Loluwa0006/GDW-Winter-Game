@@ -443,6 +443,7 @@ RectTransform:
   - {fileID: 1229093067255979233}
   - {fileID: 4196301180302694801}
   - {fileID: 6273832312422539600}
+  - {fileID: 2438858273450358547}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -477,6 +478,82 @@ MonoBehaviour:
     rgba: 4283298435
   - serializedVersion: 2
     rgba: 4283291634
+  tetherIcons:
+  - {fileID: 2832721120019226768, guid: d2da55b662b075a43be9a221c859bf4b, type: 3}
+  - {fileID: 4765180235540348204, guid: d005be331b1b3484fb395661913c9ff0, type: 3}
+  - {fileID: 6271749014900942510, guid: 431261490ca8eb248b78827cee0e09a0, type: 3}
+--- !u!1 &6328227674760855312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2438858273450358547}
+  - component: {fileID: 5916896996834753812}
+  - component: {fileID: 5895668059100136602}
+  m_Layer: 5
+  m_Name: TetherIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2438858273450358547
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328227674760855312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2434381038857584523}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -25, y: 18.3}
+  m_SizeDelta: {x: 61.2434, y: 61.2434}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5916896996834753812
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328227674760855312}
+  m_CullTransparentMesh: 1
+--- !u!114 &5895668059100136602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328227674760855312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 431261490ca8eb248b78827cee0e09a0, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &9094570761887273433
 GameObject:
   m_ObjectHideFlags: 0

@@ -60,7 +60,7 @@ public class Base_State : StateMachineBehaviour
         int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
 
         animator.SetBool("IsGrounded", TouchingGround());
-        setFacing();
+        SetFacing();
     }
 
     public bool TouchingGround()
@@ -83,7 +83,7 @@ public class Base_State : StateMachineBehaviour
     }
 
         //_ssControls.FindAction("Move").performed += ctx => animator.SetInteger("HorizAxis", Mathf.RoundToInt(ctx.ReadValue<Vector2>().x));
-    protected void setFacing()
+    protected void SetFacing()
     {
         int move_dir = Mathf.RoundToInt(playerInput.actions["Move"].ReadValue<Vector2>().x);
         if (move_dir == 0) { move_dir = Mathf.RoundToInt(playerController.transform.localScale.x); }

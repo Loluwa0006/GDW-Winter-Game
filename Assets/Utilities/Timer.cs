@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour
     private void Awake()
     {
         timerOver = new UnityEvent();
-        timerOver.AddListener(onTimerOver);
+        timerOver.AddListener(OnTimerOver);
         if (startOnWake)
         {
             StartTimer(repeat);
@@ -99,16 +99,16 @@ public class Timer : MonoBehaviour
             }
         }
     }
-    public float timeRemaining()
+    public float TimeRemaining()
     {
         return remainingTime;
     }
 
-    public bool isStopped()
+    public bool IsStopped()
     {
         return remainingTime <= 0 && timerActive == true;
     }
-    void onTimerOver()
+    void OnTimerOver()
     {
 
         if (destroyOnFinish)

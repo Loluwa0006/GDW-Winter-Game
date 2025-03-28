@@ -20,6 +20,8 @@ public class PlayerHUD : MonoBehaviour
 
     const int MIN_FONT_SIZE = 36;
     const int MAX_FONT_SIZE = 50;
+
+    [SerializeField] List<Sprite> tetherIcons = new List<Sprite>();
     public void InitPlayerHUD(PlayerController player)
     {
         playerHealth = player.GetComponent<HealthComponent>();

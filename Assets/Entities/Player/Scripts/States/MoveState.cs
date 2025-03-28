@@ -44,7 +44,7 @@ public class MoveState : Base_State
         {
             if (newSpeed.magnitude < max_speed || Mathf.Sign(newSpeed.x) != move_dir)
             {
-                _rb.AddForce(new Vector2(1,0) * acceleration * move_dir, ForceMode2D.Impulse);
+                _rb.AddForce(new Vector2(move_dir,0) * acceleration, ForceMode2D.Impulse);
             }
             if (move_dir == 0)
             {
@@ -59,7 +59,7 @@ public class MoveState : Base_State
         animator.SetBool("IsGrounded", IsGrounded());
 
 
-        animator.SetFloat("JumpBuffer", jumpBuffer.timeRemaining());
+        animator.SetFloat("JumpBuffer", jumpBuffer.TimeRemaining());
         if (groundedLastFrame && !TouchingGround())
         {
             coyoteTimer.StartTimer();
@@ -70,7 +70,7 @@ public class MoveState : Base_State
         //look in direction of movement
 
 
-        setFacing();
+        SetFacing();
 
 
     }
@@ -97,11 +97,11 @@ public class MoveState : Base_State
 
     public override bool IsGrounded()
     {
-        if (!TouchingGround() && coyoteTimer.isStopped())
+        if (!TouchingGround() && coyoteTimer.IsStopped())
         {
             coyoteTimer.StartTimer(COYOTE_DURATION, false);
         }
-        if (TouchingGround() || !coyoteTimer.isStopped())
+        if (TouchingGround() || !coyoteTimer.IsStopped())
         {
             return true;
         }

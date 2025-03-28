@@ -42,6 +42,7 @@ public class BaseGrapple : Base_State
             }
             _distanceJoint.autoConfigureConnectedAnchor = false;
             _distanceJoint.enableCollision = true;
+            _distanceJoint.maxDistanceOnly = true;
             playerInput = animator.gameObject.GetComponent<PlayerInput>();
             playerController = animator.gameObject.GetComponent<PlayerController>();
            
@@ -60,7 +61,7 @@ public class BaseGrapple : Base_State
         DrawRope();
         OnStateUpdate(animator, stateInfo, layerIndex);
         //^ those who know (need to update position before enabling hook so you don't stop every time
-        //  grapple starts because unity...
+        //  grapple starts because unity sucks omega balls;
         _grappleLine.enabled = true;
         _distanceJoint.enabled = true;
         _rb.gravityScale -= GRAPPLE_GRAVITY_REDUCTION;
@@ -113,7 +114,9 @@ public class BaseGrapple : Base_State
             //to make sure that they find another valid target
         }
 
-
+      
+         _distanceJoint.maxDistanceOnly = IsGrounded();
+  
 
         DrawRope();
         

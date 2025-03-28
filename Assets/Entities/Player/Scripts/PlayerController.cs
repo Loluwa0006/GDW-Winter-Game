@@ -80,7 +80,6 @@ public class PlayerController : MonoBehaviour
         groundColliderSize = GetHurtbox().size * 0.8f;
         GetHitbox();
 
-        InitUniversalInputActions();
         platformMask = LayerMask.GetMask("Platform");
 
         PhysicsMaterial2D material2D = new PhysicsMaterial2D();
@@ -101,7 +100,6 @@ public class PlayerController : MonoBehaviour
     void InitUniversalInputActions()
     {
         _playerInput.actions["DropDown"].performed += ctx => StartCoroutine(DropThroughPlatform());
-
     }
 
     private void Start()
@@ -186,6 +184,8 @@ public class PlayerController : MonoBehaviour
         {
             playerSprite.GetComponent<SpriteRenderer>().color = playerColors[playerIndex - 1];
         }
+
+        InitUniversalInputActions();
 
     }
     public void DisablePlayer()

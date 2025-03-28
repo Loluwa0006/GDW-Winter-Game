@@ -27,10 +27,6 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject MovementTest;
     [SerializeField] GameObject slimePrefab;
     [SerializeField] Transform slimeSpawner;
-
-    
-
-
     private void Start()
     {
         conditionTracker = 0;
@@ -49,7 +45,6 @@ public class TutorialManager : MonoBehaviour
     IEnumerator PlayerWelcome()
     {
         DisablePlayer();
-        ResetPlayerPosition();
         
         string[] prompts =
         {
@@ -57,9 +52,12 @@ public class TutorialManager : MonoBehaviour
             "You have begun your path to become a true tetherball warrior!",
             "Let's begin by going over basic movement. It's important to understand the basics,",
             "before we get to the more advanced parts.",
+            "It's ok if you fall, I had the wizards construct a special field to catch you.",
         };
+        ResetPlayerPosition();
         yield return StartCoroutine(DisplayPrompts(prompts));
-        yield return StartCoroutine(WalkMovement());
+
+        StartCoroutine(WalkMovement());
     }
 
     IEnumerator WalkMovement()
@@ -67,7 +65,6 @@ public class TutorialManager : MonoBehaviour
         EnableActionsExclusive("Move");
         DisplayPrompt("Start with basic movement back and forth.");
         conditionTracker = 0;
-
         yield return new WaitUntil(() => conditionTracker >= 2);
         DisablePlayer();
         string[] prompts =
@@ -84,31 +81,26 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator JumpMovement()
     {
+        DisablePlayer();
+        ResetPlayerPosition();
 
+        conditionTracker = 0;
         string[] prompts =
         {
             "You can press the " + tutorialPlayer._playerInput.actions["Jump"].controls[0].name + " button to jump.",
+            "See that platform over there? Try to jump to it!"
         };
 
-        StartCoroutine(DisplayPrompts(prompts));
-        yield return new WaitUntil(() => allPromptsOver);
-        prompts[0] = "See that platform over there? Try to jump on top of it.";
-        StartCoroutine(DisplayPrompts(prompts));
-        yield return new WaitUntil(() => allPromptsOver);
-
+        yield return StartCoroutine(DisplayPrompts(prompts));
         EnableActionsExclusive("Move", "Jump");
-        conditionTracker = 0;
         yield return new WaitUntil(() => conditionTracker >= 1);
         DisablePlayer();
 
         string[] newPrompts = {
             "Good work. Jumping is the most important way to dodge incoming attacks,",
              "as well as allowing future options that we'll go over later.",
-             "Almost done with the basics now."
         };
-
-        StartCoroutine(DisplayPrompts(newPrompts));
-        yield return new WaitUntil(() => allPromptsOver);
+        yield return (DisplayPrompts(newPrompts));
         OnMechanicLearned();
         StartCoroutine(ClimbMovement());
     }
@@ -132,9 +124,7 @@ public class TutorialManager : MonoBehaviour
 
         yield return StartCoroutine (DisplayPrompts(promptsTwo));
         conditionTracker = 0;
-        tutorialPlayer._playerInput.actions["Move"].Enable();
-        tutorialPlayer._playerInput.actions["Jump"].Enable();
-
+        EnableActionsExclusive("Move", "Jump");
         yield return new WaitUntil(() => conditionTracker >= 2);
 
         string[] promptsThree =
@@ -154,7 +144,6 @@ public class TutorialManager : MonoBehaviour
         string[] prompts =
         {
             "Try to make it to the destination on the right.",
-            "It's ok if you fall, I had the wizards construct a special field to catch you.",
             "Feel free to take as much time as you need."
         };
         DisablePlayer();
@@ -193,9 +182,9 @@ public class TutorialManager : MonoBehaviour
         {
             "Tackle that slime over there!"
         };
-        yield return StartCoroutine (DisplayPrompts(slime));
-        EnableActionsExclusive("Attack");
         conditionTracker = 0;
+        EnableActionsExclusive("Attack");
+        yield return StartCoroutine (DisplayPrompts(slime));
         tutorialPlayer.transform.localScale = new Vector3(1, 1, 1);
         //makes it so they tackle to the right
         yield return new WaitUntil(() => conditionTracker >= 1);
@@ -204,7 +193,7 @@ public class TutorialManager : MonoBehaviour
         {
             "WAIT, NOT THAT HAR-",
             "*crash*",
-            "My neck's going to roll for this..."
+            "That was a perfectly good squire. Now they're going to blame me for that..."
         };
         yield return StartCoroutine(DisplayPrompts(reaction));
         OnMechanicLearned();
@@ -218,9 +207,9 @@ public class TutorialManager : MonoBehaviour
         string[] prompts =
         {
             "Well, I'm not even sure if I want to teach you this next technique...",
-            "Let's say, hypothetically of course, that if you were to jump,",
-            "and then press the attack key while holding a down input,",
-            "AND there was another slime who's been saying rather unplesant things about your mother..."
+            "You should know, that you should definitely NOT jump,",
+            "and then press the attack key while holding a down input!",
+            "Woah, what did that slime say about your mother? Are you going to take that?"
         };
 
         GameObject newSlime = Instantiate(slimePrefab);
@@ -228,13 +217,69 @@ public class TutorialManager : MonoBehaviour
         conditionTracker = 0;
         yield return StartCoroutine(DisplayPrompts(prompts));
 
-        string[] reaction;
+      
         newSlime.transform.position = slimeSpawner.transform.position;
         newSlime.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         EnableActionsExclusive("Jump", "Attack", "Move");
+        yield return new WaitUntil(() => conditionTracker >= 1);
+        string[] reaction =
+      {
+            "Wow, I can't believe you keep knocking things around of YOUR OWN ACCORD!",
+            "Yes, YOU, of YOUR OWN FREE WILL, KNOCKED more SLIMES AROUND",
+            "Now that I have convinced my subjects I'm still sane, let's learn grappling. Much less destructive."
+        };
+        DisablePlayer();
+        yield return StartCoroutine (DisplayPrompts(reaction));
+        OnMechanicLearned();
+        animator.SetBool("AttackLearned", true);
+        StartCoroutine(GrappleOne());
     }
 
-    public IEnumerator Grapple()
+    public IEnumerator GrappleOne()
+    {
+        DisablePlayer();
+        ResetPlayerPosition();
+        string[] prompt =
+        {
+            "All tetherball players should be proficient in using their arcane apparatus.",
+            "Aim the grapple using your movement keys, then press " + GetDisplayNameForControl("Grapple") + " to fire.",
+            "Aim for the ceiling at the top."
+        };
+        
+        yield return StartCoroutine(DisplayPrompts(prompt));
+        ResetPlayerPosition() ;
+        EnableActionsExclusive("Move","Grapple");
+        conditionTracker = 0;
+        yield return new WaitUntil( () => conditionTracker >= 1);
+        string[] reaction =
+        {
+            "Nice shot! The grapple spell will force you to stay at that distance.",
+            "Now, try to swing across that chasm."
+        };
+        DisablePlayer();
+        yield return StartCoroutine(DisplayPrompts(reaction));
+        animator.ResetTrigger("LearnedMechanic");
+        OnMechanicLearned();
+        StartCoroutine(GrappleTwo());
+
+    }
+    public IEnumerator GrappleTwo()
+    {
+        EnableActionsExclusive("Move", "Jump", "Grapple");
+        conditionTracker = 0;
+        yield return new WaitUntil ( () => conditionTracker >= 1);
+        string[] praise =
+        {
+            "Your youth is enviable! A fall like that just completly brushed off!",
+            "Incredible. Let's go over the second feature of your spellcasting abilities."
+        };
+        DisablePlayer() ;
+        yield return StartCoroutine(DisplayPrompts(praise));
+        OnMechanicLearned();
+        StartCoroutine(Tether());
+    }
+
+    public IEnumerator Tether()
     {
         yield return null;
     }
@@ -242,6 +287,7 @@ public class TutorialManager : MonoBehaviour
 
     public void DisplayPrompt(string prompt)
     {
+
         promptOver = false;
         promptDisplay.text = string.Empty;
         StartCoroutine(DisplayNextCharacter(prompt));
@@ -281,6 +327,11 @@ public class TutorialManager : MonoBehaviour
             tutorialPlayer._playerInput.actions[action].Enable();
         }
         //exclusive means we turn off every action except for the requested ones
+    }
+
+    public string GetDisplayNameForControl(string controlName)
+    {
+        return tutorialPlayer._playerInput.actions[controlName].controls[0].displayName;
     }
 
    void OnMechanicLearned()

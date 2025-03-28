@@ -6,11 +6,9 @@ public class Killbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerController playerController = collision.GetComponent<PlayerController>();
-        if (playerController != null)
+        if (collision.TryGetComponent(out PlayerController playerController))
         {
             playerController.OnPlayerDeath();
-
         }
         else
         {

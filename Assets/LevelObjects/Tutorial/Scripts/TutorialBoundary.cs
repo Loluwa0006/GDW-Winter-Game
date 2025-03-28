@@ -6,7 +6,7 @@ public class TutorialBoundary : MonoBehaviour
     [SerializeField] TutorialManager tutorialManager;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerController>(out var controller))
+        if (collision.tag == "Player")
         {
             tutorialManager.ResetPlayerPosition();
         }
