@@ -194,6 +194,8 @@ public class LevelManager : MonoBehaviour
 
     public void DestroyPlayer(PlayerController player)
     {
+        player.gameObject.SetActive(true);
+
         player._playerInput.DeactivateInput();
         player.playerEliminated.RemoveAllListeners();
         player.GetComponent<HealthComponent>().onEntityDamaged.RemoveAllListeners();
@@ -203,9 +205,10 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator EndGame()
     {
-        for (int i = _playerList.Count - 1; i > 0; i++)
+
+        foreach (PlayerController p in _playerList.Values)
         {
-           DestroyPlayer(_playerList[i]);
+            DestroyPlayer(p.GetComponent<PlayerController>());
         }
         _playerList.Clear();
         yield return new WaitForEndOfFrame();

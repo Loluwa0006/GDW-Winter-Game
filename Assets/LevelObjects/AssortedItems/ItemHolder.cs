@@ -65,10 +65,15 @@ public class ItemHolder : MonoBehaviour
     private void Update()
     {
         _timeUntilDrop -= Time.deltaTime;
+        if (_timeUntilDrop < 0.0f)
+        {
+            _targetGroup.RemoveMember(transform);
+        }
         if (_timeUntilDrop < 0.0f && !itemDropped && OverGround())
         {
             Debug.Log("Time to drop item!");
             DropItem();
+            
         }
     }
 
@@ -127,7 +132,11 @@ public class ItemHolder : MonoBehaviour
         Debug.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - _groundCheckerLength), rayColor);
         return hit;
     }
- 
 
-   
+    private void OnBecameInvisible()
+    {
+        _targetGroup.RemoveMember(transform);
+        //failsafe
+    }
+
 }

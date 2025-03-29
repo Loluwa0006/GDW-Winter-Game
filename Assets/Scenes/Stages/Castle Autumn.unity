@@ -156,7 +156,7 @@ Transform:
   m_GameObject: {fileID: 77966949}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.9753, y: 1.647, z: -0.914849}
+  m_LocalPosition: {x: -10, y: 5.87, z: -0.914849}
   m_LocalScale: {x: 6.080347, y: 0.9753, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -461,7 +461,7 @@ Transform:
   m_GameObject: {fileID: 189120797}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7, y: 1.634592, z: -0.914849}
+  m_LocalPosition: {x: 10, y: 5.87, z: -0.914849}
   m_LocalScale: {x: 6.13, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -540,7 +540,7 @@ Transform:
   m_GameObject: {fileID: 263065940}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -7.235408, z: -0.914849}
+  m_LocalPosition: {x: 0, y: -7.235408, z: 1}
   m_LocalScale: {x: 25, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2014,6 +2014,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca068efcb71d9104fa9a1fb05541afd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1385410680 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4650897967910084888, guid: 50b15082626f37443bf238c4f70bba0e, type: 3}
+  m_PrefabInstance: {fileID: 3205359190088727580}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1415618624
 GameObject:
   m_ObjectHideFlags: 0
@@ -2831,6 +2836,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ExitToMainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 4938208673429260891, guid: 900481127aeedc54f9061eb11677d03e, type: 3}
+      propertyPath: _bgmPlayer
+      value: 
+      objectReference: {fileID: 1385410680}
     - target: {fileID: 5504715288939382882, guid: 900481127aeedc54f9061eb11677d03e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -13.891602
@@ -2952,6 +2961,14 @@ PrefabInstance:
       propertyPath: 'spawnLocations.Array.data[1]'
       value: 
       objectReference: {fileID: 909240354}
+    - target: {fileID: 4650897967910084888, guid: 50b15082626f37443bf238c4f70bba0e, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a100676c6873ce4f8252b5e8465bedb, type: 3}
+    - target: {fileID: 4650897967910084888, guid: 50b15082626f37443bf238c4f70bba0e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a100676c6873ce4f8252b5e8465bedb, type: 3}
     - target: {fileID: 4658138191263158358, guid: 50b15082626f37443bf238c4f70bba0e, type: 3}
       propertyPath: hudHolder
       value: 

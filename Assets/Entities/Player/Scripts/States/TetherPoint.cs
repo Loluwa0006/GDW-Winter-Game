@@ -181,7 +181,7 @@ public class TetherPoint : MonoBehaviour
 
     bool TargetReached()
     {
-        if (connectedObject == null)
+        if (connectedObject == null || connectedTether == null)
         {
             Debug.Log("no object");
             return true;
