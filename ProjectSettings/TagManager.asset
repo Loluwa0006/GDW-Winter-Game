@@ -15,6 +15,7 @@ TagManager:
   - TutorialManager
   - Slime
   - GrapplingHook
+  - AnnouncementSystem
   layers:
   - Default
   - TransparentFX

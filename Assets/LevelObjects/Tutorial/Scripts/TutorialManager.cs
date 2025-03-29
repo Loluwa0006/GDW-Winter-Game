@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -271,12 +272,15 @@ public class TutorialManager : MonoBehaviour
         string[] praise =
         {
             "Your youth is enviable! A fall like that just completly brushed off!",
-            "Incredible. Let's go over the second feature of your spellcasting abilities."
+            "Incredible. Unfortunately though, this is where we must part ways.",
+            "I would say we've both learned a lot this day. Now go on, and make a legend of yourself!"
         };
         DisablePlayer() ;
         yield return StartCoroutine(DisplayPrompts(praise));
-        OnMechanicLearned();
+        SceneManager.LoadScene("MainMenu");
+        /*OnMechanicLearned();
         StartCoroutine(Tether());
+        */
     }
 
     public IEnumerator Tether()

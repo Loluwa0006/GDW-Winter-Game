@@ -84,6 +84,7 @@
     <Compile Include="Assets\Entities\Player\Scripts\States\GroundGrapple.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\TetherPoint.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Climb.cs" />
+    <Compile Include="Assets\LevelObjects\AnnouncementSystem.cs" />
     <Compile Include="Assets\LevelObjects\Tutorial\Scripts\Slime.cs" />
     <Compile Include="Assets\LevelObjects\OldShadowstride\BaseElement.cs" />
     <Compile Include="Assets\LevelObjects\Tutorial\Scripts\GrappleDetector.cs" />

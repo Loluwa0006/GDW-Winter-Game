@@ -27,8 +27,6 @@ public class AirState : Base_State
 
     LayerMask wallMask;
 
-
-
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 

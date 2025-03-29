@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 public class PlayerHUD : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] GameObject StockImageHolder;
     [SerializeField] GameObject stockImage;
     [SerializeField] Image HUDBackground;
+    [SerializeField] RawImage TetherIcon;
 
    [SerializeField] List<Color32> HUDColors;
 
@@ -21,7 +23,9 @@ public class PlayerHUD : MonoBehaviour
     const int MIN_FONT_SIZE = 36;
     const int MAX_FONT_SIZE = 50;
 
-    [SerializeField] List<Sprite> tetherIcons = new List<Sprite>();
+    [SerializeField] List<Texture> tetherIcons = new();
+
+    
     public void InitPlayerHUD(PlayerController player)
     {
         playerHealth = player.GetComponent<HealthComponent>();
@@ -34,6 +38,19 @@ public class PlayerHUD : MonoBehaviour
         HUDBackground.color = player.playerSprite.GetComponent<SpriteRenderer>().color;
 
         AddHUDListeners(playerHealth, player);
+
+        SetTetherDisplay(player.selectedTether);
+    }
+
+    void SetTetherDisplay(PlayerController.TetherPresets preset)
+    {
+        Debug.Log("There are " + tetherIcons.Count + " icons");
+        int presetIndex = (int)preset;
+        Debug.Log("Looking at preset " + presetIndex );
+
+
+        TetherIcon.texture = tetherIcons[presetIndex];
+        
     }
 
     void AddHUDListeners(HealthComponent health, PlayerController player)
@@ -68,6 +85,7 @@ public class PlayerHUD : MonoBehaviour
             return;
         }
 
+
         if (remainingLives > MAX_LIVES_TO_DISPLAY)
         {
             for (int i = 1; i < StockImageHolder.transform.childCount; i++)
@@ -83,14 +101,19 @@ public class PlayerHUD : MonoBehaviour
             stockOverflowDisplay.gameObject.SetActive(false);
             int currentStocks = StockImageHolder.transform.childCount;
             //deepseek code starts
-            for (int i = currentStocks; i < remainingLives; i++)
+            if (currentStocks < remainingLives)
             {
-                Instantiate(stockImage, StockImageHolder.transform);
+                for (int i = currentStocks; i < remainingLives; i++)
+                {
+                    Instantiate(stockImage, StockImageHolder.transform);
+                }
             }
-
-            for (int i = currentStocks; i > remainingLives; i--)
+            else
             {
-                Destroy(StockImageHolder.transform.GetChild(StockImageHolder.transform.childCount - 1).gameObject);
+                for (int i = currentStocks; i > remainingLives; i--)
+                {
+                    Destroy(StockImageHolder.transform.GetChild(StockImageHolder.transform.childCount - 1).gameObject);
+                }
             }
             //deepseek code ends
 

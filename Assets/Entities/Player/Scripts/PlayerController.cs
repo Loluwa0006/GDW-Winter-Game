@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public GameObject playerSprite;
 
 
-    const float RESPAWN_DELAY = 1.5f;
+    public const float RESPAWN_DELAY = 1.5f;
     [HideInInspector]
     public UnityEvent hitboxEnabled = new UnityEvent();
     [HideInInspector]
@@ -301,6 +301,11 @@ public class PlayerController : MonoBehaviour
         }
         //deepseek code over
 
+    }
+
+    public static float GetRespawnDelay()
+    {
+        return RESPAWN_DELAY;
     }
 
 

@@ -62,6 +62,53 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &380620792944607693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3493987454525369854}
+  - component: {fileID: 810510368502675456}
+  m_Layer: 0
+  m_Name: AnnoucementSystem
+  m_TagString: AnnouncementSystem
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3493987454525369854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380620792944607693}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -33.467743, y: 0, z: 0}
+  m_LocalScale: {x: 1.8583045, y: 1.8583045, z: 1.8583045}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5504715288939382882}
+  m_Father: {fileID: 7628740568118602402}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &810510368502675456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380620792944607693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda69446cc37adb4192ee03edca39688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnnoucementObject: {fileID: 3762509799787745063}
+  AnnoucementText: {fileID: 8904801488629352177}
 --- !u!1 &758053141413959881
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +144,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.0000038146973, y: -0.0000009536743}
-  m_SizeDelta: {x: 409.1927, y: 156.0716}
+  m_SizeDelta: {x: 1700, y: 156.0716}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2270469626376947825
 CanvasRenderer:
@@ -127,7 +174,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TIME
+  m_text: DONE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -232,7 +279,7 @@ RectTransform:
   - {fileID: 5827155346175724795}
   - {fileID: 5256193130522602282}
   - {fileID: 3873741661082523944}
-  - {fileID: 5504715288939382882}
+  - {fileID: 3493987454525369854}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -315,12 +362,12 @@ GameObject:
   - component: {fileID: 6245049342572862927}
   - component: {fileID: 9057061572369339791}
   m_Layer: 5
-  m_Name: TimeOverDisplay
+  m_Name: AnnoucementText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5504715288939382882
 RectTransform:
   m_ObjectHideFlags: 0
@@ -328,18 +375,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3762509799787745063}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5381249, y: 0.5381249, z: 0.5381249}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2426165623518021996}
-  m_Father: {fileID: 7628740568118602402}
+  m_Father: {fileID: 3493987454525369854}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.720093, y: -13.891663}
-  m_SizeDelta: {x: -11.4402, y: -831.8693}
+  m_AnchoredPosition: {x: 14.931704, y: -7.475463}
+  m_SizeDelta: {x: 1908.5598, y: 290.91815}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6245049342572862927
 CanvasRenderer:
@@ -531,7 +578,7 @@ MonoBehaviour:
   label: {fileID: 8815261938293629372}
   lowTimeColor: {r: 0.7803922, g: 0.22352943, b: 0.22352943, a: 0.8}
   lowTimeMarker: 10
-  TimeOverDisplay: {fileID: 3762509799787745063}
+  TimeOverDisplay: {fileID: 810510368502675456}
   currentLevel: {fileID: 0}
   onTimerOver:
     m_PersistentCalls:

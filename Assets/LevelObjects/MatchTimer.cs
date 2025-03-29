@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Data;
 using TMPro;
 using UnityEngine;
@@ -10,12 +11,11 @@ public class MatchTimer : MonoBehaviour
     [SerializeField] TMP_Text label;
     [SerializeField] Color lowTimeColor;
     [SerializeField] float lowTimeMarker = 11.0f;
-    [SerializeField] GameObject TimeOverDisplay;
+    [SerializeField] AnnouncementSystem TimeOverDisplay;
 
     [SerializeField] LevelManager currentLevel;
     float elaspedTime;
 
-    [SerializeField] UnityEvent onTimerOver = new UnityEvent();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     bool reachedZero = false;
@@ -29,6 +29,8 @@ public class MatchTimer : MonoBehaviour
              elaspedTime =  (int) GameManager.instance.GetMatchSetting("MatchDuration");
              elaspedTime *= 60;
                 //multiply by 60 to convert it to seconds
+                elaspedTime += 1;
+                //add one because Unity sucks crustucean crap nuggets and won't pause in time
             }
         }
         else
@@ -36,15 +38,10 @@ public class MatchTimer : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        currentLevel.StartedSuddenDeath.AddListener(OnSuddenDeathStart);
+        
     }
 
-    void OnSuddenDeathStart()
-    {
-        TimeOverDisplay.SetActive(false);
-        gameObject.SetActive(false);
-    }
-
+  
     // Update is called once per frame
     void Update()
     {
@@ -57,15 +54,20 @@ public class MatchTimer : MonoBehaviour
             }
             SetTime(elaspedTime);
         }
-        else if (!reachedZero)
+        else
         {
-            TimeOverDisplay.SetActive(true);
-            reachedZero = true;
-            SetTime(0);
-            onTimerOver.Invoke();
+            OnTimerOver();
         }
         
         
+    }
+
+    void OnTimerOver()
+    {
+        reachedZero = true;
+        SetTime(0);
+        currentLevel.OnTimerOver();
+        gameObject.SetActive(false);
     }
 
     void SetTime(float time)

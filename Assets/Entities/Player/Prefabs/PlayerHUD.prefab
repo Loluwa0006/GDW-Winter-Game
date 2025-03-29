@@ -469,6 +469,7 @@ MonoBehaviour:
   StockImageHolder: {fileID: 1353882839907992850}
   stockImage: {fileID: 7465583060532274448, guid: 4d1ce02cbad1e44459ed24024dd2d0f3, type: 3}
   HUDBackground: {fileID: 8125320380247096}
+  TetherIcon: {fileID: 5895668059100136602}
   HUDColors:
   - serializedVersion: 2
     rgba: 4284501490
@@ -479,9 +480,9 @@ MonoBehaviour:
   - serializedVersion: 2
     rgba: 4283291634
   tetherIcons:
-  - {fileID: 2832721120019226768, guid: d2da55b662b075a43be9a221c859bf4b, type: 3}
-  - {fileID: 4765180235540348204, guid: d005be331b1b3484fb395661913c9ff0, type: 3}
-  - {fileID: 6271749014900942510, guid: 431261490ca8eb248b78827cee0e09a0, type: 3}
+  - {fileID: 2800000, guid: d2da55b662b075a43be9a221c859bf4b, type: 3}
+  - {fileID: 2800000, guid: d005be331b1b3484fb395661913c9ff0, type: 3}
+  - {fileID: 2800000, guid: 431261490ca8eb248b78827cee0e09a0, type: 3}
 --- !u!1 &6328227674760855312
 GameObject:
   m_ObjectHideFlags: 0

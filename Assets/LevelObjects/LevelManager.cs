@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using Unity.Cinemachine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
 
@@ -26,10 +27,10 @@ public class LevelManager : MonoBehaviour
 
 
     [HideInInspector]
-    public UnityEvent StartedSuddenDeath = new ();
 
     Dictionary<PlayerController, bool> playerRespawned = new();
-   
+
+    AnnouncementSystem announcementSystem;
     private void Start()
     {
         if (GameManager.instance != null)
@@ -61,6 +62,7 @@ public class LevelManager : MonoBehaviour
 
     public void addPlayers(int numberOfPlayers = 2)
     {
+        Time.timeScale = 0.0f;
         for (int i = 0; i < numberOfPlayers; i++)
         {
             _playerList[i] = Instantiate(_playerPrefab);
@@ -78,7 +80,42 @@ public class LevelManager : MonoBehaviour
             //playerInput.currentActionMap = playerInput.action
         }
         InitRespawnEvents();
+       InitAnnoucementSystem();
         _cinemachineGrouper.enabled = true;
+
+      StartCoroutine(  StartGame());
+    }
+
+    void DisableAllPlayers()
+    {
+        foreach (PlayerController player in _activePlayers)
+        {
+            player._playerInput.actions.Disable();
+        }
+    }
+
+    void EnableAllPlayers()
+    {
+        foreach (PlayerController player in _activePlayers)
+        {
+            player._playerInput.actions.Enable();
+        }
+    }
+    void InitAnnoucementSystem()
+    {
+        announcementSystem = GameObject.FindGameObjectWithTag("AnnouncementSystem").GetComponent<AnnouncementSystem>();
+    }
+
+    IEnumerator StartGame()
+    {
+        DisableAllPlayers();
+        Time.timeScale = 0.0f;
+        yield return StartCoroutine( announcementSystem.StartAnnouncement("3", 1.0f, false));
+        yield return StartCoroutine( announcementSystem.StartAnnouncement("2", 1.0f, false));
+        yield return StartCoroutine(announcementSystem.StartAnnouncement("1", 1.0f, false));
+        Time.timeScale = 1.0f;
+        EnableAllPlayers();
+        StartCoroutine(  announcementSystem.StartAnnouncement("E N G A G E", 1.5f, false) );
     }
     void AddNewHud(PlayerController player)
     {
@@ -98,49 +135,36 @@ public class LevelManager : MonoBehaviour
     }
     void InitPlayerEvents(PlayerController player)
     {
-        player.playerEliminated.AddListener(OnPlayerEliminated);
         player.GetComponent<HealthComponent>().livesChanged.AddListener(OnPlayerDefeated);
+        player.playerEliminated.AddListener(OnPlayerEliminated);
     }
 
     private void Update()
     {
-
         levelTime += Time.deltaTime;
-
     }
 
     public void OnLevelFinished()
     {
-        Debug.Log("Finished Level in " + levelTime.ToString() + " seconds");
-        Time.timeScale = 0.0f;
     }
 
-    public void OnGameFinished()
+    public IEnumerator OnGameFinished()
     {
-        Debug.Log("----------------------------------------------------");
-        foreach (PlayerController p in _activePlayers)
-        {
-            Debug.Log(p.transform.name);
-        }
-        Debug.Log("----------------------------------------------------");
-
-        Debug.Log(_activePlayers.ToArray()[0].transform.name + " wins!");
-        Time.timeScale = 0.0f;
+        yield return StartCoroutine( announcementSystem.StartAnnouncement("PLAYER " + _activePlayers[0].playerIndex + " WINS", 2.5f, true));
+        StartCoroutine (EndGame());
     }
-
     public void OnPlayerEliminated(PlayerController player)
     {
         int index = _activePlayers.IndexOf(player);
-        //need to shift index backwards to account for data structures starting at 0
         cinemachineFramer.RemoveMember(_activePlayers[index].transform);
-        Debug.Log(_activePlayers[index].gameObject.name + " defeated");
         _activePlayers.RemoveAt(index);
-
+        player.gameObject.SetActive(false);
 
         if (_activePlayers.Count == 1)
         {
-            OnGameFinished();
+            StartCoroutine(OnGameFinished());
         }
+        
 
     }
     public void OnPlayerDefeated(PlayerController player, int lives)
@@ -149,6 +173,12 @@ public class LevelManager : MonoBehaviour
         if (player.activeGrapple)
         {
             Destroy(player.activeGrapple);
+        }
+        if (_activePlayers.Count == 2)
+        {
+            int playerOneLives = _playerList[0].GetComponent<HealthComponent>().GetRemainingLives();
+            int playerTwoLives = _playerList[1].GetComponent<HealthComponent>().GetRemainingLives();
+            StartCoroutine(announcementSystem.StartAnnouncement(playerOneLives + " | " + playerTwoLives, PlayerController.GetRespawnDelay(), false));
         }
         player._playerInput.actions.Disable();
         StartCoroutine(AddPlayerBackAfterKO(player));
@@ -171,13 +201,15 @@ public class LevelManager : MonoBehaviour
         Destroy(player.gameObject);
     }
 
-    public void EndGame()
+    public IEnumerator EndGame()
     {
         for (int i = _playerList.Count - 1; i > 0; i++)
         {
            DestroyPlayer(_playerList[i]);
         }
         _playerList.Clear();
+        yield return new WaitForEndOfFrame();
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void OnTimerOver()
@@ -187,39 +219,42 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator TimerOver ()
     {
-        int mostLives = -9999;
-        foreach (var player in _activePlayers)
+        int mostLives = int.MinValue;
+        List<PlayerController> winningPlayers = new List<PlayerController>();
+        foreach (PlayerController player in _activePlayers)
         {
             HealthComponent healthComponent = player.GetComponent<HealthComponent>();
             int lives = healthComponent.GetRemainingLives();
+
+            Debug.Log("Looking at " + player.name + " which has " + lives + " remaining");  
             if (lives >= mostLives)
             {
+                winningPlayers.Add(player);
                 mostLives = lives;
-                Debug.Log(player.name + " has " + lives.ToString() + " lives remaining");
             }
-            else
-            {
-                _activePlayers.Remove(player);
-            }
-
         }
-
-        //if there's more then 1, there's a tie, time for sudden death
-        if (_activePlayers.Count > 1)
+        foreach (PlayerController player in winningPlayers)
         {
-            Time.timeScale = 0.15f;
-            yield return new WaitForSecondsRealtime (2);
-            Time.timeScale = 1.0f;
-            StartedSuddenDeath.Invoke();
-            StartSuddenDeath();
+            player.GetComponent<HealthComponent>().livesChanged.RemoveListener(OnPlayerDefeated);
+            //remove listener so that the 1v1 text doesn't pop up
+        }
+        //if there's more then 1, there's a tie, time for sudden death
+        if (winningPlayers.Count > 1)
+        {
+            yield return announcementSystem.StartAnnouncement("TIME", 2.0f, true);
+            StartSuddenDeath(winningPlayers);
+        }
+        else
+        {
+          StartCoroutine(OnGameFinished());
         }
     }
 
-    void StartSuddenDeath()
+    void StartSuddenDeath(List<PlayerController> winningPlayers)
     {
-        foreach (var player in _playerList.Values)
+        foreach (PlayerController player in _playerList.Values)
         {
-            if (!_activePlayers.Contains(player))
+            if (!winningPlayers.Contains(player))
             {
                 DestroyPlayer(player);
             }
@@ -248,7 +283,7 @@ public class LevelManager : MonoBehaviour
             }
         }
         int index = 0;
-        foreach (var player in _activePlayers)
+        foreach (var player in winningPlayers)
             {
                 HealthComponent hp = player.GetComponent<HealthComponent>();
                 hp.Damage(Vector2.zero, 999);

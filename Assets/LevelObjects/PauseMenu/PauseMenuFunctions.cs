@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class PauseMenuFunctions : MonoBehaviour
 {
@@ -80,9 +79,6 @@ public class PauseMenuFunctions : MonoBehaviour
 
         LevelManager levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
 
-        levelManager.EndGame();
-
-        SceneManager.LoadScene("MainMenu");
-        
+        levelManager.EndGame();        
     }
 }
