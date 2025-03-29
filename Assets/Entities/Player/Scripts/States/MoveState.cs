@@ -26,7 +26,7 @@ public class MoveState : Base_State
         base.OnStateEnter(animator, stateInfo, layerIndex);
         if (_rb == null)
         {
-            _rb = animator.GetComponentInParent<Rigidbody2D>();
+            _rb = animator.gameObject.GetComponent<Rigidbody2D>();
         }
         jumpBuffer = playerController.GetTimer("JumpBuffer");
         coyoteTimer = playerController.GetTimer("Coyote");
@@ -131,11 +131,14 @@ public class MoveState : Base_State
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        if (_rb)
+    {  
+
+        if (_rb ==null)
         {
-            _rb.linearDamping = 0.0f;
+            _rb = animator.gameObject.GetComponent<Rigidbody2D>();
         }
+        _rb.linearDamping = 0.0f;
+        
     }
 }
 

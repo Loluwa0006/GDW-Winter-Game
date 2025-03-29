@@ -17,8 +17,6 @@ public class MatchTimer : MonoBehaviour
     float elaspedTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    bool reachedZero = false;
     void Start()
     {
         if (GameManager.instance != null) 
@@ -64,7 +62,6 @@ public class MatchTimer : MonoBehaviour
 
     void OnTimerOver()
     {
-        reachedZero = true;
         SetTime(0);
         currentLevel.OnTimerOver();
         gameObject.SetActive(false);

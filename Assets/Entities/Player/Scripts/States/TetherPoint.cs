@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 
 
 [System.Serializable]
@@ -23,9 +21,6 @@ public class TetherPoint : MonoBehaviour
 
     bool tetherLocked = false;
 
-    Vector2 tetherPosition = Vector2.zero;
-
-
     [HideInInspector]
     public TetherPoint connectedTether = null;
 
@@ -34,7 +29,8 @@ public class TetherPoint : MonoBehaviour
 
     [SerializeField] Rigidbody2D connectedObject;
 
-    PlayerController playerController;
+    [HideInInspector]
+   public PlayerController playerController;
 
     float tetherCharge = 0.0f;
 
@@ -79,7 +75,6 @@ public class TetherPoint : MonoBehaviour
         }
         tetherLocked = true;
 
-        tetherPosition = collision.contacts[0].point;
         MoveableObject moveableObject = collision.collider.gameObject.GetComponent<MoveableObject>();
         Rigidbody2D collider_rb;
 
@@ -181,21 +176,23 @@ public class TetherPoint : MonoBehaviour
 
     bool TargetReached()
     {
-        if (connectedObject == null || connectedTether == null)
+        if (connectedObject == null)
         {
             Debug.Log("no object");
             return true;
         }
+        if (connectedTether) { 
         if (Vector2.Distance(connectedTether.transform.position, transform.position) <= TARGET_REACHED_DISTANCE)
         {
             Debug.Log("too close");
             return true;
         }
+        }
         return false;
     }
     void PullObjects()
     {
-        if (!tetherLocked)
+        if (!tetherLocked || !connectedObject)
         {
             return;
         }

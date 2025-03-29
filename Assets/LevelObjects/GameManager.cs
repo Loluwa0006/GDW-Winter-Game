@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
      //   InputSystem.onDeviceChange += OnInputDeviceChanged;
     }
 
-    void EndBGM(Scene scene, LoadSceneMode sceneMode)
+    public void EndBGM(Scene scene, LoadSceneMode sceneMode)
     {
         if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "StageSelect")
         {

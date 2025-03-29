@@ -1,8 +1,5 @@
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 
 
 [System.Serializable]
@@ -22,15 +19,6 @@ public class Player_Tether : Base_State
 
         }
 
-        GameObject[] tetherTags = GameObject.FindGameObjectsWithTag("TetherPoint");
-        for (int i = 0; i < tetherTags.Length; i++)
-        {
-            if (i > 1)
-            {
-                tetherPoints.Remove(tetherTags[i].GetComponent<TetherPoint>());
-                Destroy(tetherTags[i]);
-            }
-        }
 
             TetherPoint newTether = Instantiate(tetherPointPrefab);
 

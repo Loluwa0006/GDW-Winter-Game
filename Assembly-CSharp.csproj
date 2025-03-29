@@ -76,7 +76,6 @@
     <Compile Include="Assets\Entities\Player\PlayerFourActions.cs" />
     <Compile Include="Assets\LevelObjects\StageSelect\SelectTether.cs" />
     <Compile Include="Assets\UI\Scripts\ControlMenu.cs" />
-    <Compile Include="Assets\LevelObjects\OldShadowstride\ExitArea.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\BaseState.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Jump.cs" />
     <Compile Include="Assets\LevelObjects\AssortedItems\Killbox.cs" />
@@ -86,7 +85,6 @@
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Climb.cs" />
     <Compile Include="Assets\LevelObjects\AnnouncementSystem.cs" />
     <Compile Include="Assets\LevelObjects\Tutorial\Scripts\Slime.cs" />
-    <Compile Include="Assets\LevelObjects\OldShadowstride\BaseElement.cs" />
     <Compile Include="Assets\LevelObjects\Tutorial\Scripts\GrappleDetector.cs" />
     <Compile Include="Assets\LevelObjects\StageSelect\StageSelect.cs" />
     <Compile Include="Assets\LevelObjects\PauseMenu\PauseMenu.cs" />
@@ -98,7 +96,6 @@
     <Compile Include="Assets\Utilities\Timer.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\BaseGrapple.cs" />
     <Compile Include="Assets\LevelObjects\Tutorial\Scripts\TutorialTrigger.cs" />
-    <Compile Include="Assets\LevelObjects\OldShadowstride\IntelObject.cs" />
     <Compile Include="Assets\LevelObjects\LevelManager.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Fall.cs" />
     <Compile Include="Assets\Entities\Components\HitboxComponent.cs" />

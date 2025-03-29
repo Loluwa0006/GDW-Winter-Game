@@ -2,9 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using System.Collections;
-using UnityEngine;
-
 
 public class Player_SlamLand : Base_State
 {
