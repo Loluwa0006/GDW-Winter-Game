@@ -61,16 +61,16 @@ public class Player_SlamLand : Base_State
         }
     }
 
-    void OnSlamCollision(GameObject obj, int stun, float dmg, Vector2 knockback)
+    void OnSlamCollision(HitboxComponent.HitboxInfo info)
     {
         if (!shakeCamera)
         {
             return;
         }
-        if (obj.TryGetComponent<PlayerController>(out PlayerController player))
+        if (info.hitObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
-            playerController.StartCoroutine(SetSlamHitshake(stun));
-            Debug.Log("Hit player for knockback of " + knockback.magnitude.ToString());
+            playerController.StartCoroutine(SetSlamHitshake(info.stun));
+            Debug.Log("Hit player for knockback of " + info.push.magnitude.ToString());
             
                 playerController.impulseSource.GenerateImpulse(CAMERA_SHAKE);
             

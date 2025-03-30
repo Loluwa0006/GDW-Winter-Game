@@ -66,7 +66,9 @@ public class MoveableObject : MonoBehaviour
             damage = Mathf.Max(_rb.linearVelocity.magnitude * _rb.mass * _damageScaleFactor, _minDamage);
             Vector2 knockback = GetKnockBack(health, damage, collision.contacts[0].normal);
 
-            healthComponent.Damage(knockback, damage);
+            HitboxComponent.HitboxInfo info = HitboxComponent.DetailedHitboxCollision(collision.gameObject, damage, knockback, collision.GetContact(0).point);
+            healthComponent.Damage(info);
+
             Rigidbody2D hitRb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (hitRb != null)
             {

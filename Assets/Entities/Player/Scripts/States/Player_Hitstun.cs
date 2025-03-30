@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -5,8 +6,15 @@ using UnityEngine;
 public class Player_Hitstun : Base_State
 {
     Rigidbody2D _rb;
+    public GameObject longHitsparksPrefab;
+    public GameObject centerHitsparksPrefab;
+
     [SerializeField] float hitstunGravity = 0.35f;
     [SerializeField] float speedDecay = 0.02f;
+
+
+
+    
 
     //time until decay is relative to hitstun amount;
 
@@ -46,14 +54,26 @@ public class Player_Hitstun : Base_State
 
         _rb.linearDamping = speedDecay;
 
-        Debug.Log("Stunned for " + animator.GetInteger("HitstunAmount").ToString());
-
         _rb.linearVelocity = Vector2.zero;
 
-        float shakeAmount = animator.GetFloat("HitshakeAmount");
-        shakeAmount = shakeAmount * (cam.orthographicSize / groupFraming.OrthoSizeRange.y) + 0.5f; ;
-
-
+        float shakeAmount = animator.GetFloat("HitshakeAmount") * (cam.orthographicSize / groupFraming.OrthoSizeRange.y) + 0.5f;
+        LongParticleCreator(animator) ;
+        CenterParticleCreator(animator) ;
+    }
+    void LongParticleCreator(Animator animator)
+    {
+        Vector2 spawnPosition = new Vector2(animator.GetFloat("HitboxCollisionX"), animator.GetFloat("HitboxCollisionY"));
+        GameObject p1 = Instantiate(longHitsparksPrefab);
+        ParticleSystem particles = p1.GetComponent<ParticleSystem>();
+        p1.transform.position = spawnPosition;
+       
+    }
+    void CenterParticleCreator(Animator animator)
+    {
+        Vector2 spawnPosition = new Vector2(animator.GetFloat("HitboxCollisionX"), animator.GetFloat("HitboxCollisionY"));
+        GameObject p1 = Instantiate(centerHitsparksPrefab);
+        ParticleSystem particles = p1.GetComponent<ParticleSystem>();
+        p1.transform.position = spawnPosition;
     }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

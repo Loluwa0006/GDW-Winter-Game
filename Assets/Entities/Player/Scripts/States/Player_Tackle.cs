@@ -73,15 +73,14 @@ public class Player_Tackle : Base_State
         
     }
 
-    void OnTackleCollision(GameObject obj, int stun, float dmg, Vector2 knockback)
+    void OnTackleCollision(HitboxComponent.HitboxInfo info)
     {
-        if (obj.TryGetComponent<PlayerController> (out PlayerController player))
+        Vector2 knockback = info.push;
+        if (info.hitObject.TryGetComponent<PlayerController> (out PlayerController player))
         {
-            playerController.StartCoroutine(SetTackleHitstopSpeed(stun));
-            //Debug.Log("Hit player for knockback of " + knockback.magnitude.ToString());
+            playerController.StartCoroutine(SetTackleHitstopSpeed(info.stun));
             if (knockback.magnitude >= MIN_KNOCKBACK_FOR_CAMERA_SHAKE && shakeCamera)
             {
-                Debug.Log("Yes, " + knockback.magnitude + " is bigger then " + MIN_KNOCKBACK_FOR_CAMERA_SHAKE);
                 playerController.impulseSource.GenerateImpulse(CAMERA_SHAKE);
             }
         }

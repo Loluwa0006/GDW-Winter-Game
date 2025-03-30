@@ -19,8 +19,18 @@ public class HitboxComponent : MonoBehaviour
     //for animator purposes, reset this value so attacks can land
     public bool attackLanded = false;
 
-    public UnityEvent <GameObject, int, float, Vector2> hitboxConnected = new();
+    public class HitboxInfo
+    {
+        public GameObject hitObject;
+        public float damage;
+        public Vector2 push;
+        public Vector2 point;
+        public int stun;
+        //collision point;
+        public float shake;
+    }
 
+    public UnityEvent <HitboxInfo> hitboxConnected = new();
 
     Collider2D hitbox;
     Collider2D parentHurtbox;
@@ -59,55 +69,59 @@ public class HitboxComponent : MonoBehaviour
         HandleHit(collision);
     }
 
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void HandleHit(Collider2D collision)
     {
 
         HealthComponent health = collision.GetComponent<HealthComponent>();
-        Vector2 push = Vector2.zero;
-        int stun = 1;
+        
+        HitboxInfo info = DetailedHitboxCollision(collision.gameObject, damage, GetKnockBack(health), collision.ClosestPoint(transform.position));
+
+        if (transform.position.x > collision.transform.position.x)
+        //if you're to the left of the object, push the other way
+        {
+            info.push.x *= -1;
+        }
 
         if (health != null)
         {
-            push = GetKnockBack(health.GetHealth(), damage);
-            if (transform.position.x > collision.transform.position.x)
-            //if you're to the left of the object, push the other way
-            {
-                push.x *= -1;
-            }
-            health.Damage(push, damage);
-            stun = health.CalculateStun(push);
-
+           health.Damage(info);
         }
 
         else
         {
-            push = _baseKnockback;
             Debug.Log("Couldn't get health component");
 
             Rigidbody2D rb = collision.attachedRigidbody;
             if (rb != null)
             {
-                //Assume to the right of the object
-                //need to launch rigid body in opposite direction of where im facing, 
-                if (transform.position.x > collision.transform.position.x)
-                //if you're to the left of the object, push the other way
-                {
-
-                    push.x *= -1;
-                }
-
-                rb.AddForce(push, ForceMode2D.Impulse);
-                Debug.Log("Hit " + collision.attachedRigidbody.gameObject.name + " with push force of " + push.ToString()) ;
+                rb.AddForce(info.push, ForceMode2D.Impulse);
+                Debug.Log("Hit " + collision.attachedRigidbody.gameObject.name + " with push force of " + info.push.ToString()) ;
             }
         }
-            hitboxConnected.Invoke(collision.gameObject, stun, damage, push);
+            hitboxConnected.Invoke(info);
             enabled = false;
         }
 
-
-    public Vector2 GetKnockBack(float health, float damage)
+    public static HitboxInfo DetailedHitboxCollision(GameObject collider, float damage, Vector2 push, Vector2 point)
     {
+        HitboxInfo hitboxInfo = new HitboxInfo();
+        hitboxInfo.push = push;
+        hitboxInfo.point = point;
+        hitboxInfo.damage = damage;
+        hitboxInfo.hitObject = collider;
+
+        return hitboxInfo;
+    }
+
+    public Vector2 GetKnockBack(HealthComponent hp)
+    {
+        if (!hp)
+        {
+            return _baseKnockback;
+        }
+        float health = hp.GetHealth();
         Vector2 moveKnockback = Vector2.Max(_baseKnockback, _baseKnockback *  (Vector2.one * (health * HEALTH_SCALE) * _knockbackScaleFactor));
         Debug.Log("Knocking entity back " + moveKnockback.ToString());
         return moveKnockback;

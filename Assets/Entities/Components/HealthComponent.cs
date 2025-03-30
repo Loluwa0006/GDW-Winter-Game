@@ -1,13 +1,17 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System;
+using static HitboxComponent;
+using System.Drawing;
 
 public class HealthComponent : MonoBehaviour
 {
     int maxHealth = 999;
     float health = 0;
-    public UnityEvent<float, int, float, Vector2> onEntityDamaged;
+    public UnityEvent<HitboxComponent.HitboxInfo> onPlayerInjured;
+    //i'm having 2 functions so i slowly migrate
     public UnityEvent<float, int> onEntityHealed;
+    //amount, playerindex
     public UnityEvent onEntityMaxDamageReached;
     public UnityEvent<PlayerController, int> livesChanged;
     //player that died, lives remaining
@@ -44,26 +48,22 @@ public class HealthComponent : MonoBehaviour
 
 
     }
-    public virtual void Damage(Vector2 knockback, float damageTaken = 1.0f)
+   
+
+    public virtual void Damage(HitboxComponent.HitboxInfo hitboxInfo)
     {
-        int stunTime = CalculateStun(knockback);
-        damageTaken = (float)Math.Round(damageTaken, 2);
 
-        float shakeAmount = CalculateShakeAmount(knockback);
-
-        health += damageTaken;
+        health += hitboxInfo.damage;
         health = Mathf.Clamp(health, 0, maxHealth);
 
         if (health >= maxHealth)
         {
             onEntityMaxDamageReached.Invoke();
         }
-
-
-        onEntityDamaged.Invoke(damageTaken, stunTime, shakeAmount, knockback);
-         
-       // Debug.Log("Hit object for damage " + damageTaken.ToString() + " while stunning them for " + stunTime.ToString());
-
+        hitboxInfo.stun = CalculateStun(hitboxInfo.push);
+        hitboxInfo.shake = CalculateShakeAmount(hitboxInfo.push);
+        onPlayerInjured.Invoke(hitboxInfo);
+       
     }
 
     public int CalculateStun(Vector2 knockback)
@@ -74,7 +74,7 @@ public class HealthComponent : MonoBehaviour
 
     public float CalculateShakeAmount(Vector2 knockback)
     {
-        return Mathf.Max(BASE_HITSHAKE,(knockback.magnitude * shakeScale) - BASE_HITSHAKE);
+        return Mathf.Max(BASE_HITSHAKE,knockback.magnitude * shakeScale - BASE_HITSHAKE);
     }
   
 
@@ -84,6 +84,12 @@ public class HealthComponent : MonoBehaviour
         health -= heal_amount;
         health = Mathf.Clamp(health, 0, maxHealth);
         onEntityHealed.Invoke(0.0f, heal_amount);
+    }
+
+    public void SetHealthToMax()
+    {
+        health = maxHealth;
+        onPlayerInjured.Invoke(null);
     }
 
     public float GetHealth()

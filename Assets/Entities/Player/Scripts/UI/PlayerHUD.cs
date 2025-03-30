@@ -33,7 +33,6 @@ public class PlayerHUD : MonoBehaviour
 
         SetLifeDisplay(player, playerHealth.GetRemainingLives());
 
-        SetPercentageDisplay(playerHealth.GetHealth(), 0, 0, Vector2.zero);
 
         HUDBackground.color = player.playerSprite.GetComponent<SpriteRenderer>().color;
 
@@ -56,16 +55,13 @@ public class PlayerHUD : MonoBehaviour
     void AddHUDListeners(HealthComponent health, PlayerController player)
     {
         health.healthInitalized.AddListener(SetLifeDisplay);
-        health.onEntityDamaged.AddListener(SetPercentageDisplay);
-        health.onEntityHealed.AddListener(SetPercentageDisplay);
+        health.onPlayerInjured.AddListener((info) => SetPercentageDisplay());
+        health.onEntityHealed.AddListener( (somefloat, someint) /* 5 am coding gang rise up */ => SetPercentageDisplay());
         player.playerEliminated.AddListener(EndHUD);
 
-
         playerHealth.livesChanged.AddListener(SetLifeDisplay);
-        playerHealth.livesChanged.AddListener((player, lives) => SetPercentageDisplay(0, 0, 0, Vector2.zero));
-
+        playerHealth.livesChanged.AddListener((player, lives) => SetPercentageDisplay());
     }
-
     void EndHUD(PlayerController player)
     {
         percentageTracker.text = "";
@@ -120,16 +116,8 @@ public class PlayerHUD : MonoBehaviour
         }
        
         }
-    
 
-    void SetPercentageDisplay(float damage, int stunTime, float shakeAmount, Vector2 knockback)
-    {
-        float hp = playerHealth.GetHealth();
-        percentageTracker.text = Mathf.RoundToInt(hp).ToString();
-        SetPercentageText(hp);
-    }
-
-    void SetPercentageDisplay(float damage, int stunTime)
+    void SetPercentageDisplay()
     {
         float hp = playerHealth.GetHealth();
         percentageTracker.text = Mathf.RoundToInt(hp).ToString();

@@ -198,7 +198,7 @@ public class LevelManager : MonoBehaviour
 
         player._playerInput.DeactivateInput();
         player.playerEliminated.RemoveAllListeners();
-        player.GetComponent<HealthComponent>().onEntityDamaged.RemoveAllListeners();
+        player.GetComponent<HealthComponent>().onPlayerInjured.RemoveAllListeners();
         _activePlayers.Remove(player);
         Destroy(player.gameObject);
     }
@@ -289,7 +289,7 @@ public class LevelManager : MonoBehaviour
         foreach (var player in winningPlayers)
             {
                 HealthComponent hp = player.GetComponent<HealthComponent>();
-                hp.Damage(Vector2.zero, 999);
+                hp.SetHealthToMax();
                 //die in 1 hit
                 hp.SetRemainingLives(1);
                 //no more respawning

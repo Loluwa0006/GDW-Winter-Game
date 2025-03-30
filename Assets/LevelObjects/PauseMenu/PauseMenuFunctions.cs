@@ -78,7 +78,7 @@ public class PauseMenuFunctions : MonoBehaviour
     {
 
         LevelManager levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
-
-        levelManager.EndGame();        
+        StartCoroutine(
+                levelManager.EndGame());
     }
 }

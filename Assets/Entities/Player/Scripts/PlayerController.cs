@@ -88,13 +88,12 @@ public class PlayerController : MonoBehaviour
         material2D.friction = _rb.sharedMaterial.friction;
 
         _rb.sharedMaterial = material2D;
-        _rb.gravityScale = 0.0f;
     }
 
     void InitHealthComponent()
     {
         healthComponent = GetComponent<HealthComponent>();
-        healthComponent.onEntityDamaged.AddListener(OnPlayerStruck);
+        healthComponent.onPlayerInjured.AddListener(OnPlayerStruck);
     }
 
     void InitUniversalInputActions()
@@ -147,12 +146,15 @@ public class PlayerController : MonoBehaviour
         hitboxDisabled.Invoke();
     }
 
-    void OnPlayerStruck(float damageTaken, int stunTime, float shakeAmount, Vector2 knockback)
+    void OnPlayerStruck(HitboxComponent.HitboxInfo info)
     {
-        animator.SetInteger("HitstunAmount", stunTime);
-        animator.SetFloat("HitshakeAmount", shakeAmount);
-        animator.SetFloat("KnockbackX", knockback.x);
-        animator.SetFloat("KnockbackY", knockback.y);
+        animator.SetInteger("HitstunAmount", info.stun);
+        animator.SetFloat("HitshakeAmount", info.shake);
+        Debug.Log("I LIKE TO SHAKE IT SHAKE IT FOR " + info.shake + " AMOUNT");
+        animator.SetFloat("KnockbackX", info.push.x);
+        animator.SetFloat("KnockbackY", info.push.y);
+        animator.SetFloat("HitboxCollisionX", info.point.x);
+        animator.SetFloat("HitboxCollisionY", info.point.y);
     }
 
     public HitboxComponent GetHitbox()

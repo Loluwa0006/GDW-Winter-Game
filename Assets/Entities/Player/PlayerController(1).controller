@@ -371,7 +371,7 @@ AnimatorStateTransition:
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
+  m_CanTransitionToSelf: 0
 --- !u!114 &-6475495025205966645
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -592,6 +592,7 @@ MonoBehaviour:
   connectedTether: {fileID: 0}
   lineRenderer: {fileID: 0}
   connectedObject: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!1107 &-4417089520171248356
 AnimatorStateMachine:
   serializedVersion: 6
@@ -875,6 +876,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useFixedUpdate: 1
+  longHitsparksPrefab: {fileID: 4057163645054728416, guid: aae3462eda6ea9340a87fd2d597d79cc, type: 3}
+  centerHitsparksPrefab: {fileID: 6984319722826558471, guid: 90681dc24a1232b44b91c351d21358c9, type: 3}
   hitstunGravity: 1
   speedDecay: 0.8
   hitstunBounce: 1
@@ -1103,7 +1106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useFixedUpdate: 1
-  _tackleSpeed: 55
+  _tackleSpeed: 40
   verticalSpeedSlow: 0.85
   tackleGravity: 5
 --- !u!114 &-930937379443163928
@@ -1296,6 +1299,18 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: AttackPressed
     m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: HitboxCollisionX
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: HitboxCollisionY
+    m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0

@@ -105,6 +105,7 @@ public class Base_State : StateMachineBehaviour
 
         animator.SetInteger("HorizAxis", axisAsInt.x);
         animator.SetInteger("VertAxis", axisAsInt.y);
+        
     }
 
     //}

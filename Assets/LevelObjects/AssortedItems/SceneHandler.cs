@@ -9,6 +9,7 @@ public class SceneHandler : MonoBehaviour
         {
             SceneManager.LoadScene(newScene);
         }
+
     }
 
     public void StartGame()
