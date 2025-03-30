@@ -167,7 +167,7 @@ public class LevelManager : MonoBehaviour
         
 
     }
-    public void OnPlayerDefeated(PlayerController player, int lives)
+    public void OnPlayerDefeated(PlayerController player, int lives, PlayerController killer = null)
     {
         cinemachineFramer.RemoveMember(player.transform);
         if (player.activeGrapple)

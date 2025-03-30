@@ -580,9 +580,6 @@ MonoBehaviour:
   lowTimeMarker: 10
   TimeOverDisplay: {fileID: 810510368502675456}
   currentLevel: {fileID: 0}
-  onTimerOver:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &3688936749795598126
 PrefabInstance:
   m_ObjectHideFlags: 0

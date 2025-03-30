@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
 
     public List<Color> playerColors = new();
 
+
     private void Awake()
     {
         InitHealthComponent();

@@ -101,7 +101,7 @@ public class Base_State : StateMachineBehaviour
 
     void SetMovementAxis(Animator animator, Vector2 axis)
     {
-        Vector2Int axisAsInt = new Vector2Int(Mathf.RoundToInt(axis.x), Mathf.RoundToInt(axis.y));
+        Vector2Int axisAsInt = new(Mathf.RoundToInt(axis.x), Mathf.RoundToInt(axis.y));
 
         animator.SetInteger("HorizAxis", axisAsInt.x);
         animator.SetInteger("VertAxis", axisAsInt.y);

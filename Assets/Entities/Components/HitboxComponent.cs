@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -28,6 +29,7 @@ public class HitboxComponent : MonoBehaviour
         public int stun;
         //collision point;
         public float shake;
+        public PlayerController hitboxOwner;
     }
 
     public UnityEvent <HitboxInfo> hitboxConnected = new();
@@ -102,9 +104,10 @@ public class HitboxComponent : MonoBehaviour
         }
             hitboxConnected.Invoke(info);
             enabled = false;
+
         }
 
-    public static HitboxInfo DetailedHitboxCollision(GameObject collider, float damage, Vector2 push, Vector2 point)
+    public HitboxInfo DetailedHitboxCollision(GameObject collider, float damage, Vector2 push, Vector2 point)
     {
         HitboxInfo hitboxInfo = new HitboxInfo();
         hitboxInfo.push = push;

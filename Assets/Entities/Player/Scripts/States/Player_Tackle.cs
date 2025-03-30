@@ -24,12 +24,12 @@ public class Player_Tackle : Base_State
     Transform spriteObject;
 
    const float    SPRITE_SHAKE = 0.045f;
-    const float MIN_KNOCKBACK_FOR_CAMERA_SHAKE = 140f;
+    const float MIN_KNOCKBACK_FOR_CAMERA_SHAKE = 65f;
     const float CAMERA_SHAKE = 0.1f;
     Animator animator;
 
     bool shakePlayer = false;
-    bool shakeCamera = false;
+    bool shakeCamera = true;
 
     
 
@@ -45,6 +45,7 @@ public class Player_Tackle : Base_State
 
             if (GameManager.instance != null )
             {
+                Debug.Log("setting camera shake");
                 shakeCamera = (bool)GameManager.instance.GetGameSetting("CameraShake");
             }
 
@@ -79,6 +80,7 @@ public class Player_Tackle : Base_State
         if (info.hitObject.TryGetComponent<PlayerController> (out PlayerController player))
         {
             playerController.StartCoroutine(SetTackleHitstopSpeed(info.stun));
+            Debug.Log("Knocking player back " + knockback.magnitude.ToString());
             if (knockback.magnitude >= MIN_KNOCKBACK_FOR_CAMERA_SHAKE && shakeCamera)
             {
                 playerController.impulseSource.GenerateImpulse(CAMERA_SHAKE);

@@ -59,8 +59,8 @@ public class PlayerHUD : MonoBehaviour
         health.onEntityHealed.AddListener( (somefloat, someint) /* 5 am coding gang rise up */ => SetPercentageDisplay());
         player.playerEliminated.AddListener(EndHUD);
 
-        playerHealth.livesChanged.AddListener(SetLifeDisplay);
-        playerHealth.livesChanged.AddListener((player, lives) => SetPercentageDisplay());
+        playerHealth.livesChanged.AddListener((victim, lives, killer) => SetLifeDisplay(victim, lives));
+        playerHealth.livesChanged.AddListener((victim, lives, killer) => SetPercentageDisplay());
     }
     void EndHUD(PlayerController player)
     {

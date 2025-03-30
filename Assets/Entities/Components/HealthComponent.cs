@@ -13,7 +13,8 @@ public class HealthComponent : MonoBehaviour
     public UnityEvent<float, int> onEntityHealed;
     //amount, playerindex
     public UnityEvent onEntityMaxDamageReached;
-    public UnityEvent<PlayerController, int> livesChanged;
+    public UnityEvent<PlayerController, int, PlayerController> livesChanged;
+    //player owner of this component, lives remaining, who killed player
     //player that died, lives remaining
     public UnityEvent <PlayerController, int> healthInitalized;
     //player that was set up, lives
@@ -26,8 +27,9 @@ public class HealthComponent : MonoBehaviour
     public int playerIndex = 0;
 
     PlayerController player;
+    PlayerController lastPlayerInjurySource;
 
-    
+
 
 
 
@@ -62,6 +64,7 @@ public class HealthComponent : MonoBehaviour
         }
         hitboxInfo.stun = CalculateStun(hitboxInfo.push);
         hitboxInfo.shake = CalculateShakeAmount(hitboxInfo.push);
+        lastPlayerInjurySource = hitboxInfo.hitboxOwner;
         onPlayerInjured.Invoke(hitboxInfo);
        
     }
@@ -105,14 +108,14 @@ public class HealthComponent : MonoBehaviour
     public void SetRemainingLives(int lives)
     {
         _remainingLives = lives;
-        livesChanged.Invoke(player, lives);
+        livesChanged.Invoke(player, lives, player);
     }
 
     public void RemoveLife()
     {
         _remainingLives--;
         ResetHealth();
-        livesChanged.Invoke(player, GetRemainingLives());
+        livesChanged.Invoke(player, GetRemainingLives(), lastPlayerInjurySource);
     }
 
     public void AddLife()

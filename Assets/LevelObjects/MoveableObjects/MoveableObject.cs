@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using static HitboxComponent;
 
 [System.Serializable]
 [RequireComponent(typeof(Timer))]
@@ -19,9 +20,7 @@ public class MoveableObject : MonoBehaviour
 
    public UnityEvent DamagedEntity;
 
-    Vector2 prevSpeed;
-
-    int indexOfLastPlayerToPush;
+    PlayerController LastPlayerToPush;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -35,11 +34,7 @@ public class MoveableObject : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        prevSpeed = _rb.linearVelocity;
-    }
-
+  
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -53,7 +48,10 @@ public class MoveableObject : MonoBehaviour
 
         if (Vector2.Dot(collision.contacts[0].normal, _rb.linearVelocity.normalized)  > -0.05)
         {
-            Debug.Log("was pushin");
+            if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController p))
+            {
+                LastPlayerToPush = p;
+            }
             return;
         }
         HealthComponent healthComponent = collision.gameObject.GetComponent<HealthComponent>();
@@ -66,7 +64,7 @@ public class MoveableObject : MonoBehaviour
             damage = Mathf.Max(_rb.linearVelocity.magnitude * _rb.mass * _damageScaleFactor, _minDamage);
             Vector2 knockback = GetKnockBack(health, damage, collision.contacts[0].normal);
 
-            HitboxComponent.HitboxInfo info = HitboxComponent.DetailedHitboxCollision(collision.gameObject, damage, knockback, collision.GetContact(0).point);
+            HitboxComponent.HitboxInfo info = DetailedHitboxCollision(collision.gameObject, damage, knockback, collision.GetContact(0).point);
             healthComponent.Damage(info);
 
             Rigidbody2D hitRb = collision.gameObject.GetComponent<Rigidbody2D>();
@@ -82,7 +80,19 @@ public class MoveableObject : MonoBehaviour
        
 
     }
-  
+
+    public HitboxInfo DetailedHitboxCollision(GameObject collider, float damage, Vector2 push, Vector2 point)
+    {
+        HitboxInfo hitboxInfo = new HitboxInfo();
+        hitboxInfo.push = push;
+        hitboxInfo.point = point;
+        hitboxInfo.damage = damage;
+        hitboxInfo.hitObject = collider;
+        hitboxInfo.hitboxOwner = LastPlayerToPush;
+
+        return hitboxInfo;
+    }
+
     public Vector2 GetKnockBack(float health, float damage, Vector2 normal)
     {
 
@@ -101,8 +111,5 @@ public class MoveableObject : MonoBehaviour
         //   return moveKnockback;
     }
 
-    public void SetLastPlayerMove(int index)
-    {
-        indexOfLastPlayerToPush = index;
-    }
+   
 }
