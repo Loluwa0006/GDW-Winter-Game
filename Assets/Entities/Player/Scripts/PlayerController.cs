@@ -149,6 +149,12 @@ public class PlayerController : MonoBehaviour
 
     void OnPlayerStruck(HitboxComponent.HitboxInfo info)
     {
+        animator.SetBool("GrappleActive", false);
+        if (activeGrapple)
+        {
+            Destroy(activeGrapple);
+        }
+     
         animator.SetInteger("HitstunAmount", info.stun);
         animator.SetFloat("HitshakeAmount", info.shake);
         Debug.Log("I LIKE TO SHAKE IT SHAKE IT FOR " + info.shake + " AMOUNT");

@@ -36,13 +36,11 @@ public class LevelManager : MonoBehaviour
         if (GameManager.instance != null)
         {
             addPlayers(GameManager.instance.GetPlayerCount());
-
         }
         else
         {
             addPlayers(2);
         }
-
     }
 
     void InitRespawnEvents()
@@ -69,7 +67,6 @@ public class LevelManager : MonoBehaviour
             playerRespawned.Add(_playerList[i], false);
             _playerList[i].EnablePlayer(i + 1);
             _activePlayers.Add(_playerList[i]);
-
 
             SetPlayerLocation(_playerList[i], i);
             SetPlayerID(_playerList[i], i);

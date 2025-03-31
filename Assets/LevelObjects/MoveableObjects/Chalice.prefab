@@ -199,7 +199,7 @@ MonoBehaviour:
   _knockbackScaleFactor: 1.1
   _damageScaleFactor: 0.15
   _baseKnockback: 40
-  _minSpeed: 2
+  _minSpeed: 8
   _minDamage: 2
   DamagedEntity:
     m_PersistentCalls:
