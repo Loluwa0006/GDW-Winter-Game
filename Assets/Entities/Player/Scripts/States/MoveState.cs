@@ -18,6 +18,7 @@ public class MoveState : Base_State
 
     float desiredSpeed;
 
+
     
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -25,11 +26,12 @@ public class MoveState : Base_State
         base.OnStateEnter(animator, stateInfo, layerIndex);
         if (_rb == null)
         {
-            jumpBuffer = playerController.GetTimer("JumpBuffer");
+            
+
             coyoteTimer = playerController.GetTimer("Coyote");
             _rb = animator.gameObject.GetComponent<Rigidbody2D>();
         }
-     
+        jumpBuffer = playerController.GetTimer("JumpBuffer");
     }
 
 
@@ -144,3 +146,5 @@ public class MoveState : Base_State
 }
 
   
+
+

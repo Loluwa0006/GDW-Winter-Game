@@ -8,6 +8,7 @@ public class Player_Hitstun : Base_State
     Rigidbody2D _rb;
     public GameObject longHitsparksPrefab;
     public GameObject centerHitsparksPrefab;
+    public GameObject knockbackCloudsPrefab;
 
     [SerializeField] float hitstunGravity = 0.35f;
     [SerializeField] float speedDecay = 0.02f;
@@ -57,35 +58,50 @@ public class Player_Hitstun : Base_State
         _rb.linearVelocity = Vector2.zero;
 
         float shakeAmount = animator.GetFloat("HitshakeAmount") * (cam.orthographicSize / groupFraming.OrthoSizeRange.y) + 0.5f;
-        LongParticleCreator(animator) ;
-        CenterParticleCreator(animator) ;
-    }
-    void LongParticleCreator(Animator animator)
-    {
         Vector2 spawnPosition = new Vector2(animator.GetFloat("HitboxCollisionX"), animator.GetFloat("HitboxCollisionY"));
+
+        LongParticleCreator(animator, spawnPosition) ;
+        CenterParticleCreator(animator, spawnPosition) ;
+        KnockbackCloudsCreator(animator, spawnPosition);
+    }
+
+    void KnockbackCloudsCreator(Animator animator, Vector2 spawnPosition)
+    {
+        GameObject k = Instantiate(knockbackCloudsPrefab);
+        ParticleSystem particles = k.GetComponent<ParticleSystem>();
+        particles.Stop();
+        var newMain = particles.main;
+        newMain.duration = animator.GetInteger("HitstunAmount") * Time.fixedDeltaTime;
+        particles.Play();
+        k.transform.position = spawnPosition;
+    }
+    
+    void LongParticleCreator(Animator animator, Vector2 spawnPosition)
+    {
         GameObject p1 = Instantiate(longHitsparksPrefab);
         ParticleSystem particles = p1.GetComponent<ParticleSystem>();
         p1.transform.position = spawnPosition;
        
     }
-    void CenterParticleCreator(Animator animator)
+    void CenterParticleCreator(Animator animator, Vector2 spawnPosition)
     {
-        Vector2 spawnPosition = new Vector2(animator.GetFloat("HitboxCollisionX"), animator.GetFloat("HitboxCollisionY"));
-        GameObject p1 = Instantiate(centerHitsparksPrefab);
-        ParticleSystem particles = p1.GetComponent<ParticleSystem>();
-        p1.transform.position = spawnPosition;
+        GameObject p2 = Instantiate(centerHitsparksPrefab);
+        ParticleSystem particles = p2.GetComponent<ParticleSystem>();
+        p2.transform.position = spawnPosition;
     }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+
+        int hitstun = animator.GetInteger("HitstunAmount");
         if (decreaseHitstun)
         {
-            animator.SetInteger("HitstunAmount", animator.GetInteger("HitstunAmount") - 1);
+            animator.SetInteger("HitstunAmount", hitstun - 1);
         }
         else
         {
             ShakePlayerSprite(animator);
         }
+
     }
 
 

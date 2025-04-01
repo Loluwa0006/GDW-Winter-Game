@@ -33,8 +33,7 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
         conditionTracker = 0;
-        animator.Play("LearnGrappleOne");
-        StartCoroutine(GrappleOne());
+        StartCoroutine(PlayerWelcome());
 
     }
 

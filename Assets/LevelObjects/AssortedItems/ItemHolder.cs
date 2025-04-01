@@ -100,23 +100,20 @@ public class ItemHolder : MonoBehaviour
         int index = Random.Range(0, _objectPrefabs.Count);
         _itemToDrop = Instantiate(_objectPrefabs[index], transform);
 
-        CircleCollider2D circleCollider = _itemToDrop.GetComponent<CircleCollider2D>();
 
-        if (circleCollider)
+        if (_itemToDrop.TryGetComponent(out CircleCollider2D circleCollider))
         {
-            float diameter = circleCollider.radius * 2;
+            float diameter = circleCollider.radius;
             _itemToDrop.transform.localPosition = new Vector2(diameter, diameter);
             circleCollider.enabled = false;
         }
-        else
-        {
-            BoxCollider2D boxCollider = _itemToDrop.GetComponent<BoxCollider2D>();
-            if (boxCollider)
-            {
-                _itemToDrop.transform.localPosition = new Vector2(boxCollider.size.x, boxCollider.size.y);
-                boxCollider.enabled = false;
-            }
-        }
+        
+         else if (_itemToDrop.TryGetComponent(out BoxCollider2D boxCollider))
+         {
+         _itemToDrop.transform.localPosition = new Vector2(boxCollider.size.x, boxCollider.size.y);
+         boxCollider.enabled = false;
+         }
+        
         _itemToDrop._rb.gravityScale = 0.0f;
         _itemToDrop._rb.linearVelocity = _rb.linearVelocity;
     }

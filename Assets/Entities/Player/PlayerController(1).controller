@@ -879,6 +879,7 @@ MonoBehaviour:
   useFixedUpdate: 1
   longHitsparksPrefab: {fileID: 4057163645054728416, guid: aae3462eda6ea9340a87fd2d597d79cc, type: 3}
   centerHitsparksPrefab: {fileID: 6984319722826558471, guid: 90681dc24a1232b44b91c351d21358c9, type: 3}
+  knockbackCloudsPrefab: {fileID: 4649388410125648859, guid: 77b7c8bb0e4b0cf4892d2d550381c76d, type: 3}
   hitstunGravity: 1
   speedDecay: 0.8
   hitstunBounce: 1
@@ -1080,6 +1081,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: VertAxis
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: HitstunAmount
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9096686860011297467}
   m_Solo: 0
@@ -1412,7 +1416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b98621b0afeeb498f63017f213d88c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useFixedUpdate: 0
+  useFixedUpdate: 1
   acceleration: 0
   max_speed: 0
 --- !u!114 &1306778183388719155
@@ -1795,9 +1799,9 @@ AnimatorStateMachine:
   - {fileID: -6478100956054997799}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: 7789591163263193577}
-    second: []
   - first: {fileID: -5233763908583029759}
+    second: []
+  - first: {fileID: 7789591163263193577}
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 2800, y: -430, z: 0}
