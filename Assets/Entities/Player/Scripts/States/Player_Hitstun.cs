@@ -57,7 +57,6 @@ public class Player_Hitstun : Base_State
 
         _rb.linearVelocity = Vector2.zero;
 
-        float shakeAmount = animator.GetFloat("HitshakeAmount") * (cam.orthographicSize / groupFraming.OrthoSizeRange.y) + 0.5f;
         Vector2 spawnPosition = new Vector2(animator.GetFloat("HitboxCollisionX"), animator.GetFloat("HitboxCollisionY"));
 
         LongParticleCreator(animator, spawnPosition) ;
@@ -107,7 +106,9 @@ public class Player_Hitstun : Base_State
 
     void ShakePlayerSprite(Animator animator)
     {
-        float shakeAmount = animator.GetFloat("HitshakeAmount");
+        Debug.Log("X is " + groupFraming.OrthoSizeRange.x);
+        Debug.Log("Y is " + groupFraming.OrthoSizeRange.y);
+        float shakeAmount = animator.GetFloat("HitshakeAmount") * Mathf.Lerp(1.0f, 1.5f, groupFraming.OrthoSizeRange.magnitude / cam.orthographicSize);
         float xShake = Random.Range(-shakeAmount, shakeAmount); 
         float yShake = Random.Range(shakeAmount, shakeAmount);
         if (IsGrounded())

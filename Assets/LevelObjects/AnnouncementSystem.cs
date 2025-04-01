@@ -21,7 +21,6 @@ public class AnnouncementSystem : MonoBehaviour
 
     public IEnumerator StartAnnouncement( string text, float duration, bool slowGame = false)
     {
-        Debug.Log("Starting annoucement");
         if (slowGame)
         {
             Time.timeScale = GAME_SLOW_AMOUNT;
