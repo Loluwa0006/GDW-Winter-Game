@@ -10,6 +10,10 @@ public class TutorialBoundary : MonoBehaviour
         {
             tutorialManager.ResetPlayerPosition();
         }
+        else if (collision.tag == "MoveableObject")
+        {
+            tutorialManager.ResetMoveableObjectPosition(collision.gameObject);
+        }
         else
         {
             Destroy(collision.gameObject);

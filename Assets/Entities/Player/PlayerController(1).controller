@@ -1056,7 +1056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useFixedUpdate: 1
-  jumpHeight: 3
+  jumpHeight: 3.5
   jumpTimeToPeak: 0.4
   jumpTimeToDescent: 0.3
   acceleration: 1.7857143
@@ -1794,9 +1794,9 @@ AnimatorStateMachine:
   - {fileID: -6478100956054997799}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -5233763908583029759}
-    second: []
   - first: {fileID: 7789591163263193577}
+    second: []
+  - first: {fileID: -5233763908583029759}
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 2800, y: -430, z: 0}

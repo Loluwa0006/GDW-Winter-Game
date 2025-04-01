@@ -13,7 +13,14 @@ public class GrappleDetector : MonoBehaviour
     {
         if (manager == null)
         {
-            manager = GameObject.FindGameObjectWithTag("TutorialManager").GetComponent<TutorialManager>();
+            GameObject managerObject = GameObject.FindGameObjectWithTag("TutorialManager");
+            if (managerObject!= null )
+            {
+                if ( managerObject.TryGetComponent<TutorialManager>(out TutorialManager manager))
+                {
+                    this.manager = manager;
+                }
+            }
         }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -35,7 +42,10 @@ public class GrappleDetector : MonoBehaviour
             }
             if (foundTarget)
             {
-                manager.conditionTracker += 1;
+                if (manager != null)
+                {
+                    manager.conditionTracker += 1;
+                }
                 gameObject.SetActive(false);
             }
         }

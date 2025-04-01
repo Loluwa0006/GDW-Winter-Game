@@ -21,4 +21,5 @@ public class Slime : MonoBehaviour
         manager.conditionTracker += 1;
         Debug.Log("Adding 1 to condition Tracker");
     }
+
 }

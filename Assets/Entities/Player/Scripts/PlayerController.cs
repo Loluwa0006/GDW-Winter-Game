@@ -157,7 +157,6 @@ public class PlayerController : MonoBehaviour
      
         animator.SetInteger("HitstunAmount", info.stun);
         animator.SetFloat("HitshakeAmount", info.shake);
-        Debug.Log("I LIKE TO SHAKE IT SHAKE IT FOR " + info.shake + " AMOUNT");
         animator.SetFloat("KnockbackX", info.push.x);
         animator.SetFloat("KnockbackY", info.push.y);
         animator.SetFloat("HitboxCollisionX", info.point.x);

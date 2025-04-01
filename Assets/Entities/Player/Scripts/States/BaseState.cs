@@ -6,7 +6,6 @@ public class Base_State : StateMachineBehaviour
 {
     protected const float GROUND_CHECKER_LENGTH = 0.5f;
 
-    const float GROUND_CHECKER_RATIO = 0.8f;
 
     protected PlayerInput playerInput;
     protected PlayerController playerController;
@@ -15,10 +14,7 @@ public class Base_State : StateMachineBehaviour
 
    protected bool stateInitalized = false;
 
-    BoxCollider2D playerControllerHitbox;
-    Vector2 groundColliderSize;
-
-
+    
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 
@@ -42,7 +38,6 @@ public class Base_State : StateMachineBehaviour
             }
             stateInitalized = true;
 
-            playerControllerHitbox = playerController.GetHurtbox();
             InitInputActions(animator);
             
         }
@@ -101,6 +96,8 @@ public class Base_State : StateMachineBehaviour
 
     void SetMovementAxis(Animator animator, Vector2 axis)
     {
+
+        if (!animator) { return; }
         Vector2Int axisAsInt = new(Mathf.RoundToInt(axis.x), Mathf.RoundToInt(axis.y));
 
         animator.SetInteger("HorizAxis", axisAsInt.x);

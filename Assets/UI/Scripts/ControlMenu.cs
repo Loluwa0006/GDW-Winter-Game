@@ -70,17 +70,20 @@ public class ControlMenu : MonoBehaviour
                 //drop down is just down twice
             }
             Transform targetControl = ControlContent.transform.Find(action.name).transform;
-            for (int i = 0; i < targetControl.childCount; i++)
+            if (targetControl)
             {
-                Transform child = targetControl.GetChild(i);
-                for (int x = 0; x < child.childCount; x++)
+                for (int i = 0; i < targetControl.childCount; i++)
                 {
-                    Transform control = child.GetChild(x);  
-                    TMP_Text text = control.GetComponent<TMP_Text>();
-                    Debug.Log(action.controls[i + x].path);
-                    text.text = action.controls[i + x].displayName;
-                }
+                    Transform child = targetControl.GetChild(i);
+                    for (int x = 0; x < child.childCount; x++)
+                    {
+                        Transform control = child.GetChild(x);
+                        TMP_Text text = control.GetComponent<TMP_Text>();
+                        Debug.Log(action.controls[i + x].path);
+                        text.text = action.controls[i + x].displayName;
+                    }
 
+                }
             }
         }
     }

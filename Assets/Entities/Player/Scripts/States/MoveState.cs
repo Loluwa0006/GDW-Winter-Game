@@ -12,7 +12,6 @@ public class MoveState : Base_State
     [SerializeField] float acceleration = 0.5f;
     [SerializeField] float max_speed = 2.5f;
     Timer jumpBuffer;
-    Timer attackBuffer;
     Timer coyoteTimer;
 
     bool groundedLastFrame = false;
@@ -26,10 +25,11 @@ public class MoveState : Base_State
         base.OnStateEnter(animator, stateInfo, layerIndex);
         if (_rb == null)
         {
+            jumpBuffer = playerController.GetTimer("JumpBuffer");
+            coyoteTimer = playerController.GetTimer("Coyote");
             _rb = animator.gameObject.GetComponent<Rigidbody2D>();
         }
-        jumpBuffer = playerController.GetTimer("JumpBuffer");
-        coyoteTimer = playerController.GetTimer("Coyote");
+     
     }
 
 
@@ -124,6 +124,7 @@ public class MoveState : Base_State
 
     void SetMovementAxis(Animator animator, Vector2 move)
     {
+        if (!animator) { return; }
         Vector2Int axis = Vector2Int.RoundToInt(move);
 
         animator.SetInteger("HorizAxis", axis.x);

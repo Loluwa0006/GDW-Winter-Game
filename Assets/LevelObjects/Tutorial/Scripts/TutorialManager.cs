@@ -28,10 +28,13 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject MovementTest;
     [SerializeField] GameObject slimePrefab;
     [SerializeField] Transform slimeSpawner;
+    [SerializeField] GameObject boxPrefab;
+    [SerializeField] Transform boxSpawner;
     private void Start()
     {
         conditionTracker = 0;
-        StartCoroutine( PlayerWelcome());
+        animator.Play("LearnGrappleOne");
+        StartCoroutine(GrappleOne());
 
     }
 
@@ -179,11 +182,11 @@ public class TutorialManager : MonoBehaviour
             "Press the " + tutorialPlayer._playerInput.actions["Attack"].controls[0].displayName + " button to dash forward, tackling opponents.",
         };
         yield return StartCoroutine(DisplayPrompts(prompts));
+        conditionTracker = 0;
         string[] slime =
         {
             "Tackle that slime over there!"
         };
-        conditionTracker = 0;
         EnableActionsExclusive("Attack");
         yield return StartCoroutine (DisplayPrompts(slime));
         tutorialPlayer.transform.localScale = new Vector3(1, 1, 1);
@@ -242,7 +245,7 @@ public class TutorialManager : MonoBehaviour
         ResetPlayerPosition();
         string[] prompt =
         {
-            "All tetherball players should be proficient in using their arcane apparatus.",
+            "All tetherball players should be proficient in using their arcane apparatus, the Aetherbind.",
             "Aim the grapple using your movement keys, then press " + GetDisplayNameForControl("Grapple") + " to fire.",
             "Aim for the ceiling at the top."
         };
@@ -259,7 +262,6 @@ public class TutorialManager : MonoBehaviour
         };
         DisablePlayer();
         yield return StartCoroutine(DisplayPrompts(reaction));
-        animator.ResetTrigger("LearnedMechanic");
         OnMechanicLearned();
         StartCoroutine(GrappleTwo());
 
@@ -272,26 +274,63 @@ public class TutorialManager : MonoBehaviour
         string[] praise =
         {
             "Your youth is enviable! A fall like that just completly brushed off!",
-            "Incredible. Unfortunately though, this is where we must part ways.",
-            "I would say we've both learned a lot this day. Now go on, and make a legend of yourself!"
+            "Incredible. It's almost like watching a younger me!",
+            "Lets go over the second component of the Aetherbind. "
         };
         DisablePlayer() ;
         yield return StartCoroutine(DisplayPrompts(praise));
-        SceneManager.LoadScene("MainMenu");
-        /*OnMechanicLearned();
+        OnMechanicLearned();
         StartCoroutine(Tether());
-        */
+        
     }
 
     public IEnumerator Tether()
     {
-        yield return null;
+        ResetPlayerPosition();
+        string[] instructions =
+        {
+            "By pressing " + GetDisplayNameForControl("Tether") + ", you can fire a tether hook that will allow you to link objects together. ",
+            "Try it out on that box over there!"
+        };
+        yield return StartCoroutine (DisplayPrompts(instructions));
+        conditionTracker = 0;
+        EnableActionsExclusive("Move", "Tether");
+        GameObject box = Instantiate(boxPrefab);
+        box.transform.position = boxSpawner.transform.position;
+        yield return new WaitUntil ( ()=> conditionTracker >= 1);
+        DisablePlayer();
+        OnMechanicLearned();
+        StartCoroutine(TetherTwo());
+        
+    }
+
+    public IEnumerator TetherTwo()
+    {
+        DisablePlayer();
+        string[] praise =
+        {
+            "Great shooting! Maybe I should've trained you to be an archer instead!",
+            "See that hook attached to the box? That's 1 end of the tether.",
+            "Shoot another tether towards the celiing!"
+        };
+        OnMechanicLearned ();
+        yield return StartCoroutine(DisplayPrompts(praise));
+        EnableActionsExclusive("Move", "Tether");
+        conditionTracker = 0;
+        yield return new WaitUntil(() => conditionTracker >= 1);
+        string[] reaction =
+        {
+            "Look at that! The tether pulled the box over to the location of the 2nd hook!",
+            "This is what makes tetherball, tetherball!",
+            "Make sure to try out the other tether presets. Never hurts to consider your options."
+        };
+        yield return StartCoroutine(DisplayPrompts(reaction));
+        OnMechanicLearned();
     }
 
 
     public void DisplayPrompt(string prompt)
     {
-
         promptOver = false;
         promptDisplay.text = string.Empty;
         StartCoroutine(DisplayNextCharacter(prompt));
@@ -347,5 +386,11 @@ public class TutorialManager : MonoBehaviour
     {
         tutorialPlayer.transform.position = tutorialPlayer._respawnPoint.transform.position;
         tutorialPlayer.transform.localScale = tutorialPlayer._respawnPoint.transform.localScale;
+    }
+
+    public void ResetMoveableObjectPosition(GameObject obj)
+    {
+        obj.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        obj.transform.position = boxSpawner.transform.position;
     }
 }

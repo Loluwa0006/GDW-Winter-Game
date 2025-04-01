@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenuFunctions : MonoBehaviour
@@ -76,9 +77,21 @@ public class PauseMenuFunctions : MonoBehaviour
 
     public void ExitToMainMenu()
     {
+        Debug.Log("Pause menu is trying to leave");
+        GameObject levelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        bool foundManager = false;
+        if (levelManager != null)
+        {
+           if (levelManager.TryGetComponent<LevelManager>(out LevelManager manager))
+            {
+                foundManager = true;
+                StartCoroutine(manager.EndGame());
 
-        LevelManager levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
-        StartCoroutine(
-                levelManager.EndGame());
+            }
+        }
+        if (!foundManager)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }
