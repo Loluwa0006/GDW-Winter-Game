@@ -31,6 +31,10 @@ public class Player_Hitstun : Base_State
     CinemachineGroupFraming groupFraming;
     Camera cam;
     float shakeAmount;
+    Vector2 knockback;
+
+
+    GameObject knockbackClouds;
 
 
 
@@ -61,21 +65,22 @@ public class Player_Hitstun : Base_State
 
         Vector2 spawnPosition = new Vector2(animator.GetFloat("HitboxCollisionX"), animator.GetFloat("HitboxCollisionY"));
         shakeAmount = animator.GetFloat("HitshakeAmount") * Mathf.Lerp(1.0f, 1.25f, cam.orthographicSize / groupFraming.OrthoSizeRange.y);
+        knockback = new Vector2(animator.GetFloat("KnockbackX"), animator.GetFloat("KnockbackY"));
 
         LongParticleCreator(animator, spawnPosition) ;
         CenterParticleCreator(animator, spawnPosition) ;
-        KnockbackCloudsCreator(animator, spawnPosition);
     }
 
-    void KnockbackCloudsCreator(Animator animator, Vector2 spawnPosition)
+    ParticleSystem KnockbackCloudsCreator(Animator animator, Vector2 spawnPosition)
     {
-        GameObject k = Instantiate(knockbackCloudsPrefab);
-        ParticleSystem particles = k.GetComponent<ParticleSystem>();
+        knockbackClouds = Instantiate(knockbackCloudsPrefab);
+        ParticleSystem particles = knockbackClouds.GetComponent<ParticleSystem>();
         particles.Stop();
         var newMain = particles.main;
-        newMain.duration = animator.GetInteger("HitstunAmount") * Time.fixedDeltaTime;
+        newMain.duration = (animator.GetInteger("HitstunAmount") * 50) * Time.fixedDeltaTime;
         particles.Play();
-        k.transform.position = spawnPosition;
+        //k.transform.rotation = Quaternion.LookRotation(-knockback.normalized);
+        return particles;
     }
     
     void LongParticleCreator(Animator animator, Vector2 spawnPosition)
@@ -97,6 +102,10 @@ public class Player_Hitstun : Base_State
         int hitstun = animator.GetInteger("HitstunAmount");
         if (decreaseHitstun)
         {
+            if (knockbackClouds != null)
+            {
+                knockbackClouds.transform.position = playerController.transform.position;
+            }
             animator.SetInteger("HitstunAmount", hitstun - 1);
         }
         else
@@ -123,12 +132,11 @@ public class Player_Hitstun : Base_State
 
         if (shakeAmount <= 0.01f)
         {
-
-            Vector2 push = new Vector2(animator.GetFloat("KnockbackX"), animator.GetFloat("KnockbackY"));
-            _rb.AddForce(push, ForceMode2D.Impulse);
+            _rb.AddForce(knockback, ForceMode2D.Impulse);
             shakeAmount = 0;
             spriteObject.transform.localPosition = Vector2.zero;
             decreaseHitstun = true;
+            KnockbackCloudsCreator(animator, playerController.transform.position);
         }
         animator.SetFloat("HitshakeAmount", shakeAmount);
 
@@ -140,6 +148,6 @@ public class Player_Hitstun : Base_State
         _rb.gravityScale = 1.0f;
         _rb.linearDamping = 0.0f;
         _rb.sharedMaterial.bounciness = 0.0f;
-        animator.SetFloat("HitshakeAmount", 0.0f);
+
     }
 }

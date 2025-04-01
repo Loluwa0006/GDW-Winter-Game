@@ -99,6 +99,7 @@
     <Compile Include="Assets\LevelObjects\Tutorial\Scripts\TutorialTrigger.cs" />
     <Compile Include="Assets\LevelObjects\LevelManager.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Fall.cs" />
+    <Compile Include="Assets\Art\VFX\Knockback\KnockbackVFX.cs" />
     <Compile Include="Assets\Entities\Components\HitboxComponent.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Land.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\GrappleManager.cs" />
