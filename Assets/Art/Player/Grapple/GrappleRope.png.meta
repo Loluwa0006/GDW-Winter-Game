@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b6bc09b1b82ee8043a3834a92e62ed9f
+guid: e8506227618aee644ac253e937ce5f93
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -103,10 +103,10 @@ TextureImporter:
       name: GrappleRope_0
       rect:
         serializedVersion: 2
-        x: 45
-        y: 8
+        x: 0
+        y: 0
         width: 12
-        height: 71
+        height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      GrappleRope_0: 8851394388269596321
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

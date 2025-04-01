@@ -782,6 +782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useFixedUpdate: 0
   jointDamping: 7
+  ropeMaterial: {fileID: 2100000, guid: 8acfc6c4e2287514f8e4b066e49b37ac, type: 2}
 --- !u!1101 &-3668260529300624130
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1860,6 +1861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useFixedUpdate: 1
   jointDamping: 7
+  ropeMaterial: {fileID: 2100000, guid: 8acfc6c4e2287514f8e4b066e49b37ac, type: 2}
 --- !u!1102 &6923466398299755040
 AnimatorState:
   serializedVersion: 6

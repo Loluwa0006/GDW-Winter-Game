@@ -12,6 +12,7 @@ public class BaseGrapple : Base_State
 
     //   [SerializeField] float jointdistance = 4.5f;
     [SerializeField] protected float jointDamping = 7.0f;
+    [SerializeField] Material ropeMaterial;
 
     //  [SerializeField] float jointMassScale = 4.5f;
 
@@ -29,6 +30,7 @@ public class BaseGrapple : Base_State
 
         if (!stateInitalized)
         {
+
             if (animator.gameObject.GetComponent<LineRenderer>() == null)
             {
                 _grappleLine = animator.gameObject.AddComponent<LineRenderer>();
@@ -53,6 +55,10 @@ public class BaseGrapple : Base_State
 
             _rb = animator.gameObject.GetComponent<Rigidbody2D>();
             InitInputActions(animator);
+
+            _grappleLine.material = ropeMaterial;
+            _grappleLine.startWidth = 0.15f;
+            _grappleLine.endWidth = 0.15f;
 
         }
 

@@ -89,6 +89,7 @@
     <Compile Include="Assets\LevelObjects\StageSelect\StageSelect.cs" />
     <Compile Include="Assets\LevelObjects\PauseMenu\PauseMenu.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\RemoveTethers.cs" />
+    <Compile Include="Assets\LevelObjects\ExitButton.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_Tackle.cs" />
     <Compile Include="Assets\Entities\Player\PlayerOneControls.cs" />
     <Compile Include="Assets\Entities\Player\Scripts\States\Player_SlamFall.cs" />
