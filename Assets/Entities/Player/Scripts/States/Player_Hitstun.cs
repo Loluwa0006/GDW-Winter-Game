@@ -30,6 +30,8 @@ public class Player_Hitstun : Base_State
 
     CinemachineGroupFraming groupFraming;
     Camera cam;
+    float shakeAmount;
+
 
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -58,6 +60,7 @@ public class Player_Hitstun : Base_State
         _rb.linearVelocity = Vector2.zero;
 
         Vector2 spawnPosition = new Vector2(animator.GetFloat("HitboxCollisionX"), animator.GetFloat("HitboxCollisionY"));
+        shakeAmount = animator.GetFloat("HitshakeAmount") * Mathf.Lerp(1.0f, 1.25f, cam.orthographicSize / groupFraming.OrthoSizeRange.y);
 
         LongParticleCreator(animator, spawnPosition) ;
         CenterParticleCreator(animator, spawnPosition) ;
@@ -106,9 +109,7 @@ public class Player_Hitstun : Base_State
 
     void ShakePlayerSprite(Animator animator)
     {
-        Debug.Log("X is " + groupFraming.OrthoSizeRange.x);
-        Debug.Log("Y is " + groupFraming.OrthoSizeRange.y);
-        float shakeAmount = animator.GetFloat("HitshakeAmount") * Mathf.Lerp(1.0f, 1.5f, groupFraming.OrthoSizeRange.magnitude / cam.orthographicSize);
+
         float xShake = Random.Range(-shakeAmount, shakeAmount); 
         float yShake = Random.Range(shakeAmount, shakeAmount);
         if (IsGrounded())
