@@ -34,6 +34,7 @@ public class TetherPoint : MonoBehaviour
 
     float tetherCharge = 0.0f;
 
+
     private void Awake()
     {
         lineRenderer.enabled = false;
@@ -41,7 +42,7 @@ public class TetherPoint : MonoBehaviour
 
     public void FireTether(Vector2 dir, PlayerController player)
     {
-
+        transform.rotation = Quaternion.Euler(0,0, Mathf.Atan2(dir.x, dir.y));
         Physics2D.IgnoreCollision(_collider, player.GetHurtbox());
         playerController = player;
         _rb.linearVelocity = dir * tetherSpeed;
@@ -118,6 +119,7 @@ public class TetherPoint : MonoBehaviour
     {
         if (connectedTether)
         {
+            transform.rotation = Quaternion.Euler(0, 0, -Mathf.Atan2(connectedTether.transform.position.y - transform.position.y, connectedTether.transform.position.x - transform.position.x) * Mathf.Rad2Deg);
             DrawLine();
             if (connectedTether.tetherLocked)
             {

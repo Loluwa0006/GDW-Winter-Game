@@ -67,6 +67,9 @@ public class Player_Hitstun : Base_State
         shakeAmount = animator.GetFloat("HitshakeAmount") * Mathf.Lerp(1.0f, 1.25f, cam.orthographicSize / groupFraming.OrthoSizeRange.y);
         knockback = new Vector2(animator.GetFloat("KnockbackX"), animator.GetFloat("KnockbackY"));
 
+        playerController.transform.localScale = new Vector2(Mathf.Sign(-knockback.x), 1);
+       
+
         LongParticleCreator(animator, spawnPosition) ;
         CenterParticleCreator(animator, spawnPosition) ;
     }
