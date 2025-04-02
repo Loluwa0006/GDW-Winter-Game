@@ -198,7 +198,7 @@ MonoBehaviour:
   _rb: {fileID: 6090825360794748519}
   _knockbackScaleFactor: 0.05
   _damageScaleFactor: 0.45
-  _baseKnockback: 3020
+  _baseKnockback: 30
   _minSpeed: 5
   _minDamage: 5
   DamagedEntity:
