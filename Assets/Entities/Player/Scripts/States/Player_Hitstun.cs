@@ -73,13 +73,14 @@ public class Player_Hitstun : Base_State
 
     ParticleSystem KnockbackCloudsCreator(Animator animator, Vector2 spawnPosition)
     {
+      
         knockbackClouds = Instantiate(knockbackCloudsPrefab);
         ParticleSystem particles = knockbackClouds.GetComponent<ParticleSystem>();
         particles.Stop();
+        knockbackClouds.transform.position = playerController.transform.position;
         var newMain = particles.main;
         newMain.duration = (animator.GetInteger("HitstunAmount") * 50) * Time.fixedDeltaTime;
         particles.Play();
-        //k.transform.rotation = Quaternion.LookRotation(-knockback.normalized);
         return particles;
     }
     
@@ -102,10 +103,8 @@ public class Player_Hitstun : Base_State
         int hitstun = animator.GetInteger("HitstunAmount");
         if (decreaseHitstun)
         {
-            if (knockbackClouds != null)
-            {
                 knockbackClouds.transform.position = playerController.transform.position;
-            }
+            
             animator.SetInteger("HitstunAmount", hitstun - 1);
         }
         else
@@ -148,6 +147,5 @@ public class Player_Hitstun : Base_State
         _rb.gravityScale = 1.0f;
         _rb.linearDamping = 0.0f;
         _rb.sharedMaterial.bounciness = 0.0f;
-
     }
 }
