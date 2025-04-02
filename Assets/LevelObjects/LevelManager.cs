@@ -25,7 +25,6 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] GameObject hudHolder;
 
-
     [HideInInspector]
 
     Dictionary<PlayerController, bool> playerRespawned = new();

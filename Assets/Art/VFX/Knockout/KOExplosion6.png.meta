@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 4135654297f72e14a879c8b52bddf888
+guid: 2d836a732a4731c43aca7ce2062f050a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6553838807702695951
-    second: Ground Pound_0
+      213: 7900923857345390991
+    second: KOExplosion6_0
+  - first:
+      213: -5864411736347223869
+    second: KOExplosion6_1
+  - first:
+      213: -19587538717157242
+    second: KOExplosion6_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +119,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ground Pound_0
+      name: KOExplosion6_2
       rect:
         serializedVersion: 2
-        x: 23
-        y: 3
-        width: 134
-        height: 183
+        x: 0
+        y: 0
+        width: 1920
+        height: 1920
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f00f9400ca9e3fa50800000000000000
-      internalID: 6553838807702695951
+      spriteID: 6885db0cc396abff0800000000000000
+      internalID: -19587538717157242
       vertices: []
       indices: 
       edges: []
@@ -138,7 +144,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 717b3de7549e80c45a63458429bf9b4b
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +154,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Ground Pound_0: 6553838807702695951
+      KOExplosion6_0: 7900923857345390991
+      KOExplosion6_1: -5864411736347223869
+      KOExplosion6_2: -19587538717157242
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -542,6 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSprite: {fileID: 2585191675224961120}
+  KOEffect: {fileID: 3709391767023459096, guid: 5ce9de23cd03d464eade696608b69702, type: 3}
   hitboxEnabled:
     m_PersistentCalls:
       m_Calls: []

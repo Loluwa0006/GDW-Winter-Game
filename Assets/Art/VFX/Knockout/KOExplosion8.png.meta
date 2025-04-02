@@ -1,0 +1,2381 @@
+fileFormatVersion: 2
+guid: f3c0a95ff6382414e9478ddacbd1f206
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7267768039433791772
+    second: KOExplosion8_0
+  - first:
+      213: -9031635856023636276
+    second: KOExplosion8_1
+  - first:
+      213: -3567332451343466426
+    second: KOExplosion8_2
+  - first:
+      213: 6085570661632707013
+    second: KOExplosion8_3
+  - first:
+      213: 9124307667762373395
+    second: KOExplosion8_4
+  - first:
+      213: 2638797751909696457
+    second: KOExplosion8_5
+  - first:
+      213: 4312641739240452246
+    second: KOExplosion8_6
+  - first:
+      213: -3079080953126149762
+    second: KOExplosion8_7
+  - first:
+      213: -2647934427333622781
+    second: KOExplosion8_8
+  - first:
+      213: 1625830334797131655
+    second: KOExplosion8_9
+  - first:
+      213: 8738059518084301594
+    second: KOExplosion8_10
+  - first:
+      213: 4095607549217043965
+    second: KOExplosion8_11
+  - first:
+      213: 1005474761106094945
+    second: KOExplosion8_12
+  - first:
+      213: -1161701202327630905
+    second: KOExplosion8_13
+  - first:
+      213: -7913541399082423404
+    second: KOExplosion8_14
+  - first:
+      213: 8429778525503077442
+    second: KOExplosion8_15
+  - first:
+      213: -2300546808169096318
+    second: KOExplosion8_16
+  - first:
+      213: -3738890981360781657
+    second: KOExplosion8_17
+  - first:
+      213: 5323914815345992619
+    second: KOExplosion8_18
+  - first:
+      213: 3040056821509174679
+    second: KOExplosion8_19
+  - first:
+      213: -515600709014893006
+    second: KOExplosion8_20
+  - first:
+      213: -4944948226488049211
+    second: KOExplosion8_21
+  - first:
+      213: -9149805648190266718
+    second: KOExplosion8_22
+  - first:
+      213: 5395611743997399285
+    second: KOExplosion8_23
+  - first:
+      213: 1294781068768401590
+    second: KOExplosion8_24
+  - first:
+      213: -2143444633163542421
+    second: KOExplosion8_25
+  - first:
+      213: -5841471935650303432
+    second: KOExplosion8_26
+  - first:
+      213: -2019990042876605593
+    second: KOExplosion8_27
+  - first:
+      213: 7756571597293917943
+    second: KOExplosion8_28
+  - first:
+      213: 8149860304242011386
+    second: KOExplosion8_29
+  - first:
+      213: 6852201351439058552
+    second: KOExplosion8_30
+  - first:
+      213: -5381106076707798340
+    second: KOExplosion8_31
+  - first:
+      213: -3599901106078123949
+    second: KOExplosion8_32
+  - first:
+      213: 8663773279231261806
+    second: KOExplosion8_33
+  - first:
+      213: 7539239548102618639
+    second: KOExplosion8_34
+  - first:
+      213: -3169598417512938216
+    second: KOExplosion8_35
+  - first:
+      213: 5516885512072510797
+    second: KOExplosion8_36
+  - first:
+      213: -8996294992347150054
+    second: KOExplosion8_37
+  - first:
+      213: -3170433452470177896
+    second: KOExplosion8_38
+  - first:
+      213: 8064278541849471613
+    second: KOExplosion8_39
+  - first:
+      213: -1272650739158832200
+    second: KOExplosion8_40
+  - first:
+      213: -7986697056044986887
+    second: KOExplosion8_41
+  - first:
+      213: 1581216368652858140
+    second: KOExplosion8_42
+  - first:
+      213: -1826263886281801946
+    second: KOExplosion8_43
+  - first:
+      213: 5308183433204080326
+    second: KOExplosion8_44
+  - first:
+      213: -2884457478294941549
+    second: KOExplosion8_45
+  - first:
+      213: 6142308884356055359
+    second: KOExplosion8_46
+  - first:
+      213: -2954151780673059836
+    second: KOExplosion8_47
+  - first:
+      213: 286789410254712693
+    second: KOExplosion8_48
+  - first:
+      213: -2482644001000683686
+    second: KOExplosion8_49
+  - first:
+      213: 87116579165408356
+    second: KOExplosion8_50
+  - first:
+      213: 2504497903131054240
+    second: KOExplosion8_51
+  - first:
+      213: -406123632194244323
+    second: KOExplosion8_52
+  - first:
+      213: 3295662408037919487
+    second: KOExplosion8_53
+  - first:
+      213: 5186354243086448163
+    second: KOExplosion8_54
+  - first:
+      213: 4731516886501865627
+    second: KOExplosion8_55
+  - first:
+      213: -3601818077815399682
+    second: KOExplosion8_56
+  - first:
+      213: 8309636907754685194
+    second: KOExplosion8_57
+  - first:
+      213: -1230961630150430541
+    second: KOExplosion8_58
+  - first:
+      213: -563355567652170166
+    second: KOExplosion8_59
+  - first:
+      213: 6469492378676643950
+    second: KOExplosion8_60
+  - first:
+      213: -8198550025504767825
+    second: KOExplosion8_61
+  - first:
+      213: 2623140894921372099
+    second: KOExplosion8_62
+  - first:
+      213: 9030972006911497388
+    second: KOExplosion8_63
+  - first:
+      213: 5348941421177380358
+    second: KOExplosion8_64
+  - first:
+      213: -8693241214723363904
+    second: KOExplosion8_65
+  - first:
+      213: -6896235070875780547
+    second: KOExplosion8_66
+  - first:
+      213: -8803938691719451577
+    second: KOExplosion8_67
+  - first:
+      213: 6856524308230849186
+    second: KOExplosion8_68
+  - first:
+      213: -1728743949175507739
+    second: KOExplosion8_69
+  - first:
+      213: 6074931709135460861
+    second: KOExplosion8_70
+  - first:
+      213: 8987168079703917478
+    second: KOExplosion8_71
+  - first:
+      213: -7762140241282684606
+    second: KOExplosion8_72
+  - first:
+      213: 8864801902323868092
+    second: KOExplosion8_73
+  - first:
+      213: 2526970932262188033
+    second: KOExplosion8_74
+  - first:
+      213: -4956300578685693184
+    second: KOExplosion8_75
+  - first:
+      213: -3215815825003545670
+    second: KOExplosion8_76
+  - first:
+      213: -8558379295730514663
+    second: KOExplosion8_77
+  - first:
+      213: 3695213904658406942
+    second: KOExplosion8_78
+  - first:
+      213: 1552152024007866381
+    second: KOExplosion8_79
+  - first:
+      213: 5216063870544727573
+    second: KOExplosion8_80
+  - first:
+      213: -2620956283672946802
+    second: KOExplosion8_81
+  - first:
+      213: 3689548173927095340
+    second: KOExplosion8_82
+  - first:
+      213: 8461662901413318647
+    second: KOExplosion8_83
+  - first:
+      213: 437262096919563949
+    second: KOExplosion8_84
+  - first:
+      213: -2855145311562317588
+    second: KOExplosion8_85
+  - first:
+      213: 3040662890100013012
+    second: KOExplosion8_86
+  - first:
+      213: -5709487743017012589
+    second: KOExplosion8_87
+  - first:
+      213: 240199560311323214
+    second: KOExplosion8_88
+  - first:
+      213: 1662144118501923328
+    second: KOExplosion8_89
+  - first:
+      213: 9113167553596513600
+    second: KOExplosion8_90
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: KOExplosion8_0
+      rect:
+        serializedVersion: 2
+        x: 1511
+        y: 1835
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c19636c868c4cd460800000000000000
+      internalID: 7267768039433791772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_1
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 1871
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc6b7056a0f29a280800000000000000
+      internalID: -9031635856023636276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_2
+      rect:
+        serializedVersion: 2
+        x: 1823
+        y: 1769
+        width: 97
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64003f9390a4e7ec0800000000000000
+      internalID: -3567332451343466426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_3
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 1823
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c90826264a447450800000000000000
+      internalID: 6085570661632707013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_4
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 1829
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 313695e2b7d00ae70800000000000000
+      internalID: 9124307667762373395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_5
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 1829
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c34dac0394ee9420800000000000000
+      internalID: 2638797751909696457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_6
+      rect:
+        serializedVersion: 2
+        x: 1481
+        y: 1823
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69033feffc499db30800000000000000
+      internalID: 4312641739240452246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_7
+      rect:
+        serializedVersion: 2
+        x: 1499
+        y: 1829
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e71ae32df28e445d0800000000000000
+      internalID: -3079080953126149762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_8
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 1817
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 304804eeaa5a04bd0800000000000000
+      internalID: -2647934427333622781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_9
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 1817
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78f23a2531c109610800000000000000
+      internalID: 1625830334797131655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_10
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 1811
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a13c2a1e5d2d34970800000000000000
+      internalID: 8738059518084301594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_11
+      rect:
+        serializedVersion: 2
+        x: 1253
+        y: 1763
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df57d76dd5586d830800000000000000
+      internalID: 4095607549217043965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_12
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 1709
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16b795ec7f924fd00800000000000000
+      internalID: 1005474761106094945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_13
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 1559
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cb0e1459eec0efe0800000000000000
+      internalID: -1161701202327630905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_14
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 1565
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49b285876047d2290800000000000000
+      internalID: -7913541399082423404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_15
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 1565
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24cb3d3f7e69cf470800000000000000
+      internalID: 8429778525503077442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_17
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 1541
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a63412467acc1cc0800000000000000
+      internalID: -3738890981360781657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_18
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 1553
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba32327315852e940800000000000000
+      internalID: 5323914815345992619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_20
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 1535
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23e4a3d03e738d8f0800000000000000
+      internalID: -515600709014893006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_21
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 1505
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c16b7799c3006bb0800000000000000
+      internalID: -4944948226488049211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_22
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 1511
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a2a1cf9d3c550180800000000000000
+      internalID: -9149805648190266718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_23
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 1505
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f014e24b4011ea40800000000000000
+      internalID: 5395611743997399285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_24
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 1451
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b857d1a58cf7f110800000000000000
+      internalID: 1294781068768401590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_25
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 1349
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b60d19c6674f042e0800000000000000
+      internalID: -2143444633163542421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_26
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 1343
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8327626593ceeeea0800000000000000
+      internalID: -5841471935650303432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_27
+      rect:
+        serializedVersion: 2
+        x: 1769
+        y: 1343
+        width: 38
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76b838422cd87f3e0800000000000000
+      internalID: -2019990042876605593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_28
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 1337
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f6969b85c0e4ab60800000000000000
+      internalID: 7756571597293917943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_29
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 1331
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afce66354ce1a1170800000000000000
+      internalID: 8149860304242011386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_30
+      rect:
+        serializedVersion: 2
+        x: 1757
+        y: 1331
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8760af913d8e71f50800000000000000
+      internalID: 6852201351439058552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_31
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 1325
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb2c22798887255b0800000000000000
+      internalID: -5381106076707798340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_32
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 1325
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3587da164059a0ec0800000000000000
+      internalID: -3599901106078123949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_34
+      rect:
+        serializedVersion: 2
+        x: 1739
+        y: 1301
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0eab35ac62c0a860800000000000000
+      internalID: 7539239548102618639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_35
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 1247
+        width: 44
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 815408358035304d0800000000000000
+      internalID: -3169598417512938216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_36
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 1235
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4db49db42aef8c40800000000000000
+      internalID: 5516885512072510797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_37
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 1205
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a19c58e6e5db62380800000000000000
+      internalID: -8996294992347150054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_38
+      rect:
+        serializedVersion: 2
+        x: 1583
+        y: 1133
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89fef79929b5004d0800000000000000
+      internalID: -3170433452470177896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_39
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 1067
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7a2eb08b921aef60800000000000000
+      internalID: 8064278541849471613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_40
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1055
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bbac4145e2a65ee0800000000000000
+      internalID: -1272650739158832200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_41
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 1037
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fdc7c5c75d892190800000000000000
+      internalID: -7986697056044986887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_42
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 1031
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c13369ed8eb91f510800000000000000
+      internalID: 1581216368652858140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_43
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 1031
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62f7c00ebaec7a6e0800000000000000
+      internalID: -1826263886281801946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_44
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 1025
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ce1eb265b47aa940800000000000000
+      internalID: 5308183433204080326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_45
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 1025
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 390d28cb43958f7d0800000000000000
+      internalID: -2884457478294941549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_46
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 1025
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f31c4c0136ddd3550800000000000000
+      internalID: 6142308884356055359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_47
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 1025
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40405647b9eb007d0800000000000000
+      internalID: -2954151780673059836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_48
+      rect:
+        serializedVersion: 2
+        x: 1511
+        y: 953
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57f639bf271eaf300800000000000000
+      internalID: 286789410254712693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_49
+      rect:
+        serializedVersion: 2
+        x: 1493
+        y: 923
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5789984f60eb8dd0800000000000000
+      internalID: -2482644001000683686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_50
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 815
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46c83333110853100800000000000000
+      internalID: 87116579165408356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_52
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 815
+        width: 50
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d11bb2055b82d5af0800000000000000
+      internalID: -406123632194244323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_53
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 785
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffa65babf7b8cbd20800000000000000
+      internalID: 3295662408037919487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_54
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 791
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 326f182a4b1a9f740800000000000000
+      internalID: 5186354243086448163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_55
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 773
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b98b4b42a89b9a140800000000000000
+      internalID: 4731516886501865627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_56
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 749
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efa9b3e9a85c30ec0800000000000000
+      internalID: -3601818077815399682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_57
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 719
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a038133cdb2c15370800000000000000
+      internalID: 8309636907754685194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_58
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 719
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b07fb65beebaeee0800000000000000
+      internalID: -1230961630150430541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_59
+      rect:
+        serializedVersion: 2
+        x: 1841
+        y: 695
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a469ad3981f8e28f0800000000000000
+      internalID: -563355567652170166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_61
+      rect:
+        serializedVersion: 2
+        x: 1823
+        y: 665
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa0c4888036e83e80800000000000000
+      internalID: -8198550025504767825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_62
+      rect:
+        serializedVersion: 2
+        x: 1811
+        y: 653
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c1b695feb4476420800000000000000
+      internalID: 2623140894921372099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_63
+      rect:
+        serializedVersion: 2
+        x: 1799
+        y: 641
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca4d4703135745d70800000000000000
+      internalID: 9030972006911497388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_64
+      rect:
+        serializedVersion: 2
+        x: 1787
+        y: 629
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60e96a5f1e14b3a40800000000000000
+      internalID: 5348941421177380358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_65
+      rect:
+        serializedVersion: 2
+        x: 1775
+        y: 617
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cbe0a98c276b5780800000000000000
+      internalID: -8693241214723363904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_66
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 557
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3abbd8adb6ab40a0800000000000000
+      internalID: -6896235070875780547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_67
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 533
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74caeb7b76022d580800000000000000
+      internalID: -8803938691719451577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_68
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 347
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a24ee9e784472f50800000000000000
+      internalID: 6856524308230849186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_69
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 323
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e4b9c999844208e0800000000000000
+      internalID: -1728743949175507739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_70
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 287
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df996cdf33e7e4450800000000000000
+      internalID: 6074931709135460861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_71
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 299
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a34b7f90c5d8bc70800000000000000
+      internalID: 8987168079703917478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_72
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 275
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 249a49d7396574490800000000000000
+      internalID: -7762140241282684606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_73
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 281
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb1a838cc5a160b70800000000000000
+      internalID: 8864801902323868092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_74
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 257
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 104b937acaa911320800000000000000
+      internalID: 2526970932262188033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_75
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 263
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 003506f12eea73bb0800000000000000
+      internalID: -4956300578685693184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_76
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 239
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abb75979b802f53d0800000000000000
+      internalID: -3215815825003545670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_77
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 245
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 915cce0ff578a3980800000000000000
+      internalID: -8558379295730514663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_78
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 227
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1e9f3cd779084330800000000000000
+      internalID: 3695213904658406942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_79
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 227
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d08746cca0a5a8510800000000000000
+      internalID: 1552152024007866381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_80
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 209
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51e4191547e236840800000000000000
+      internalID: 5216063870544727573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_81
+      rect:
+        serializedVersion: 2
+        x: 1223
+        y: 203
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8798db752e70abd0800000000000000
+      internalID: -2620956283672946802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_82
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 191
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2c9d902488e33330800000000000000
+      internalID: 3689548173927095340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_83
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 161
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ff87d7b39ddd6570800000000000000
+      internalID: 8461662901413318647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_84
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 161
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dae02a87f87711600800000000000000
+      internalID: 437262096919563949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_85
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 167
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce0c432677c7068d0800000000000000
+      internalID: -2855145311562317588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_86
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 155
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d7bf16d9ca923a20800000000000000
+      internalID: 3040662890100013012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_87
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 155
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 392360cd523d3c0b0800000000000000
+      internalID: -5709487743017012589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_88
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 155
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4abf8b3a3c555300800000000000000
+      internalID: 240199560311323214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_89
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 143
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00adfc4f44f111710800000000000000
+      internalID: 1662144118501923328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion8_90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1920
+        height: 1920
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04d5cba3b99787e70800000000000000
+      internalID: 9113167553596513600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c765d9ab8fa30774ab529c8420e296b5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      KOExplosion8_0: 7267768039433791772
+      KOExplosion8_1: -9031635856023636276
+      KOExplosion8_10: 8738059518084301594
+      KOExplosion8_11: 4095607549217043965
+      KOExplosion8_12: 1005474761106094945
+      KOExplosion8_13: -1161701202327630905
+      KOExplosion8_14: -7913541399082423404
+      KOExplosion8_15: 8429778525503077442
+      KOExplosion8_17: -3738890981360781657
+      KOExplosion8_18: 5323914815345992619
+      KOExplosion8_2: -3567332451343466426
+      KOExplosion8_20: -515600709014893006
+      KOExplosion8_21: -4944948226488049211
+      KOExplosion8_22: -9149805648190266718
+      KOExplosion8_23: 5395611743997399285
+      KOExplosion8_24: 1294781068768401590
+      KOExplosion8_25: -2143444633163542421
+      KOExplosion8_26: -5841471935650303432
+      KOExplosion8_27: -2019990042876605593
+      KOExplosion8_28: 7756571597293917943
+      KOExplosion8_29: 8149860304242011386
+      KOExplosion8_3: 6085570661632707013
+      KOExplosion8_30: 6852201351439058552
+      KOExplosion8_31: -5381106076707798340
+      KOExplosion8_32: -3599901106078123949
+      KOExplosion8_34: 7539239548102618639
+      KOExplosion8_35: -3169598417512938216
+      KOExplosion8_36: 5516885512072510797
+      KOExplosion8_37: -8996294992347150054
+      KOExplosion8_38: -3170433452470177896
+      KOExplosion8_39: 8064278541849471613
+      KOExplosion8_4: 9124307667762373395
+      KOExplosion8_40: -1272650739158832200
+      KOExplosion8_41: -7986697056044986887
+      KOExplosion8_42: 1581216368652858140
+      KOExplosion8_43: -1826263886281801946
+      KOExplosion8_44: 5308183433204080326
+      KOExplosion8_45: -2884457478294941549
+      KOExplosion8_46: 6142308884356055359
+      KOExplosion8_47: -2954151780673059836
+      KOExplosion8_48: 286789410254712693
+      KOExplosion8_49: -2482644001000683686
+      KOExplosion8_5: 2638797751909696457
+      KOExplosion8_50: 87116579165408356
+      KOExplosion8_52: -406123632194244323
+      KOExplosion8_53: 3295662408037919487
+      KOExplosion8_54: 5186354243086448163
+      KOExplosion8_55: 4731516886501865627
+      KOExplosion8_56: -3601818077815399682
+      KOExplosion8_57: 8309636907754685194
+      KOExplosion8_58: -1230961630150430541
+      KOExplosion8_59: -563355567652170166
+      KOExplosion8_6: 4312641739240452246
+      KOExplosion8_61: -8198550025504767825
+      KOExplosion8_62: 2623140894921372099
+      KOExplosion8_63: 9030972006911497388
+      KOExplosion8_64: 5348941421177380358
+      KOExplosion8_65: -8693241214723363904
+      KOExplosion8_66: -6896235070875780547
+      KOExplosion8_67: -8803938691719451577
+      KOExplosion8_68: 6856524308230849186
+      KOExplosion8_69: -1728743949175507739
+      KOExplosion8_7: -3079080953126149762
+      KOExplosion8_70: 6074931709135460861
+      KOExplosion8_71: 8987168079703917478
+      KOExplosion8_72: -7762140241282684606
+      KOExplosion8_73: 8864801902323868092
+      KOExplosion8_74: 2526970932262188033
+      KOExplosion8_75: -4956300578685693184
+      KOExplosion8_76: -3215815825003545670
+      KOExplosion8_77: -8558379295730514663
+      KOExplosion8_78: 3695213904658406942
+      KOExplosion8_79: 1552152024007866381
+      KOExplosion8_8: -2647934427333622781
+      KOExplosion8_80: 5216063870544727573
+      KOExplosion8_81: -2620956283672946802
+      KOExplosion8_82: 3689548173927095340
+      KOExplosion8_83: 8461662901413318647
+      KOExplosion8_84: 437262096919563949
+      KOExplosion8_85: -2855145311562317588
+      KOExplosion8_86: 3040662890100013012
+      KOExplosion8_87: -5709487743017012589
+      KOExplosion8_88: 240199560311323214
+      KOExplosion8_89: 1662144118501923328
+      KOExplosion8_9: 1625830334797131655
+      KOExplosion8_90: 9113167553596513600
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

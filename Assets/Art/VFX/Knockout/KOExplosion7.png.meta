@@ -1,0 +1,644 @@
+fileFormatVersion: 2
+guid: f7f484d6e6eebd94d96f53ec1ba2639f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3823116588174422008
+    second: KOExplosion7_0
+  - first:
+      213: -8735347195237007370
+    second: KOExplosion7_1
+  - first:
+      213: -8072271007610955931
+    second: KOExplosion7_2
+  - first:
+      213: 8514529656834442577
+    second: KOExplosion7_3
+  - first:
+      213: -5510139215199701113
+    second: KOExplosion7_4
+  - first:
+      213: -1914391958333722158
+    second: KOExplosion7_5
+  - first:
+      213: -2267216511177615103
+    second: KOExplosion7_6
+  - first:
+      213: -1986408764104574794
+    second: KOExplosion7_7
+  - first:
+      213: 302603287090238758
+    second: KOExplosion7_8
+  - first:
+      213: 9155743618271939763
+    second: KOExplosion7_9
+  - first:
+      213: -3169821486915370324
+    second: KOExplosion7_10
+  - first:
+      213: -6169528691057372085
+    second: KOExplosion7_11
+  - first:
+      213: 7113755206364824685
+    second: KOExplosion7_12
+  - first:
+      213: 482431261144119875
+    second: KOExplosion7_13
+  - first:
+      213: 488142361979430557
+    second: KOExplosion7_14
+  - first:
+      213: -7093035798947254687
+    second: KOExplosion7_15
+  - first:
+      213: 163219311025575381
+    second: KOExplosion7_16
+  - first:
+      213: -2497362783084552593
+    second: KOExplosion7_17
+  - first:
+      213: 9004784367312998009
+    second: KOExplosion7_18
+  - first:
+      213: -9024883822607964444
+    second: KOExplosion7_19
+  - first:
+      213: -1207303836531498988
+    second: KOExplosion7_20
+  - first:
+      213: 8361641487771166439
+    second: KOExplosion7_21
+  - first:
+      213: 4963303259584789023
+    second: KOExplosion7_22
+  - first:
+      213: -5595054805376929327
+    second: KOExplosion7_23
+  - first:
+      213: -3565300440478516552
+    second: KOExplosion7_24
+  - first:
+      213: 2759455432245766110
+    second: KOExplosion7_25
+  - first:
+      213: -6162961083822388278
+    second: KOExplosion7_26
+  - first:
+      213: 5707361685199186815
+    second: KOExplosion7_27
+  - first:
+      213: 5210726807489756363
+    second: KOExplosion7_28
+  - first:
+      213: -3870170421942398154
+    second: KOExplosion7_29
+  - first:
+      213: -1577194771350309701
+    second: KOExplosion7_30
+  - first:
+      213: -7024414077047386760
+    second: KOExplosion7_31
+  - first:
+      213: -1945614563367637500
+    second: KOExplosion7_32
+  - first:
+      213: 5695492205003840981
+    second: KOExplosion7_33
+  - first:
+      213: 7559095890512606854
+    second: KOExplosion7_34
+  - first:
+      213: -2291951193501267566
+    second: KOExplosion7_35
+  - first:
+      213: 1803854359669729252
+    second: KOExplosion7_36
+  - first:
+      213: 95576227936722860
+    second: KOExplosion7_37
+  - first:
+      213: 3009592224057045270
+    second: KOExplosion7_38
+  - first:
+      213: 6964050850930885972
+    second: KOExplosion7_39
+  - first:
+      213: 1845781370235434737
+    second: KOExplosion7_40
+  - first:
+      213: -6645052212802535428
+    second: KOExplosion7_41
+  - first:
+      213: 1994126859469625602
+    second: KOExplosion7_42
+  - first:
+      213: 1343263612358362210
+    second: KOExplosion7_43
+  - first:
+      213: -1393610710473416648
+    second: KOExplosion7_44
+  - first:
+      213: -9046049992849127176
+    second: KOExplosion7_45
+  - first:
+      213: -7074235648296120933
+    second: KOExplosion7_46
+  - first:
+      213: -6953601704177223083
+    second: KOExplosion7_47
+  - first:
+      213: 5225062945687206244
+    second: KOExplosion7_48
+  - first:
+      213: 3604235588300403518
+    second: KOExplosion7_49
+  - first:
+      213: 3689035018753497683
+    second: KOExplosion7_50
+  - first:
+      213: 6886317626554971842
+    second: KOExplosion7_51
+  - first:
+      213: 3842438737995061827
+    second: KOExplosion7_52
+  - first:
+      213: -954450149909720650
+    second: KOExplosion7_53
+  - first:
+      213: 777411986950593441
+    second: KOExplosion7_54
+  - first:
+      213: -2260474779467946056
+    second: KOExplosion7_55
+  - first:
+      213: -5961794431107277997
+    second: KOExplosion7_56
+  - first:
+      213: -682538447211320300
+    second: KOExplosion7_57
+  - first:
+      213: -91183470563980201
+    second: KOExplosion7_58
+  - first:
+      213: 7186149369789169921
+    second: KOExplosion7_59
+  - first:
+      213: -8475917490685605144
+    second: KOExplosion7_60
+  - first:
+      213: -1596601140905554822
+    second: KOExplosion7_61
+  - first:
+      213: -4243029513511062489
+    second: KOExplosion7_62
+  - first:
+      213: -3162996632307267215
+    second: KOExplosion7_63
+  - first:
+      213: 1204056787551051441
+    second: KOExplosion7_64
+  - first:
+      213: -8949839298317099559
+    second: KOExplosion7_65
+  - first:
+      213: 6635570185504722013
+    second: KOExplosion7_66
+  - first:
+      213: -4973952060577116807
+    second: KOExplosion7_67
+  - first:
+      213: -9128105863698898691
+    second: KOExplosion7_68
+  - first:
+      213: -4790568212968220352
+    second: KOExplosion7_69
+  - first:
+      213: -8476876027772520397
+    second: KOExplosion7_70
+  - first:
+      213: 7116574485533312591
+    second: KOExplosion7_71
+  - first:
+      213: 7140190305475158188
+    second: KOExplosion7_72
+  - first:
+      213: -7050656837321586705
+    second: KOExplosion7_73
+  - first:
+      213: 1144476426027716545
+    second: KOExplosion7_74
+  - first:
+      213: -2880413518684450221
+    second: KOExplosion7_75
+  - first:
+      213: 5076810568762920509
+    second: KOExplosion7_76
+  - first:
+      213: -5405791811366191663
+    second: KOExplosion7_77
+  - first:
+      213: 8293483007067544208
+    second: KOExplosion7_78
+  - first:
+      213: -2283222727307620327
+    second: KOExplosion7_79
+  - first:
+      213: 2194133359666149670
+    second: KOExplosion7_80
+  - first:
+      213: -7689599081896658475
+    second: KOExplosion7_81
+  - first:
+      213: -8753897716029260813
+    second: KOExplosion7_82
+  - first:
+      213: -4647810427593858551
+    second: KOExplosion7_83
+  - first:
+      213: 6419050130433073709
+    second: KOExplosion7_84
+  - first:
+      213: -2084164693428445517
+    second: KOExplosion7_85
+  - first:
+      213: -5329822931370348141
+    second: KOExplosion7_86
+  - first:
+      213: -7535454734996750508
+    second: KOExplosion7_87
+  - first:
+      213: -7254192689107219236
+    second: KOExplosion7_88
+  - first:
+      213: -7183548317788258407
+    second: KOExplosion7_89
+  - first:
+      213: -4804533581224214494
+    second: KOExplosion7_90
+  - first:
+      213: 7738571485341325947
+    second: KOExplosion7_91
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: KOExplosion7_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1920
+        height: 1920
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f88dc3a579f57280800000000000000
+      internalID: -9046049992849127176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion7_52
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 1055
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34a55619ca5135530800000000000000
+      internalID: 3842438737995061827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion7_62
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 683
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 724bca3532bbd15c0800000000000000
+      internalID: -4243029513511062489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion7_79
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 401
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9101bbbc60d5050e0800000000000000
+      internalID: -2283222727307620327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion7_80
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 401
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6293cb46aa0237e10800000000000000
+      internalID: 2194133359666149670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion7_81
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 401
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d93162506e094590800000000000000
+      internalID: -7689599081896658475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KOExplosion7_91
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1920
+        height: 1918
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7a9cb4e3cde46b60800000000000000
+      internalID: 7738571485341325947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 662b412a632476745a3f7523d16a1ca8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      KOExplosion7_0: -3823116588174422008
+      KOExplosion7_1: -8735347195237007370
+      KOExplosion7_10: 1909282054
+      KOExplosion7_11: -6169528691057372085
+      KOExplosion7_12: 7113755206364824685
+      KOExplosion7_13: 482431261144119875
+      KOExplosion7_15: -7093035798947254687
+      KOExplosion7_16: 163219311025575381
+      KOExplosion7_17: -2497362783084552593
+      KOExplosion7_18: 9004784367312998009
+      KOExplosion7_2: -8072271007610955931
+      KOExplosion7_20: -1207303836531498988
+      KOExplosion7_21: 8361641487771166439
+      KOExplosion7_23: -5595054805376929327
+      KOExplosion7_25: 2759455432245766110
+      KOExplosion7_26: -6162961083822388278
+      KOExplosion7_28: 5210726807489756363
+      KOExplosion7_29: -3870170421942398154
+      KOExplosion7_3: 8514529656834442577
+      KOExplosion7_30: -1577194771350309701
+      KOExplosion7_31: -7024414077047386760
+      KOExplosion7_32: -1945614563367637500
+      KOExplosion7_33: 5695492205003840981
+      KOExplosion7_34: 7559095890512606854
+      KOExplosion7_35: -2291951193501267566
+      KOExplosion7_36: 1803854359669729252
+      KOExplosion7_37: 95576227936722860
+      KOExplosion7_38: 3009592224057045270
+      KOExplosion7_39: 6964050850930885972
+      KOExplosion7_4: -5510139215199701113
+      KOExplosion7_40: 1845781370235434737
+      KOExplosion7_41: -6645052212802535428
+      KOExplosion7_42: 1994126859469625602
+      KOExplosion7_43: 1343263612358362210
+      KOExplosion7_44: -1393610710473416648
+      KOExplosion7_45: -9046049992849127176
+      KOExplosion7_46: -7074235648296120933
+      KOExplosion7_47: -6953601704177223083
+      KOExplosion7_48: 5225062945687206244
+      KOExplosion7_49: 3604235588300403518
+      KOExplosion7_5: -1914391958333722158
+      KOExplosion7_50: 3689035018753497683
+      KOExplosion7_51: 6886317626554971842
+      KOExplosion7_52: 3842438737995061827
+      KOExplosion7_54: 777411986950593441
+      KOExplosion7_55: -2260474779467946056
+      KOExplosion7_57: -682538447211320300
+      KOExplosion7_58: -91183470563980201
+      KOExplosion7_59: 7186149369789169921
+      KOExplosion7_6: -2267216511177615103
+      KOExplosion7_60: -8475917490685605144
+      KOExplosion7_61: -1596601140905554822
+      KOExplosion7_62: -4243029513511062489
+      KOExplosion7_63: -3162996632307267215
+      KOExplosion7_64: 1204056787551051441
+      KOExplosion7_65: -8949839298317099559
+      KOExplosion7_67: -4973952060577116807
+      KOExplosion7_68: -9128105863698898691
+      KOExplosion7_69: -4790568212968220352
+      KOExplosion7_7: -1986408764104574794
+      KOExplosion7_70: -8476876027772520397
+      KOExplosion7_71: 7116574485533312591
+      KOExplosion7_72: 7140190305475158188
+      KOExplosion7_73: -7050656837321586705
+      KOExplosion7_74: 1144476426027716545
+      KOExplosion7_75: -2880413518684450221
+      KOExplosion7_76: 5076810568762920509
+      KOExplosion7_77: -5405791811366191663
+      KOExplosion7_78: 8293483007067544208
+      KOExplosion7_79: -2283222727307620327
+      KOExplosion7_8: 302603287090238758
+      KOExplosion7_80: 2194133359666149670
+      KOExplosion7_81: -7689599081896658475
+      KOExplosion7_82: -8753897716029260813
+      KOExplosion7_83: -4647810427593858551
+      KOExplosion7_84: 6419050130433073709
+      KOExplosion7_85: -2084164693428445517
+      KOExplosion7_86: -5329822931370348141
+      KOExplosion7_87: -7535454734996750508
+      KOExplosion7_88: -7254192689107219236
+      KOExplosion7_89: -7183548317788258407
+      KOExplosion7_9: 9155743618271939763
+      KOExplosion7_90: -4804533581224214494
+      KOExplosion7_91: 7738571485341325947
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

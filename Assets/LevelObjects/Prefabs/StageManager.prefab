@@ -54,6 +54,7 @@ MonoBehaviour:
   _cinemachineGrouper: {fileID: 0}
   hudPrefab: {fileID: 2532957960890343652, guid: 8603a6f434bca124295e2a43233adebd, type: 3}
   hudHolder: {fileID: 0}
+  KOEffect: {fileID: 3709391767023459096, guid: 5ce9de23cd03d464eade696608b69702, type: 3}
 --- !u!82 &4650897967910084888
 AudioSource:
   m_ObjectHideFlags: 0

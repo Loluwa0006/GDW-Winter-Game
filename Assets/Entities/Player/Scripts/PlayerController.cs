@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject playerSprite;
 
-
+    [SerializeField] GameObject KOEffect;
     public const float RESPAWN_DELAY = 1.5f;
     [HideInInspector]
     public UnityEvent hitboxEnabled = new UnityEvent();
@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour
     LayerMask platformMask;
 
     public List<Color> playerColors = new();
+
+
 
 
     private void Awake()
@@ -240,7 +242,13 @@ public class PlayerController : MonoBehaviour
     public void OnPlayerDeath()
     {
         int lives = healthComponent.GetRemainingLives() - 1;
-        
+        GameObject KOeffect = Instantiate(KOEffect);
+        KOeffect.GetComponent<SpriteRenderer>().color = playerColors[playerIndex - 1];
+        Vector3 offset = (_rb.linearVelocity.normalized) * 10.0f;
+        KOeffect.transform.position = transform.position - offset;
+
+        float angle = Mathf.Atan2(-_rb.linearVelocity.y, -_rb.linearVelocity.x) * Mathf.Rad2Deg;
+        KOeffect.transform.rotation = Quaternion.Euler(0, 0, angle - 45);
         if (lives <= 0)
         {
             playerEliminated.Invoke(this);
@@ -248,7 +256,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             StartCoroutine( Respawn());
-        }
+        }   
     }
     IEnumerator Respawn()
     {

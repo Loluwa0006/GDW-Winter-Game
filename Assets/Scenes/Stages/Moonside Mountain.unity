@@ -859,6 +859,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'CinemachineCamera '
       objectReference: {fileID: 0}
+    - target: {fileID: 8156866945725818075, guid: 0e0721d97a9dc6148bc7d9c12b48f704, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
