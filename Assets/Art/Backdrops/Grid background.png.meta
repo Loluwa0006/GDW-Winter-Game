@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f43dd5a0c681cd74798a0e33ac4d8ea0
+guid: 397385b4373cbaf48b0d8491963fb17d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5639138167597072429
-    second: KOExplosion3_0
+      213: 3066723037952438121
+    second: Grid background_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KOExplosion3_0
+      name: Grid background_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1920
+        width: 1000
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3df7709c6b1cdb1b0800000000000000
-      internalID: -5639138167597072429
+      spriteID: 96f69a5da503f8a20800000000000000
+      internalID: 3066723037952438121
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      KOExplosion3_0: -5639138167597072429
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -8,7 +8,10 @@ public class Killbox : MonoBehaviour
     {
         if (collision.TryGetComponent(out PlayerController playerController))
         {
-            playerController.OnPlayerDeath();
+            if (!playerController.deadAF)
+            {
+                playerController.OnPlayerDeath();
+            }
         }
         else
         {

@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     public List<Color> playerColors = new();
 
-
+    public bool deadAF = false;
 
 
     private void Awake()
@@ -241,15 +241,11 @@ public class PlayerController : MonoBehaviour
     }
     public void OnPlayerDeath()
     {
-        int lives = healthComponent.GetRemainingLives() - 1;
-        GameObject KOeffect = Instantiate(KOEffect);
-        KOeffect.GetComponent<SpriteRenderer>().color = playerColors[playerIndex - 1];
-        Vector3 offset = (_rb.linearVelocity.normalized) * 10.0f;
-        KOeffect.transform.position = transform.position - offset;
-
-        float angle = Mathf.Atan2(-_rb.linearVelocity.y, -_rb.linearVelocity.x) * Mathf.Rad2Deg;
-        KOeffect.transform.rotation = Quaternion.Euler(0, 0, angle - 45);
-        if (lives <= 0)
+        PlayKoEffect();
+        deadAF = true;
+      
+        hurtbox.enabled = false;
+        if (healthComponent.GetRemainingLives() - 1 <= 0)
         {
             playerEliminated.Invoke(this);
         }
@@ -258,8 +254,20 @@ public class PlayerController : MonoBehaviour
             StartCoroutine( Respawn());
         }   
     }
+
+    void PlayKoEffect()
+    {
+        GameObject KOeffect = Instantiate(KOEffect);
+        KOeffect.GetComponent<SpriteRenderer>().color = playerColors[playerIndex - 1];
+        Vector3 offset = (_rb.linearVelocity.normalized) * 10.0f;
+        KOeffect.transform.position = transform.position - offset;
+
+        float angle = Mathf.Atan2(-_rb.linearVelocity.y, -_rb.linearVelocity.x) * Mathf.Rad2Deg;
+        KOeffect.transform.rotation = Quaternion.Euler(0, 0, angle - 45);
+    }
     IEnumerator Respawn()
     {
+      
         healthComponent.RemoveLife();
         if (activeGrapple)
         {
@@ -276,6 +284,10 @@ public class PlayerController : MonoBehaviour
         ResetRigidBody();
 
         playerRespawned.Invoke(this);
+        yield return new WaitForEndOfFrame();
+        //im just hitting buttons on my keyboard tryna fix this problem im ngl
+        hurtbox.enabled = true;
+        deadAF = false;
 
     }
 

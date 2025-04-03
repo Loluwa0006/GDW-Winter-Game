@@ -33,7 +33,6 @@ public class HealthComponent : MonoBehaviour
 
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void Start()
     {
@@ -131,6 +130,5 @@ public class HealthComponent : MonoBehaviour
     // Update is called o  nce per frame
     void Update()
     {
-
     }
 }
