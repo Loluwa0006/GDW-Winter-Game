@@ -17,6 +17,7 @@ public class StageSelect : MonoBehaviour
     Dictionary<string, Image> StageThumbnails = new Dictionary<string, Image>();
 
     [SerializeField] GameObject TetherSelectors;
+    [SerializeField] RawImage selectedStageImage;
 
 
     private void Awake()
@@ -46,7 +47,7 @@ public class StageSelect : MonoBehaviour
     { 
        // GameManager.instance.SetSelectedLevel(level);
         selectedLevel.text = level.name;
-
+        selectedStageImage.texture = level.GetComponent<Image>().mainTexture;
     }
 
     public void StartGame()

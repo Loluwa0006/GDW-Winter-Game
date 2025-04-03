@@ -13,6 +13,10 @@ public class Player_Hitstun : Base_State
     [SerializeField] float hitstunGravity = 0.35f;
     [SerializeField] float speedDecay = 0.02f;
 
+    [SerializeField] AudioClip damagedLight;
+    [SerializeField] AudioClip damagedMid;
+    [SerializeField] AudioClip damagedHeavy;
+
 
 
     
@@ -36,6 +40,10 @@ public class Player_Hitstun : Base_State
 
     GameObject knockbackClouds;
 
+
+    float lowKnockback = 15.0f;
+    float midKnockback = 60.0f;
+    float highKnockback = 90.0f;
 
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -72,6 +80,11 @@ public class Player_Hitstun : Base_State
 
         LongParticleCreator(animator, spawnPosition) ;
         CenterParticleCreator(animator, spawnPosition) ;
+
+        switch (knockback.magnitude)
+        {
+
+        }
     }
 
     ParticleSystem KnockbackCloudsCreator(Animator animator, Vector2 spawnPosition)

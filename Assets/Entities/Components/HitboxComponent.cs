@@ -9,6 +9,9 @@ public class HitboxComponent : MonoBehaviour
 {
     const float HEALTH_SCALE = 0.85f;
 
+    public AudioSource audioPlayer;
+    public AudioClip hitSFX;
+    public AudioClip whiffSfx;
     public BoxCollider2D hitboxInfo;
 
     public int damage = 2;
@@ -65,6 +68,14 @@ public class HitboxComponent : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        if (whiffSfx && !attackLanded)
+        {
+            audioPlayer.PlayOneShot(whiffSfx);
+        }
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -102,8 +113,10 @@ public class HitboxComponent : MonoBehaviour
                 Debug.Log("Hit " + collision.attachedRigidbody.gameObject.name + " with push force of " + info.push.ToString()) ;
             }
         }
+        attackLanded = true;
             hitboxConnected.Invoke(info);
             enabled = false;
+        audioPlayer.PlayOneShot(hitSFX);
 
         }
 
