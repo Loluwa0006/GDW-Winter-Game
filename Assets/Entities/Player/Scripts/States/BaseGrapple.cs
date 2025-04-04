@@ -23,6 +23,8 @@ public class BaseGrapple : Base_State
 
     const float GRAPPLE_GRAVITY_REDUCTION = 0.2f;
 
+    [SerializeField] AudioClip ropeSFX;
+
     
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -62,6 +64,8 @@ public class BaseGrapple : Base_State
 
         }
 
+        playerController.playerAudio.PlayOneShot(ropeSFX);
+
         SetGrapple(GrappleManager.grappleInfo);
 
         DrawRope();
@@ -71,6 +75,8 @@ public class BaseGrapple : Base_State
         _grappleLine.enabled = true;
         _distanceJoint.enabled = true;
         _rb.gravityScale -= GRAPPLE_GRAVITY_REDUCTION;
+
+        
 
         
 

@@ -30,6 +30,10 @@ public class LevelManager : MonoBehaviour
     Dictionary<PlayerController, bool> playerRespawned = new();
 
     AnnouncementSystem announcementSystem;
+
+    [SerializeField] AudioClip KOSFX;
+
+    [SerializeField] AudioSource stageAudio;
     private void Start()
     {
         if (GameManager.instance != null)
@@ -165,6 +169,7 @@ public class LevelManager : MonoBehaviour
     }
     public void OnPlayerDefeated(PlayerController player, int lives, PlayerController killer = null)
     {
+        stageAudio.PlayOneShot(KOSFX);
         cinemachineFramer.RemoveMember(player.transform);
         if (player.activeGrapple)
         {

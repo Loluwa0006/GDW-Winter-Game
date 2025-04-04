@@ -22,7 +22,6 @@ public class ControlMenu : MonoBehaviour
 
     [SerializeField] GameObject InputDevices;
     [SerializeField] GameObject GamepadDevices;
-    [SerializeField] Button UseKeyboard;
 
     [SerializeField] PlayerInput playerInput;
   
@@ -220,7 +219,7 @@ public class ControlMenu : MonoBehaviour
     public void OnPlayerIndexChanged(int index)
     {
          _playerIndex = index;
-        UseKeyboard.gameObject.SetActive(index <= 2);
+       // UseKeyboard.gameObject.SetActive(index <= 2);
     }
 
    

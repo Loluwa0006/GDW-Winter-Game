@@ -734,7 +734,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 7400000, guid: 31443d1f333bbcb4bbdbc61d8bd1906d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -783,6 +783,7 @@ MonoBehaviour:
   useFixedUpdate: 0
   jointDamping: 7
   ropeMaterial: {fileID: 2100000, guid: 8acfc6c4e2287514f8e4b066e49b37ac, type: 2}
+  ropeSFX: {fileID: 8300000, guid: 355d953d2af140045beb64bdb8163311, type: 3}
 --- !u!1101 &-3668260529300624130
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -882,6 +883,9 @@ MonoBehaviour:
   knockbackCloudsPrefab: {fileID: 4649388410125648859, guid: 77b7c8bb0e4b0cf4892d2d550381c76d, type: 3}
   hitstunGravity: 1
   speedDecay: 0.8
+  damagedLight: {fileID: 8300000, guid: 841e99d86d80b9b4b8d32080225e6a7c, type: 3}
+  damagedMid: {fileID: 8300000, guid: 841e99d86d80b9b4b8d32080225e6a7c, type: 3}
+  damagedHeavy: {fileID: 8300000, guid: 841e99d86d80b9b4b8d32080225e6a7c, type: 3}
   hitstunBounce: 1
 --- !u!1102 &-2242862297385718549
 AnimatorState:
@@ -1724,6 +1728,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &5315965736386441358
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Grapple
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 31443d1f333bbcb4bbdbc61d8bd1906d, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &5457764607138127639
 AnimatorState:
   serializedVersion: 6
@@ -1785,6 +1815,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -4678311141535253067}
     m_Position: {x: 1900, y: -1010, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 5315965736386441358}
+    m_Position: {x: 1935, y: -945, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 7789591163263193577}
@@ -1799,9 +1832,9 @@ AnimatorStateMachine:
   - {fileID: -6478100956054997799}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -5233763908583029759}
-    second: []
   - first: {fileID: 7789591163263193577}
+    second: []
+  - first: {fileID: -5233763908583029759}
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 2800, y: -430, z: 0}
@@ -1866,6 +1899,7 @@ MonoBehaviour:
   useFixedUpdate: 1
   jointDamping: 7
   ropeMaterial: {fileID: 2100000, guid: 8acfc6c4e2287514f8e4b066e49b37ac, type: 2}
+  ropeSFX: {fileID: 8300000, guid: 355d953d2af140045beb64bdb8163311, type: 3}
 --- !u!1102 &6923466398299755040
 AnimatorState:
   serializedVersion: 6
@@ -1888,7 +1922,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 7400000, guid: 31443d1f333bbcb4bbdbc61d8bd1906d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

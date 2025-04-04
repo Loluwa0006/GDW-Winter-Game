@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
     void InitSettings()
     {
         gameSettings.Add("Brightness", 1.0f);
-        gameSettings.Add("Volume", 0.0f);
+        gameSettings.Add("Volume", 1.0f);
         gameSettings.Add("CameraShake", true);
 
         matchSettings.Add("MatchDuration", 7);

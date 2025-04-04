@@ -19,7 +19,7 @@ public class Player_Hitstun : Base_State
 
 
 
-    
+    int sfxChance = 40;
 
     //time until decay is relative to hitstun amount;
 
@@ -43,8 +43,8 @@ public class Player_Hitstun : Base_State
 
     float lowKnockback = 15.0f;
     float midKnockback = 60.0f;
-    float highKnockback = 90.0f;
 
+    AudioSource gethitAudioSource;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -57,7 +57,9 @@ public class Player_Hitstun : Base_State
             spriteObject = playerController.playerSprite.transform;
             groupFraming = GameObject.FindGameObjectWithTag("CinemachineCamera").GetComponent<CinemachineGroupFraming>();
             cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-
+            gethitAudioSource = new();
+            gethitAudioSource.playOnAwake = false;
+            gethitAudioSource.Stop();
             //Shrink ground collider size to make sure player is standing on top of something
             //Without this the player would stick to walls by having the furthest parts of the model touch said wall
 
@@ -81,9 +83,27 @@ public class Player_Hitstun : Base_State
         LongParticleCreator(animator, spawnPosition) ;
         CenterParticleCreator(animator, spawnPosition) ;
 
-        switch (knockback.magnitude)
+        PlayHitSFX();
+    }
+
+    void PlayHitSFX()
+    {
+        int chance = Random.Range(1, 100);
+        if (chance >= sfxChance)
         {
 
+            if (knockback.magnitude <= lowKnockback)
+            {
+                gethitAudioSource.PlayOneShot(damagedLight);
+            }
+            else if (knockback.magnitude <= midKnockback)
+            {
+                gethitAudioSource.PlayOneShot(damagedMid);
+            }
+            else
+            {
+                gethitAudioSource.PlayOneShot(damagedHeavy);
+            }
         }
     }
 

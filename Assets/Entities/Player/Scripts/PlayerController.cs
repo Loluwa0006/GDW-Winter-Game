@@ -76,6 +76,8 @@ public class PlayerController : MonoBehaviour
 
     public bool deadAF = false;
 
+    public AudioSource playerAudio;
+
 
     private void Awake()
     {
@@ -91,6 +93,8 @@ public class PlayerController : MonoBehaviour
         material2D.friction = _rb.sharedMaterial.friction;
 
         _rb.sharedMaterial = material2D;
+        InitTimerList();
+
     }
 
     void InitHealthComponent()
@@ -106,7 +110,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        InitTimerList();
     }
 
     private IEnumerator DropThroughPlatform()
@@ -237,6 +240,7 @@ public class PlayerController : MonoBehaviour
         {
             Timer timer = (Timer)component;
             _timerList.Add(timer.GetID(), timer);
+            DontDestroyOnLoad(timer);
         }
     }
     public void OnPlayerDeath()
@@ -264,6 +268,8 @@ public class PlayerController : MonoBehaviour
 
         float angle = Mathf.Atan2(-_rb.linearVelocity.y, -_rb.linearVelocity.x) * Mathf.Rad2Deg;
         KOeffect.transform.rotation = Quaternion.Euler(0, 0, angle - 45);
+
+        KOeffect.GetComponent<SpriteRenderer>().color = playerColors[playerIndex - 1];
     }
     IEnumerator Respawn()
     {
