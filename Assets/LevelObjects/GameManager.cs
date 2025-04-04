@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        DontDestroyOnLoad(BGMPlayer.gameObject);
+        DontDestroyOnLoad(BGMPlayer);
         SceneManager.sceneLoaded += EndBGM;
         InitSettings();
 

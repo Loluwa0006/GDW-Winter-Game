@@ -321,10 +321,12 @@ public class TutorialManager : MonoBehaviour
         {
             "Look at that! The tether pulled the box over to the location of the 2nd hook!",
             "This is what makes tetherball, tetherball!",
-            "Make sure to try out the other tether presets. Never hurts to consider your options."
+            "Make sure to try out the other tether presets. Never hurts to consider your options.",
+            "That brings us to the end of your training. Wow, what a joruney.",
+            "I wish you luck friend. May your enemies know your Aetherbind's wrath!"
         };
         yield return StartCoroutine(DisplayPrompts(reaction));
-        OnMechanicLearned();
+        SceneManager.LoadScene("MainMenu");
     }
 
 

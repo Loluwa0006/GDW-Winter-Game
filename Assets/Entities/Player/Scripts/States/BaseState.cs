@@ -25,6 +25,7 @@ public class Base_State : StateMachineBehaviour
     {
         if (!stateInitalized)
         {
+            DontDestroyOnLoad(animator);
             playerInput = animator.GetComponentInParent<PlayerInput>();
             playerController = animator.GetComponent<PlayerController>();
 
