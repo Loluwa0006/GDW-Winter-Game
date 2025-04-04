@@ -41,6 +41,17 @@ public class HitboxComponent : MonoBehaviour
     Collider2D parentHurtbox;
     private void Awake()
     {
+
+        if (transform.parent.TryGetComponent<AudioSource> (out AudioSource source))
+        {
+            audioPlayer = source;
+        }
+        else
+        {
+            audioPlayer = gameObject.AddComponent<AudioSource>();
+        }
+        audioPlayer.playOnAwake = false;
+        audioPlayer.Stop();
         hitbox = GetComponent<Collider2D>();
         parentHurtbox = transform.parent.GetComponent<Collider2D>();
         if (parentHurtbox != null)
@@ -70,7 +81,8 @@ public class HitboxComponent : MonoBehaviour
 
     private void OnDisable()
     {
-        if (whiffSfx && !attackLanded)
+        Debug.Log("Disabling hitbox");
+        if (!attackLanded)
         {
             audioPlayer.PlayOneShot(whiffSfx);
         }
@@ -100,6 +112,7 @@ public class HitboxComponent : MonoBehaviour
         if (health != null)
         {
            health.Damage(info);
+            audioPlayer.PlayOneShot(hitSFX);
         }
 
         else
@@ -116,7 +129,6 @@ public class HitboxComponent : MonoBehaviour
         attackLanded = true;
             hitboxConnected.Invoke(info);
             enabled = false;
-        audioPlayer.PlayOneShot(hitSFX);
 
         }
 

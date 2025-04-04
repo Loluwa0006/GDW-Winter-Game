@@ -28,10 +28,10 @@ public class BaseGrapple : Base_State
     
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("GrappleActive", true);
 
         if (!stateInitalized)
         {
+            DontDestroyOnLoad(animator);
 
             if (animator.gameObject.GetComponent<LineRenderer>() == null)
             {
@@ -63,6 +63,8 @@ public class BaseGrapple : Base_State
             _grappleLine.endWidth = 0.15f;
 
         }
+        animator.SetBool("GrappleActive", true);
+
 
         playerController.playerAudio.PlayOneShot(ropeSFX);
 

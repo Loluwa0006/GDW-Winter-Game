@@ -95,6 +95,8 @@ public class PlayerController : MonoBehaviour
         _rb.sharedMaterial = material2D;
         InitTimerList();
 
+        DontDestroyOnLoad(this);
+
     }
 
     void InitHealthComponent()
@@ -241,6 +243,7 @@ public class PlayerController : MonoBehaviour
             Timer timer = (Timer)component;
             _timerList.Add(timer.GetID(), timer);
             DontDestroyOnLoad(timer);
+            DontDestroyOnLoad(timer.gameObject);
         }
     }
     public void OnPlayerDeath()

@@ -343,6 +343,15 @@ AnimationClip:
     classID: 212
     script: {fileID: 0}
     flags: 2
+  - serializedVersion: 2
+    curve:
+    - time: 0
+      value: {fileID: 8300000, guid: 6fb0349ee369384479d71a12d5c88fd1, type: 3}
+    attribute: whiffSfx
+    path: Hitbox
+    classID: 114
+    script: {fileID: 11500000, guid: 6e94ff79ced4ddc4eae06ce57843c963, type: 3}
+    flags: 2
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -392,6 +401,15 @@ AnimationClip:
       script: {fileID: 0}
       typeID: 212
       customType: 23
+      isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    - serializedVersion: 2
+      path: 3579746941
+      attribute: 1604948996
+      script: {fileID: 11500000, guid: 6e94ff79ced4ddc4eae06ce57843c963, type: 3}
+      typeID: 114
+      customType: 0
       isPPtrCurve: 1
       isIntCurve: 0
       isSerializeReferenceCurve: 0
@@ -480,6 +498,7 @@ AnimationClip:
     - {fileID: 7833195685621405459, guid: 2389e253b4155a741a4c0d12ea307a35, type: 3}
     - {fileID: -4006701343119006191, guid: 8377da982fe63fd4b9edc7c317ee592e, type: 3}
     - {fileID: -9172010432452019858, guid: d34b92c4546a5dc41a98157359d859f4, type: 3}
+    - {fileID: 8300000, guid: 6fb0349ee369384479d71a12d5c88fd1, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

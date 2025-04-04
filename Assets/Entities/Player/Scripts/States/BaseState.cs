@@ -14,11 +14,15 @@ public class Base_State : StateMachineBehaviour
 
    protected bool stateInitalized = false;
 
-    
+
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 
 
+    private void Awake()
+    {
+        stateInitalized = false;
+    }
 
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -28,6 +32,8 @@ public class Base_State : StateMachineBehaviour
             DontDestroyOnLoad(animator);
             playerInput = animator.GetComponentInParent<PlayerInput>();
             playerController = animator.GetComponent<PlayerController>();
+            playerController.GetComponent<Rigidbody2D>().sharedMaterial.bounciness = 0;
+            //i love this stupid bug the day before gamecon its really fun i love it 10/10 would slam my head into my keyboard again
 
             if (useFixedUpdate)
             {
@@ -40,8 +46,10 @@ public class Base_State : StateMachineBehaviour
             stateInitalized = true;
 
             InitInputActions(animator);
-            
+
         }
+        
+
 
         animator.Play(layerIndex);
 
@@ -98,7 +106,11 @@ public class Base_State : StateMachineBehaviour
     void SetMovementAxis(Animator animator, Vector2 axis)
     {
 
-        if (!animator) { return; }
+        if (!animator)
+        {
+           
+            animator = playerController.gameObject.GetComponent<Animator>();
+        }
         Vector2Int axisAsInt = new(Mathf.RoundToInt(axis.x), Mathf.RoundToInt(axis.y));
 
         animator.SetInteger("HorizAxis", axisAsInt.x);

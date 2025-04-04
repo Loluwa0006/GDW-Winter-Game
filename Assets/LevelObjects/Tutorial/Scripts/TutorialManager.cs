@@ -33,7 +33,8 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
         conditionTracker = 0;
-        StartCoroutine(PlayerWelcome());
+        animator.Play("LearnGrappleOne");
+        StartCoroutine(GrappleOne());
 
     }
 
@@ -66,7 +67,7 @@ public class TutorialManager : MonoBehaviour
     IEnumerator WalkMovement()
     {
         EnableActionsExclusive("Move");
-        DisplayPrompt("Start with basic movement back and forth.");
+        DisplayPrompt("Start with basic movement back and forth with A and D.");
         conditionTracker = 0;
         yield return new WaitUntil(() => conditionTracker >= 2);
         DisablePlayer();
@@ -90,7 +91,7 @@ public class TutorialManager : MonoBehaviour
         conditionTracker = 0;
         string[] prompts =
         {
-            "You can press the " + tutorialPlayer._playerInput.actions["Jump"].controls[0].name + " button to jump.",
+            "You can press the " + GetDisplayNameForControl("Jump") + " button to jump.",
             "See that platform over there? Try to jump to it!"
         };
 
@@ -170,24 +171,26 @@ public class TutorialManager : MonoBehaviour
 
     public IEnumerator Tackling()
     {
+        ResetPlayerPosition();
         DisablePlayer();
         
         string[] prompts =
         {
-            "Now that we've gone over movement that you'll need to dodge attacks",
+            "Now that we've gone over movement that you'll need to dodge attacks,",
             "let's learn how to attack ourselves, shall we?",
             "While you can't throw a punch or kick to save your life,",
             "your speed could be used as an attack.",
-            "Press the " + tutorialPlayer._playerInput.actions["Attack"].controls[0].displayName + " button to dash forward, tackling opponents.",
+            "Press the " + GetDisplayNameForControl("Attack") + " button to dash forward, tackling opponents.",
         };
         yield return StartCoroutine(DisplayPrompts(prompts));
         conditionTracker = 0;
+        SpawnNewSlime();
         string[] slime =
         {
             "Tackle that slime over there!"
         };
-        EnableActionsExclusive("Attack");
         yield return StartCoroutine (DisplayPrompts(slime));
+        EnableActionsExclusive("Attack");
         tutorialPlayer.transform.localScale = new Vector3(1, 1, 1);
         //makes it so they tackle to the right
         yield return new WaitUntil(() => conditionTracker >= 1);
@@ -210,19 +213,17 @@ public class TutorialManager : MonoBehaviour
         string[] prompts =
         {
             "Well, I'm not even sure if I want to teach you this next technique...",
-            "You should know, that you should definitely NOT jump,",
-            "and then press the attack key while holding a down input!",
+            "You should know, that you should definitely NOT press " + GetDisplayNameForControl("Jump"),
+            "and then press the " + GetDisplayNameForControl("Attack") + " key while holding a down input!",
             "Woah, what did that slime say about your mother? Are you going to take that?"
         };
 
-        GameObject newSlime = Instantiate(slimePrefab);
-        newSlime.transform.position = slimeSpawner.transform.position;
+
         conditionTracker = 0;
         yield return StartCoroutine(DisplayPrompts(prompts));
 
-      
-        newSlime.transform.position = slimeSpawner.transform.position;
-        newSlime.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        SpawnNewSlime();
+
         EnableActionsExclusive("Jump", "Attack", "Move");
         yield return new WaitUntil(() => conditionTracker >= 1);
         string[] reaction =
@@ -382,7 +383,13 @@ public class TutorialManager : MonoBehaviour
     {
         animator.SetTrigger("LearnedMechanic");
     }
-
+    
+    void SpawnNewSlime()
+    {
+        GameObject newSlime = Instantiate(slimePrefab);
+        newSlime.transform.position = slimeSpawner.transform.position;
+        newSlime.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+    }
     public void ResetPlayerPosition()
     {
         tutorialPlayer.transform.position = tutorialPlayer._respawnPoint.transform.position;
@@ -393,5 +400,8 @@ public class TutorialManager : MonoBehaviour
     {
         obj.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         obj.transform.position = boxSpawner.transform.position;
+
     }
+
+
 }

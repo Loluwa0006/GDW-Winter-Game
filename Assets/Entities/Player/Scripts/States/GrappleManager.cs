@@ -14,6 +14,7 @@ public class GrappleManager : Base_State
 
         if (!stateInitalized)
         {
+            DontDestroyOnLoad(animator);
             playerInput = animator.GetComponentInParent<PlayerInput>();
             playerController = animator.GetComponent<PlayerController>();
             if (useFixedUpdate)

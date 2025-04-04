@@ -57,9 +57,7 @@ public class Player_Hitstun : Base_State
             spriteObject = playerController.playerSprite.transform;
             groupFraming = GameObject.FindGameObjectWithTag("CinemachineCamera").GetComponent<CinemachineGroupFraming>();
             cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-            gethitAudioSource = new();
-            gethitAudioSource.playOnAwake = false;
-            gethitAudioSource.Stop();
+            gethitAudioSource = playerController.playerAudio;
             //Shrink ground collider size to make sure player is standing on top of something
             //Without this the player would stick to walls by having the furthest parts of the model touch said wall
 
@@ -71,7 +69,6 @@ public class Player_Hitstun : Base_State
 
         _rb.linearDamping = speedDecay;
 
-        _rb.linearVelocity = Vector2.zero;
 
         Vector2 spawnPosition = new Vector2(animator.GetFloat("HitboxCollisionX"), animator.GetFloat("HitboxCollisionY"));
         shakeAmount = animator.GetFloat("HitshakeAmount") * Mathf.Lerp(1.0f, 1.25f, cam.orthographicSize / groupFraming.OrthoSizeRange.y);
@@ -145,6 +142,7 @@ public class Player_Hitstun : Base_State
         }
         else
         {
+            _rb.linearVelocity = Vector2.zero;
             ShakePlayerSprite(animator);
         }
 
@@ -155,7 +153,7 @@ public class Player_Hitstun : Base_State
     {
 
         float xShake = Random.Range(-shakeAmount, shakeAmount); 
-        float yShake = Random.Range(shakeAmount, shakeAmount);
+        float yShake = Random.Range(-shakeAmount, shakeAmount);
         if (IsGrounded())
         {
             yShake = 0;
@@ -164,7 +162,7 @@ public class Player_Hitstun : Base_State
 
         shakeAmount = Mathf.Lerp(shakeAmount, 0, Time.deltaTime * SHAKESCALE);
 
-
+        Debug.Log("Shook sprite object to location " + spriteObject.transform.localPosition.ToString());
         if (shakeAmount <= 0.01f)
         {
             _rb.AddForce(knockback, ForceMode2D.Impulse);
