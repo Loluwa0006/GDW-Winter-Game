@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\temia\\GDW-Winter-Game\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\levelobjects\\tutorial\\scripts\\tutorialmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|c:\\users\\temia\\gdw-winter-game\\assets\\levelobjects\\tutorial\\scripts\\tutorialmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\levelobjects\\tutorial\\scripts\\tutorialmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\entities\\player\\scripts\\states\\basestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|c:\\users\\temia\\gdw-winter-game\\assets\\entities\\player\\scripts\\states\\movestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|C:\\Users\\temia\\GDW-Winter-Game\\assets\\entities\\player\\scripts\\states\\movestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0C152F4A-57A1-FEBA-1AE2-5C5E14D2D710}|Assembly-CSharp.csproj|solutionrelative:assets\\entities\\player\\scripts\\states\\movestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -90,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
@@ -120,19 +120,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MoveState.cs",
-              "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Player\\Scripts\\States\\MoveState.cs",
-              "RelativeDocumentMoniker": "Assets\\Entities\\Player\\Scripts\\States\\MoveState.cs",
-              "ToolTip": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Player\\Scripts\\States\\MoveState.cs",
-              "RelativeToolTip": "Assets\\Entities\\Player\\Scripts\\States\\MoveState.cs",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAMwHMAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T00:56:56.688Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "TutorialManager.cs",
               "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\LevelObjects\\Tutorial\\Scripts\\TutorialManager.cs",
@@ -142,19 +129,6 @@
               "ViewState": "AgIAABoAAAAAAAAAAAAAwCQAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T00:22:49.363Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BaseState.cs",
-              "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Player\\Scripts\\States\\BaseState.cs",
-              "RelativeDocumentMoniker": "Assets\\Entities\\Player\\Scripts\\States\\BaseState.cs",
-              "ToolTip": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Player\\Scripts\\States\\BaseState.cs",
-              "RelativeToolTip": "Assets\\Entities\\Player\\Scripts\\States\\BaseState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T23:51:49.881Z",
               "EditorCaption": ""
             },
             {
@@ -169,6 +143,30 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-03T23:48:38.867Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MoveState.cs",
+              "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Player\\Scripts\\States\\MoveState.cs",
+              "RelativeDocumentMoniker": "Assets\\Entities\\Player\\Scripts\\States\\MoveState.cs",
+              "ToolTip": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Player\\Scripts\\States\\MoveState.cs",
+              "RelativeToolTip": "Assets\\Entities\\Player\\Scripts\\States\\MoveState.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAMwHMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T00:56:56.688Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BaseState.cs",
+              "DocumentMoniker": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Player\\Scripts\\States\\BaseState.cs",
+              "RelativeDocumentMoniker": "Assets\\Entities\\Player\\Scripts\\States\\BaseState.cs",
+              "ToolTip": "C:\\Users\\temia\\GDW-Winter-Game\\Assets\\Entities\\Player\\Scripts\\States\\BaseState.cs",
+              "RelativeToolTip": "Assets\\Entities\\Player\\Scripts\\States\\BaseState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T23:51:49.881Z"
             },
             {
               "$type": "Bookmark",
@@ -188,8 +186,7 @@
               "RelativeToolTip": "Assets\\Entities\\Player\\Scripts\\States\\GrappleManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T23:48:00.173Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-03T23:48:00.173Z"
             },
             {
               "$type": "Document",
@@ -201,8 +198,7 @@
               "RelativeToolTip": "Assets\\Entities\\Player\\Scripts\\PlayerController.cs",
               "ViewState": "AgIAAEYAAAAAAAAAAAAQwGEAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T23:36:32.324Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-03T23:36:32.324Z"
             },
             {
               "$type": "Document",
@@ -250,8 +246,7 @@
               "RelativeToolTip": "Assets\\Entities\\Player\\Scripts\\States\\BaseGrapple.cs",
               "ViewState": "AgIAACsAAAAAAAAAAAAQwEQAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T23:16:16.41Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-03T23:16:16.41Z"
             },
             {
               "$type": "Document",
@@ -299,8 +294,7 @@
               "RelativeToolTip": "Assets\\Entities\\Player\\Scripts\\States\\Player_Hitstun.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAMwDsAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T01:30:45.257Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-29T01:30:45.257Z"
             },
             {
               "$type": "Document",
@@ -312,8 +306,7 @@
               "RelativeToolTip": "Assets\\LevelObjects\\LevelManager.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAzwEQAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T21:48:59.034Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-28T21:48:59.034Z"
             },
             {
               "$type": "Document",
@@ -337,8 +330,7 @@
               "RelativeToolTip": "Assets\\Entities\\Components\\HitboxComponent.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAqwDIAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T08:04:37.65Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-30T08:04:37.65Z"
             },
             {
               "$type": "Document",
